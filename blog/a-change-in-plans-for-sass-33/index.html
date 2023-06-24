@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: A Change in Plans for Sass 3.3</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 002-a-change-in-plans-for-sass-33">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">A Change in Plans for Sass<span class="widont">&nbsp;</span>3.3</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 20 December 2013 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p><em>This was originally published as <a href="https://gist.github.com/nex3/8050187">a<span class="widont">&nbsp;</span>gist</a>.</em></p>
+<p>Sass 3.3 is coming soon, and along with it several major new features. It
+supports source maps, SassScript maps, and the use of <code>&amp;</code> in SassScript. In
+preparation for its release, we’ve put out a couple of release candidates to be
+sure that everything was set and ready to go. Unfortunately, it<span class="widont">&nbsp;</span>wasn’t.</p>
+<p>Release candidates often turn up small bugs and inconsistencies in new features,
+but it’s rare that they find anything truly damning. In this case, though,
+several users noticed an issue with using <code>&amp;</code> in SassScript that rendered a
+sizable chunk of our plan for that section of 3.3 unworkable. It’s not a fatal
+issue, and we think we have a good plan for dealing with it (I’ll get to that in
+a bit), but it is a<span class="widont">&nbsp;</span>problem.</p>
+<h2 id="the-background" tabindex="-1">The Background<a class="anchor" href="#the-background"><span class="visuallyhidden">The Background permalink</span></a></h2>
+<p>To understand what’s wrong, first you need to understand the reason we decided
+to make <code>&amp;</code> accessible to SassScript in the first place. One thing users want to
+do pretty often is to add suffixes to classes. Sometimes this takes the place of
+nesting selectors, sometimes it’s just to make a new class based on the old ones
+– the reason doesn’t matter much to this discussion. When people tried to do
+this, they’d write something like <code>.foo { &amp;-suffix { ... } }</code>, and it wouldn’t
+work. The reason is that <code>&amp;</code> has the same syntactic function as a type selector
+(e.g. <code>h1</code>) or a universal selector (<code>*</code>), since it could be replaced by any of
+those. It doesn’t make sense to write <code>*-suffix</code> in a selector, so <code>&amp;-suffix</code>
+wasn’t allowed<span class="widont">&nbsp;</span>either.</p>
+<p>This didn’t stop people from wanting to do it, though. So we decided, “all
+right, we already use interpolation (<code>#{}</code>) to support injecting text into
+selectors – let’s just use that”. We decided to add <code>&amp;</code> as a sort of special
+variable in SassScript that contained a parsed representation of the current
+selector. You could then mimic <code>&amp;-suffix</code> by doing <code>@at-root #{&amp;}-suffix</code>
+instead<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. Life was peachy, until our intrepid users discovered the<span class="widont">&nbsp;</span>problem.</p>
+<h2 id="the-problem" tabindex="-1">The Problem<a class="anchor" href="#the-problem"><span class="visuallyhidden">The Problem permalink</span></a></h2>
+<p>Here’s a small snippet of <span class="caps">SCSS</span> that demonstrates the issue. See if you can
+figure it<span class="widont">&nbsp;</span>out:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token selector">.foo, .bar </span><span class="token punctuation">{</span>
+  <span class="token atrule"><span class="token rule">@at-root</span> #<span class="token punctuation">{</span>&amp;<span class="token punctuation">}</span>-suffix</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Did you get it? That’s right: <code>&amp;</code> in this example is <code>.foo, .bar</code>, which means
+the selector compiles to <code>.foo, .bar-suffix</code>. Since <code>#{}</code> injects plain old
+text, there’s no chance for Sass to figure out how it should split up the<span class="widont">&nbsp;</span>selector.</p>
+<p><a href="https://github.com/chriseppstein">Chris</a> and I talked and talked about how to
+fix this. We considered adding a function to add the suffix, but that was too
+verbose. We considered making <code>&amp;</code> split the compilation of the <span class="caps">CSS</span> rule into
+several parallel rules which each had a single selector for <code>&amp;</code>, but that was
+too complicated and fell down in too many edge cases. We eventually concluded
+that there was no way for SassScript <code>&amp;</code> to cleanly support the use case we
+designed it<span class="widont">&nbsp;</span>for.</p>
+<h2 id="the-solution" tabindex="-1">The Solution<a class="anchor" href="#the-solution"><span class="visuallyhidden">The Solution permalink</span></a></h2>
+<p>We knew we wanted to support the <code>&amp;-suffix</code> use case, and our clever plan for
+doing so had failed. We put our heads together and discussed, and decided that
+the best way to support it was the most straightforward: we’d just allow
+<code>&amp;-suffix</code>. This was, after all, what most people tried first when they wanted
+this behavior, and with the <code>&amp;</code> embedded directly in the selector, we can handle
+selector lists<span class="widont">&nbsp;</span>easily.</p>
+<p>This means that <strong><code>&amp;-suffix</code> will be supported in Sass 3.3</strong>, without needing
+<code>#{}</code> or <code>@at-root</code>. I’ve created <a href="https://github.com/sass/sass/issues/1055">issue
+1055</a> to track it. When compiling
+these selectors, if the parent selector is one that would result in an invalid
+selector (e.g. <code>*-suffix</code> or <code>:nth-child(1)-suffix</code>), we’ll throw an error there
+describing why that selector was<span class="widont">&nbsp;</span>generated.</p>
+<p>We are still worried about cases where people write mixins using <code>&amp;-suffix</code> that
+will then fail to work with certain parent selectors, but in this case we
+determined that this would be the least of all available<span class="widont">&nbsp;</span>evils.</p>
+<h2 id="the-future-of-and-in-sass-script" tabindex="-1">The Future of <code>&amp;</code> in SassScript<a class="anchor" href="#the-future-of-and-in-sass-script"><span class="visuallyhidden">The Future of <span class="amp">&amp;</span> in SassScript<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>In addition to supporting <code>&amp;-suffix</code>, <strong>we’ve decided to pull SassScript <code>&amp;</code>
+from the 3.3 release</strong>. Rest assured that it will return – we recognize that it
+has other good use cases, and we intend to bring it back for the next big
+release (likely 3.4). In addition, it will come with a suite of functions for
+manipulating the selectors it makes available, so it will be more powerful than<span class="widont">&nbsp;</span>ever.</p>
+<p>There are two reasons that we want to hold off on using <code>&amp;</code> in SassScript for
+now. The first is that we want some time to create the functions that will go
+along with it and put them through their paces. This may require changing the
+way it works in various ways, and we don’t want to have to make
+backwards-incompatible changes to do<span class="widont">&nbsp;</span>so.</p>
+<p>The second reason is that we’ve spent a fair amount of energy talking up <code>#{&amp;}</code>
+as a solution to the <code>&amp;-suffix</code> problem. This is our own fault, clearly, but
+it’s true and it’s something we need to deal with. Making <code>&amp;-suffix</code> work is
+great, but if everyone is using <code>#{&amp;}</code> anyway because that’s what we told them
+about a few months ago, then it’s not doing everything it can. Having a release
+where <code>&amp;-suffix</code> works but <code>#{&amp;}</code> doesn’t will help guide users towards the best
+way to solve their problem, before we make the more advanced functionality<span class="widont">&nbsp;</span>available.</p>
+<p><code>@at-root</code> will still be included in Sass<span class="widont">&nbsp;</span>3.3.</p>
+<h2 id="releasing-3-3" tabindex="-1">Releasing 3.3<a class="anchor" href="#releasing-3-3"><span class="visuallyhidden">Releasing 3.3 permalink</span></a></h2>
+<p>Unfortunately, this change will delay the release of 3.3, but hopefully not by
+too much. I anticipate this being relatively straightforward to implement; the
+major hurdle was figuring out what to do about it, and that part’s done. I plan
+to devote a large chunk of time to getting 3.3 out the door after I come back
+from winter vacation, so hopefully (no promises) it’ll be released some time in<span class="widont">&nbsp;</span>January.</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>The <code>@at-root</code> is necessary since Sass can’t reliably figure out whether
+<code>&amp;</code> was used in the selector like it can when <code>&amp;</code> is used without <code>#{}</code>. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/a-change-in-plans-for-sass-33/ -->
+  </body>
+</html>

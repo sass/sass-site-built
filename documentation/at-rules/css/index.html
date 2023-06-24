@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: CSS At-Rules</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation at-rules css">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container"><span class="caps">CSS</span> At-Rules</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section open selected">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="open selected">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary sl-l-large-holy-grail__complementary--contents">
+              
+                
+                
+                
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    <ul><li>
+      <a href="#media" class="open"><code>@media</code></a></li><li>
+      <a href="#supports" class="open"><code>@supports</code></a></li><li>
+      <a href="#keyframes" class="open"><code>@keyframes</code></a></li></ul>
+
+                  </nav>
+                
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+
+
+              <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility (Name Interpolation):
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.15.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>LibSass, Ruby Sass, and older versions of Dart Sass don’t support
+<a href="/documentation/interpolation">interpolation</a> in at-rule names. They do support interpolation in<span class="widont">&nbsp;</span>values.</p>
+  </div>
+<p>Sass supports all the at-rules that are part of <span class="caps">CSS</span> proper. To stay flexible and
+forwards-compatible with future versions of <span class="caps">CSS</span>, Sass has general support that
+covers almost all at-rules by default. A <span class="caps">CSS</span> at-rule is written <code>@&lt;name&gt; &lt;value&gt;</code>, <code>@&lt;name&gt; { ... }</code>, or <code>@&lt;name&gt; &lt;value&gt; { ... }</code>. The name must be an
+identifier, and the value (if one exists) can be pretty much anything. Both the
+name and the value can contain <a href="/documentation/interpolation">interpolation</a>.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-css-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-css-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-css-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-css-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss">@namespace svg <span class="token url">url</span><span class="token punctuation">(</span><span class="token property">http</span><span class="token punctuation">:</span><span class="token comment">//www.w3.org/2000/svg);</span>&#10;&#10;<span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span>&#10;  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Open Sans"</span><span class="token punctuation">;</span>&#10;  <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url">url</span><span class="token punctuation">(</span><span class="token string">"/fonts/OpenSans-Regular-webfont.woff2"</span><span class="token punctuation">)</span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"woff2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token atrule"><span class="token rule">@counter-style</span> thumbs</span> <span class="token punctuation">{</span>&#10;  <span class="token property">system</span><span class="token punctuation">:</span> cyclic<span class="token punctuation">;</span>&#10;  <span class="token property">symbols</span><span class="token punctuation">:</span> <span class="token string">"\<span class="caps">1F44D</span>"</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-css-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@namespace</span> svg url(http://www.w3.org/2000/svg)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@font-face</span></span>&#10;<span class="token property-line">  <span class="token property">font-family</span><span class="token punctuation">:</span> "Open Sans"</span>&#10;<span class="token property-line">  <span class="token property">src</span><span class="token punctuation">:</span> url("<span class="token operator">/</span>fonts<span class="token operator">/</span>OpenSans-Regular-webfont.woff2") format("woff2")</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@counter-style</span> thumbs</span>&#10;<span class="token property-line">  <span class="token property">system</span><span class="token punctuation">:</span> cyclic</span>&#10;<span class="token property-line">  <span class="token property">symbols</span><span class="token punctuation">:</span> "\<span class="caps">1F44D</span>"</span>&#10;&#10;&#10;</code></pre></div>
+<div id="example-css-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@charset</span> <span class="token string">"<span class="caps">UTF</span>-8"</span><span class="token punctuation">;</span></span>&#10;<span class="token atrule"><span class="token rule">@namespace</span> svg <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>http://www.w3.org/2000/svg<span class="token punctuation">)</span></span><span class="token punctuation">;</span></span>&#10;<span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span>&#10;  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Open Sans"</span><span class="token punctuation">;</span>&#10;  <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"/fonts/OpenSans-Regular-webfont.woff2"</span><span class="token punctuation">)</span></span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"woff2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;<span class="token atrule"><span class="token rule">@counter-style</span> thumbs</span> <span class="token punctuation">{</span>&#10;  <span class="token property">system</span><span class="token punctuation">:</span> cyclic<span class="token punctuation">;</span>&#10;  <span class="token property">symbols</span><span class="token punctuation">:</span> <span class="token string">"👍"</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;</code></pre></div>
+</div>
+<p>If a <span class="caps">CSS</span> at-rule is nested within a style rule, the two automatically swap
+positions so that the at-rule is at the top level of the <span class="caps">CSS</span> output and the
+style rule is within it. This makes it easy to add conditional styling without
+having to rewrite the style rule’s<span class="widont">&nbsp;</span>selector.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-nested-css-at-rule-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-nested-css-at-rule-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-nested-css-at-rule-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-nested-css-at-rule-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token selector">.print-only </span><span class="token punctuation">{</span>&#10;  <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>&#10;&#10;  <span class="token atrule"><span class="token rule">@media</span> print</span> <span class="token punctuation">{</span> <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span> <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;</code></pre></div>
+<div id="example-nested-css-at-rule-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token selector">.print-only</span>&#10;<span class="token property-line">  <span class="token property">display</span><span class="token punctuation">:</span> none</span>&#10;&#10;<span class="token atrule-line">  <span class="token atrule">@media</span> print</span>&#10;<span class="token property-line">    <span class="token property">display</span><span class="token punctuation">:</span> block</span>&#10;&#10;&#10;&#10;</code></pre></div>
+<div id="example-nested-css-at-rule-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.print-only</span> <span class="token punctuation">{</span>&#10;  <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;<span class="token atrule"><span class="token rule">@media</span> print</span> <span class="token punctuation">{</span>&#10;  <span class="token selector">.print-only</span> <span class="token punctuation">{</span>&#10;    <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+</div>
+<h2 id="media" tabindex="-1"><code>@media</code><a class="anchor" href="#media"><span class="visuallyhidden">@media permalink</span></a></h2>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility (Range Syntax):
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.11.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>since 3.7.0</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>LibSass and older versions of Dart Sass and Ruby Sass don’t support media
+queries with features written in a <a href="https://www.w3.org/TR/mediaqueries-4/#mq-range-context">range context</a>. They do support other
+standard media<span class="widont">&nbsp;</span>queries.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+<a href="#example-range-syntax-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+<a href="#example-range-syntax-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+<a href="#example-range-syntax-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-range-syntax-scss" class="ui-tabs-panel scss">
+<h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span>width <span class="token operator">&lt;=</span> 700px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>&#10;  <span class="token selector">body </span><span class="token punctuation">{</span>&#10;    <span class="token property">background</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-range-syntax-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+<h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@media</span> (width &lt;<span class="token atrule">=</span> 700px)</span>&#10;  <span class="token selector">body</span>&#10;<span class="token property-line">    <span class="token property">background</span><span class="token punctuation">:</span> green</span>&#10;&#10;&#10;</code></pre></div>
+<div id="example-range-syntax-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+<h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span>width &lt;= 700px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>&#10;  <span class="token selector">body</span> <span class="token punctuation">{</span>&#10;    <span class="token property">background</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+</div>
+  </div>
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries"><code>@media</code> rule</a> does all of the above and more. In addition to allowing
+interpolation, it allows <a href="/documentation/syntax/structure#expressions">SassScript expressions</a> to be used directly in the
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Targeting_media_features">feature<span class="widont">&nbsp;</span>queries</a>.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-media-rule-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-media-rule-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-media-rule-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-media-rule-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$layout-breakpoint-small</span></span><span class="token punctuation">:</span> 960px<span class="token punctuation">;</span>&#10;&#10;<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> <span class="token variable">$layout-breakpoint-small</span><span class="token punctuation">)</span></span> <span class="token punctuation">{</span>&#10;  <span class="token selector">.hide-extra-small </span><span class="token punctuation">{</span>&#10;    <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-media-rule-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$layout-breakpoint-small</span><span class="token punctuation">:</span> 960px</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@media</span> (min-width: $layout-breakpoint-small)</span>&#10;  <span class="token selector">.hide-extra-small</span>&#10;<span class="token property-line">    <span class="token property">display</span><span class="token punctuation">:</span> none</span>&#10;&#10;&#10;</code></pre></div>
+<div id="example-media-rule-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 960px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>&#10;  <span class="token selector">.hide-extra-small</span> <span class="token punctuation">{</span>&#10;    <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;</code></pre></div>
+</div>
+<p>When possible, Sass will also merge media queries that are nested within one
+another to make it easier to support browsers that don’t yet natively support
+nested <code>@media</code> rules.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-merge-media-queries-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-merge-media-queries-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-merge-media-queries-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-merge-media-queries-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">hover</span><span class="token punctuation">:</span> hover<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>&#10;  <span class="token selector">.button:hover </span><span class="token punctuation">{</span>&#10;    <span class="token property">border</span><span class="token punctuation">:</span> 2px solid black<span class="token punctuation">;</span>&#10;&#10;    <span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span>color<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>&#10;      <span class="token property">border-color</span><span class="token punctuation">:</span> #036<span class="token punctuation">;</span>&#10;    <span class="token punctuation">}</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;</code></pre></div>
+<div id="example-merge-media-queries-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@media</span> (hover: hover)</span>&#10;<span class="token property-line">  <span class="token property">.button</span><span class="token punctuation">:</span><span class="token property">hover</span></span>&#10;<span class="token property-line">    <span class="token property">border</span><span class="token punctuation">:</span> 2px solid black</span>&#10;&#10;<span class="token atrule-line">    <span class="token atrule">@media</span> (color)</span>&#10;<span class="token property-line">      <span class="token property">border-color</span><span class="token punctuation">:</span> #036</span>&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+<div id="example-merge-media-queries-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">hover</span><span class="token punctuation">:</span> hover<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>&#10;  <span class="token selector">.button:hover</span> <span class="token punctuation">{</span>&#10;    <span class="token property">border</span><span class="token punctuation">:</span> 2px solid black<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">hover</span><span class="token punctuation">:</span> hover<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>color<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>&#10;  <span class="token selector">.button:hover</span> <span class="token punctuation">{</span>&#10;    <span class="token property">border-color</span><span class="token punctuation">:</span> #036<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+</div>
+<h2 id="supports" tabindex="-1"><code>@supports</code><a class="anchor" href="#supports"><span class="visuallyhidden">@supports permalink</span></a></h2>
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@supports"><code>@supports</code> rule</a> also allows <a href="/documentation/syntax/structure#expressions">SassScript expressions</a> to be used in
+the declaration<span class="widont">&nbsp;</span>queries.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-support-at-rule-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-support-at-rule-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-support-at-rule-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-support-at-rule-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@mixin</span> <span class="token selector">sticky-position </span><span class="token punctuation">{</span>&#10;  <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>&#10;  <span class="token atrule"><span class="token rule">@supports</span> <span class="token punctuation">(</span><span class="token property">position</span><span class="token punctuation">:</span> sticky<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>&#10;    <span class="token property">position</span><span class="token punctuation">:</span> sticky<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.banner </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@include</span> sticky-position<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-support-at-rule-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@mixin</span> sticky-position</span>&#10;<span class="token property-line">  <span class="token property">position</span><span class="token punctuation">:</span> fixed</span>&#10;<span class="token atrule-line">  <span class="token atrule">@supports</span> (position: sticky)</span>&#10;<span class="token property-line">    <span class="token property">position</span><span class="token punctuation">:</span> sticky</span>&#10;&#10;&#10;&#10;<span class="token selector">.banner</span>&#10;<span class="token atrule-line">  <span class="token atrule">@include</span> sticky-position</span>&#10;&#10;</code></pre></div>
+<div id="example-support-at-rule-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.banner</span> <span class="token punctuation">{</span>&#10;  <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;<span class="token atrule"><span class="token rule">@supports</span> <span class="token punctuation">(</span><span class="token property">position</span><span class="token punctuation">:</span> sticky<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>&#10;  <span class="token selector">.banner</span> <span class="token punctuation">{</span>&#10;    <span class="token property">position</span><span class="token punctuation">:</span> sticky<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;</code></pre></div>
+</div>
+<h2 id="keyframes" tabindex="-1"><code>@keyframes</code><a class="anchor" href="#keyframes"><span class="visuallyhidden">@keyframes permalink</span></a></h2>
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes"><code>@keyframes</code> rule</a> works just like a general at-rule, except that its
+child rules must be valid keyframe rules (<code>&lt;number&gt;%</code>, <code>from</code>, or <code>to</code>) rather
+than normal<span class="widont">&nbsp;</span>selectors.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-keyframes-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-keyframes-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-keyframes-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-keyframes-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token atrule"><span class="token rule">@keyframes</span> slide-in</span> <span class="token punctuation">{</span>&#10;  <span class="token keyword">from</span> <span class="token punctuation">{</span>&#10;    <span class="token property">margin-left</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>&#10;    <span class="token property">width</span><span class="token punctuation">:</span> 300%<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;&#10;  <span class="token selector">70% </span><span class="token punctuation">{</span>&#10;    <span class="token property">margin-left</span><span class="token punctuation">:</span> 90%<span class="token punctuation">;</span>&#10;    <span class="token property">width</span><span class="token punctuation">:</span> 150%<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;&#10;  <span class="token selector">to </span><span class="token punctuation">{</span>&#10;    <span class="token property">margin-left</span><span class="token punctuation">:</span> 0%<span class="token punctuation">;</span>&#10;    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-keyframes-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@keyframes</span> slide-in</span>&#10;  <span class="token selector">from</span>&#10;<span class="token property-line">    <span class="token property">margin-left</span><span class="token punctuation">:</span> 100<span class="token operator">%</span></span>&#10;<span class="token property-line">    <span class="token property">width</span><span class="token punctuation">:</span> 300<span class="token operator">%</span></span>&#10;&#10;&#10;  <span class="token selector">70%</span>&#10;<span class="token property-line">    <span class="token property">margin-left</span><span class="token punctuation">:</span> 90<span class="token operator">%</span></span>&#10;<span class="token property-line">    <span class="token property">width</span><span class="token punctuation">:</span> 150<span class="token operator">%</span></span>&#10;&#10;&#10;  <span class="token selector">to</span>&#10;<span class="token property-line">    <span class="token property">margin-left</span><span class="token punctuation">:</span> 0<span class="token operator">%</span></span>&#10;<span class="token property-line">    <span class="token property">width</span><span class="token punctuation">:</span> 100<span class="token operator">%</span></span>&#10;&#10;&#10;</code></pre></div>
+<div id="example-keyframes-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> slide-in</span> <span class="token punctuation">{</span>&#10;  <span class="token selector">from</span> <span class="token punctuation">{</span>&#10;    <span class="token property">margin-left</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>&#10;    <span class="token property">width</span><span class="token punctuation">:</span> 300%<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;  <span class="token selector">70%</span> <span class="token punctuation">{</span>&#10;    <span class="token property">margin-left</span><span class="token punctuation">:</span> 90%<span class="token punctuation">;</span>&#10;    <span class="token property">width</span><span class="token punctuation">:</span> 150%<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;  <span class="token selector">to</span> <span class="token punctuation">{</span>&#10;    <span class="token property">margin-left</span><span class="token punctuation">:</span> 0%<span class="token punctuation">;</span>&#10;    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;</code></pre></div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/at-rules/css/ -->
+  </body>
+</html>

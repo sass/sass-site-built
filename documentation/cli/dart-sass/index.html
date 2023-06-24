@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Dart Sass Command-Line Interface</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation cli dart-sass">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Dart Sass Command-Line<span class="widont">&nbsp;</span>Interface</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section open selected">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="open selected">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary sl-l-large-holy-grail__complementary--contents">
+              
+                
+                
+                
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    <ul><li>
+      <a href="#usage" class="section open">Usage</a><ul><li class="overview">
+      <a href="#usage" >Overview</a>
+    </li><li>
+      <a href="#one-to-one-mode" class="">One-to-One Mode</a></li><li>
+      <a href="#many-to-many-mode" class="">Many-to-Many Mode</a></li></ul>
+</li><li>
+      <a href="#options" class="section open">Options</a><ul><li class="overview">
+      <a href="#options" >Overview</a>
+    </li><li>
+      <a href="#input-and-output" class="section ">Input and Output</a><ul><li class="overview">
+      <a href="#input-and-output" >Overview</a>
+    </li><li>
+      <a href="#stdin" class=""><code>--stdin</code></a></li><li>
+      <a href="#indented" class=""><code>--indented</code></a></li><li>
+      <a href="#load-path" class=""><code>--load-path</code></a></li><li>
+      <a href="#style" class=""><code>--style</code></a></li><li>
+      <a href="#no-charset" class=""><code>--no-charset</code></a></li><li>
+      <a href="#error-css" class=""><code>--error-css</code></a></li><li>
+      <a href="#update" class=""><code>--update</code></a></li></ul>
+</li><li>
+      <a href="#source-maps" class="section ">Source Maps</a><ul><li class="overview">
+      <a href="#source-maps" >Overview</a>
+    </li><li>
+      <a href="#no-source-map" class=""><code>--no-source-map</code></a></li><li>
+      <a href="#source-map-urls" class=""><code>--source-map-urls</code></a></li><li>
+      <a href="#embed-sources" class=""><code>--embed-sources</code></a></li><li>
+      <a href="#embed-source-map" class=""><code>--embed-source-map</code></a></li></ul>
+</li><li>
+      <a href="#other-options" class="section ">Other Options</a><ul><li class="overview">
+      <a href="#other-options" >Overview</a>
+    </li><li>
+      <a href="#watch" class=""><code>--watch</code></a></li><li>
+      <a href="#poll" class=""><code>--poll</code></a></li><li>
+      <a href="#stop-on-error" class=""><code>--stop-on-error</code></a></li><li>
+      <a href="#interactive" class=""><code>--interactive</code></a></li><li>
+      <a href="#color" class=""><code>--color</code></a></li><li>
+      <a href="#no-unicode" class=""><code>--no-unicode</code></a></li><li>
+      <a href="#quiet" class=""><code>--quiet</code></a></li><li>
+      <a href="#quiet-deps" class=""><code>--quiet-deps</code></a></li><li>
+      <a href="#fatal-deprecation" class=""><code>--fatal-deprecation</code></a></li><li>
+      <a href="#trace" class=""><code>--trace</code></a></li><li>
+      <a href="#help" class=""><code>--help</code></a></li><li>
+      <a href="#version" class=""><code>--version</code></a></li></ul>
+</li></ul>
+</li></ul>
+
+                  </nav>
+                
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+
+
+              <h2 id="usage" tabindex="-1">Usage<a class="anchor" href="#usage"><span class="visuallyhidden">Usage permalink</span></a></h2>
+<p>The Dart Sass executable can be invoked in one of two<span class="widont">&nbsp;</span>modes.</p>
+<h3 id="one-to-one-mode" tabindex="-1">One-to-One Mode<a class="anchor" href="#one-to-one-mode"><span class="visuallyhidden">One-to-One Mode permalink</span></a></h3>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token output">sass &lt;input.scss> [output.css]
+</span></code></pre>
+<p>One-to-one mode compiles a single input file (<code>input.scss</code>) to a single output
+location (<code>output.css</code>). If no output location is passed, the compiled <span class="caps">CSS</span> is
+printed to the<span class="widont">&nbsp;</span>terminal.</p>
+<p>The input file is parsed as <a href="/documentation/syntax#scss"><span class="caps">SCSS</span></a> if its extension is <code>.scss</code>, as the
+<a href="/documentation/syntax#the-indented-syntax">indented syntax</a> if its extension is <code>.sass</code>, or as <a href="/documentation/at-rules/import/#importing-css">plain <span class="caps">CSS</span></a> if its
+extension is <code>.css</code>. If it doesn’t have one of these three extensions, or if it
+comes from standard input, it’s parsed as <span class="caps">SCSS</span> by default. This can be
+controlled with the <a href="#indented"><code>--indented</code> flag</a>.</p>
+<p>The special string <code>-</code> can be passed in place of the input file to tell Sass to
+read the input file from <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_input_(stdin)">standard input</a>. Sass will default to parsing it as
+<span class="caps">SCSS</span> unless the <a href="#indented"><code>--indented</code> flag</a> is<span class="widont">&nbsp;</span>passed.</p>
+<h3 id="many-to-many-mode" tabindex="-1">Many-to-Many Mode<a class="anchor" href="#many-to-many-mode"><span class="visuallyhidden">Many-to-Many Mode permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.4.0</dd>
+    </div></dl>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token output">sass [&lt;input.scss>:&lt;output.css>] [&lt;input/>:&lt;output/>]...
+</span></code></pre>
+<p>Many-to-many mode compiles one or more input files to one or more output files.
+The inputs are separated from the outputs with colons. It can also compile all
+Sass files in a directory to <span class="caps">CSS</span> files with the same names in another<span class="widont">&nbsp;</span>directory.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token output">​# Compiles style.scss to style.css.
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass style.scss:style.css</span></span>
+
+<span class="token output">​# Compiles light.scss and dark.scss to light.css and dark.css.
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass light.scss:light.css dark.scss:dark.css</span></span>
+
+<span class="token output">​# Compiles all Sass files in themes/ to <span class="caps">CSS</span> files in public/css/.
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass themes:public/css</span></span></code></pre>
+<p>When compiling whole directories, Sass will ignore <a href="/documentation/at-rules/import/#partials">partial files</a> whose names
+begin with <code>_</code>. You can use partials to separate out your stylesheets without
+creating a bunch of unnecessary output<span class="widont">&nbsp;</span>files.</p>
+<h2 id="options" tabindex="-1">Options<a class="anchor" href="#options"><span class="visuallyhidden">Options permalink</span></a></h2>
+<h3 id="input-and-output" tabindex="-1">Input and Output<a class="anchor" href="#input-and-output"><span class="visuallyhidden">Input and Output<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>These options control how Sass loads its input files and how it produces output<span class="widont">&nbsp;</span>files.</p>
+<h4 id="stdin" tabindex="-1"><code>--stdin</code><a class="anchor" href="#stdin"><span class="visuallyhidden">&#8211;stdin permalink</span></a></h4>
+<p>This flag is an alternative way of telling Sass that it should read its input
+file from <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_input_(stdin)">standard input</a>. When it’s passed, no input file may be<span class="widont">&nbsp;</span>passed.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"h1 {font-size: 40px}"</span> <span class="token operator">|</span> sass <span class="token parameter variable">--stdin</span> h1.css</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"h1 {font-size: 40px}"</span> <span class="token operator">|</span> sass <span class="token parameter variable">--stdin</span></span></span>
+<span class="token output">h1 {
+  font-size: 40px;
+}
+</span></code></pre>
+<p>The <code>--stdin</code> flag may not be used with <a href="#many-to-many-mode">many-to-many<span class="widont">&nbsp;</span>mode</a>.</p>
+<h4 id="indented" tabindex="-1"><code>--indented</code><a class="anchor" href="#indented"><span class="visuallyhidden">&#8211;indented permalink</span></a></h4>
+<p>This flag tells Sass to parse the input file as the <a href="/documentation/syntax#the-indented-syntax">indented syntax</a>. If it’s
+used in <a href="#many-to-many-mode">many-to-many mode</a>, all input files are parsed as the indented
+syntax, although files they <a href="/documentation/at-rules/use">use</a> will have their syntax determined as usual.
+The inverse, <code>--no-indented</code>, can be used to force all input files to be parsed
+as <a href="/documentation/syntax#scss"><span class="caps">SCSS</span></a><span class="widont">&nbsp;</span>instead.</p>
+<p>The <code>--indented</code> flag is mostly useful when the input file is coming from
+<a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_input_(stdin)">standard input</a>, so its syntax can’t be automatically<span class="widont">&nbsp;</span>determined.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">'h1\n  font-size: 40px'</span> <span class="token operator">|</span> sass <span class="token parameter variable">--indented</span> -</span></span>
+<span class="token output">h1 {
+  font-size: 40px;
+}
+</span></code></pre>
+<h4 id="load-path" tabindex="-1"><code>--load-path</code><a class="anchor" href="#load-path"><span class="visuallyhidden">&#8211;load-path permalink</span></a></h4>
+<p>This option (abbreviated <code>-I</code>) adds an additional <a href="/documentation/at-rules/use#load-paths">load path</a> for Sass to look
+for stylesheets. It can be passed multiple times to provide multiple load paths.
+Earlier load paths will take precedence over later<span class="widont">&nbsp;</span>ones.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass --load-path<span class="token operator">=</span>node_modules/bootstrap/dist/css style.scss style.css</span></span></code></pre>
+<h4 id="style" tabindex="-1"><code>--style</code><a class="anchor" href="#style"><span class="visuallyhidden">&#8211;style permalink</span></a></h4>
+<p>This option (abbreviated <code>-s</code>) controls the output style of the resulting <span class="caps">CSS</span>.
+Dart Sass supports two output<span class="widont">&nbsp;</span>styles:</p>
+<ul>
+<li><code>expanded</code> (the default) writes each selector and declaration on its own<span class="widont">&nbsp;</span>line.</li>
+<li><code>compressed</code> removes as many extra characters as possible, and writes the
+entire stylesheet on a single<span class="widont">&nbsp;</span>line.</li>
+</ul>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass <span class="token parameter variable">--style</span><span class="token operator">=</span>expanded style.scss</span></span>
+<span class="token output">h1 {
+  font-size: 40px;
+}
+
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass <span class="token parameter variable">--style</span><span class="token operator">=</span>compressed style.scss</span></span>
+<span class="token output">h1{font-size:40px}
+</span></code></pre>
+<h4 id="no-charset" tabindex="-1"><code>--no-charset</code><a class="anchor" href="#no-charset"><span class="visuallyhidden">&#8211;no-charset permalink</span></a></h4>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.19.0</dd>
+    </div></dl>
+<p>This flag tells Sass never to emit a <code>@charset</code> declaration or a <span class="caps">UTF</span>-8
+<a href="https://en.wikipedia.org/wiki/Byte_order_mark#UTF-8">byte-order mark</a>. By default, or if <code>--charset</code> is passed, Sass will insert
+either a <code>@charset</code> declaration (in expanded output mode) or a byte-order mark
+(in compressed output mode) if the stylesheet contains any non-<span class="caps">ASCII</span><span class="widont">&nbsp;</span>characters.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'h1::before {content: "👭"}'</span> <span class="token operator">|</span> sass --no-charset</span></span>
+<span class="token output">h1::before {
+  content: "👭";
+}
+
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token builtin class-name">echo</span> <span class="token string">'h1::before {content: "👭"}'</span> <span class="token operator">|</span> sass <span class="token parameter variable">--charset</span></span></span>
+<span class="token output">@charset "<span class="caps">UTF</span>-8";
+h1::before {
+  content: "👭";
+}
+</span></code></pre>
+<h4 id="error-css" tabindex="-1"><code>--error-css</code><a class="anchor" href="#error-css"><span class="visuallyhidden">&#8211;error-css permalink</span></a></h4>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.20.0</dd>
+    </div></dl>
+<p>This flag tells Sass whether to emit a <span class="caps">CSS</span> file when an error occurs during
+compilation. This <span class="caps">CSS</span> file describes the error in a comment <em>and</em> in the
+<code>content</code> property of <code>body::before</code>, so that you can see the error message in
+the browser without needing to switch back to the<span class="widont">&nbsp;</span>terminal.</p>
+<p>By default, error <span class="caps">CSS</span> is enabled if you’re compiling to at least one file on
+disk (as opposed to standard output). You can pass <code>--error-css</code> explicitly to
+enable it even when you’re compiling to standard out, or <code>--no-error-css</code> to
+disable it everywhere. When it’s disabled, the <a href="#update"><code>--update</code> flag</a> and
+<a href="#watch"><code>--watch</code> flag</a> will delete <span class="caps">CSS</span> files instead when an error<span class="widont">&nbsp;</span>occurs.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass --error-css style.scss style.css</span></span>
+<span class="token output">/* Error: Incompatible units em and px.
+ *   ,
+ * 1 | $width: 15px + 2em;
+ *   |         ^^^^^^^^^^
+ *   '
+ *   test.scss 1:9  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "<span class="caps">SF</span> Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Incompatible units em and px.\a   \2577 \a 1 \2502  $width: 15px + 2em;\a   \2502          ^^^^^^^^^^\a   \2575 \a   test.scss 1:9  root stylesheet";
+}
+Error: Incompatible units em and px.
+  ╷
+1 │ $width: 15px + 2em;
+  │         ^^^^^^^^^^
+  ╵
+  test.scss 1:9  root stylesheet
+</span></code></pre>
+<h4 id="update" tabindex="-1"><code>--update</code><a class="anchor" href="#update"><span class="visuallyhidden">&#8211;update permalink</span></a></h4>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.4.0</dd>
+    </div></dl>
+<p>If the <code>--update</code> flag is passed, Sass will only compile stylesheets whose
+dependencies have been modified more recently than the corresponding <span class="caps">CSS</span> file
+was generated. It will also print status messages when updating<span class="widont">&nbsp;</span>stylesheets.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass <span class="token parameter variable">--update</span> themes:public/css</span></span>
+<span class="token output">Compiled themes/light.scss to public/css/light.css.
+</span></code></pre>
+<h3 id="source-maps" tabindex="-1">Source Maps<a class="anchor" href="#source-maps"><span class="visuallyhidden">Source Maps permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.3.0</dd>
+    </div></dl>
+<p>Source maps are files that tell browsers or other tools that consume <span class="caps">CSS</span> how
+that <span class="caps">CSS</span> corresponds to the Sass files from which it was generated. They make it
+possible to see and even edit your Sass files in browsers. See instructions for
+using source maps in <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps">Chrome</a> and <a href="https://developer.mozilla.org/en-US/docs/Tools/Style_Editor#Source_map_support">Firefox</a>.</p>
+<p>Dart Sass generates source maps by default for every <span class="caps">CSS</span> file it<span class="widont">&nbsp;</span>emits.</p>
+<h4 id="no-source-map" tabindex="-1"><code>--no-source-map</code><a class="anchor" href="#no-source-map"><span class="visuallyhidden">&#8211;no-source-map permalink</span></a></h4>
+<p>If the <code>--no-source-map</code> flag is passed, Sass won’t generate any source maps. it
+cannot be passed along with other source map<span class="widont">&nbsp;</span>options.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass --no-source-map style.scss style.css</span></span></code></pre>
+<h4 id="source-map-urls" tabindex="-1"><code>--source-map-urls</code><a class="anchor" href="#source-map-urls"><span class="visuallyhidden">&#8211;source-map-urls permalink</span></a></h4>
+<p>This option controls how the source maps that Sass generates link back to the
+Sass files that contributed to the generated <span class="caps">CSS</span>. Dart Sass supports two types
+of<span class="widont">&nbsp;</span>URLs:</p>
+<ul>
+<li><code>relative</code> (the default) uses relative URLs from the location of the source
+map file to the locations of the Sass source<span class="widont">&nbsp;</span>file.</li>
+<li><code>absolute</code> uses the absolute <a href="https://en.wikipedia.org/wiki/File_URI_scheme"><code>file:</code> URLs</a> of the Sass source files. Note
+that absolute URLs will only work on the same computer that the <span class="caps">CSS</span> was<span class="widont">&nbsp;</span>compiled.</li>
+</ul>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token output">​# Generates a <span class="caps">URL</span> like "../sass/style.scss".
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass --source-map-urls<span class="token operator">=</span>relative sass/style.scss css/style.css</span></span>
+
+<span class="token output">​# Generates a <span class="caps">URL</span> like "file:///home/style-wiz/sassy-app/sass/style.scss".
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass --source-map-urls<span class="token operator">=</span>absolute sass/style.scss css/style.css</span></span></code></pre>
+<h4 id="embed-sources" tabindex="-1"><code>--embed-sources</code><a class="anchor" href="#embed-sources"><span class="visuallyhidden">&#8211;embed-sources permalink</span></a></h4>
+<p>This flag tells Sass to embed the entire contents of the Sass files that
+contributed to the generated <span class="caps">CSS</span> in the source map. This may produce very large
+source maps, but it guarantees that the source will be available on any computer
+no matter how the <span class="caps">CSS</span> is<span class="widont">&nbsp;</span>served.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass --embed-sources sass/style.scss css.style.css</span></span></code></pre>
+<h4 id="embed-source-map" tabindex="-1"><code>--embed-source-map</code><a class="anchor" href="#embed-source-map"><span class="visuallyhidden">&#8211;embed-source-map permalink</span></a></h4>
+<p>This flag tells Sass to embed the contents of the source map file in the
+generated <span class="caps">CSS</span>, rather than creating a separate file and linking to it from the<span class="widont">&nbsp;</span><span class="caps">CSS</span>.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass --embed-source-map sass/style.scss css.style.css</span></span></code></pre>
+<h3 id="other-options" tabindex="-1">Other Options<a class="anchor" href="#other-options"><span class="visuallyhidden">Other Options permalink</span></a></h3>
+<h4 id="watch" tabindex="-1"><code>--watch</code><a class="anchor" href="#watch"><span class="visuallyhidden">&#8211;watch permalink</span></a></h4>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.6.0</dd>
+    </div></dl>
+<p>This flag (abbreviated <code>-w</code>) acts like the <a href="#update"><code>--update</code> flag</a>, but after the
+first round compilation is done Sass stays open and continues compiling
+stylesheets whenever they or their dependencies<span class="widont">&nbsp;</span>change.</p>
+<p>Sass watches only the directories that you pass as-is on the command line,
+parent directories of filenames you pass on the command line, and load paths. It
+does not watch additional directories based on a file’s <code>@import</code>/<code>@use</code>/
+<code>@forward</code> rules.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass <span class="token parameter variable">--watch</span> themes:public/css</span></span>
+<span class="token output">Compiled themes/light.scss to public/css/light.css.
+
+​# Then when you edit themes/dark.scss...
+Compiled themes/dark.scss to public/css/dark.css.
+</span></code></pre>
+<h4 id="poll" tabindex="-1"><code>--poll</code><a class="anchor" href="#poll"><span class="visuallyhidden">&#8211;poll permalink</span></a></h4>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.8.0</dd>
+    </div></dl>
+<p>This flag, which may only be passed along with <code>--watch</code>, tells Sass to manually
+check for changes to the source files every so often instead of relying on the
+operating system to notify it when something changes. This may be necessary if
+you’re editing Sass on a remote drive where the operating system’s notification
+system doesn’t<span class="widont">&nbsp;</span>work.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass <span class="token parameter variable">--watch</span> <span class="token parameter variable">--poll</span> themes:public/css</span></span>
+<span class="token output">Compiled themes/light.scss to public/css/light.css.
+
+​# Then when you edit themes/dark.scss...
+Compiled themes/dark.scss to public/css/dark.css.
+</span></code></pre>
+<h4 id="stop-on-error" tabindex="-1"><code>--stop-on-error</code><a class="anchor" href="#stop-on-error"><span class="visuallyhidden">&#8211;stop-on-error permalink</span></a></h4>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.8.0</dd>
+    </div></dl>
+<p>This flag tells Sass to stop compiling immediately when an error is detected,
+rather than trying to compile other Sass files that may not contain errors. It’s
+mostly useful in <a href="#many-to-many-mode">many-to-many<span class="widont">&nbsp;</span>mode</a>.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass --stop-on-error themes:public/css</span></span>
+<span class="token output">Error: Expected expression.
+   ╷
+42 │ h1 {font-face: }
+   │                ^
+   ╵
+  themes/light.scss 42:16  root stylesheet
+</span></code></pre>
+<h4 id="interactive" tabindex="-1"><code>--interactive</code><a class="anchor" href="#interactive"><span class="visuallyhidden">&#8211;interactive permalink</span></a></h4>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.5.0</dd>
+    </div></dl>
+<p>This flag (abbreviated <code>-i</code>) tells Sass to run in interactive mode, where you
+can write <a href="/documentation/syntax/structure#expressions">SassScript expressions</a> and see their results. Interactive mode
+also supports <a href="/documentation/variables">variables</a> and <a href="/documentation/at-rules/use"><code>@use</code> rules</a>.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass <span class="token parameter variable">--interactive</span></span></span>
+<span class="token output">>> 1px + 1in
+97px
+>> @use "sass:map"
+>> $map: ("width": 100px, "height": 70px)
+("width": 100px, "height": 70px)
+>> map.get($map, "width")
+100px
+</span></code></pre>
+<h4 id="color" tabindex="-1"><code>--color</code><a class="anchor" href="#color"><span class="visuallyhidden">&#8211;color permalink</span></a></h4>
+<p>This flag (abbreviated <code>-c</code>) tells Sass to emit <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#Colors">terminal colors</a>, and the
+inverse <code>--no-color</code> tells it not to emit colors. By default, it will emit
+colors if it looks like it’s being run on a terminal that supports<span class="widont">&nbsp;</span>them.</p>
+<pre class="language-plaintext"><code>$ sass --color style.scss style.css
+Error: Incompatible units em and px.
+  <span style="color: blue">╷</span>
+<span style="color: blue">1 │</span> $width: <span style="color: crimson">15px + 2em</span>
+  <span style="color: blue">│</span>         <span style="color: crimson">^^^^^^^^^^</span>
+  <span style="color: blue">╵</span>
+  style.scss 1:9  root stylesheet
+
+$ sass --no-color style.scss style.css
+Error: Incompatible units em and px.
+  ╷
+1 │ $width: 15px + 2em
+  │         ^^^^^^^^^^
+  ╵
+  style.scss 1:9  root stylesheet</code></pre>
+<h4 id="no-unicode" tabindex="-1"><code>--no-unicode</code><a class="anchor" href="#no-unicode"><span class="visuallyhidden">&#8211;no-unicode permalink</span></a></h4>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.17.0</dd>
+    </div></dl>
+<p>This flag tells Sass only to emit <span class="caps">ASCII</span> characters to the terminal as part of
+error messages. By default, or if <code>--unicode</code> is passed, Sass will emit non-<span class="caps">ASCII</span>
+characters for these messages. This flag does not affect the <span class="caps">CSS</span><span class="widont">&nbsp;</span>output.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass --no-unicode style.scss style.css</span></span>
+<span class="token output">Error: Incompatible units em and px.
+  ,
+1 | $width: 15px + 2em;
+  |         ^^^^^^^^^^
+  '
+  test.scss 1:9  root stylesheet
+
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass <span class="token parameter variable">--unicode</span> style.scss style.css</span></span>
+<span class="token output">Error: Incompatible units em and px.
+  ╷
+1 │ $width: 15px + 2em;
+  │         ^^^^^^^^^^
+  ╵
+  test.scss 1:9  root stylesheet
+</span></code></pre>
+<h4 id="quiet" tabindex="-1"><code>--quiet</code><a class="anchor" href="#quiet"><span class="visuallyhidden">&#8211;quiet permalink</span></a></h4>
+<p>This flag (abbreviated <code>-q</code>) tells Sass not to emit any warnings when compiling.
+By default, Sass emits warnings when deprecated features are used or when the
+<a href="/documentation/at-rules/warn"><code>@warn</code> rule</a> is encountered. It also silences the <a href="/documentation/at-rules/debug"><code>@debug</code> rule</a>.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass <span class="token parameter variable">--quiet</span> style.scss style.css</span></span></code></pre>
+<h4 id="quiet-deps" tabindex="-1"><code>--quiet-deps</code><a class="anchor" href="#quiet-deps"><span class="visuallyhidden">&#8211;quiet-deps permalink</span></a></h4>
+<p>This flag tells Sass not to emit deprecation warnings that come from
+dependencies. It considers any file that’s transitively imported through a <a href="/documentation/at-rules/use#load-paths">load
+path</a> to be a “dependency”. This flag doesn’t affect the <a href="/documentation/at-rules/warn"><code>@warn</code> rule</a> or the
+<a href="/documentation/at-rules/debug"><code>@debug</code> rule</a>.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass --load-path<span class="token operator">=</span>node_modules --quiet-deps style.scss style.css</span></span></code></pre>
+<h4 id="fatal-deprecation" tabindex="-1"><code>--fatal-deprecation</code><a class="anchor" href="#fatal-deprecation"><span class="visuallyhidden">&#8211;fatal-deprecation permalink</span></a></h4>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.59.0</dd>
+    </div></dl>
+<p>This option tells Sass to treat a particular type of deprecation warning as
+an error. For example, this command tells Sass to treat deprecation
+warnings for <code>/</code>-as-division as errors:</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass --fatal-deprecation<span class="token operator">=</span>slash-div style.scss style.css</span></span>
+<span class="token output">Error: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div(4, 2) or calc(4 / 2)
+
+More info and automated migrator: /documentation/breaking-changes/slash-div
+
+This is only an error because you've set the slash-div deprecation to be fatal.
+Remove this setting if you need to keep using this feature.
+  ╷
+1 │ a { b: (4/2); }
+  │         ^^^
+  ╵
+  style.scss 1:9  root stylesheet
+</span></code></pre>
+<p>The following deprecation IDs can be passed to this<span class="widont">&nbsp;</span>option:</p>
+<table style="width:100%">
+<thead>
+  <tr style="text-align: left">
+    <th><span class="caps">ID</span></th>
+    <th>Version</th>
+    <th>Description</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><code>call-string</code></td>
+    <td>0.0.0</td>
+    <td>Passing a string directly to <code>meta.call()</code>.</td>
+  </tr>
+  <tr>
+    <td><code>elseif</code></td>
+    <td>1.3.2</td>
+    <td>Using <code>@elseif</code> instead of <code>@else if</code>.</td>
+  </tr>
+  <tr>
+    <td><a href="/documentation/breaking-changes/moz-document"><code>moz-document</code></a></td>
+    <td>1.7.2</td>
+    <td>Using <code>@-moz-document</code> (except for the empty url prefix hack).</td>
+  </tr>
+  <tr>
+    <td><code>new-global</code></td>
+    <td>1.17.2</td>
+    <td>Declaring new variables with <code>!global</code>.</td>
+  </tr>
+  <tr>
+    <td><code>color-module-compat</code></td>
+    <td>1.23.0</td>
+    <td>Using color module functions in place of plain <span class="caps">CSS</span> functions.</td>
+  </tr>
+  <tr>
+    <td><a href="/documentation/breaking-changes/slash-div"><code>slash-div</code></a></td>
+    <td>1.33.0</td>
+    <td>Using the <code>/</code> operator for division.</td>
+  </tr>
+  <tr>
+    <td><a href="/documentation/breaking-changes/bogus-combinators"><code>bogus-combinators</code></a></td>
+    <td>1.54.0</td>
+    <td>Leading, trailing, and repeated combinators.</td>
+  </tr>
+  <tr>
+    <td><a href="/documentation/breaking-changes/strict-unary"><code>strict-unary</code></a></td>
+    <td>1.55.0</td>
+    <td>Ambiguous <code>+</code> and <code>-</code> operators.</td>
+  </tr>
+  <tr>
+    <td><a href="/documentation/breaking-changes/function-units"><code>function-units</code></a></td>
+    <td>1.56.0</td>
+    <td>Passing invalid units to built-in functions.</td>
+  </tr>
+  <tr>
+    <td><a href="/documentation/breaking-changes/duplicate-var-flags"><code>duplicate-var-flags</code></a></td>
+    <td>1.62.0</td>
+    <td>Using multiple copies of <code>!global</code> or <code>!default</code> in a single variable declaration.</td>
+  </tr>
+</tbody>
+</table>
+<p>Alternatively, you can pass a Dart Sass version to treat all deprecations that
+were present in that version as errors. For example,
+<code>--fatal-deprecation=1.33.0</code> would treat all deprecations in the
+table above up to and including <code>slash-div</code> as errors, but leave any newer
+deprecations as<span class="widont">&nbsp;</span>warnings.</p>
+<h4 id="trace" tabindex="-1"><code>--trace</code><a class="anchor" href="#trace"><span class="visuallyhidden">&#8211;trace permalink</span></a></h4>
+<p>This flag tells Sass to print the full Dart or JavaScript stack trace when an
+error is encountered. It’s used by the Sass team for debugging<span class="widont">&nbsp;</span>errors.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass <span class="token parameter variable">--trace</span> style.scss style.css</span></span>
+<span class="token output">Error: Expected expression.
+   ╷
+42 │ h1 {font-face: }
+   │                ^
+   ╵
+  themes/light.scss 42:16  root stylesheet
+
+package:sass/src/visitor/evaluate.dart 1846:7                        _EvaluateVisitor._addExceptionSpan
+package:sass/src/visitor/evaluate.dart 1128:12                       _EvaluateVisitor.visitBinaryOperationExpression
+package:sass/src/ast/sass/expression/binary_operation.dart 39:15     BinaryOperationExpression.accept
+package:sass/src/visitor/evaluate.dart 1097:25                       _EvaluateVisitor.visitVariableDeclaration
+package:sass/src/ast/sass/statement/variable_declaration.dart 50:15  VariableDeclaration.accept
+package:sass/src/visitor/evaluate.dart 335:13                        _EvaluateVisitor.visitStylesheet
+package:sass/src/visitor/evaluate.dart 323:5                         _EvaluateVisitor.run
+package:sass/src/visitor/evaluate.dart 81:10                         evaluate
+package:sass/src/executable/compile_stylesheet.dart 59:9             compileStylesheet
+package:sass/src/executable.dart 62:15                               main
+</span></code></pre>
+<h4 id="help" tabindex="-1"><code>--help</code><a class="anchor" href="#help"><span class="visuallyhidden">&#8211;help permalink</span></a></h4>
+<p>This flag (abbreviated <code>-h</code>) prints a summary of this<span class="widont">&nbsp;</span>documentation.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass <span class="token parameter variable">--help</span></span></span>
+<span class="token output">Compile Sass to <span class="caps">CSS</span>.
+
+Usage: sass &lt;input.scss> [output.css]
+       sass &lt;input.scss>:&lt;output.css> &lt;input/>:&lt;output/>
+
+...
+</span></code></pre>
+<h4 id="version" tabindex="-1"><code>--version</code><a class="anchor" href="#version"><span class="visuallyhidden">&#8211;version permalink</span></a></h4>
+<p>This flag prints the current version of<span class="widont">&nbsp;</span>Sass.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass <span class="token parameter variable">--version</span></span></span>
+<span class="token output">1.63.6
+</span></code></pre>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/cli/dart-sass/ -->
+  </body>
+</html>

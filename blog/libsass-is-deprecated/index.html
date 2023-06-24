@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: LibSass is Deprecated</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 027-libsass-is-deprecated">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">LibSass is Deprecated</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 26 October 2020 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>After much discussion among the Sass core team, we’ve come to the conclusion
+that it’s time to officially declare that LibSass and the packages built on top
+of it, including Node Sass, are deprecated. For several years now, it’s been
+clear that there’s simply not enough engineering bandwidth behind LibSass to
+keep it up-to-date with the latest developments in the Sass language (for
+example, the most recent new language feature was added in <a href="https://github.com/sass/libsass/releases/tag/3.5.5">November 2018</a>). As
+much as we’ve hoped to see this pattern turn around, even the excellent work of
+long-time LibSass contributors Michael Mifsud and Marcel Greter couldn’t keep up
+with the fast pace of language development in both <span class="caps">CSS</span> and<span class="widont">&nbsp;</span>Sass.</p>
+<p>I’ll go into detail about what this means below, but here are the major<span class="widont">&nbsp;</span>points:</p>
+<ul>
+<li>
+<p>We no longer recommend LibSass for new Sass projects. Use <a href="/dart-sass">Dart Sass</a><span class="widont">&nbsp;</span>instead.</p>
+</li>
+<li>
+<p>We recommend all existing LibSass users make plans to eventually move onto
+Dart Sass, and that all Sass libraries make plans to eventually drop support
+for<span class="widont">&nbsp;</span>LibSass.</p>
+</li>
+<li>
+<p>We’re no longer planning to add any new features to LibSass, including
+compatibility with new <span class="caps">CSS</span><span class="widont">&nbsp;</span>features.</p>
+</li>
+<li>
+<p>LibSass and Node Sass will continue to be maintained indefinitely on a
+best-effort basis, including fixing major bugs and security issues and
+maintaining compatibility with the latest Node<span class="widont">&nbsp;</span>versions.</p>
+</li>
+</ul>
+<h2 id="why-deprecate" tabindex="-1">Why deprecate?<a class="anchor" href="#why-deprecate"><span class="visuallyhidden">Why deprecate? permalink</span></a></h2>
+<p>For several years now, Sass has managed to exist in an ambiguous kind of state
+where LibSass was an officially-supported implementation in theory, but its
+feature surface was static in practice. As time has gone on, it’s becoming
+increasingly clear that this state causes substantial concrete problems for Sass
+users. For example, we regularly see users confused as to why <a href="https://github.com/sass/sass/issues/2849">plain-<span class="caps">CSS</span> <code>min()</code>
+and <code>max()</code> don’t work</a> and assuming Sass as a whole is at fault, when in fact
+it’s only LibSass that doesn’t support that<span class="widont">&nbsp;</span>feature.</p>
+<p>Official support for LibSass doesn’t just cause pain for individual users.
+Because LibSass doesn’t support the <a href="/blog/the-module-system-is-launched">Sass module system</a> that launched last
+year, major shared Sass libraries have been unable to use it for fear that their
+downstream users would be incompatible. By clearly indicating that all Sass
+users should eventually move off of LibSass, we hope to make it more feasible
+for these library authors to use more modern<span class="widont">&nbsp;</span>features.</p>
+<p>LibSass has even inhibited the development of the Sass language itself. We’ve
+been unable to move forward with the proposal for <a href="https://github.com/sass/sass/blob/main/accepted/slash-separator.md">treating <code>/</code> as a separator</a>
+because any code they’d write would either produce deprecation warnings in Dart
+Sass or fail to compile in LibSass. By marking LibSass as deprecated, this
+becomes much more feasible, and Sass becomes much better at supporting the
+latest versions of<span class="widont">&nbsp;</span><span class="caps">CSS</span>.</p>
+<h2 id="what-does-deprecated-mean" tabindex="-1">What does “deprecated” mean?<a class="anchor" href="#what-does-deprecated-mean"><span class="visuallyhidden">What does “deprecated” mean?<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>We’re choosing to use the term “deprecated” because it carries a lot of weight
+in the programming community, and provides a strong signal that users should
+start planning to move away from LibSass. However, it doesn’t mean that the
+project is entirely dead. Michael Mifsud, the lead maintainer of LibSass and
+Node Sass, has affirmed that he plans to continue maintenance on the same level
+as the past few years. This means that although there will be no more features
+added (and as such LibSass will slowly drift further and further out of
+compatibility with the latest <span class="caps">CSS</span> and Sass syntax), there will continue to be
+maintenance releases<span class="widont">&nbsp;</span>indefinitely.</p>
+<h2 id="what-about-portability-and-performance" tabindex="-1">What about portability and performance?<a class="anchor" href="#what-about-portability-and-performance"><span class="visuallyhidden">What about portability and performance?<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>LibSass today has two major benefits over Dart<span class="widont">&nbsp;</span>Sass:</p>
+<ul>
+<li>
+<p><strong>Portability</strong>: since it’s written in C++, it’s easy to embed LibSass within
+other programming languages and provide a native-feeling<span class="widont">&nbsp;</span><span class="caps">API</span>.</p>
+</li>
+<li>
+<p><strong>Performance</strong>: calling out to LibSass via the C++ <span class="caps">API</span> is very fast relative
+to the speeds of code written directly in scripting languages. In particular,
+this means LibSass is substantially faster in JavaScript than Dart
+Sass-compiled-to-<span class="caps">JS</span> (although it’s comparable to Dart Sass’s command-line<span class="widont">&nbsp;</span>executable).</p>
+</li>
+</ul>
+<p>We’re working on addressing both of those with the <a href="https://github.com/sass/embedded-protocol">Sass embedded protocol</a>,
+which runs a Sass compiler as a subprocess that can communicate with any host
+language via message-passing. The embedded protocol supports all the features of
+a native Sass <span class="caps">API</span>, including the ability to define custom importers and Sass
+functions, while also providing the high performance of the <span class="caps">CLI</span> app. Dart Sass
+has already implemented the compiler side of the embedded protocol, and a
+JavaScript host for it is in active<span class="widont">&nbsp;</span>development.</p>
+<h2 id="how-do-i-migrate" tabindex="-1">How do I migrate?<a class="anchor" href="#how-do-i-migrate"><span class="visuallyhidden">How do I migrate?<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>If you’re a user of Node Sass, migrating to Dart Sass is straightforward: just
+replace <code>node-sass</code> in your <code>package.json</code> file with <code>sass</code>. Both packages
+expose the same JavaScript<span class="widont">&nbsp;</span><span class="caps">API</span>.</p>
+<p>If you’re using the SassC command-line interface, you can switch to <a href="/documentation/cli/dart-sass">Dart Sass’s
+<span class="caps">CLI</span></a>. Note that this doesn’t have exactly the same interface as SassC, so you
+may need to change a few<span class="widont">&nbsp;</span>flags.</p>
+<p>If you’re using LibSass through a wrapper library in another language, you can
+either switch to the Dart Sass <span class="caps">CLI</span> or ask the maintainer of the LibSass wrapper
+to convert it to a host for the <a href="https://github.com/sass/embedded-protocol">Sass embedded protocol</a>. The embedded protocol
+allows any language to provide a native <span class="caps">API</span> that calls out to Dart<span class="widont">&nbsp;</span>Sass.</p>
+<p>Please note that because activity on LibSass has been low for several years, it
+has a number of outstanding bugs and behavioral variations from the Sass spec.
+You may need to make minor updates to stylesheets to make them compatible with
+Dart Sass. See <a href="https://github.com/sass/libsass/issues?q=is%3Aopen+is%3Aissue+label%3A%22Compatibility+-+P1+%E2%9A%A0%EF%B8%8F%22">this list of major compatibility issues</a> for<span class="widont">&nbsp;</span>reference.</p>
+<h2 id="thank-you" tabindex="-1">Thank you<a class="anchor" href="#thank-you"><span class="visuallyhidden">Thank you permalink</span></a></h2>
+<p>Finally, I want to thank everyone who’s put so much time and energy into LibSass
+and Node Sass over the years. It will always be a towering achievement, and
+Sass’s popularity outside of the Ruby community is undoubtedly due in large part
+to its existence. Many people have tried to implement Sass only to find that the
+language is much deeper and more complex than they expected, and LibSass alone
+among all of those implementations managed to become fully-featured enough to
+provide real value for thousands if not millions of users. These maintainers
+deserve to be proud of that work, and I hope they’ll always consider themselves
+part of the Sass community going<span class="widont">&nbsp;</span>forward.</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/libsass-is-deprecated/ -->
+  </body>
+</html>

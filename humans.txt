@@ -1,0 +1,25 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Jina -- design lead, code, content -- @jina
+    Natalie Weizenbaum -- code, content -- @nex3
+    OddBird -- design, code -- @oddbird
+
+# THANKS
+
+    Chris Eppstein -- code, content -- @chriseppstein
+    Hampton Lintorn-Catlin -- code, content -- @HamptonMakes
+    Michael Lintorn-Catlin -- content -- @malrase
+    Bermon Painter -- design, code, content -- @bermonpainter
+    Michael Parenteau -- design, code, content -- @parenteau
+    All the people at SassConf that came to help with DNS and server-related issues.
+    To everyone who has contributed through pull requests.
+
+# TECHNOLOGY COLOPHON
+
+    HTML, LiquidJS, Markdown
+    CSS, Sass, Normalize, Sanitize
+    Modernizr, jQuery
+    Eleventy, HTML5 Boilerplate, GitHub, Netlify, Visual Studio Code, iTerm

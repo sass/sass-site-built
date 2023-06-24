@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Sass 3.3 is Released</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 003-sass-33-is-released">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Sass 3.3 is<span class="widont">&nbsp;</span>Released</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 8 March 2014 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>After ironing out a bunch of bugs in numerous release candidates, we’re finally
+ready to release Sass 3.3.0, codename Maptastic Maple, for public consumption.
+This release has a lot of exciting new features that you can read about in full
+in <a href="https://github.com/sass/ruby-sass/blob/stable/doc-src/SASS_CHANGELOG.md">the
+changelog</a>,
+but there are three that I want to draw your attention to in<span class="widont">&nbsp;</span>particular.</p>
+<h2 id="maps-in-sass-script" tabindex="-1">Maps in SassScript<a class="anchor" href="#maps-in-sass-script"><span class="visuallyhidden">Maps in SassScript<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>As language designers, most of our job is to listen to feedback from users and
+act upon it. This is tricker than it sounds: users are very good at knowing the
+precise thing that they want to accomplish, but they tend not to have a sense of
+how that fits into the big picture. So we take a large volume of user requests,
+try to distill the core needs that aren’t being met, and see if we can come up
+with features that hit as many of those as possible as simply as<span class="widont">&nbsp;</span>possible.</p>
+<p>SassScript maps are a great example of this. We had a lot of users requesting
+things like variable interpolation, so they could write things like
+<code>$#{$theme-name}-background-color</code>. Other users wanted built-in functions that
+worked with lists of pairs, or a way to get the name of a variable that was
+passed to a function. We eventually realized the underlying feature that people
+actually wanted: a way to associate values with<span class="widont">&nbsp;</span>names.</p>
+<p>Most programming languages have a notion of maps<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>, which are associations
+from “key” objects to “value” objects. Sass 3.3 adds support for these as a
+first-class data structure. The syntax is designed to be very similar to that
+used for <code>@media</code> queries. They look like<span class="widont">&nbsp;</span>this:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$map</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token property">key1</span><span class="token punctuation">:</span> value1<span class="token punctuation">,</span> <span class="token property">key2</span><span class="token punctuation">:</span> value2<span class="token punctuation">,</span> <span class="token property">key3</span><span class="token punctuation">:</span> value3<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Unlike lists, maps must always be surrounded by parentheses. <code>()</code>, which
+previously referred to an empty list, now <em>also</em> refers to an empty map; both
+list and map operations will work on<span class="widont">&nbsp;</span>it.</p>
+<p>Maps can’t be used as <span class="caps">CSS</span> values, since they aren’t valid <span class="caps">CSS</span> syntax. However,
+there are a number of <a href="/documentation/modules/map/">new built-in functions</a> that
+allow user-defined mixins and functions to use them. Here are a few particularly
+useful<span class="widont">&nbsp;</span>ones:</p>
+<ul>
+<li>
+<p><code>map-get($map, $key)</code> looks up a value in a map using its key. For example,
+using the example above, <code>map-get($map, key2)</code> would return <code>value2</code>.</p>
+</li>
+<li>
+<p><code>map-merge($map1, $map2)</code> merges two maps together. The keys in <code>$map2</code>
+overwrite those in <code>$map1</code>, so this is also a good way to add values to a map.
+For example, <code>map-merge($map, (key1: new-value))</code> would return <code>(key1: new-value, key2: value2, key3: value3)</code>.</p>
+</li>
+<li>
+<p><code>map-remove($map, $key)</code> removes a value in a map. For example,
+<code>map-remove($map, $key)</code> would return <code>(key: value2, key3: value3)</code>.</p>
+</li>
+</ul>
+<p>In addition to the new map functions, all the existing list functions also work
+on maps. The list functions will see each map as a list of pairs. For example,
+<code>nth($map, 1)</code> will return <code>(key1 value1)</code>. Not only that, but <code>@each</code> has new
+syntax for working with both maps and lists of pairs. For<span class="widont">&nbsp;</span>example:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@each</span> <span class="token variable">$header</span><span class="token punctuation">,</span> <span class="token variable">$size</span> in <span class="token punctuation">(</span><span class="token property">h1</span><span class="token punctuation">:</span> 2em<span class="token punctuation">,</span> <span class="token property">h2</span><span class="token punctuation">:</span> 1.5em<span class="token punctuation">,</span> <span class="token property">h3</span><span class="token punctuation">:</span> 1.2em<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token selector"><span class="token variable">#{$header}</span> </span><span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$size</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>produces:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">h1</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">h2</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 1.5em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">h3</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 1.2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="source-maps" tabindex="-1">Source Maps<a class="anchor" href="#source-maps"><span class="visuallyhidden">Source Maps permalink</span></a></h2>
+<p>Continuing the map theme, Sass 3.3 comes with support for generating source maps
+when compiling to <span class="caps">CSS</span>. Source maps are a standard format for telling browsers
+how files they consume got generated. For Sass, this means that browsers’
+development tools can now tell you exactly which line of your Sass source file
+each style rule came from. Currently this is only well-supported in Chrome, but
+hopefully other browsers will add support<span class="widont">&nbsp;</span>soon.</p>
+<p>When compiling Sass from the command line, all you need to do to generate source
+maps is pass the <code>--sourcemap</code> flag. Sass will automatically generate a
+<code>.css.map</code> file next to the generated <code>.css</code> file. All you have to do then is
+make sure your <code>.scss</code> or <code>.sass</code> file is visible to the browser, and you’ll be
+good to<span class="widont">&nbsp;</span>go.</p>
+<h2 id="more-flexible-and" tabindex="-1">More Flexible <code>&amp;</code><a class="anchor" href="#more-flexible-and"><span class="visuallyhidden">More Flexible <span class="amp">&amp;</span><span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>When we released Sass 3.0, we added support for <span class="caps">SCSS</span>, which meant we had to
+actually parse all the selectors in the document. This meant that you couldn’t
+just plop the parent selector, <code>&amp;</code>, anywhere in a selector. Overall this was an
+improvement: it caught more errors and encouraged users to write more flexible<span class="widont">&nbsp;</span>mixins.</p>
+<p>Unfortunately, it also made one important use-case harder. With the rise in
+popularity of <a href="http://gembem.com/"><span class="caps">BEM</span></a>, <a href="http://oocss.org/"><span class="caps">OOCSS</span></a>, and
+<a href="http://smacss.com/"><span class="caps">SMACSS</span></a>, people became more and more interested in adding
+suffixes to classes. When using Sass, they wanted to write mixins to do this,
+and the restrictions on <code>&amp;</code> made that very hard to<span class="widont">&nbsp;</span>do.</p>
+<p>In Sass 3.3, we’re loosening these restrictions. You can now write <code>&amp;-suffix</code>
+(or <code>&amp;_suffix</code>, or even <code>&amp;suffix</code> if you really want) and Sass will make it
+work. If this fails to apply—for example, if <code>&amp;</code> is <code>*</code>—Sass will
+print a helpful error<span class="widont">&nbsp;</span>message.</p>
+<h2 id="deprecation-variable-scope-and-global" tabindex="-1">Deprecation: Variable Scope and <code>!global</code><a class="anchor" href="#deprecation-variable-scope-and-global"><span class="visuallyhidden">Deprecation: Variable Scope and !global<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>We don’t always get everything right the first time, and in order to make Sass
+the best language it can be we occasionally have to change old behavior.
+Sometimes this happens in ways that might make existing stylesheets stop
+functioning, so we have a policy of printing warnings for stylesheets that are
+going to change in the<span class="widont">&nbsp;</span>future.</p>
+<p>Sass 3.3 adds a number of deprecations, but the biggest one by far has to do
+with the way variable scope works. Up until now, when you wrote <code>$var: value</code> in
+a function, mixin, or <span class="caps">CSS</span> rule in Sass, it could do one of two things. If there
+was a global variable named <code>$var</code>, it would overwrite that variable. Otherwise,
+it would create a local variable that was only visible within the current set of
+curly<span class="widont">&nbsp;</span>braces.</p>
+<p>This was a pretty big problem, since any given variable assignment could
+potentially be modifying a variable that it had no way of knowing existed. We
+want to migrate to a better system where assigning to a variable in a local
+scope won’t overwrite a global variable unless the assignment explicitly says to
+do so, as in <code>$var: value !global</code>.</p>
+<p>In order to avoid breaking existing stylesheets, we haven’t made this change
+yet. Instead, if a global variable is overwritten by a local declaration, we now
+print a deprecation warning suggesting that the user add <code>!global</code>. Right now,
+<code>!global</code> doesn’t do much other than make the warning go away, but in a future
+release it will work as I described<span class="widont">&nbsp;</span>above.</p>
+<h2 id="that-s-all" tabindex="-1">That’s All<a class="anchor" href="#that-s-all"><span class="visuallyhidden">That’s All permalink</span></a></h2>
+<p>Actually, there’s a lot more, but that’s all I have room for in this post. If
+you want to see the full assortment of new features, check out <a href="https://github.com/sass/ruby-sass/blob/stable/doc-src/SASS_CHANGELOG.md#330-7-march-2014">the
+changelog</a>.
+You can also play with the new features on
+<a href="http://sassmeister.com/">SassMeister</a> or on your own computer by running <code>gem update sass</code>. Enjoy!</p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Some languages call them “hashes”, “dictionaries”, or “associative
+arrays”. JavaScript calls them “objects” for weird historical reasons. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/sass-33-is-released/ -->
+  </body>
+</html>

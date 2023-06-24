@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: @function</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation at-rules function">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">@function</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section open selected">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class="open selected"><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary sl-l-large-holy-grail__complementary--contents">
+              
+                
+                
+                
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    <ul><li>
+      <a href="#arguments" class="section open">Arguments</a><ul><li class="overview">
+      <a href="#arguments" >Overview</a>
+    </li><li>
+      <a href="#optional-arguments" class="open">Optional Arguments</a></li><li>
+      <a href="#keyword-arguments" class="open">Keyword Arguments</a></li><li>
+      <a href="#taking-arbitrary-arguments" class="section open">Taking Arbitrary Arguments</a><ul><li class="overview">
+      <a href="#taking-arbitrary-arguments" >Overview</a>
+    </li><li>
+      <a href="#taking-arbitrary-keyword-arguments" class="open">Taking Arbitrary Keyword<span class="widont">&nbsp;</span>Arguments</a></li><li>
+      <a href="#passing-arbitrary-arguments" class="open">Passing Arbitrary<span class="widont">&nbsp;</span>Arguments</a></li></ul>
+</li></ul>
+</li><li>
+      <a href="#return" class="open"><code>@return</code></a></li><li>
+      <a href="#other-functions" class="section open">Other Functions</a><ul><li class="overview">
+      <a href="#other-functions" >Overview</a>
+    </li><li>
+      <a href="#plain-css-functions" class="open">Plain <span class="caps">CSS</span><span class="widont">&nbsp;</span>Functions</a></li></ul>
+</li></ul>
+
+                  </nav>
+                
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+  <div class="sl-c-introduction">
+    <p>Functions allow you to define complex operations on <a href="/documentation/values">SassScript values</a> that you can re-use throughout your stylesheet. They make it easy to abstract out common formulas and behaviors in a readable<span class="widont">&nbsp;</span>way.</p>
+
+  </div>
+
+
+
+              <p>Functions are defined using the <code>@function</code> at-rule, which is written <code>@function &lt;name&gt;(&lt;arguments...&gt;) { ... }</code>. A function’s name can be any Sass identifier.
+It can only contain <a href="/documentation/syntax/structure#universal-statements">universal statements</a>, as well as the <a href="#return"><code>@return</code>
+at-rule</a> which indicates the value to use as the result of the function call.
+Functions are called using the normal <span class="caps">CSS</span> function<span class="widont">&nbsp;</span>syntax.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-functions-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-functions-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-functions-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-functions-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@function</span> <span class="token function">pow</span><span class="token punctuation">(</span><span class="token variable">$base</span><span class="token punctuation">,</span> <span class="token variable">$exponent</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$result</span></span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>&#10;  <span class="token keyword">@for</span> <span class="token variable">$_</span> <span class="token keyword">from</span> 1 <span class="token keyword">through</span> <span class="token selector"><span class="token variable">$exponent</span> </span><span class="token punctuation">{</span>&#10;    <span class="token property"><span class="token variable">$result</span></span><span class="token punctuation">:</span> <span class="token variable">$result</span> <span class="token operator">*</span> <span class="token variable">$base</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;  <span class="token keyword">@return</span> <span class="token variable">$result</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.sidebar </span><span class="token punctuation">{</span>&#10;  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>&#10;  <span class="token property">margin-left</span><span class="token punctuation">:</span> <span class="token function">pow</span><span class="token punctuation">(</span>4<span class="token punctuation">,</span> 3<span class="token punctuation">)</span> <span class="token operator">*</span> 1px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-functions-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@function</span> pow($base, $exponent)</span>&#10;<span class="token variable-line">  <span class="token variable">$result</span><span class="token punctuation">:</span> 1</span>&#10;<span class="token atrule-line">  <span class="token atrule">@for</span> $_ from 1 through $exponent</span>&#10;<span class="token variable-line">    <span class="token variable">$result</span><span class="token punctuation">:</span> <span class="token variable">$result</span> <span class="token operator">*</span> <span class="token variable">$base</span></span>&#10;&#10;<span class="token atrule-line">  <span class="token atrule">@return</span> $result</span>&#10;&#10;&#10;<span class="token selector">.sidebar</span>&#10;<span class="token property-line">  <span class="token property">float</span><span class="token punctuation">:</span> left</span>&#10;<span class="token property-line">  <span class="token property">margin-left</span><span class="token punctuation">:</span> pow(4, 3) <span class="token operator">*</span> 1px</span>&#10;&#10;</code></pre></div>
+<div id="example-functions-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.sidebar</span> <span class="token punctuation">{</span>&#10;  <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>&#10;  <span class="token property">margin-left</span><span class="token punctuation">:</span> 64px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>Function names, like all Sass identifiers, treat hyphens and underscores as
+identical. This means that <code>scale-color</code> and <code>scale_color</code> both refer to the
+same function. This is a historical holdover from the very early days of Sass,
+when it <em>only</em> allowed underscores in identifier names. Once Sass added
+support for hyphens to match <span class="caps">CSS</span>’s syntax, the two were made equivalent to
+make migration<span class="widont">&nbsp;</span>easier.</p>
+</div>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>While it’s technically possible for functions to have side-effects like
+setting <a href="/documentation/variables#scope">global variables</a>, this is strongly discouraged. Use <a href="/documentation/at-rules/mixin">mixins</a> for
+side-effects, and use functions just to compute<span class="widont">&nbsp;</span>values.</p>
+</div>
+<h2 id="arguments" tabindex="-1">Arguments<a class="anchor" href="#arguments"><span class="visuallyhidden">Arguments permalink</span></a></h2>
+<p>Arguments allow functions’ behavior to be customized each time they’re called.
+The arguments are specified in the <code>@function</code> rule after the function’s name,
+as a list of variable names surrounded by parentheses. The function must be
+called with the same number of arguments in the form of <a href="/documentation/syntax/structure#expressions">SassScript
+expressions</a>. The values of these expression are available within the
+function’s body as the corresponding<span class="widont">&nbsp;</span>variables.</p>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>Argument lists can also have trailing commas! This makes it easier to avoid
+syntax errors when refactoring your<span class="widont">&nbsp;</span>stylesheets.</p>
+</div>
+<h3 id="optional-arguments" tabindex="-1">Optional Arguments<a class="anchor" href="#optional-arguments"><span class="visuallyhidden">Optional Arguments permalink</span></a></h3>
+<p>Normally, every argument a function declares must be passed when that function
+is included. However, you can make an argument optional by defining a <em>default
+value</em> which will be used if that arguments isn’t passed. Default values use the
+same syntax as <a href="/documentation/variables">variable declarations</a>: the variable name, followed by a colon
+and a <a href="/documentation/syntax/structure#expressions">SassScript expression</a>. This makes it easy to define flexible function
+APIs that can be used in simple or complex<span class="widont">&nbsp;</span>ways.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 63.63636363636363%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-optional-arguments-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-optional-arguments-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-optional-arguments-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-optional-arguments-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@function</span> <span class="token function">invert</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$amount</span></span><span class="token punctuation">:</span> 100%<span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$inverse</span></span><span class="token punctuation">:</span> <span class="token function">change-color</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$hue</span></span><span class="token punctuation">:</span> <span class="token function">hue</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token operator">+</span> 180<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token keyword">@return</span> <span class="token function">mix</span><span class="token punctuation">(</span><span class="token variable">$inverse</span><span class="token punctuation">,</span> <span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token variable">$amount</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token property"><span class="token variable">$primary-color</span></span><span class="token punctuation">:</span> #036<span class="token punctuation">;</span>&#10;<span class="token selector">.header </span><span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">invert</span><span class="token punctuation">(</span><span class="token variable">$primary-color</span><span class="token punctuation">,</span> 80%<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-optional-arguments-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@function</span> invert($color, $amount: 100%)</span>&#10;<span class="token variable-line">  <span class="token variable">$inverse</span><span class="token punctuation">:</span> change-color(<span class="token variable">$color</span>, <span class="token variable">$hue</span><span class="token punctuation">:</span> hue(<span class="token variable">$color</span>) <span class="token operator">+</span> 180)</span>&#10;<span class="token atrule-line">  <span class="token atrule">@return</span> mix($inverse, $color, $amount)</span>&#10;&#10;&#10;<span class="token variable-line"><span class="token variable">$primary-color</span><span class="token punctuation">:</span> #036</span>&#10;<span class="token selector">.header</span>&#10;<span class="token property-line">  <span class="token property">background-color</span><span class="token punctuation">:</span> invert(<span class="token variable">$primary-color</span>, 80<span class="token operator">%</span>)</span>&#10;&#10;</code></pre></div>
+<div id="example-optional-arguments-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.header</span> <span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #523314<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>Default values can be any SassScript expression, and they can even refer to
+earlier<span class="widont">&nbsp;</span>arguments!</p>
+</div>
+<h3 id="keyword-arguments" tabindex="-1">Keyword Arguments<a class="anchor" href="#keyword-arguments"><span class="visuallyhidden">Keyword Arguments permalink</span></a></h3>
+<p>When a function is called, arguments can be passed by name in addition to
+passing them by their position in the argument list. This is especially useful
+for functions with multiple optional arguments, or with <a href="/documentation/values/booleans">boolean</a> arguments
+whose meanings aren’t obvious without a name to go with them. Keyword arguments
+use the same syntax as <a href="/documentation/variables">variable declarations</a> and <a href="#optional-arguments">optional<span class="widont">&nbsp;</span>arguments</a>.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 63.63636363636363%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-keyword-arguments-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-keyword-arguments-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-keyword-arguments-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-keyword-arguments-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$primary-color</span></span><span class="token punctuation">:</span> #036<span class="token punctuation">;</span>&#10;<span class="token selector">.banner </span><span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$primary-color</span><span class="token punctuation">;</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">scale-color</span><span class="token punctuation">(</span><span class="token variable">$primary-color</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> +40%<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-keyword-arguments-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$primary-color</span><span class="token punctuation">:</span> #036</span>&#10;<span class="token selector">.banner</span>&#10;<span class="token property-line">  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$primary-color</span></span>&#10;<span class="token property-line">  <span class="token property">color</span><span class="token punctuation">:</span> scale-color(<span class="token variable">$primary-color</span>, <span class="token property">$lightness</span><span class="token punctuation">:</span> <span class="token operator">+</span>40<span class="token operator">%</span>)</span>&#10;&#10;</code></pre></div>
+<div id="example-keyword-arguments-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.banner</span> <span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #036<span class="token punctuation">;</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> #0a85ff<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Because <em>any</em> argument can be passed by name, be careful when renaming a
+function’s arguments… it might break your users! It can be helpful to keep
+the old name around as an <a href="#optional-arguments">optional argument</a> for a while and printing a
+<a href="/documentation/at-rules/warn">warning</a> if anyone passes it, so they know to migrate to the new<span class="widont">&nbsp;</span>argument.</p>
+</div>
+<h3 id="taking-arbitrary-arguments" tabindex="-1">Taking Arbitrary Arguments<a class="anchor" href="#taking-arbitrary-arguments"><span class="visuallyhidden">Taking Arbitrary Arguments<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>Sometimes it’s useful for a function to be able to take any number of arguments.
+If the last argument in a <code>@function</code> declaration ends in <code>...</code>, then all extra
+arguments to that function are passed to that argument as a <a href="/documentation/values/lists">list</a>. This
+argument is known as an <a href="/documentation/values/lists#argument-lists">argument<span class="widont">&nbsp;</span>list</a>.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-taking-arbitrary-arguments-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-taking-arbitrary-arguments-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-taking-arbitrary-arguments-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-taking-arbitrary-arguments-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token variable">$numbers</span>...<span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$sum</span></span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;  <span class="token keyword">@each</span> <span class="token selector"><span class="token variable">$number</span> in <span class="token variable">$numbers</span> </span><span class="token punctuation">{</span>&#10;    <span class="token property"><span class="token variable">$sum</span></span><span class="token punctuation">:</span> <span class="token variable">$sum</span> <span class="token operator">+</span> <span class="token variable">$number</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;  <span class="token keyword">@return</span> <span class="token variable">$sum</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.micro </span><span class="token punctuation">{</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">sum</span><span class="token punctuation">(</span>50px<span class="token punctuation">,</span> 30px<span class="token punctuation">,</span> 100px<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-taking-arbitrary-arguments-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@function</span> sum($numbers...)</span>&#10;<span class="token variable-line">  <span class="token variable">$sum</span><span class="token punctuation">:</span> 0</span>&#10;<span class="token atrule-line">  <span class="token atrule">@each</span> $number in $numbers</span>&#10;<span class="token variable-line">    <span class="token variable">$sum</span><span class="token punctuation">:</span> <span class="token variable">$sum</span> <span class="token operator">+</span> <span class="token variable">$number</span></span>&#10;&#10;<span class="token atrule-line">  <span class="token atrule">@return</span> $sum</span>&#10;&#10;&#10;<span class="token selector">.micro</span>&#10;<span class="token property-line">  <span class="token property">width</span><span class="token punctuation">:</span> sum(50px, 30px, 100px)</span>&#10;&#10;</code></pre></div>
+<div id="example-taking-arbitrary-arguments-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.micro</span> <span class="token punctuation">{</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> 180px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<h4 id="taking-arbitrary-keyword-arguments" tabindex="-1">Taking Arbitrary Keyword Arguments<a class="anchor" href="#taking-arbitrary-keyword-arguments"><span class="visuallyhidden">Taking Arbitrary Keyword Arguments<span class="widont">&nbsp;</span>permalink</span></a></h4>
+<p>Argument lists can also be used to take arbitrary keyword arguments. The
+<a href="/documentation/modules/meta#keywords"><code>meta.keywords()</code> function</a> takes an argument list and returns any extra
+keywords that were passed to the function as a <a href="/documentation/values/maps">map</a> from argument names (not
+including <code>$</code>) to those arguments’<span class="widont">&nbsp;</span>values.</p>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>If you don’t ever pass an argument list to the <a href="/documentation/modules/meta#keywords"><code>meta.keywords()</code> function</a>,
+that argument list won’t allow extra keyword arguments. This helps callers of
+your function make sure they haven’t accidentally misspelled any argument<span class="widont">&nbsp;</span>names.</p>
+</div>
+<h4 id="passing-arbitrary-arguments" tabindex="-1">Passing Arbitrary Arguments<a class="anchor" href="#passing-arbitrary-arguments"><span class="visuallyhidden">Passing Arbitrary Arguments<span class="widont">&nbsp;</span>permalink</span></a></h4>
+<p>Just like argument lists allow functions to take arbitrary positional or keyword
+arguments, the same syntax can be used to <em>pass</em> positional and keyword
+arguments to a function. If you pass a list followed by <code>...</code> as the last
+argument of a function call, its elements will be treated as additional
+positional arguments. Similarly, a map followed by <code>...</code> will be treated as
+additional keyword arguments. You can even pass both at<span class="widont">&nbsp;</span>once!</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-passing-arbitrary-arguments-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-passing-arbitrary-arguments-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-passing-arbitrary-arguments-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-passing-arbitrary-arguments-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$widths</span></span><span class="token punctuation">:</span> 50px<span class="token punctuation">,</span> 30px<span class="token punctuation">,</span> 100px<span class="token punctuation">;</span>&#10;<span class="token selector">.micro </span><span class="token punctuation">{</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">min</span><span class="token punctuation">(</span><span class="token variable">$widths</span>...<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-passing-arbitrary-arguments-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$widths</span><span class="token punctuation">:</span> 50px, 30px, 100px</span>&#10;<span class="token selector">.micro</span>&#10;<span class="token property-line">  <span class="token property">width</span><span class="token punctuation">:</span> min(<span class="token variable">$widths</span>...)</span>&#10;&#10;</code></pre></div>
+<div id="example-passing-arbitrary-arguments-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.micro</span> <span class="token punctuation">{</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> 30px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>Because an <a href="/documentation/values/lists#argument-lists">argument list</a> keeps track of both positional and keyword
+arguments, you use it to pass both at once to another function. That makes it
+super easy to define an alias for a<span class="widont">&nbsp;</span>function!</p>
+<div class="code-example ui-tabs">
+<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+<a href="#example-passing-arbitrary-arguments-fun-fact-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+<a href="#example-passing-arbitrary-arguments-fun-fact-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-passing-arbitrary-arguments-fun-fact-scss" class="ui-tabs-panel scss">
+<h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@function</span> <span class="token function">fg</span><span class="token punctuation">(</span><span class="token variable">$args</span>...<span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token keyword">@warn</span> <span class="token string">"The fg() function is deprecated. Call foreground() instead."</span><span class="token punctuation">;</span>&#10;  <span class="token keyword">@return</span> <span class="token function">foreground</span><span class="token punctuation">(</span><span class="token variable">$args</span>...<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-passing-arbitrary-arguments-fun-fact-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+<h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@function</span> fg($args...)</span>&#10;<span class="token atrule-line">  <span class="token atrule">@warn</span> "The fg() function is deprecated. Call foreground() instead."</span>&#10;<span class="token atrule-line">  <span class="token atrule">@return</span> foreground($args...)</span>&#10;&#10;</code></pre></div>
+</div>
+</div>
+<h2 id="return" tabindex="-1"><code>@return</code><a class="anchor" href="#return"><span class="visuallyhidden">@return permalink</span></a></h2>
+<p>The <code>@return</code> at-rule indicates the value to use as the result of calling a
+function. It’s only allowed within a <code>@function</code> body, and each <code>@function</code> must
+end with a <code>@return</code>.</p>
+<p>When a <code>@return</code> is encountered, it immediately ends the function and returns
+its result. Returning early can be useful for handling edge-cases or cases where
+a more efficient algorithm is available without wrapping the entire function in
+an <a href="/documentation/at-rules/control/if#else"><code>@else</code> block</a>.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-return-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-return-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-return-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:string"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@function</span> <span class="token function">str-insert</span><span class="token punctuation">(</span><span class="token variable">$string</span><span class="token punctuation">,</span> <span class="token variable">$insert</span><span class="token punctuation">,</span> <span class="token variable">$index</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token comment">// Avoid making new strings if we don't need to.</span>&#10;  <span class="token keyword">@if</span> string.<span class="token function">length</span><span class="token punctuation">(</span><span class="token variable">$string</span><span class="token punctuation">)</span> <span class="token selector">== 0 </span><span class="token punctuation">{</span>&#10;    <span class="token keyword">@return</span> <span class="token variable">$insert</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;&#10;  <span class="token property"><span class="token variable">$before</span></span><span class="token punctuation">:</span> string.<span class="token function">slice</span><span class="token punctuation">(</span><span class="token variable">$string</span><span class="token punctuation">,</span> 0<span class="token punctuation">,</span> <span class="token variable">$index</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token property"><span class="token variable">$after</span></span><span class="token punctuation">:</span> string.<span class="token function">slice</span><span class="token punctuation">(</span><span class="token variable">$string</span><span class="token punctuation">,</span> <span class="token variable">$index</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token keyword">@return</span> <span class="token variable">$before</span> <span class="token operator">+</span> <span class="token variable">$insert</span> <span class="token operator">+</span> <span class="token variable">$after</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-return-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:string"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@function</span> str-insert($string, $insert, $index)</span>&#10;  <span class="token comment">// Avoid making new strings if we don't need to.</span>&#10;<span class="token atrule-line">  <span class="token atrule">@if</span> string.length($string) <span class="token atrule">=</span><span class="token atrule">=</span> 0</span>&#10;<span class="token atrule-line">    <span class="token atrule">@return</span> $insert</span>&#10;&#10;&#10;<span class="token variable-line">  <span class="token variable">$before</span><span class="token punctuation">:</span> string.slice(<span class="token variable">$string</span>, 0, <span class="token variable">$index</span>)</span>&#10;<span class="token variable-line">  <span class="token variable">$after</span><span class="token punctuation">:</span> string.slice(<span class="token variable">$string</span>, <span class="token variable">$index</span>)</span>&#10;<span class="token atrule-line">  <span class="token atrule">@return</span> $before <span class="token atrule">+</span> $insert <span class="token atrule">+</span> $after</span>&#10;&#10;</code></pre></div>
+</div>
+<h2 id="other-functions" tabindex="-1">Other Functions<a class="anchor" href="#other-functions"><span class="visuallyhidden">Other Functions permalink</span></a></h2>
+<p>In addition to user-defined function, Sass provides a substantial <a href="/documentation/modules">core
+library</a> of built-in functions that are always available to use. Sass
+implementations also make it possible to define <a href="/documentation/js-api/interfaces/LegacySharedOptions#functions">custom functions</a> in the host
+language. And of course, you can always call <a href="#plain-css-functions">plain <span class="caps">CSS</span> functions</a> (even ones
+with <a href="/documentation/syntax/special-functions">weird syntax</a>).</p>
+<h3 id="plain-css-functions" tabindex="-1">Plain <span class="caps">CSS</span> Functions<a class="anchor" href="#plain-css-functions"><span class="visuallyhidden">Plain <span class="caps">CSS</span> Functions<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>Any function call that’s not either a user-defined or
+<a href="/documentation/modules">built-in</a> function is compiled to a plain <span class="caps">CSS</span> function
+(unless it uses <a href="/documentation/at-rules/function/#arguments">Sass argument
+syntax</a>). The arguments will be
+compiled to <span class="caps">CSS</span> and included as-is in the function call. This ensures that Sass
+supports all <span class="caps">CSS</span> functions without needing to release new versions every time a
+new one is<span class="widont">&nbsp;</span>added.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-plain-css-functions-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-plain-css-functions-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-plain-css-functions-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> <span class="token function">var</span><span class="token punctuation">(</span>--main-bg-color<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// var(--main-bg-color)</span>&#10;&#10;<span class="token property"><span class="token variable">$primary</span></span><span class="token punctuation">:</span> #f2ece4<span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$accent</span></span><span class="token punctuation">:</span> #e1d7d2<span class="token punctuation">;</span>&#10;<span class="token keyword">@debug</span> <span class="token function">radial-gradient</span><span class="token punctuation">(</span><span class="token variable">$primary</span><span class="token punctuation">,</span> <span class="token variable">$accent</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// radial-gradient(#f2ece4, #e1d7d2)</span>&#10;</code></pre></div>
+<div id="example-plain-css-functions-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> var(--main-bg-color)  // var(--main-bg-color)</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$primary</span><span class="token punctuation">:</span> #f2ece4</span>&#10;<span class="token variable-line"><span class="token variable">$accent</span><span class="token punctuation">:</span> #e1d7d2</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> radial-gradient($primary, $accent)  // radial-gradient(#f2ece4, #e1d7d2)</span>&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Because any unknown function will be compiled to <span class="caps">CSS</span>, it’s easy to miss when
+you typo a function name. Consider running a <a href="https://stylelint.io/"><span class="caps">CSS</span> linter</a> on your
+stylesheet’s output to be notified when this<span class="widont">&nbsp;</span>happens!</p>
+</div>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>Some <span class="caps">CSS</span> functions, like <code>calc()</code> and <code>element()</code> have unusual syntax. Sass
+<a href="/documentation/syntax/special-functions">parses these functions specially</a> as <a href="/documentation/values/strings#unquoted">unquoted<span class="widont">&nbsp;</span>strings</a>.</p>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/at-rules/function/ -->
+  </body>
+</html>

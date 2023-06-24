@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: How @extend Works</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 001-how-extend-works">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">How @extend Works</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 23 November 2013 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p><em>This was originally published as <a href="https://gist.github.com/nex3/7609394">a<span class="widont">&nbsp;</span>gist</a></em>.</p>
+<p><a href="https://github.com/akhleung">Aaron Leung</a> is working on
+<a href="https://github.com/sass/libsass">libsass</a> and was wondering how
+<code>@extend</code> is implemented in the Ruby implementation of Sass. Rather than just
+tell him, I thought I’d write up a public document about it so anyone who’s
+porting Sass or is just curious about how it works can<span class="widont">&nbsp;</span>see.</p>
+<p>Note that this explanation is simplified in numerous ways. It’s intended to
+explain the most complex parts of a basic correct <code>@extend</code> transformation, but
+it leaves out numerous details that will be important if full Sass compatibility
+is desired. This should be considered an explication of the groundwork for
+<code>@extend</code>, upon which full support can be built. For a complete understanding of
+<code>@extend</code>, there’s no substitute for consulting the <a href="https://github.com/sass/ruby-sass/tree/master/lib/sass">Ruby Sass
+code</a> and <a href="https://github.com/sass/ruby-sass/blob/master/test/sass/extend_test.rb">its<span class="widont">&nbsp;</span>tests</a>.</p>
+<p>This document assumes familiarity with the selector terminology defined in the
+<a href="http://dev.w3.org/csswg/selectors4/#syntax">Selectors Level 4</a> spec. Throughout
+the document, selectors will be treated interchangeably with lists or sets of
+their components. For example, a complex selector may be treated as a list of
+compound selectors or a list of lists of simple<span class="widont">&nbsp;</span>selectors.</p>
+<h2 id="primitives" tabindex="-1">Primitives<a class="anchor" href="#primitives"><span class="visuallyhidden">Primitives permalink</span></a></h2>
+<p>Following are a set of primitive objects, definitions, and operations that are
+necessary for implementing <code>@extend</code>. Implementing these is left as an exercise
+for the<span class="widont">&nbsp;</span>reader.</p>
+<ul>
+<li>
+<p>A selector object is obviously necessary, since <code>@extend</code> is all about
+selectors. Selectors will need to be parsed thoroughly and semantically. It’s
+necessary for the implementation to know a fair amount of the meaning behind
+the various different forms of<span class="widont">&nbsp;</span>selectors.</p>
+</li>
+<li>
+<p>A custom data structure I call a “subset map” is also necessary. A subset map
+has two operations: <code>Map.set(Set, Object)</code> and <code>Map.get(Set) =&gt; [Object]</code>. The
+former associates a value with a set of keys in the map. The latter looks up
+all values that are associated with <em>subsets</em> of a set of keys. For<span class="widont">&nbsp;</span>example:</p>
+<pre class="language-ruby"><code class="language-ruby">map<span class="token punctuation">.</span>set<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'value1'</span></span><span class="token punctuation">)</span>
+map<span class="token punctuation">.</span>set<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'value2'</span></span><span class="token punctuation">)</span>
+map<span class="token punctuation">.</span>set<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'value3'</span></span><span class="token punctuation">)</span>
+map<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">[</span><span class="token string-literal"><span class="token string">'value1'</span></span><span class="token punctuation">,</span> <span class="token string-literal"><span class="token string">'value2'</span></span><span class="token punctuation">]</span></code></pre>
+</li>
+<li>
+<p>A selector <code>S1</code> is a “superselector” of a selector <code>S2</code> if every element
+matched by <code>S2</code> is also matched by <code>S1</code>. For example, <code>.foo</code> is a
+superselector of <code>.foo.bar</code>, <code>a</code> is a superselector of <code>div a</code>, and <code>*</code> is a
+superselector of everything. The inverse of a superselector is a<span class="widont">&nbsp;</span>“subselector”.</p>
+</li>
+<li>
+<p>An operation <code>unify(Compound Selector, Compound Selector) =&gt; Compound Selector</code> that returns a selector that matches exactly those elements matched
+by both input selectors. For example, <code>unify(.foo, .bar)</code> returns <code>.foo.bar</code>.
+This only needs to work for compound or simpler selectors. This operation can
+fail (e.g. <code>unify(a, h1)</code>), in which case it should return <code>null</code>.</p>
+</li>
+<li>
+<p>An operation <code>trim([Selector List]) =&gt; Selector List</code> that removes complex
+selectors that are subselectors of other complex selectors in the input. It
+takes the input as multiple selector lists and only checks for subselectors
+across these lists since the prior <code>@extend</code> process won’t produce intra-list
+subselectors. For example, if it’s passed <code>[[a], [.foo a]]</code> it would return
+<code>[a]</code> since <code>.foo a</code> is a subselector of <code>a</code>.</p>
+</li>
+<li>
+<p>An operation <code>paths([[Object]]) =&gt; [[Object]]</code> that returns a list of all
+possible paths through a list of choices for each step. For example,
+<code>paths([[1, 2], [3], [4, 5, 6]])</code> returns <code>[[1, 3, 4], [1, 3, 5], [1, 3, 6], [2, 3, 4], [2, 3, 5], [2, 3, 6]]</code>.</p>
+</li>
+</ul>
+<h2 id="the-algorithm" tabindex="-1">The Algorithm<a class="anchor" href="#the-algorithm"><span class="visuallyhidden">The Algorithm permalink</span></a></h2>
+<p>The <code>@extend</code> algorithm requires two passes: one to record the <code>@extend</code>s that
+are declared in the stylesheet, and another to transform selectors using those
+<code>@extend</code>s. This is necessary, since <code>@extend</code>s can affect selectors earlier in
+the stylesheet as<span class="widont">&nbsp;</span>well.</p>
+<h3 id="recording-pass" tabindex="-1">Recording Pass<a class="anchor" href="#recording-pass"><span class="visuallyhidden">Recording Pass permalink</span></a></h3>
+<p>In pseudocode, this pass can be described as<span class="widont">&nbsp;</span>follows:</p>
+<pre><code>let MAP be an empty subset map from simple selectors to (complex selector, compound selector) pairs
+for each @extend in the document:
+  let EXTENDER be the complex selector of the CSS rule containing the @extend
+  let TARGET be the compound selector being @extended
+  MAP.set(TARGET, (EXTENDER, TARGET))
+</code></pre>
+<h3 id="transformation-pass" tabindex="-1">Transformation Pass<a class="anchor" href="#transformation-pass"><span class="visuallyhidden">Transformation Pass permalink</span></a></h3>
+<p>The transformation pass is more complicated than the recording pass. It’s
+described in pseudocode<span class="widont">&nbsp;</span>below:</p>
+<pre><code>let MAP be the subset map from the recording pass
+
+define extend_complex(COMPLEX, SEEN) to be:
+  let CHOICES be an empty list of lists of complex selectors
+  for each compound selector COMPOUND in COMPLEX:
+    let EXTENDED be extend_compound(COMPOUND, SEEN)
+    if no complex selector in EXTENDED is a superselector of COMPOUND:
+      add a complex selector composed only of COMPOUND to EXTENDED
+    add EXTENDED to CHOICES
+
+  let WEAVES be an empty list of selector lists
+  for each list of complex selectors PATH in paths(CHOICES):
+    add weave(PATH) to WEAVES
+  return trim(WEAVES)
+
+define extend_compound(COMPOUND, SEEN) to be:
+  let RESULTS be an empty list of complex selectors
+  for each (EXTENDER, TARGET) in MAP.get(COMPOUND):
+    if SEEN contains TARGET, move to the next iteration
+
+    let COMPOUND_WITHOUT_TARGET be COMPOUND without any of the simple selectors in TARGET
+    let EXTENDER_COMPOUND be the last compound selector in EXTENDER
+    let UNIFIED be unify(EXTENDER_COMPOUND, COMPOUND_WITHOUT_TARGET)
+    if UNIFIED is null, move to the next iteration
+
+    let UNIFIED_COMPLEX be EXTENDER with the last compound selector replaced with UNIFIED
+    with TARGET in SEEN:
+      add each complex selector in extend_complex(UNIFIED_COMPLEX, SEEN) to RESULTS
+  return RESULTS
+
+for each selector COMPLEX in the document:
+  let SEEN be an empty set of compound selectors
+  let LIST be a selector list comprised of the complex selectors in extend_complex(COMPLEX, SEEN)
+  replace COMPLEX with LIST
+</code></pre>
+<p>A keen reader will have noticed an undefined function used in this pseudocode:
+<code>weave</code>. <code>weave</code> is much more complicated than the other primitive operations,
+so I wanted to explain it in<span class="widont">&nbsp;</span>detail.</p>
+<h3 id="weave" tabindex="-1">Weave<a class="anchor" href="#weave"><span class="visuallyhidden">Weave permalink</span></a></h3>
+<p>At a high level, the “weave” operation is pretty easy to understand. It’s best
+to think of it as expanding a “parenthesized selector”. Imagine you could write
+<code>.foo (.bar a)</code> and it would match every <code>a</code> element that has both a <code>.foo</code>
+parent element <em>and</em> a <code>.bar</code> parent element. <code>weave</code> makes this<span class="widont">&nbsp;</span>happen.</p>
+<p>In order to match this <code>a</code> element, you need to expand <code>.foo (.bar a)</code> into the
+following selector list: <code>.foo .bar a, .foo.bar a, .bar .foo a</code>. This matches
+all possible ways that <code>a</code> could have both a <code>.foo</code> parent and a <code>.bar</code> parent.
+However, <code>weave</code> does not in fact emit <code>.foo.bar a</code>; including merged selectors
+like it would cause exponential output size and provide very little<span class="widont">&nbsp;</span>utility.</p>
+<p>This parenthesized selector is passed in to <code>weave</code> as a list of complex
+selectors. For example, <code>.foo (.bar a)</code> would be passed in as <code>[.foo, .bar a]</code>.
+Similarly, <code>(.foo div) (.bar a) (.baz h1 span)</code> would be passed in as <code>[.foo div, .bar a, .baz h1 span]</code>.</p>
+<p><code>weave</code> works by moving left-to-right through the parenthesized selector,
+building up a list of all possible prefixes and adding to this list as each
+parenthesized component is encountered. Here’s the<span class="widont">&nbsp;</span>pseudocode:</p>
+<pre><code>let PAREN_SELECTOR be the argument to weave(), a list of complex selectors
+let PREFIXES be an empty list of complex selectors
+
+for each complex selector COMPLEX in PAREN_SELECTOR:
+  if PREFIXES is empty:
+    add COMPLEX to PREFIXES
+    move to the next iteration
+
+  let COMPLEX_SUFFIX be the final compound selector in COMPLEX
+  let COMPLEX_PREFIX be COMPLEX without COMPLEX_SUFFIX
+  let NEW_PREFIXES be an empty list of complex selectors
+  for each complex selector PREFIX in PREFIXES:
+    let WOVEN be subweave(PREFIX, COMPLEX_PREFIX)
+    if WOVEN is null, move to the next iteration
+    for each complex selector WOVEN_COMPLEX in WOVEN:
+      append COMPLEX_SUFFIX to WOVEN_COMPLEX
+      add WOVEN_COMPLEX to NEW_PREFIXES
+  let PREFIXES be NEW_PREFIXES
+
+return PREFIXES
+</code></pre>
+<p>This includes yet another undefined function, <code>subweave</code>, which contains most of
+the logic of weaving together selectors. It’s one of the most complicated pieces
+of logic in the entire <code>@extend</code> algorithm – it handles selector combinators,
+superselectors, subject selectors, and more. However, the semantics are
+extremely simple, and writing a baseline version of it is very<span class="widont">&nbsp;</span>easy.</p>
+<p>Where <code>weave</code> weaves together many complex selectors, <code>subweave</code> just weaves
+two. The complex selectors it weaves together are considered to have an implicit
+identical trailing compound selector; for example, if it’s passed <code>.foo .bar</code>
+and <code>.x .y .z</code>, it weaves them together as though they were <code>.foo .bar E</code> and
+<code>.x .y .z E</code>. In addition, it doesn’t merge the two selectors in most cases, so
+it would just return <code>.foo .bar .x .y .z, .x .y .z .foo .bar</code> in this case. An
+extremely naive implementation could just return the two orderings of the two
+arguments and be correct a majority of the<span class="widont">&nbsp;</span>time.</p>
+<p>Delving into the full complexity of <code>subweave</code> is out of scope here, since it
+falls almost entirely into the category of advanced functionality that this
+document is intentionally avoiding. The code for it is located in
+<a href="https://github.com/sass/ruby-sass/blob/master/lib/sass/selector/sequence.rb"><code>lib/sass/selector/sequence.rb</code></a>
+and should be consulted when attempting a serious<span class="widont">&nbsp;</span>implementation.</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/how-extend-works/ -->
+  </body>
+</html>

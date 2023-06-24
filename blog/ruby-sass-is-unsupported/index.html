@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Ruby Sass Has Reached End-Of-Life</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 020-ruby-sass-is-unsupported">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Ruby Sass Has Reached<span class="widont">&nbsp;</span>End-Of-Life</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 4 April 2019 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>One year has passed since we announced <a href="/blog/ruby-sass-is-deprecated">the deprecation of Ruby
+Sass</a>, and it has now officially reached its
+end-of-life. We will release one final version of the Ruby Sass gem that will
+print a warning indicating that it’s no longer receiving updates, and then
+archive <a href="https://github.com/sass/ruby-sass">the GitHub<span class="widont">&nbsp;</span>repository</a>.</p>
+<p><img src="/assets/img/blog/020-goodbye.gif" alt="A woman saying &quot;Goodbye, my friend&quot;"></p>
+<p>We will then merge the <a href="https://github.com/sass/language">sass/language</a> repo
+into the <a href="https://github.com/sass/sass">sass/sass</a> repo. This means that
+<strong>anyone still depending on Ruby Sass from <code>github.com/sass/sass</code> will break.</strong>
+Going forward, the sass/sass repo will be the location for working on the
+language specs, and will not contain any code. The sass/language repo will just
+include links pointing to<span class="widont">&nbsp;</span>sass/sass.</p>
+<h3 id="migrating-away" tabindex="-1">Migrating Away<a class="anchor" href="#migrating-away"><span class="visuallyhidden">Migrating Away permalink</span></a></h3>
+<p>If you haven’t migrated away from Ruby Sass yet, now is the time. The best way
+to do that depends on how you use Ruby Sass<span class="widont">&nbsp;</span>today.</p>
+<p>If you use Ruby Sass as a command-line tool, the easiest way to migrate is to
+<a href="/install">install Dart Sass</a> as a command-line tool. It supports a similar
+interface to Ruby Sass, and you can run <code>sass --help</code> for a full explanation of
+its<span class="widont">&nbsp;</span>capabilities.</p>
+<p>If you use Ruby Sass as a plugin for a Ruby web app, particularly if you define
+your own Sass functions in Ruby, the
+<a href="https://github.com/sass/sassc-ruby"><code>sassc</code></a> gem provides access to
+<a href="/libsass">LibSass</a> from Ruby with a very similar <span class="caps">API</span> to Ruby Sass. In most
+cases, you can just replace the <code>Sass</code> module with the <code>SassC</code> module and your
+code will continue to<span class="widont">&nbsp;</span>work.</p>
+<p>If you’re using Rails, we particularly recommend using the
+<a href="https://github.com/sass/sassc-rails"><code>sassc-rails</code></a> gem, which wraps up the
+<code>sassc</code> gem and integrates it smoothly into the asset pipeline. Most of the time
+you won’t even need to change any of your<span class="widont">&nbsp;</span>code.</p>
+<h3 id="farewell-ruby-sass" tabindex="-1">Farewell, Ruby Sass!<a class="anchor" href="#farewell-ruby-sass"><span class="visuallyhidden">Farewell, Ruby Sass!<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>On a personal note, I started writing Ruby Sass in 2006 when I was just a
+college kid coding in between homework assignments. I’ve worked on it (with
+varying degrees of focus) continuously for the last 13 years, and I expect it’ll
+take me a long time to match that record with any other codebase. I’m glad to
+see the language <a href="/blog/announcing-dart-sass">moving forward</a>, but at the same
+time I’ll miss Ruby Sass<span class="widont">&nbsp;</span>terribly.</p>
+<p>I also want to take this opportunity to thank our users, especially those in the
+Ruby community in which Sass was born, for appreciating the language we created
+and evangelizing it so widely. Sass has an incredible userbase, and I’ve been so
+proud to see how large and diverse it’s grown over the years. Let’s keep it up
+as we move into a new era of<span class="widont">&nbsp;</span>Sass!</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/ruby-sass-is-unsupported/ -->
+  </body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Request for Comments: HWB Functions</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 026-request-for-comments-hwb-functions">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Request for Comments: <span class="caps">HWB</span><span class="widont">&nbsp;</span>Functions</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 7 October 2020 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>The <span class="caps">CSS</span> working group has been up to all sorts of exciting stuff recently in the
+<a href="https://www.w3.org/TR/css-color-4/">Color Level 4</a> spec, and the Sass team is starting to think about how to
+integrate those cool new features into Sass’s color model. We need more time to
+hammer out exactly the right designs for complex features like the Lab color
+space, but that doesn’t mean we can’t add a few new color<span class="widont">&nbsp;</span>goodies.</p>
+<p>Today we’re announcing a proposal for one such feature: built-in Sass functions
+for <a href="https://www.w3.org/TR/css-color-4/#the-hwb-notation"><span class="caps">HWB</span></a> colors! Once this proposal (drafted by Sass core team member <a href="https://www.miriamsuzanne.com/">Miriam
+Suzanne</a>) is accepted and implemented, you’ll be able to write colors in <span class="caps">HWB</span>
+syntax and adjust their whiteness and blackness the same way you can adjust a
+color’s saturation and lightness<span class="widont">&nbsp;</span>today.</p>
+<h2 id="the-functions" tabindex="-1">The Functions<a class="anchor" href="#the-functions"><span class="visuallyhidden">The Functions permalink</span></a></h2>
+<p>Here are the new and improved functions this proposal<span class="widont">&nbsp;</span>adds:</p>
+<h3 id="color-hwb" tabindex="-1"><code>color.hwb()</code><a class="anchor" href="#color-hwb"><span class="visuallyhidden">color.hwb() permalink</span></a></h3>
+<p>The <code>color.hwb()</code> function defines a color using its hue, whiteness, and
+blackness. Like the existing <code>rgb()</code> and <code>hsl()</code> functions, It can either use
+the space-separated syntax defined in <a href="https://www.w3.org/TR/css-color-4/#the-hwb-notation">the spec</a> (<code>hwb(270 20% 40%)</code>) or
+the more Sass-y comma-separated syntax (<code>hwb(270, 20%, 40%)</code>). Because <span class="caps">HWB</span>
+colors use the same sRGB colorspace as all other Sass color values, colors
+created this way are fully compatible with all existing Sass color functions and
+will be emitted as their <span class="caps">RGB</span> equivalents for maximum browser<span class="widont">&nbsp;</span>compatibility.</p>
+<p>Note that <em>unlike</em> <code>rgb()</code> and <code>hsl()</code>, the proposal doesn’t add this function
+to the global scope yet. This is because Sass has a policy of never adding
+support for new <span class="caps">CSS</span> syntax before at least one browser implements it. Specs have
+a tendency to change until they’re locked in by browsers, and if Sass ends up
+supporting something different than the browsers themselves that’s bad<span class="widont">&nbsp;</span>news!</p>
+<h3 id="color-whiteness-and-color-blackness" tabindex="-1"><code>color.whiteness()</code> and <code>color.blackness()</code><a class="anchor" href="#color-whiteness-and-color-blackness"><span class="visuallyhidden">color.whiteness() and color.blackness()<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>These functions work like the <code>color.saturation()</code> and <code>color.lightness()</code>
+functions do for <span class="caps">HSL</span> colors. They even work for colors that weren’t created with
+<code>color.hwb()</code>, so you can use them to check how pale or dark any color<span class="widont">&nbsp;</span>is.</p>
+<p>Because <span class="caps">HWB</span> colors have the same notion of “hue” as <span class="caps">HSL</span> colors, the existing
+<code>color.hue()</code> function already works<span class="widont">&nbsp;</span>perfectly!</p>
+<h3 id="color-scale-color-adjust-and-color-change" tabindex="-1"><code>color.scale()</code>, <code>color.adjust()</code>, and <code>color.change()</code><a class="anchor" href="#color-scale-color-adjust-and-color-change"><span class="visuallyhidden">color.scale(), color.adjust(), and color.change()<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>All three color modification functions now support <code>$whiteness</code> and <code>$blackness</code>
+arguments. If you want a color (again no matter how it was created) to be 20%
+whiter, just pass it to <code>color.scale($color, $whiteness: 20%)</code> and there you<span class="widont">&nbsp;</span>go!</p>
+<h2 id="let-us-know-what-you-think" tabindex="-1">Let us know what you think!<a class="anchor" href="#let-us-know-what-you-think"><span class="visuallyhidden">Let us know what you think!<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>If you’re interested in learning more about this proposal, <a href="https://github.com/sass/sass/blob/main/accepted/color-4-hwb.md">read it in full</a> on
+GitHub. It’s open for comments and revisions for the next month, so if you’d
+like to see something change please <a href="https://github.com/sass/sass/issues/new">file an issue</a> and we can discuss<span class="widont">&nbsp;</span>it!</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/request-for-comments-hwb-functions/ -->
+  </body>
+</html>

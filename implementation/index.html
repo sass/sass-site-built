@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Implementation Guide</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="implementation">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Implementation Guide</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="docSearch-content sl-l-container sl-l-container--small">
+  
+
+  <div class="sl-c-introduction">
+    <p>Sass has a thriving community of implementations, with more being produced all the time. The core team loves to see new implementations thrive and mature, and they want to help out in any way they<span class="widont">&nbsp;</span>can.</p>
+
+  </div>
+
+
+
+  <ul class="list-tiled">
+<li>
+<h2>Resources</h2>
+<ul>
+<li>
+<p><a href="https://github.com/sass/sass-spec"><code>sass-spec</code></a> is a suite of
+implementation-agnostic test cases for verifying that a Sass
+implementation behaves correctly. It’s the best way to track your
+implementation’s compatibility with the Sass reference<span class="widont">&nbsp;</span>implementation.</p>
+</li>
+<li>
+<p><a href="https://gist.github.com/nex3/7609394">How <code>@extend</code> Works</a> is a
+fairly comprehensive run-down of the algorithm used by Sass’s
+trickiest feature. Natalie still says that the implementation of
+<code>@extend</code> is the hardest code she’s ever had to write, but luckily you
+don’t have to figure it out from<span class="widont">&nbsp;</span>scratch.</p>
+</li>
+<li>
+<p><strong>Reach out!</strong> If you’re working on a new implementation, we want to
+hear about it. Send an email to <a href="mailto:nex342@gmail.com">Natalie</a> and
+<a href="mailto:chris@eppsteins.net">Chris</a>, tell us about the cool work
+you’re doing, and ask about any corners of the language that don’t
+quite make<span class="widont">&nbsp;</span>sense.</p>
+</li>
+</ul>
+</li>
+<li>
+<h2>Requirements</h2>
+<p>We whole-heartedly love new implementations of Sass, but we do have a
+few restrictions that we ask those implementations to follow in order to
+call themselves “Sass”, “Sass implementations”, or the like. Sass is a
+community as much as it is a language, and it’s important that all
+implementations are willing to work for the good of the<span class="widont">&nbsp;</span>community.</p>
+<p>First, we ask that every implementation adopt the <a href="/community-guidelines">Sass community
+guidelines</a> for their own implementation-specific
+communities. Much of what makes the Sass community strong is a culture
+of kindness and respect, and having clear and explicit guidelines helps
+produce that<span class="widont">&nbsp;</span>culture.</p>
+<p>Second, we ask that implementations not extend the language without
+agreement from the other major implementations and from the language
+designers, Natalie and Chris. The only reason a Sass community exists at
+all is because the language enables styles and frameworks to be shared
+among designers, and it’s crucial for sharing that Sass code that works
+for one implementation works the same for all of them. In addition, it’s
+important that there be a unified vision for the language<span class="widont">&nbsp;</span>design.</p>
+</li>
+<li>
+<h2>Making Language Changes</h2>
+<p>Sass can still evolve as a language, of course. We have <a href="https://github.com/sass/sass/blob/main/CONTRIBUTING.md">a process</a> for
+proposing and iterating on new language features that anyone can
+participate in. Language changes are discussed collaboratively, with
+particular weight given to the maintainers of mature Sass implementations.
+Attempts will be made to reach consensus with all stakeholders. However,
+this may be impossible in some circumstances, and the ultimate say lies
+with the lead designer of Sass,<span class="widont">&nbsp;</span>Natalie.</p>
+</li>
+</ul>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /implementation/ -->
+  </body>
+</html>

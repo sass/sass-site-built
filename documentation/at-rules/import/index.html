@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: @import</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation at-rules import">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">@import</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section open selected">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class="open selected"><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary sl-l-large-holy-grail__complementary--contents">
+              
+                
+                
+                
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    <ul><li>
+      <a href="#finding-the-file" class="section ">Finding the File</a><ul><li class="overview">
+      <a href="#finding-the-file" >Overview</a>
+    </li><li>
+      <a href="#load-paths" class="">Load Paths</a></li><li>
+      <a href="#partials" class="">Partials</a></li><li>
+      <a href="#index-files" class="">Index Files</a></li><li>
+      <a href="#custom-importers" class="">Custom Importers</a></li></ul>
+</li><li>
+      <a href="#nesting" class="">Nesting</a></li><li>
+      <a href="#importing-css" class="">Importing <span class="caps">CSS</span></a></li><li>
+      <a href="#plain-css-imports" class="section ">Plain <span class="caps">CSS</span> <code>@import</code>s</a><ul><li class="overview">
+      <a href="#plain-css-imports" >Overview</a>
+    </li><li>
+      <a href="#interpolation" class="">Interpolation</a></li></ul>
+</li><li>
+      <a href="#import-and-modules" class="section ">Import and Modules</a><ul><li class="overview">
+      <a href="#import-and-modules" >Overview</a>
+    </li><li>
+      <a href="#importing-a-module-system-file" class="section ">Importing a Module-System File</a><ul><li class="overview">
+      <a href="#importing-a-module-system-file" >Overview</a>
+    </li><li>
+      <a href="#import-only-files" class="">Import-Only Files</a></li><li>
+      <a href="#configuring-modules-through-imports" class="">Configuring Modules Through<span class="widont">&nbsp;</span>Imports</a></li></ul>
+</li><li>
+      <a href="#loading-a-module-that-contains-imports" class="">Loading a Module That Contains<span class="widont">&nbsp;</span>Imports</a></li></ul>
+</li></ul>
+
+                  </nav>
+                
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+  <div class="sl-c-introduction">
+    <p>Sass extends <span class="caps">CSS</span>’s <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import"><code>@import</code> rule</a> with the ability to import Sass and <span class="caps">CSS</span> stylesheets, providing access to <a href="/documentation/at-rules/mixin">mixins</a>, <a href="/documentation/at-rules/function">functions</a>, and <a href="/documentation/variables">variables</a> and combining multiple stylesheets’ <span class="caps">CSS</span> together. Unlike plain <span class="caps">CSS</span> imports, which require the browser to make multiple <span class="caps">HTTP</span> requests as it renders your page, Sass imports are handled entirely during<span class="widont">&nbsp;</span>compilation.</p>
+
+  </div>
+
+
+
+              <p>Sass imports have the same syntax as <span class="caps">CSS</span> imports, except that they allow
+multiple imports to be separated by commas rather than requiring each one to
+have its own <code>@import</code>. Also, in the <a href="/documentation/syntax#the-indented-syntax">indented syntax</a>, imported URLs aren’t
+required to have<span class="widont">&nbsp;</span>quotes.</p>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>The Sass team discourages the continued use of the <code>@import</code> rule. Sass will
+<a href="https://github.com/sass/sass/blob/main/accepted/module-system.md#timeline">gradually phase it out</a> over the next few years, and eventually remove it
+from the language entirely. Prefer the <a href="/documentation/at-rules/use"><code>@use</code> rule</a> instead. (Note that
+only Dart Sass currently supports <code>@use</code>. Users of other implementations must
+use the <code>@import</code> rule instead.)</p>
+<h4><p>What’s Wrong With <code>@import</code>?</p>
+</h4>
+<p>The <code>@import</code> rule has a number of serious<span class="widont">&nbsp;</span>issues:</p>
+<ul>
+<li>
+<p><code>@import</code> makes all variables, mixins, and functions globally accessible.
+This makes it very difficult for people (or tools) to tell where anything is<span class="widont">&nbsp;</span>defined.</p>
+</li>
+<li>
+<p>Because everything’s global, libraries must add a prefix to all their
+members to avoid naming<span class="widont">&nbsp;</span>collisions.</p>
+</li>
+<li>
+<p><a href="/documentation/at-rules/extend"><code>@extend</code> rules</a> are also global, which makes it difficult to predict
+which style rules will be<span class="widont">&nbsp;</span>extended.</p>
+</li>
+<li>
+<p>Each stylesheet is executed and its <span class="caps">CSS</span> emitted <em>every time</em> it’s
+<code>@import</code>ed, which increases compilation time and produces bloated<span class="widont">&nbsp;</span>output.</p>
+</li>
+<li>
+<p>There was no way to define private members or placeholder selectors that
+were inaccessible to downstream<span class="widont">&nbsp;</span>stylesheets.</p>
+</li>
+</ul>
+<p>The new module system and the <code>@use</code> rule address all these<span class="widont">&nbsp;</span>problems.</p>
+<h4><p>How Do I<span class="widont">&nbsp;</span>Migrate?</p>
+</h4>
+<p>We’ve written a <a href="/documentation/cli/migrator">migration tool</a> that automatically converts most
+<code>@import</code>-based code to <code>@use</code>-based code in a flash. Just point it at your
+entrypoints and let it<span class="widont">&nbsp;</span>run!</p>
+</div>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-import-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-import-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-import-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-import-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// foundation/_code.scss</span>&#10;<span class="token selector">code </span><span class="token punctuation">{</span>&#10;  <span class="token property">padding</span><span class="token punctuation">:</span> .25em<span class="token punctuation">;</span>&#10;  <span class="token property">line-height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// foundation/_lists.scss</span>&#10;<span class="token selector">ul, ol </span><span class="token punctuation">{</span>&#10;  <span class="token property">text-align</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>&#10;&#10;  <span class="token selector"><span class="token parent important">&amp;</span> <span class="token parent important">&amp;</span> </span><span class="token punctuation">{</span>&#10;    <span class="token selector">padding: </span><span class="token punctuation">{</span>&#10;      <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;      <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;    <span class="token punctuation">}</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// style.scss</span>&#10;<span class="token keyword">@import</span> <span class="token string">'foundation/code'</span><span class="token punctuation">,</span> <span class="token string">'foundation/lists'</span><span class="token punctuation">;</span>&#10;</code></pre></div>
+<div id="example-import-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// foundation/_code.sass</span>&#10;<span class="token selector">code</span>&#10;<span class="token property-line">  <span class="token property">padding</span><span class="token punctuation">:</span> .25em</span>&#10;<span class="token property-line">  <span class="token property">line-height</span><span class="token punctuation">:</span> 0</span>&#10;&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// foundation/_lists.sass</span>&#10;<span class="token selector">ul, ol</span>&#10;<span class="token property-line">  <span class="token property">text-align</span><span class="token punctuation">:</span> left</span>&#10;&#10;  <span class="token selector">&amp; &amp;</span>&#10;<span class="token property-line">    <span class="token property">padding</span><span class="token punctuation">:</span></span>&#10;<span class="token property-line">      <span class="token property">bottom</span><span class="token punctuation">:</span> 0</span>&#10;<span class="token property-line">      <span class="token property">left</span><span class="token punctuation">:</span> 0</span>&#10;&#10;&#10;&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// style.sass</span>&#10;<span class="token atrule-line"><span class="token atrule">@import</span> foundation/code, foundation/lists</span>&#10;</code></pre></div>
+<div id="example-import-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">code</span> <span class="token punctuation">{</span>&#10;  <span class="token property">padding</span><span class="token punctuation">:</span> .25em<span class="token punctuation">;</span>&#10;  <span class="token property">line-height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">ul, ol</span> <span class="token punctuation">{</span>&#10;  <span class="token property">text-align</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;<span class="token selector">ul ul, ol ol</span> <span class="token punctuation">{</span>&#10;  <span class="token property">padding-bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;  <span class="token property">padding-left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<p>When Sass imports a file, that file is evaluated as though its contents appeared
+directly in place of the <code>@import</code>. Any <a href="/documentation/at-rules/mixin">mixins</a>, <a href="/documentation/at-rules/function">functions</a>, and
+<a href="/documentation/variables">variables</a> from the imported file are made available, and all its <span class="caps">CSS</span> is
+included at the exact point where the <code>@import</code> was written. What’s more, any
+mixins, functions, or variables that were defined before the <code>@import</code>
+(including from other <code>@import</code>s) are available in the imported<span class="widont">&nbsp;</span>stylesheet.</p>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>If the same stylesheet is imported more than once, it will be evaluated again
+each time. If it just defines functions and mixins, this usually isn’t a big
+deal, but if it contains style rules they’ll be compiled to <span class="caps">CSS</span> more than<span class="widont">&nbsp;</span>once.</p>
+</div>
+<h2 id="finding-the-file" tabindex="-1">Finding the File<a class="anchor" href="#finding-the-file"><span class="visuallyhidden">Finding the File<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>It wouldn’t be any fun to write out absolute URLs for every stylesheet you
+import, so Sass’s algorithm for finding a file to import makes it a little
+easier. For starters, you don’t have to explicitly write out the extension of
+the file you want to import; <code>@import &quot;variables&quot;</code> will automatically load
+<code>variables.scss</code>, <code>variables.sass</code>, or <code>variables.css</code>.</p>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>To ensure that stylesheets work on every operating system, Sass imports files
+by <em><span class="caps">URL</span></em>, not by <em>file path</em>. This means you need to use forward slashes, not
+backslashes, even when you’re on<span class="widont">&nbsp;</span>Windows.</p>
+</div>
+<h3 id="load-paths" tabindex="-1">Load Paths<a class="anchor" href="#load-paths"><span class="visuallyhidden">Load Paths permalink</span></a></h3>
+<p>All Sass implementations allow users to provide <em>load paths</em>: paths on the
+filesystem that Sass will look in when resolving imports. For example, if you
+pass <code>node_modules/susy/sass</code> as a load path, you can use <code>@import &quot;susy&quot;</code> to
+load <code>node_modules/susy/sass/susy.scss</code>.</p>
+<p>Imports will always be resolved relative to the current file first, though. Load
+paths will only be used if no relative file exists that matches the import. This
+ensures that you can’t accidentally mess up your relative imports when you add a
+new<span class="widont">&nbsp;</span>library.</p>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>Unlike some other languages, Sass doesn’t require that you use <code>./</code> for
+relative imports. Relative imports are always<span class="widont">&nbsp;</span>available.</p>
+</div>
+<h3 id="partials" tabindex="-1">Partials<a class="anchor" href="#partials"><span class="visuallyhidden">Partials permalink</span></a></h3>
+<p>As a convention, Sass files that are only meant to be imported, not compiled on
+their own, begin with <code>_</code> (as in <code>_code.scss</code>). These are called <em>partials</em>, and
+they tell Sass tools not to try to compile those files on their own. You can
+leave off the <code>_</code> when importing a<span class="widont">&nbsp;</span>partial.</p>
+<h3 id="index-files" tabindex="-1">Index Files<a class="anchor" href="#index-files"><span class="visuallyhidden">Index Files permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✓</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>since 3.6.0</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>since 3.6.0</dd>
+    </div></dl>
+<p>If you write an <code>_index.scss</code> or <code>_index.sass</code> in a folder, when the folder
+itself is imported that file will be loaded in its<span class="widont">&nbsp;</span>place.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-index-files-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-index-files-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-index-files-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-index-files-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// foundation/_code.scss</span>&#10;<span class="token selector">code </span><span class="token punctuation">{</span>&#10;  <span class="token property">padding</span><span class="token punctuation">:</span> .25em<span class="token punctuation">;</span>&#10;  <span class="token property">line-height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// foundation/_lists.scss</span>&#10;<span class="token selector">ul, ol </span><span class="token punctuation">{</span>&#10;  <span class="token property">text-align</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>&#10;&#10;  <span class="token selector"><span class="token parent important">&amp;</span> <span class="token parent important">&amp;</span> </span><span class="token punctuation">{</span>&#10;    <span class="token selector">padding: </span><span class="token punctuation">{</span>&#10;      <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;      <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;    <span class="token punctuation">}</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// foundation/_index.scss</span>&#10;<span class="token keyword">@import</span> <span class="token string">'code'</span><span class="token punctuation">,</span> <span class="token string">'lists'</span><span class="token punctuation">;</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// style.scss</span>&#10;<span class="token keyword">@import</span> <span class="token string">'foundation'</span><span class="token punctuation">;</span>&#10;</code></pre></div>
+<div id="example-index-files-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// foundation/_code.sass</span>&#10;<span class="token selector">code</span>&#10;<span class="token property-line">  <span class="token property">padding</span><span class="token punctuation">:</span> .25em</span>&#10;<span class="token property-line">  <span class="token property">line-height</span><span class="token punctuation">:</span> 0</span>&#10;&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// foundation/_lists.sass</span>&#10;<span class="token selector">ul, ol</span>&#10;<span class="token property-line">  <span class="token property">text-align</span><span class="token punctuation">:</span> left</span>&#10;&#10;  <span class="token selector">&amp; &amp;</span>&#10;<span class="token property-line">    <span class="token property">padding</span><span class="token punctuation">:</span></span>&#10;<span class="token property-line">      <span class="token property">bottom</span><span class="token punctuation">:</span> 0</span>&#10;<span class="token property-line">      <span class="token property">left</span><span class="token punctuation">:</span> 0</span>&#10;&#10;&#10;&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// foundation/_index.sass</span>&#10;<span class="token atrule-line"><span class="token atrule">@import</span> code, lists</span>&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// style.sass</span>&#10;<span class="token atrule-line"><span class="token atrule">@import</span> foundation</span>&#10;</code></pre></div>
+<div id="example-index-files-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">code</span> <span class="token punctuation">{</span>&#10;  <span class="token property">padding</span><span class="token punctuation">:</span> .25em<span class="token punctuation">;</span>&#10;  <span class="token property">line-height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">ul, ol</span> <span class="token punctuation">{</span>&#10;  <span class="token property">text-align</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;<span class="token selector">ul ul, ol ol</span> <span class="token punctuation">{</span>&#10;  <span class="token property">padding-bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;  <span class="token property">padding-left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<h3 id="custom-importers" tabindex="-1">Custom Importers<a class="anchor" href="#custom-importers"><span class="visuallyhidden">Custom Importers permalink</span></a></h3>
+<p>All Sass implementations provide a way to define custom importers, which control
+how <code>@import</code>s locate stylesheets:</p>
+<ul>
+<li>
+<p><a href="https://npmjs.com/package/node-sass">Node Sass</a> and <a href="https://npmjs.com/package/sass">Dart Sass on npm</a> provide an <a href="https://github.com/sass/node-sass#importer--v200---experimental"><code>importer</code> option</a> as
+part of their <span class="caps">JS</span><span class="widont">&nbsp;</span><span class="caps">API</span>.</p>
+</li>
+<li>
+<p><a href="https://pub.dartlang.org/packages/sass">Dart Sass on pub</a> provides an abstract <a href="https://pub.dartlang.org/documentation/sass/latest/sass/Importer-class.html"><code>Importer</code> class</a> that can be
+extended by a custom<span class="widont">&nbsp;</span>importer.</p>
+</li>
+<li>
+<p><a href="/ruby-sass">Ruby Sass</a> provides an abstract <a href="https://www.rubydoc.info/gems/sass/Sass/Importers/Base"><code>Importers::Base</code> class</a> that can be
+extended by a custom<span class="widont">&nbsp;</span>importer.</p>
+</li>
+</ul>
+<h2 id="nesting" tabindex="-1">Nesting<a class="anchor" href="#nesting"><span class="visuallyhidden">Nesting permalink</span></a></h2>
+<p>Imports are usually written at the top level of a stylesheet, but they don’t
+have to be. They can nested within <a href="/documentation/style-rules">style rules</a> or <a href="/documentation/at-rules/css">plain <span class="caps">CSS</span> at-rules</a> as
+well. The imported <span class="caps">CSS</span> is nested in that context, which makes nested imports
+useful for scoping a chunk of <span class="caps">CSS</span> to a particular element or media query. Note
+that top-level <a href="/documentation/at-rules/mixin">mixins</a>, <a href="/documentation/at-rules/function">functions</a>, and <a href="/documentation/variables">variables</a> defined in the
+nested import are still defined globally,<span class="widont">&nbsp;</span>though.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-nesting-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-nesting-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-nesting-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-nesting-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// _theme.scss</span>&#10;<span class="token selector">pre, code </span><span class="token punctuation">{</span>&#10;  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Source Code Pro'</span><span class="token punctuation">,</span> Helvetica<span class="token punctuation">,</span> Arial<span class="token punctuation">;</span>&#10;  <span class="token property">border-radius</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// style.scss</span>&#10;<span class="token selector">.theme-sample </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@import</span> <span class="token string">"theme"</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-nesting-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// _theme.sass</span>&#10;<span class="token selector">pre, code</span>&#10;<span class="token property-line">  <span class="token property">font-family</span><span class="token punctuation">:</span> 'Source Code Pro', Helvetica, Arial</span>&#10;<span class="token property-line">  <span class="token property">border-radius</span><span class="token punctuation">:</span> 4px</span>&#10;&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// style.sass</span>&#10;<span class="token selector">.theme-sample</span>&#10;<span class="token atrule-line">  <span class="token atrule">@import</span> theme</span>&#10;&#10;</code></pre></div>
+<div id="example-nesting-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.theme-sample pre, .theme-sample code</span> <span class="token punctuation">{</span>&#10;  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Source Code Pro'</span><span class="token punctuation">,</span> Helvetica<span class="token punctuation">,</span> Arial<span class="token punctuation">;</span>&#10;  <span class="token property">border-radius</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>Nested imports are very useful for scoping third-party stylesheets, but if
+you’re the author of the stylesheet you’re importing, it’s usually a better
+idea to write your styles in a <a href="/documentation/at-rules/mixin">mixin</a> and include that mixin in the nested
+context. A mixin can be used in more flexible ways, and it’s clearer when
+looking at the imported stylesheet how it’s intended to be<span class="widont">&nbsp;</span>used.</p>
+</div>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>The <span class="caps">CSS</span> in nested imports is evaluated like a mixin, which means that any
+<a href="/documentation/style-rules/parent-selector">parent selectors</a> will refer to the selector in which the stylesheet is<span class="widont">&nbsp;</span>nested.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+<a href="#example-parent-selector-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+<a href="#example-parent-selector-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+<a href="#example-parent-selector-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-parent-selector-scss" class="ui-tabs-panel scss">
+<h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// _theme.scss</span>&#10;<span class="token selector">ul li </span><span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$padding</span></span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>&#10;  <span class="token property">padding-left</span><span class="token punctuation">:</span> <span class="token variable">$padding</span><span class="token punctuation">;</span>&#10;  <span class="token selector">[dir=rtl] <span class="token parent important">&amp;</span> </span><span class="token punctuation">{</span>&#10;    <span class="token selector">padding: </span><span class="token punctuation">{</span>&#10;      <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;      <span class="token property">right</span><span class="token punctuation">:</span> <span class="token variable">$padding</span><span class="token punctuation">;</span>&#10;    <span class="token punctuation">}</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// style.scss</span>&#10;<span class="token selector">.theme-sample </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@import</span> <span class="token string">"theme"</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-parent-selector-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+<h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// _theme.sass</span>&#10;<span class="token selector">ul li</span>&#10;<span class="token variable-line">  <span class="token variable">$padding</span><span class="token punctuation">:</span> 16px</span>&#10;<span class="token property-line">  <span class="token property">padding-left</span><span class="token punctuation">:</span> <span class="token variable">$padding</span></span>&#10;  <span class="token selector">[dir=rtl] &amp;</span>&#10;<span class="token property-line">    <span class="token property">padding</span><span class="token punctuation">:</span></span>&#10;<span class="token property-line">      <span class="token property">left</span><span class="token punctuation">:</span> 0</span>&#10;<span class="token property-line">      <span class="token property">right</span><span class="token punctuation">:</span> <span class="token variable">$padding</span></span>&#10;&#10;&#10;&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// style.sass</span>&#10;<span class="token selector">.theme-sample</span>&#10;<span class="token atrule-line">  <span class="token atrule">@import</span> theme</span>&#10;&#10;</code></pre></div>
+<div id="example-parent-selector-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+<h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.theme-sample ul li</span> <span class="token punctuation">{</span>&#10;  <span class="token property">padding-left</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;<span class="token selector">[dir=rtl] .theme-sample ul li</span> <span class="token punctuation">{</span>&#10;  <span class="token property">padding-left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;  <span class="token property">padding-right</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+<h2 id="importing-css" tabindex="-1">Importing <span class="caps">CSS</span><a class="anchor" href="#importing-css"><span class="visuallyhidden">Importing <span class="caps">CSS</span> permalink</span></a></h2>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.11.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>partial</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>LibSass supports importing files with the extension <code>.css</code>, but contrary to
+the specification they’re treated as <span class="caps">SCSS</span> files rather than being parsed as
+<span class="caps">CSS</span>. This behavior has been deprecated, and an update is in the works to
+support the behavior described<span class="widont">&nbsp;</span>below.</p>
+  </div>
+<p>In addition to importing <code>.sass</code> and <code>.scss</code> files, Sass can import plain old
+<code>.css</code> files. The only rule is that the import <em>must not</em> explicitly include the
+<code>.css</code> extension, because that’s used to indicate a <a href="#plain-css-imports">plain <span class="caps">CSS</span> <code>@import</code></a>.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-import-css-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-import-css-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-import-css-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-import-css-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// code.css</span>&#10;<span class="token selector">code </span><span class="token punctuation">{</span>&#10;  <span class="token property">padding</span><span class="token punctuation">:</span> .25em<span class="token punctuation">;</span>&#10;  <span class="token property">line-height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// style.scss</span>&#10;<span class="token keyword">@import</span> <span class="token string">'code'</span><span class="token punctuation">;</span>&#10;</code></pre></div>
+<div id="example-import-css-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// code.css</span>&#10;<span class="token selector">code {</span>&#10;<span class="token property-line">  <span class="token property">padding</span><span class="token punctuation">:</span> .25em;</span>&#10;<span class="token property-line">  <span class="token property">line-height</span><span class="token punctuation">:</span> 0;</span>&#10;<span class="token selector">}</span>&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// style.sass</span>&#10;<span class="token atrule-line"><span class="token atrule">@import</span> code</span>&#10;</code></pre></div>
+<div id="example-import-css-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">code</span> <span class="token punctuation">{</span>&#10;  <span class="token property">padding</span><span class="token punctuation">:</span> .25em<span class="token punctuation">;</span>&#10;  <span class="token property">line-height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<p><span class="caps">CSS</span> files imported by Sass don’t allow any special Sass features. In order to
+make sure authors don’t accidentally write Sass in their <span class="caps">CSS</span>, all Sass features
+that aren’t also valid <span class="caps">CSS</span> will produce errors. Otherwise, the <span class="caps">CSS</span> will be
+rendered as-is. It can even be <a href="/documentation/at-rules/extend">extended</a>!</p>
+<h2 id="plain-css-imports" tabindex="-1">Plain <span class="caps">CSS</span> <code>@import</code>s<a class="anchor" href="#plain-css-imports"><span class="visuallyhidden">Plain <span class="caps">CSS</span> @imports<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✓</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>partial</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✓</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>By default, LibSass handles plain <span class="caps">CSS</span> imports correctly. However, any <a href="/documentation/js-api/interfaces/LegacySharedOptions#importer">custom
+importers</a> will incorrectly apply to plain-<span class="caps">CSS</span> <code>@import</code> rules, making it
+possible for those rules to load Sass<span class="widont">&nbsp;</span>files.</p>
+  </div>
+<p>Because <code>@import</code> is also defined in <span class="caps">CSS</span>, Sass needs a way of compiling plain
+<span class="caps">CSS</span> <code>@import</code>s without trying to import the files at compile time. To accomplish
+this, and to ensure <span class="caps">SCSS</span> is as much of a superset of <span class="caps">CSS</span> as possible, Sass will
+compile any <code>@import</code>s with the following characteristics to plain <span class="caps">CSS</span><span class="widont">&nbsp;</span>imports:</p>
+<ul>
+<li>Imports where the <span class="caps">URL</span> ends with <code>.css</code>.</li>
+<li>Imports where the <span class="caps">URL</span> begins <code>http://</code> or <code>https://</code>.</li>
+<li>Imports where the <span class="caps">URL</span> is written as a <code>url()</code>.</li>
+<li>Imports that have media<span class="widont">&nbsp;</span>queries.</li>
+</ul>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-plain-css-imports-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-plain-css-imports-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-plain-css-imports-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-plain-css-imports-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@import</span> <span class="token string">"theme.css"</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@import</span> <span class="token string">"http://fonts.googleapis.com/css?family=Droid+Sans"</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@import</span> <span class="token url">url</span><span class="token punctuation">(</span>theme<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@import</span> <span class="token string">"landscape"</span> screen <span class="token operator">and</span> <span class="token punctuation">(</span><span class="token property">orientation</span><span class="token punctuation">:</span> landscape<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;</code></pre></div>
+<div id="example-plain-css-imports-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@import</span> "theme.css"</span>&#10;<span class="token atrule-line"><span class="token atrule">@import</span> "http://fonts.googleapis.com/css?family<span class="token atrule">=</span>Droid<span class="token atrule">+</span>Sans"</span>&#10;<span class="token atrule-line"><span class="token atrule">@import</span> url(theme)</span>&#10;<span class="token atrule-line"><span class="token atrule">@import</span> "landscape" screen and (orientation: landscape)</span>&#10;</code></pre></div>
+<div id="example-plain-css-imports-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@import</span> <span class="token string">"theme.css"</span><span class="token punctuation">;</span></span>&#10;<span class="token atrule"><span class="token rule">@import</span> <span class="token string">"http://fonts.googleapis.com/css?family=Droid+Sans"</span><span class="token punctuation">;</span></span>&#10;<span class="token atrule"><span class="token rule">@import</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>theme<span class="token punctuation">)</span></span><span class="token punctuation">;</span></span>&#10;<span class="token atrule"><span class="token rule">@import</span> <span class="token string">"landscape"</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">orientation</span><span class="token punctuation">:</span> landscape<span class="token punctuation">)</span><span class="token punctuation">;</span></span>&#10;</code></pre></div>
+</div>
+<h3 id="interpolation" tabindex="-1">Interpolation<a class="anchor" href="#interpolation"><span class="visuallyhidden">Interpolation permalink</span></a></h3>
+<p>Although Sass imports can’t use <a href="/documentation/interpolation">interpolation</a> (to make sure it’s always
+possible to tell where <a href="/documentation/at-rules/mixin">mixins</a>, <a href="/documentation/at-rules/function">functions</a>, and <a href="/documentation/variables">variables</a> come from),
+plain <span class="caps">CSS</span> imports can. This makes it possible to dynamically generate imports,
+for example based on mixin<span class="widont">&nbsp;</span>parameters.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-interpolation-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-interpolation-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-interpolation-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-interpolation-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@mixin</span> <span class="token function">google-font</span><span class="token punctuation">(</span><span class="token variable">$family</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token keyword">@import</span> <span class="token url">url</span><span class="token punctuation">(</span><span class="token string">"http://fonts.googleapis.com/css?family=#{$family}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token keyword">@include</span> <span class="token function">google-font</span><span class="token punctuation">(</span><span class="token string">"Droid Sans"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;</code></pre></div>
+<div id="example-interpolation-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@mixin</span> google-font($family)</span>&#10;<span class="token atrule-line">  <span class="token atrule">@import</span> url("http://fonts.googleapis.com/css?family<span class="token atrule">=</span>#{$family}")</span>&#10;&#10;&#10;<span class="token atrule-line"><span class="token atrule">@include</span> google-font("Droid Sans")</span>&#10;</code></pre></div>
+<div id="example-interpolation-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@import</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"http://fonts.googleapis.com/css?family=Droid Sans"</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span></span>&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<h2 id="import-and-modules" tabindex="-1">Import and Modules<a class="anchor" href="#import-and-modules"><span class="visuallyhidden">Import and Modules<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.23.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass currently supports <code>@use</code>. Users of other implementations must
+use the <a href="/documentation/at-rules/import"><code>@import</code> rule</a> instead.</p>
+  </div>
+<p>Sass’s <a href="/documentation/at-rules/use">module system</a> integrates seamlessly with <code>@import</code>, whether you’re
+importing a file that contains <code>@use</code> rules or loading a file that contains
+imports as a module. We want to make the transition from <code>@import</code> to <code>@use</code> as
+smooth as<span class="widont">&nbsp;</span>possible.</p>
+<h3 id="importing-a-module-system-file" tabindex="-1">Importing a Module-System File<a class="anchor" href="#importing-a-module-system-file"><span class="visuallyhidden">Importing a Module-System File<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>When you import a file that contains <code>@use</code> rules, the importing file has access
+to all members (even private members) defined directly in that file, but <em>not</em>
+any members from modules that file has loaded. However, if that file contains
+<a href="/documentation/at-rules/forward"><code>@forward</code> rules</a>, the importing file will have access to forwarded members.
+This means that you can import a library that was written to be used with the
+module<span class="widont">&nbsp;</span>system.</p>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>When a file with <code>@use</code> rules is imported, all the <span class="caps">CSS</span> transitively loaded by
+those is included in the resulting stylesheet, even if it’s already been
+included by another import. If you’re not careful, this can result in bloated
+<span class="caps">CSS</span><span class="widont">&nbsp;</span>output!</p>
+</div>
+<h4 id="import-only-files" tabindex="-1">Import-Only Files<a class="anchor" href="#import-only-files"><span class="visuallyhidden">Import-Only Files permalink</span></a></h4>
+<p>An <span class="caps">API</span> that makes sense for <code>@use</code> might not make sense for <code>@import</code>. For
+example, <code>@use</code> adds a namespace to all members by default so you can safely use
+short names, but <code>@import</code> doesn’t so you might need something longer. If you’re
+a library author, you may be concerned that if you update your library to use
+the new module system, your existing <code>@import</code>-based users will<span class="widont">&nbsp;</span>break.</p>
+<p>To make this easier, Sass also supports <em>import-only files</em>. If you name a file
+<code>&lt;name&gt;.import.scss</code>, it will only be loaded for imports, not for <code>@use</code>s. This
+way, you can retain compatibility for <code>@import</code> users while still providing a
+nice <span class="caps">API</span> for users of the new module<span class="widont">&nbsp;</span>system.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-import-only-files-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-import-only-files-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-import-only-files-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// _reset.scss</span>&#10;&#10;<span class="token comment">// Module system users write `@include reset.list()`.</span>&#10;<span class="token keyword">@mixin</span> <span class="token function">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token selector">ul </span><span class="token punctuation">{</span>&#10;    <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;    <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;    <span class="token property">list-style</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// _reset.import.scss</span>&#10;&#10;<span class="token comment">// Legacy import users can keep writing `@include reset-list()`.</span>&#10;<span class="token keyword">@forward</span> <span class="token string">"reset"</span> <span class="token module-modifier keyword">as</span> reset-*<span class="token punctuation">;</span>&#10;</code></pre></div>
+<div id="example-import-only-files-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// _reset.sass</span>&#10;&#10;<span class="token comment">// Module system users write `@include reset.list()`.</span>&#10;<span class="token atrule-line"><span class="token atrule">@mixin</span> list()</span>&#10;  <span class="token selector">ul</span>&#10;<span class="token property-line">    <span class="token property">margin</span><span class="token punctuation">:</span> 0</span>&#10;<span class="token property-line">    <span class="token property">padding</span><span class="token punctuation">:</span> 0</span>&#10;<span class="token property-line">    <span class="token property">list-style</span><span class="token punctuation">:</span> none</span>&#10;&#10;&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// _reset.import.sass</span>&#10;&#10;<span class="token comment">// Legacy import users can keep writing `@include reset-list()`.</span>&#10;<span class="token atrule-line"><span class="token atrule">@forward</span> "reset" as reset-*</span>&#10;</code></pre></div>
+</div>
+<h4 id="configuring-modules-through-imports" tabindex="-1">Configuring Modules Through Imports<a class="anchor" href="#configuring-modules-through-imports"><span class="visuallyhidden">Configuring Modules Through Imports<span class="widont">&nbsp;</span>permalink</span></a></h4>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.24.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>You can <a href="/documentation/at-rules/use#configuration">configure modules</a> that are loaded through an <code>@import</code> by defining
+global variables prior the <code>@import</code> that first loads that<span class="widont">&nbsp;</span>module.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-configuring-modules-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-configuring-modules-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-configuring-modules-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-configuring-modules-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// _library.scss</span>&#10;<span class="token property"><span class="token variable">$color</span></span><span class="token punctuation">:</span> blue <span class="token statement keyword">!default</span><span class="token punctuation">;</span>&#10;&#10;<span class="token selector">a </span><span class="token punctuation">{</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$color</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// _library.import.scss</span>&#10;<span class="token keyword">@forward</span> <span class="token string">'library'</span> <span class="token module-modifier keyword">as</span> lib-*<span class="token punctuation">;</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// style.sass</span>&#10;<span class="token property"><span class="token variable">$lib-color</span></span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>&#10;<span class="token keyword">@import</span> <span class="token string">"library"</span><span class="token punctuation">;</span>&#10;</code></pre></div>
+<div id="example-configuring-modules-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$color</span><span class="token punctuation">:</span> blue !default</span>&#10;&#10;<span class="token selector">a</span>&#10;<span class="token property-line">  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$color</span></span>&#10;&#10;&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// _library.import.sass</span>&#10;<span class="token atrule-line"><span class="token atrule">@forward</span> 'library' as lib-*</span>&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// style.sass</span>&#10;<span class="token variable-line"><span class="token variable">$lib-color</span><span class="token punctuation">:</span> green</span>&#10;<span class="token atrule-line"><span class="token atrule">@import</span> "library"</span>&#10;</code></pre></div>
+<div id="example-configuring-modules-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">a</span> <span class="token punctuation">{</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Modules are only loaded once, so if you change the configuration after you
+<code>@import</code> a module for the first time (even indirectly), the change will be
+ignored if you <code>@import</code> the module<span class="widont">&nbsp;</span>again.</p>
+</div>
+<h3 id="loading-a-module-that-contains-imports" tabindex="-1">Loading a Module That Contains Imports<a class="anchor" href="#loading-a-module-that-contains-imports"><span class="visuallyhidden">Loading a Module That Contains Imports<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>When you use <code>@use</code> (or <code>@forward</code>) load a module that uses <code>@import</code>, that
+module will contain all the public members defined by the stylesheet you load
+<em>and</em> everything that stylesheet transitively imports. In other words,
+everything that’s imported is treated as though it were written in one big<span class="widont">&nbsp;</span>stylesheet.</p>
+<p>This makes it easy to convert start using <code>@use</code> in a stylesheet even before all
+the libraries you depend on have converted to the new module system. Be aware,
+though, that if they do convert their APIs may well<span class="widont">&nbsp;</span>change!</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/at-rules/import/ -->
+  </body>
+</html>

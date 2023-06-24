@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Breaking Change: Strict Function Units</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation breaking-changes function-units">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Breaking Change: Strict Function<span class="widont">&nbsp;</span>Units</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section open selected">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="open selected">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="open selected">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+  <div class="sl-c-introduction">
+    <p>Various built-in functions will become stricter in which units they allow and will handle those units more consistently. This makes Sass more compatible with the <span class="caps">CSS</span> spec and helps catch errors more<span class="widont">&nbsp;</span>quickly.</p>
+
+  </div>
+
+
+
+              <h2 id="hue" tabindex="-1">Hue<a class="anchor" href="#hue"><span class="visuallyhidden">Hue permalink</span></a></h2>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.32.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>When specifying a color’s hue, <span class="caps">CSS</span> allows any <a href="https://drafts.csswg.org/css-values-4/#angles">angle unit</a> (<code>deg</code>, <code>grad</code>,
+<code>rad</code>, or <code>turn</code>). It also allows a unitless number, which is interpreted as
+<code>deg</code>. Historically, Sass has allowed <em>any</em> unit, and interpreted it as <code>deg</code>.
+This is particularly problematic because it meant that the valid <span class="caps">CSS</span> expression
+<code>hsl(0.5turn, 100%, 50%)</code> would be allowed by Sass but interpreted entirely<span class="widont">&nbsp;</span>wrong.</p>
+<p>To fix this issue and bring Sass in line with the <span class="caps">CSS</span> spec, we’re making changes
+in multiple<span class="widont">&nbsp;</span>phases:</p>
+<h3 id="phase-1" tabindex="-1">Phase 1<a class="anchor" href="#phase-1"><span class="visuallyhidden">Phase 1 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.32.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>At first, Sass just emitted a deprecation warning if you passed a number with a
+unit other than <code>deg</code> as a hue to any function. Passing a unitless number is
+still<span class="widont">&nbsp;</span>allowed.</p>
+<h3 id="phase-2" tabindex="-1">Phase 2<a class="anchor" href="#phase-2"><span class="visuallyhidden">Phase 2 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.52.1</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Next, we changed the way angle units are handled for hue parameters to match the
+<span class="caps">CSS</span> spec. This means that numbers with <code>grad</code>, <code>rad</code>, or <code>turn</code> units will be
+converted to <code>deg</code>: <code>0.5turn</code> will be converted to <code>180deg</code>, <code>100grad</code> will be
+converted to <code>90deg</code>, and so<span class="widont">&nbsp;</span>on.</p>
+<p>Because this change is necessary to preserve <span class="caps">CSS</span> compatibility, according to the
+<a href="https://github.com/sass/dart-sass#compatibility-policy">Dart Sass compatibility policy</a> it was made with only a minor version bump.
+However, it changes as little behavior as possible to ensure that Sass
+interprets all valid <span class="caps">CSS</span> according to the <span class="caps">CSS</span><span class="widont">&nbsp;</span>spec.</p>
+<h3 id="phase-3" tabindex="-1">Phase 3<a class="anchor" href="#phase-3"><span class="visuallyhidden">Phase 3 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Finally, in Dart Sass 2.0.0 color functions will throw errors if they’re passed
+a hue parameter with a non-angle unit. Unitless hues will still be<span class="widont">&nbsp;</span>allowed.</p>
+<h2 id="saturation-and-lightness" tabindex="-1">Saturation and Lightness<a class="anchor" href="#saturation-and-lightness"><span class="visuallyhidden">Saturation and Lightness<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>When specifying an <span class="caps">HSL</span> color’s saturation and lightness, <span class="caps">CSS</span> only allows <code>%</code>
+units. Even unitless numbers aren’t allowed (unlike for the hue). Historically,
+Sass has allowed <em>any</em> unit, and interpreted it as <code>%</code>. You could even write
+<code>hsl(0, 100px, 50s)</code> and Sass would return the color <code>red</code>.</p>
+<p>To fix this issue and bring Sass in line with the <span class="caps">CSS</span> spec, we’re making changes
+in two<span class="widont">&nbsp;</span>phases:</p>
+<h3 id="phase-1-1" tabindex="-1">Phase 1<a class="anchor" href="#phase-1-1"><span class="visuallyhidden">Phase 1 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.32.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Currently, Sass just emits a deprecation warning if you pass a number with no
+unit or a unit other than <code>%</code> as a lightness or saturation to any<span class="widont">&nbsp;</span>function.</p>
+<h3 id="phase-2-1" tabindex="-1">Phase 2<a class="anchor" href="#phase-2-1"><span class="visuallyhidden">Phase 2 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>In Dart Sass 2.0.0 color functions will throw errors if they’re passed a
+saturation or lightness parameter with no unit or a non-<code>%</code> unit.</p>
+<h2 id="alpha" tabindex="-1">Alpha<a class="anchor" href="#alpha"><span class="visuallyhidden">Alpha permalink</span></a></h2>
+<p>When specifying a color’s alpha value, <span class="caps">CSS</span> (as of <a href="https://www.w3.org/TR/css-color-4/#typedef-alpha-value">Colors Level 4</a>) allows
+either unitless values between 0 and 1 or <code>%</code> values between <code>0%</code> and <code>100%</code>. In
+most cases Sass follows this behavior, but the functions <code>color.adjust()</code> and
+<code>color.change()</code> have historically allowed <em>any</em> unit, and interpreted it as
+unitless. You could even write <code>color.change(red, $alpha: 1%)</code> and Sass would
+return the opaque color <code>black</code>.</p>
+<p>To fix this issue and bring Sass in line with the <span class="caps">CSS</span> spec, we’re making changes
+in three<span class="widont">&nbsp;</span>phases:</p>
+<h3 id="phase-1-2" tabindex="-1">Phase 1<a class="anchor" href="#phase-1-2"><span class="visuallyhidden">Phase 1 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.56.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Currently, Sass just emits a deprecation warning if you pass a number with any
+unit, including <code>%</code>, as an alpha value to <code>color.change()</code> or <code>color.adjust()</code>.</p>
+<h3 id="phase-2-2" tabindex="-1">Phase 2<a class="anchor" href="#phase-2-2"><span class="visuallyhidden">Phase 2 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Next, we’ll change the way <code>%</code> units are handled for the alpha argument to
+<code>color.change()</code> and <code>color.adjust()</code>. Alphas with unit <code>%</code> will be divided by
+<code>100%</code>, converting them to unitless numbers between 0 and<span class="widont">&nbsp;</span>1.</p>
+<p>Because this change is a bug fix that improves consistency with other Sass
+functions, it will be made with only a minor version bump. It will be changed at
+minimum three months after Phase 1 is released, to give users time to adjust
+their code and avoid the<span class="widont">&nbsp;</span>bug.</p>
+<h3 id="phase-3-1" tabindex="-1">Phase 3<a class="anchor" href="#phase-3-1"><span class="visuallyhidden">Phase 3 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Finally, in Dart Sass 2.0.0 <code>color.change()</code> and <code>color.adjust()</code> will throw
+errors if they’re passed an alpha parameter with a non-<code>%</code> unit. Unitless alphas
+will still be<span class="widont">&nbsp;</span>allowed.</p>
+<h2 id="math-random" tabindex="-1"><code>math.random()</code><a class="anchor" href="#math-random"><span class="visuallyhidden">math.random() permalink</span></a></h2>
+<p><a href="/documentation/modules/math#random">The <code>math.random()</code> function</a> has historically ignored units in <code>$limit</code> and
+returned a unitless value. For example <code>math.random(100px)</code> would drop “px” and
+return a value like <code>42</code>.</p>
+<p>A future version of Sass will stop ignoring units for the <code>$limit</code> argument and
+return a random integer with the same<span class="widont">&nbsp;</span>units.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-function-units-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-function-units-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-function-units-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// Future Sass, doesn't work yet!</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">random</span><span class="token punctuation">(</span>100px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 42px</span>&#10;</code></pre></div>
+<div id="example-function-units-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// Future Sass, doesn't work yet!</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.random(100px)  // 42px</span>&#10;</code></pre></div>
+</div>
+<h3 id="phase-1-3" tabindex="-1">Phase 1<a class="anchor" href="#phase-1-3"><span class="visuallyhidden">Phase 1 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.54.5</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Currently, Sass emits a deprecation warning if you pass a <code>$limit</code> with units to
+<code>math.random()</code>.</p>
+<h3 id="phase-2-3" tabindex="-1">Phase 2<a class="anchor" href="#phase-2-3"><span class="visuallyhidden">Phase 2 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>In Dart Sass 2.0.0, passing a <code>$limit</code> number with units will be an<span class="widont">&nbsp;</span>error.</p>
+<h3 id="phase-3-2" tabindex="-1">Phase 3<a class="anchor" href="#phase-3-2"><span class="visuallyhidden">Phase 3 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>In a minor release after Dart Sass 2.0.0, passing a <code>$limit</code> number with units
+to the <code>math.random()</code> function will be allowed again. It will return a random
+integer the same units as <code>$limit</code>, instead of a unitless<span class="widont">&nbsp;</span>number.</p>
+<h2 id="weight" tabindex="-1">Weight<a class="anchor" href="#weight"><span class="visuallyhidden">Weight permalink</span></a></h2>
+<p>The <a href="/documentation/modules/color#mix"><code>color.mix()</code> function</a> and <a href="/documentation/modules/color#invert"><code>color.invert()</code> function</a> have both
+historically ignored units in their <code>$weight</code> arguments, despite that argument
+conceptually representing a percentage. A future version of Sass will require
+the unit <code>%</code>.</p>
+<h3 id="phase-1-4" tabindex="-1">Phase 1<a class="anchor" href="#phase-1-4"><span class="visuallyhidden">Phase 1 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.56.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Currently, Sass emits a deprecation warning if you pass a <code>$weight</code> with no
+units or with units other than <code>%</code> to <code>color.mix()</code> or <code>color.invert()</code>.</p>
+<h3 id="phase-2-4" tabindex="-1">Phase 2<a class="anchor" href="#phase-2-4"><span class="visuallyhidden">Phase 2 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>In Dart Sass 2.0.0, <code>color.mix()</code> and <code>color.invert()</code> will throw errors if
+they’re passed a <code>$weight</code> with no unit or a non-<code>%</code> unit.</p>
+<h2 id="index" tabindex="-1">Index<a class="anchor" href="#index"><span class="visuallyhidden">Index permalink</span></a></h2>
+<p>The <a href="/documentation/modules/list#nth"><code>list.nth()</code> function</a> and <a href="/documentation/modules/list#set-nth"><code>list.set-nth()</code> function</a> have both
+historically ignored units in their <code>$n</code> arguments. A future version of Sass
+will forbid any<span class="widont">&nbsp;</span>units.</p>
+<h3 id="phase-1-5" tabindex="-1">Phase 1<a class="anchor" href="#phase-1-5"><span class="visuallyhidden">Phase 1 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.56.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Currently, Sass emits a deprecation warning if you pass a <code>$weight</code> with no
+units or with units other than <code>%</code> to <code>color.mix()</code> or <code>color.invert()</code>.</p>
+<h3 id="phase-2-5" tabindex="-1">Phase 2<a class="anchor" href="#phase-2-5"><span class="visuallyhidden">Phase 2 permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>In Dart Sass 2.0.0, <code>list.nth()</code> and <code>list.set-nth()</code> will throw errors if
+they’re passed an index <code>$n</code> with a<span class="widont">&nbsp;</span>unit.</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/breaking-changes/function-units/ -->
+  </body>
+</html>

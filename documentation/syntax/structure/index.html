@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Structure of a Stylesheet</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation syntax structure">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Structure of a<span class="widont">&nbsp;</span>Stylesheet</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section open selected">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="open selected">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary sl-l-large-holy-grail__complementary--contents">
+              
+                
+                
+                
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    <ul><li>
+      <a href="#statements" class="section open">Statements</a><ul><li class="overview">
+      <a href="#statements" >Overview</a>
+    </li><li>
+      <a href="#universal-statements" class="open">Universal Statements</a></li><li>
+      <a href="#css-statements" class="open"><span class="caps">CSS</span> Statements</a></li><li>
+      <a href="#top-level-statements" class="open">Top-Level Statements</a></li><li>
+      <a href="#other-statements" class="open">Other Statements</a></li></ul>
+</li><li>
+      <a href="#expressions" class="section open">Expressions</a><ul><li class="overview">
+      <a href="#expressions" >Overview</a>
+    </li><li>
+      <a href="#literals" class="open">Literals</a></li><li>
+      <a href="#operations" class="open">Operations</a></li><li>
+      <a href="#other-expressions" class="open">Other Expressions</a></li></ul>
+</li></ul>
+
+                  </nav>
+                
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+  <div class="sl-c-introduction">
+    <p>Just like <span class="caps">CSS</span>, most Sass stylesheets are mainly made up of style rules that contain property declarations. But Sass stylesheets have many more features that can exist alongside<span class="widont">&nbsp;</span>these.</p>
+
+  </div>
+
+
+
+              <h2 id="statements" tabindex="-1">Statements<a class="anchor" href="#statements"><span class="visuallyhidden">Statements permalink</span></a></h2>
+<p>A Sass stylesheet is made up of a series of <em>statements</em>, which are evaluated in
+order to build the resulting <span class="caps">CSS</span>. Some statements may have <em>blocks</em>, defined
+using <code>{</code> and <code>}</code>, which contain other statements. For example, a style rule is
+a statement with a block. That block contains other statements, such as property<span class="widont">&nbsp;</span>declarations.</p>
+<p>In <span class="caps">SCSS</span>, statements are separated by semicolons (which are optional if the
+statement uses a block). In the indented syntax, they’re just separated by<span class="widont">&nbsp;</span>newlines.</p>
+<h3 id="universal-statements" tabindex="-1">Universal Statements<a class="anchor" href="#universal-statements"><span class="visuallyhidden">Universal Statements permalink</span></a></h3>
+<p>These types of statements can be used anywhere in a Sass<span class="widont">&nbsp;</span>stylesheet:</p>
+<ul>
+<li><a href="/documentation/variables">Variable declarations</a>, like <code>$var: value</code>.</li>
+<li><a href="/documentation/at-rules/control">Flow control at-rules</a>, like <code>@if</code> and
+<code>@each</code>.</li>
+<li>The <a href="/documentation/at-rules/error"><code>@error</code></a>,
+<a href="/documentation/at-rules/warn"><code>@warn</code></a>, and
+<a href="/documentation/at-rules/debug"><code>@debug</code></a> rules.</li>
+</ul>
+<h3 id="css-statements" tabindex="-1"><span class="caps">CSS</span> Statements<a class="anchor" href="#css-statements"><span class="visuallyhidden"><span class="caps">CSS</span> Statements permalink</span></a></h3>
+<p>These statements produce <span class="caps">CSS</span>. They can be used anywhere except within a
+<code>@function</code>:</p>
+<ul>
+<li><a href="/documentation/style-rules">Style rules</a>, like <code>h1 { /* ... */ }</code>.</li>
+<li><a href="/documentation/at-rules/css"><span class="caps">CSS</span> at-rules</a>, like <code>@media</code> and <code>@font-face</code>.</li>
+<li><a href="/documentation/at-rules/mixin">Mixin uses</a> using <code>@include</code>.</li>
+<li>The <a href="/documentation/at-rules/at-root"><code>@at-root</code> rule</a>.</li>
+</ul>
+<h3 id="top-level-statements" tabindex="-1">Top-Level Statements<a class="anchor" href="#top-level-statements"><span class="visuallyhidden">Top-Level Statements permalink</span></a></h3>
+<p>These statements can only be used at the top level of a stylesheet, or nested
+within a <span class="caps">CSS</span> statement at the top<span class="widont">&nbsp;</span>level:</p>
+<ul>
+<li><a href="/documentation/at-rules/use">Module loads</a>, using <code>@use</code>.</li>
+<li><a href="/documentation/at-rules/import">Imports</a>, using <code>@import</code>.</li>
+<li><a href="/documentation/at-rules/mixin">Mixin definitions</a> using <code>@mixin</code>.</li>
+<li><a href="/documentation/at-rules/function">Function definitions</a> using <code>@function</code>.</li>
+</ul>
+<h3 id="other-statements" tabindex="-1">Other Statements<a class="anchor" href="#other-statements"><span class="visuallyhidden">Other Statements permalink</span></a></h3>
+<ul>
+<li><a href="/documentation/style-rules/declarations">Property declarations</a> like <code>width: 100px</code> may only be used within style rules and some <span class="caps">CSS</span><span class="widont">&nbsp;</span>at-rules.</li>
+<li>The <a href="/documentation/at-rules/extend"><code>@extend</code> rule</a> may only be used within
+style<span class="widont">&nbsp;</span>rules.</li>
+</ul>
+<h2 id="expressions" tabindex="-1">Expressions<a class="anchor" href="#expressions"><span class="visuallyhidden">Expressions permalink</span></a></h2>
+<p>An <em>expression</em> is anything that goes on the right-hand side of a property or
+variable declaration. Each expression produces a <em><a href="/documentation/values">value</a></em>. Any valid <span class="caps">CSS</span>
+property value is also a Sass expression, but Sass expressions are much more
+powerful than plain <span class="caps">CSS</span> values. They’re passed as arguments to <a href="/documentation/at-rules/mixin">mixins</a> and
+<a href="/documentation/at-rules/function">functions</a>, used for control flow with the <a href="/documentation/at-rules/control/if"><code>@if</code> rule</a>, and manipulated
+using <a href="/documentation/operators/numeric">arithmetic</a>. We call Sass’s expression syntax <em>SassScript</em>.</p>
+<h3 id="literals" tabindex="-1">Literals<a class="anchor" href="#literals"><span class="visuallyhidden">Literals permalink</span></a></h3>
+<p>The simplest expressions just represent static<span class="widont">&nbsp;</span>values:</p>
+<ul>
+<li><a href="/documentation/values/numbers">Numbers</a>, which may or may not have units,
+like <code>12</code> or <code>100px</code>.</li>
+<li><a href="/documentation/values/strings">Strings</a>, which may or may not have quotes,
+like <code>&quot;Helvetica Neue&quot;</code> or <code>bold</code>.</li>
+<li><a href="/documentation/values/colors">Colors</a>, which can be referred to by their hex
+representation or by name, like <code>#c6538c</code> or <code>blue</code>.</li>
+<li>The <a href="/documentation/values/booleans">boolean</a> literals <code>true</code> or <code>false</code>.</li>
+<li>The singleton <a href="/documentation/values/null"><code>null</code></a>.</li>
+<li><a href="/documentation/values/lists">Lists of values</a>, which may be separated by
+spaces or commas and which may be enclosed in square brackets or no brackets
+at all, like <code>1.5em 1em 0 2em</code>, <code>Helvetica, Arial, sans-serif</code>, or
+<code>[col1-start]</code>.</li>
+<li><a href="/documentation/values/maps">Maps</a> that associate values with keys, like
+<code>(&quot;background&quot;: red, &quot;foreground&quot;: pink)</code>.</li>
+</ul>
+<h3 id="operations" tabindex="-1">Operations<a class="anchor" href="#operations"><span class="visuallyhidden">Operations permalink</span></a></h3>
+<p>Sass defines syntax for a number of<span class="widont">&nbsp;</span>operations:</p>
+<ul>
+<li><a href="/documentation/operators/equality"><code>==</code> and <code>!=</code></a> are used to check if two
+values are the<span class="widont">&nbsp;</span>same.</li>
+<li><a href="/documentation/operators/numeric"><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and <code>%</code></a> have their
+usual mathematical meaning for numbers, with special behaviors for units that
+matches the use of units in scientific<span class="widont">&nbsp;</span>math.</li>
+<li><a href="/documentation/operators/relational"><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, and <code>&gt;=</code></a> check whether
+two numbers are greater or less than one<span class="widont">&nbsp;</span>another.</li>
+<li><a href="/documentation/operators/boolean"><code>and</code>, <code>or</code>, and <code>not</code></a> have the usual
+boolean behavior. Sass considers every value “true” except for <code>false</code> and
+<code>null</code>.</li>
+<li><a href="/documentation/operators/string"><code>+</code>, <code>-</code>, and <code>/</code></a> can be used to
+concatenate<span class="widont">&nbsp;</span>strings.</li>
+<li><a href="/documentation/operators#parentheses"><code>(</code> and <code>)</code></a> can be used to explicitly
+control the precedence order of<span class="widont">&nbsp;</span>operations.</li>
+</ul>
+<h3 id="other-expressions" tabindex="-1">Other Expressions<a class="anchor" href="#other-expressions"><span class="visuallyhidden">Other Expressions permalink</span></a></h3>
+<ul>
+<li><a href="/documentation/variables">Variables</a>, like <code>$var</code>.</li>
+<li><a href="/documentation/at-rules/function">Function calls</a>, like <code>nth($list, 1)</code> or
+<code>var(--main-bg-color)</code>, which may call Sass core library functions or
+user-defined functions, or which may be compiled directly to<span class="widont">&nbsp;</span><span class="caps">CSS</span>.</li>
+<li><a href="/documentation/syntax/special-functions">Special functions</a>, like
+<code>calc(1px + 100%)</code> or <code>url(http://myapp.com/assets/logo.png)</code>, that have their
+own unique parsing<span class="widont">&nbsp;</span>rules.</li>
+<li><a href="/documentation/style-rules/parent-selector">The parent selector</a>, <code>&amp;</code>.</li>
+<li>The value <code>!important</code>, which is parsed as an unquoted<span class="widont">&nbsp;</span>string.</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/syntax/structure/ -->
+  </body>
+</html>

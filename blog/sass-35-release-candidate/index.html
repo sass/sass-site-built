@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Sass 3.5 Release Candidate</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 008-sass-35-release-candidate">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Sass 3.5 Release<span class="widont">&nbsp;</span>Candidate</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 30 August 2016 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>I’ve just pushed the button to release Sass 3.5.0-rc.1. If it seems like it’s
+been a while since the last release, that’s true! But there’s a good reason. We
+decided to enter feature freeze after the 3.5 release to give
+<a href="/libsass">libsass</a>, the super-speedy C++ implementation of Sass, time to reach
+feature parity with Sass 3.4. Libsass is much younger than Sass, and C++ is
+generally a slower language to work in than Ruby, so this took some time. But it
+paid off: libsass is now almost 100% compatible with Ruby Sass, differing only
+in a few small<span class="widont">&nbsp;</span>bugs.</p>
+<p>After the feature freeze lifted, we were primarily focused on designing the new
+module system that will be the central feature of Sass 4.0. But we also found
+some time to add some new features, which are the focus of this<span class="widont">&nbsp;</span>release.</p>
+<h2 id="css-custom-property-support" tabindex="-1"><span class="caps">CSS</span> Custom Property Support<a class="anchor" href="#css-custom-property-support"><span class="visuallyhidden"><span class="caps">CSS</span> Custom Property Support<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>Sass 3.5 now fully supports <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables"><span class="caps">CSS</span> custom
+properties</a>.
+These posed a particular challenge for us, since the custom property syntax is
+<em>extremely</em> broad. You can put just about anything on the right-hand side. For
+example, this is totally valid, meaningful<span class="widont">&nbsp;</span><span class="caps">CSS</span>:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.wacky-property</span> <span class="token punctuation">{</span>
+  <span class="token property">--property</span><span class="token punctuation">:</span> .%<span class="token punctuation">(</span>#@$~`^[^_+]&lt;<span class="token punctuation">;</span><span class="token punctuation">:</span><span class="token string">"}"</span>|?<span class="token punctuation">)</span>*+<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In particular, this means that SassScript expressions are <em>also</em> valid <span class="caps">CSS</span>,
+which poses a problem for our goal of <span class="caps">CSS</span> compatibility. Wherever possible, we
+want valid <span class="caps">CSS</span> to mean the same thing in Sass as it does in <span class="caps">CSS</span>. So treating
+custom properties just like normal properties—which we did in 3.4—wasn’t a good
+solution. Not only was some valid <span class="caps">CSS</span> interpreted differently, some of it wasn’t
+even possible. The following <span class="caps">CSS</span>, taken straight from the Polymer docs, was next
+to impossible to represent in<span class="widont">&nbsp;</span>Sass:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">:host</span> <span class="token punctuation">{</span>
+  <span class="token selector">--my-toolbar-theme:</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid gray<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>On the other hand, we needed <em>some</em> way of including dynamic SassScript values
+in custom properties. So we decided on a compromise: we’d treat custom
+properties like we do selectors and at-rule values, and only allow <code>#{}</code> as a
+means of including Sass values. While technically this is plain <span class="caps">CSS</span>, it’s a very
+small surface area and it’s very easy to escape, so we’re not too worried. This
+means that in 3.5 you can<span class="widont">&nbsp;</span>write:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token selector">:host </span><span class="token punctuation">{</span>
+  <span class="token selector">--my-toolbar-theme: </span><span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">#{$toolbar-background}</span><span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid gray<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="new-data-type-first-class-functions" tabindex="-1">New Data Type: First-Class Functions<a class="anchor" href="#new-data-type-first-class-functions"><span class="visuallyhidden">New Data Type: First-Class Functions<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>In preparation for the module system that’s coming in Sass 4.0, 3.5 adds a new
+data type: first-class functions. This is just a way of referring to a function
+that’s more specific than just its name. You can get a first-class function by
+passing its name to <code>get-function($name)</code>, and you can pass it to <code>call()</code> where
+you used to pass the function<span class="widont">&nbsp;</span>name.</p>
+<p>You might be wondering, “Why is this useful? I could already just pass the
+function name.” Well, right now, Sass has global scope. All functions (as well
+as variables, mixins, and selectors) are visible to any code that’s executing
+later on. This makes some things, like <code>call()</code>, simple, but it also causes a
+lot of problems. It’s way too easy to accidentally overwrite a variable or
+function that was defined elsewhere, and it’s way too hard to figure out where
+any given name was originally<span class="widont">&nbsp;</span>defined.</p>
+<p>We aren’t quite ready to talk widely about our plans for the 4.0 module system,
+but one of the things we’re sure of is that it won’t use global scope. Each Sass
+file will only be able to see a limited number of the names that have been
+defined, and Sass libraries in particular won’t be able to see anything defined
+by the end-user stylesheets that import them. First-class functions allow users
+to pass functions they define to<span class="widont">&nbsp;</span>libraries.</p>
+<p>Any stylesheets that are currently passing around function names as strings
+should switch to passing first-class functions instead. To this end, calling
+<code>call()</code> with a string has been deprecated. It won’t actually break until 4.0,
+when it won’t be much use anyway, but we strongly encourage users to switch to
+<code>get-function()</code> immediately.</p>
+<h2 id="new-syntax-bracketed-lists" tabindex="-1">New Syntax: Bracketed Lists<a class="anchor" href="#new-syntax-bracketed-lists"><span class="visuallyhidden">New Syntax: Bracketed Lists<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>The new <a href="https://css-tricks.com/snippets/css/complete-guide-grid/"><span class="caps">CSS</span> Grid
+Layout</a> module added a
+new type of syntax: identifiers surrounded by square brackets. We’re always
+striving to be totally compatible with <span class="caps">CSS</span>, which meant we needed to support
+these brackets as well. Here’s what they look like in<span class="widont">&nbsp;</span><span class="caps">CSS</span>:</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.container</span> <span class="token punctuation">{</span>
+  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> [first] 40px [line2] 50px [line3] auto [col4-start] 50px [five] 40px [end]<span class="token punctuation">;</span>
+  <span class="token property">grid-template-rows</span><span class="token punctuation">:</span> [row1-start] 25% [row1-end] 100px [third-line] auto [last-line]<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The solution was clear: Sass already has a <a href="/documentation/values/lists/">list data
+type</a>, so we’d just allow lists
+to have square brackets. So <code>[first]</code> is just a list containing the unquoted
+string <code>first</code>. Like all Sass lists, bracketed lists can either be
+space-separated or comma-separated: <code>[foo bar baz]</code> and <code>[foo, bar, baz]</code> are
+both lists containing three<span class="widont">&nbsp;</span>elements.</p>
+<p>We’ve also added function support for bracketed lists. The <code>is-bracketed($list)</code>
+function returns whether a list is bracketed or not, and <code>join()</code> has a new
+<code>$bracketed</code> parameter that allows the caller to choose whether or not the
+resulting list will have brackets (by default, the result is bracketed if the
+first list<span class="widont">&nbsp;</span>is).</p>
+<h2 id="smaller-features" tabindex="-1">Smaller Features<a class="anchor" href="#smaller-features"><span class="visuallyhidden">Smaller Features permalink</span></a></h2>
+<p>We’ve added a <code>content-exists()</code> function that returns whether or not a content
+block was passed to the current mixin. This allows mixins to optionally take a
+content block, rather than having to define one mixin that takes content and one
+that does<span class="widont">&nbsp;</span>not.</p>
+<p>We’ve added the ability to add a trailing comma to argument lists. This matches
+the behavior of lists and<span class="widont">&nbsp;</span>maps.</p>
+<p>We’ve added a <code>$weight</code> parameter to the <code>invert()</code> function. This is a
+percentage between 0% and 100% that indicates how inverted the resulting color
+should be. It defaults to<span class="widont">&nbsp;</span>100%.</p>
+<h2 id="the-road-to-release" tabindex="-1">The Road to Release<a class="anchor" href="#the-road-to-release"><span class="visuallyhidden">The Road to Release<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>This is just a release candidate, but it’s in a place that we’d be happy
+shipping it as the final release. We’re not doing so because, now that we’ve
+reached feature compatibility with libsass, we’re committed to staying<span class="widont">&nbsp;</span>there.</p>
+<p>Unfortunately, since <a href="/blog/thank-you-marcel">Marcel Greter moved on from the
+project</a>, libsass has been moving pretty slowly lately.
+If you or anyone you know would be interested in working on a project that would
+benefit thousands of people, we’re still looking for new<span class="widont">&nbsp;</span>contributors!</p>
+<p>Until we have libsass compatibility, 3.5 will stay at a release candidate level.
+But don’t let that stop you from trying it out and letting us know what you
+think! We’re always interested in hearing feedback on <a href="https://groups.google.com/forum/#!forum/sass-lang">the mailing
+list</a>!</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/sass-35-release-candidate/ -->
+  </body>
+</html>

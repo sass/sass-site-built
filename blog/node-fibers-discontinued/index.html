@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: The Discontinuation of node-fibers</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 029-node-fibers-discontinued">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">The Discontinuation of<span class="widont">&nbsp;</span>node-fibers</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 26 March 2021 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>We have recently received the unfortunate but not entirely surprising news that
+<a href="https://github.com/laverdet/node-fibers/commit/8f2809869cc92c28c92880c4a38317ae3dbe654d">the <code>node-fibers</code> package has reached its end-of-life</a> and will not be updated
+for compatibility with Node 16. Dart Sass has historically allowed JavaScript
+users to pass in <code>node-fibers</code> to improve the performance of the asynchronous
+<code>render()</code> method, but going forward this will unfortunately no longer be an
+option in Node 16 and<span class="widont">&nbsp;</span>on.</p>
+<p>There are a number of <a href="#reclaiming-performance">alternative options</a> for reclaiming this lost
+performance, some of them which are available today, some which are in
+development, and some which are theoretical but could be made real with pull
+requests from users like you. Sadly, none of the options that are ready today
+are drop-in solutions with the same level of ease-of-use as <code>node-fibers</code>, so if
+that performance is crucial to you we recommend staying on Node 14 for the time<span class="widont">&nbsp;</span>being.</p>
+<h2 id="what-happened" tabindex="-1">What Happened?<a class="anchor" href="#what-happened"><span class="visuallyhidden">What Happened? permalink</span></a></h2>
+<p>In order to understand how we got here, it’s important to know two pieces of
+history. First, why does Dart Sass use <code>node-fibers</code> in the first place? And
+second, why is <code>node-fibers</code> dying?</p>
+<p><em>This section is fairly technical, so feel free to <a href="#reclaiming-performance">skip ahead</a> if you don’t care
+about the gory<span class="widont">&nbsp;</span>details.</em></p>
+<h3 id="fibers-in-sass" tabindex="-1">Fibers in Sass<a class="anchor" href="#fibers-in-sass"><span class="visuallyhidden">Fibers in Sass<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>Dart Sass inherited its <a href="/documentation/js-api">JavaScript <span class="caps">API</span></a> from the now-deprecated <a href="https://www.npmjs.com/package/node-sass">Node Sass</a>.
+This <span class="caps">API</span> has two main functions for compiling Sass files: <code>renderSync()</code> which
+synchronously returned the compiled <span class="caps">CSS</span>, and <code>render()</code> which instead takes a
+callback to which it passes the compiled <span class="caps">CSS</span> asynchronously. Only <code>render()</code>
+allowed asynchronous plugins, including widely-used importers such as webpack’s
+<a href="https://www.npmjs.com/package/sass-loader"><code>sass-loader</code></a>, so <code>render()</code> became very widely used in<span class="widont">&nbsp;</span>practice.</p>
+<p>For Node Sass, the performance difference between <code>render()</code> and <code>renderSync()</code>
+was negligible, because it was built on C++ code which had few restrictions on
+how it handled asynchrony. However, Dart Sass runs as pure JavaScript, which
+makes it subject to JavaScript’s strict async rules. Asynchrony in JavaScript is
+<em>contagious</em>, which means that if any function (such as an importer plugin) is
+asynchronous, then everything that calls it must be asynchronous, and so on
+until the entire program is<span class="widont">&nbsp;</span>asynchronous.</p>
+<p>And asynchrony in JavaScript isn’t free. Every asynchronous function call has to
+allocate callbacks, store them somewhere, and take a trip back to the event loop
+before invoking those callbacks, and that all takes time. In fact, it takes
+enough time that the asynchronous <code>render()</code> in Dart Sass tends to be 2-3x
+slower than <code>renderSync()</code>.</p>
+<p>Enter fibers. Fibers are a very cool concept, available in languages like Ruby
+and C++, that give the programmer more control over asynchronous functions. They
+can even allow a chunk of synchronous code (such as the Sass compiler) to call
+asynchronous callbacks (such as the webpack plugin). The <code>node-fibers</code> package
+did some arcane magick with the V8 virtual machine to implement Fibers in
+JavaScript, which allowed Dart Sass to use the fast synchronous code to
+implement the asynchronous <code>render()</code> <span class="caps">API</span>. And for a time, it was<span class="widont">&nbsp;</span>great.</p>
+<h3 id="the-death-of-fibers" tabindex="-1">The Death of Fibers<a class="anchor" href="#the-death-of-fibers"><span class="visuallyhidden">The Death of Fibers<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>Unfortunately, the arcane magick that <code>node-fibers</code> used involved accessing some
+parts of V8 that were not officially part of its public <span class="caps">API</span>. There was no
+guarantee that the interfaces they were using would stay the same from release
+to release, and indeed they tended to change fairly regularly. For a long time,
+those changes were small enough that it was possible to release a new version of
+<code>node-fibers</code> that supported them, but with Node.js 16 the luck ran<span class="widont">&nbsp;</span>out.</p>
+<p>The latest version of V8 involves some major overhauls to its internals. These
+will eventually allow it to implement some cool improvements, so its hard to
+begrudge, but a side effect is that the APIs <code>node-fibers</code> was using are
+completely gone without an obvious replacement. This is no one’s fault: since
+those interfaces weren’t part of V8’s public <span class="caps">API</span>, they were under no obligation
+to keep them stable. Sometimes in software that’s just the way things<span class="widont">&nbsp;</span>go.</p>
+<h2 id="reclaiming-performance" tabindex="-1">Reclaiming Performance<a class="anchor" href="#reclaiming-performance"><span class="visuallyhidden">Reclaiming Performance permalink</span></a></h2>
+<p>There are a few options for getting back the performance that’s lost by no
+longer being able to pass <code>node-fibers</code> to <code>sass.render()</code>. In order from
+nearest to longest<span class="widont">&nbsp;</span>term:</p>
+<h3 id="avoid-asynchronous-plugins" tabindex="-1">Avoid Asynchronous Plugins<a class="anchor" href="#avoid-asynchronous-plugins"><span class="visuallyhidden">Avoid Asynchronous Plugins<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>This is something you can do today. If it’s at all possible to make the plugins
+you pass in to Sass synchronous, you can use the <code>renderSync()</code> method which
+doesn’t need fibers to go fast. This may require rewriting some existing
+plugins, but it will pay dividends<span class="widont">&nbsp;</span>immediately.</p>
+<h3 id="embedded-dart-sass" tabindex="-1">Embedded Dart Sass<a class="anchor" href="#embedded-dart-sass"><span class="visuallyhidden">Embedded Dart Sass<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>While it’s not ready for prime-time yet, the Sass team is working on a project
+called “embedded Dart Sass”. This involves running Dart Sass as a <em>subprocess</em>,
+rather than a library, and communicating with it using a special protocol. This
+provides several important improvements over the existing<span class="widont">&nbsp;</span>alternatives:</p>
+<ul>
+<li>
+<p>Unlike running <code>sass</code> from the command line, this will still work with plugins
+like the webpack importer. In fact, we plan to match the existing JavaScript
+<span class="caps">API</span> as closely as possible. This will probably run asynchronous plugins <em>even
+faster</em> than synchronous<span class="widont">&nbsp;</span>ones.</p>
+</li>
+<li>
+<p>Unlike the existing <span class="caps">JS</span>-compiled version, this will use the Dart <span class="caps">VM</span>. Due to the
+more static nature of the Dart language, the Dart <span class="caps">VM</span> runs Sass substantially
+faster than Node.js, which will provide about a 2x speed improvement for large<span class="widont">&nbsp;</span>stylesheets.</p>
+</li>
+</ul>
+<p>The Node.js host for Embedded Sass is still in active development, but there’s
+<a href="https://www.npmjs.com/package/sass-embedded">a beta release</a> available (with minimal features) if you want to kick the<span class="widont">&nbsp;</span>tires.</p>
+<h3 id="worker-threads" tabindex="-1">Worker Threads<a class="anchor" href="#worker-threads"><span class="visuallyhidden">Worker Threads permalink</span></a></h3>
+<p>We’ve explored the possibility of running the pure-<span class="caps">JS</span> Dart Sass in a Node.js
+worker thread. Worker threads work a bit like fibers in that they make it
+possible for synchronous code to wait for asynchronous callbacks to run.
+Unfortunately, they’re also <em>extremely</em> restrictive about what sorts of
+information can be passed across the thread boundary, which makes it much harder
+to use them to wrap a complex <span class="caps">API</span> like<span class="widont">&nbsp;</span>Sass’s.</p>
+<p>At the moment, the Sass team is focused on Embedded Sass, so we don’t have the
+spare bandwidth to dive into worker threads as an alternative. That said, we’d
+be happy to help a motivated user implement this. If you’re interested, follow
+up on <a href="https://github.com/sass/dart-sass/issues/868">the GitHub issue</a>!</p>
+<h3 id="reanimating-node-fibers" tabindex="-1">Reanimating <code>node-fibers</code><a class="anchor" href="#reanimating-node-fibers"><span class="visuallyhidden">Reanimating node-fibers permalink</span></a></h3>
+<p>There’s one other potential solution, although it would take true dedication to
+turn into reality. It would in principle be possible to add a new <span class="caps">API</span> to V8 that
+would <em>officially</em> support the hooks <code>node-fibers</code> needs to do its good work.
+This would allow the package to return gloriously to life and Sass to make
+<code>render()</code> fast on into the<span class="widont">&nbsp;</span>future.</p>
+<p>The Sass team has contacted both the V8 team and the owner of <code>node-fibers</code>, and
+both of them are amenable to this idea in principle. While neither one has the
+time to see it through to completion themselves, they’ve expressed willingness
+to help an engineer who’s willing to give it a<span class="widont">&nbsp;</span>shot.</p>
+<p>This isn’t a contribution for the faint of heart, though: it requires knowledge
+of C++, a willingness to learn at least the basics of the <code>node-fibers</code> codebase
+and V8’s isolate APIs, and skills in both <span class="caps">API</span> design and human interaction to
+negotiate a stable <span class="caps">API</span> that will meet the needs of <code>node-fibers</code> <em>and</em> that the
+V8 team feels comfortable committing to maintain. But if you’re interested,
+please don’t hesitate to <a href="mailto:nweiz@google.com">reach out</a>!</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/node-fibers-discontinued/ -->
+  </body>
+</html>

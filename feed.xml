@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sass Blog</title>
+  <id>https://sass-lang.com/blog</id>
+  <link href="https://sass-lang.com/blog"/>
+  <link href="https://sass-lang.com/feed.xml" rel="self"/>
+  <updated>2023-05-20T00:00:00Z</updated>
+  <entry>
+    <title>Request for Comments: New Embedded Protocol</title>
+    <link href="https://sass-lang.com/blog/rfc-embedded-protocol-2/" rel="alternate"/>
+    <id>https://sass-lang.com/blog/rfc-embedded-protocol-2/</id>
+    <published>2023-05-20T00:00:00Z</published>
+    <updated>2023-05-20T00:00:00Z</updated>
+    <author>
+      <name>Natalie Weizenbaum</name>
+    </author>
+    <content type="html">&lt;p&gt;If you’re not an author of a host package for the Embedded Sass Protocol, you
+can skip this blog post—although if you’re a big enough nerd, you may find it
+interesting regardless!&lt;/p&gt;
+&lt;p&gt;We’re planning to make a number of breaking changes to the Embedded Sass
+Protocol, and we want your feedback before we lock in the new way of doing
+things. We intend to make a number of breaking changes all at once to keep the
+total number of disruptions to a minimum.&lt;/p&gt;
+&lt;p&gt;We’re planning two major breaking changes:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The Dart Sass embedded host will no longer be released as a separate
+executable. It will now be bundled into the main Dart Sass executable,
+accessible by running &lt;code&gt;sass --embedded&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Every packet in the embedded protocol now includes a compilation ID as part
+of the packet structure, rather than declaring it in the protocol buffer
+definitions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We’re using this opportunity to also introduce three much smaller breaking
+changes:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;The specification for the embedded protocol and the protocol buffer
+definition have been moved to &lt;a href=&#34;https://github.com/sass/sass/blob/main/spec/embedded-protocol.md&#34;&gt;the Sass language repository&lt;/a&gt; so that they can
+be updated at the same time as changes to the language and the JS API.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The embedded protocol now explicitly declares optional fields using the
+protocol buffers language feature. This means that “default values” for
+various fields are no longer considered to be unset.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;CompilationSuccess.loaded_urls&lt;/code&gt; field has been moved to
+&lt;code&gt;CompilationResult.loaded_urls&lt;/code&gt; so that it’s available even when a
+compilation fails. This allows watcher implementations to know which files to
+watch to redo a failed compilation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The repository-organization changes have already been made, but the changes to
+the protocol itself are fully documented &lt;a href=&#34;https://github.com/sass/sass/blob/main/accepted/embedded-protocol-2.md&#34;&gt;in a proposal in the language
+repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;combining-executables&#34; tabindex=&#34;-1&#34;&gt;Combining Executables&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/rfc-embedded-protocol-2/#combining-executables&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Combining Executables permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The primary benefit of folding Embedded Dart Sass into the main Dart Sass
+executable is to provide embedded hosts an easy way to expose the standard Dart
+Sass command-line API to users. Now every user who installs any embedded host
+will have the full Dart Sass executable available to them at native Dart VM
+speeds.&lt;/p&gt;
+&lt;p&gt;This also helps simplify the Sass team’s organization by reducing the number of
+separate repositories and release processes we need to manage.&lt;/p&gt;
+&lt;h2 id=&#34;wire-level-compilation-id&#34; tabindex=&#34;-1&#34;&gt;Wire-Level Compilation ID&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/rfc-embedded-protocol-2/#wire-level-compilation-id&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Wire-Level Compilation ID permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We’re pulling the compilation ID out to the protocol level in order to provide
+better concurrency, particularly on the side of the embedded compiler. Sass
+compilations done by the embedded compiler don’t share any state between one
+another, which means that they could in theory be run in totally separate worker
+threads. However, with the embedded protocol as it exists today, directing each
+message to the correct worker thread requires parsing the entire message on the
+main thread to determine which compilation it belongs to, then parsing it
+&lt;em&gt;again&lt;/em&gt; in the worker thread to actually handle it.&lt;/p&gt;
+&lt;p&gt;Making the compilation ID part of the protocol itself solves this issue. Each
+endpoint can read the ID, look up the worker thread that’s handling the
+compilation, and pass the message on to that thread without parsing the rest of
+the message. This makes concurrency both easier and more efficient, which will
+help ensure that large compilations happen as fast as possible.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Sass and Native Nesting</title>
+    <link href="https://sass-lang.com/blog/sass-and-native-nesting/" rel="alternate"/>
+    <id>https://sass-lang.com/blog/sass-and-native-nesting/</id>
+    <published>2023-03-29T22:30:00Z</published>
+    <updated>2023-03-29T22:30:00Z</updated>
+    <author>
+      <name>Natalie Weizenbaum</name>
+    </author>
+    <content type="html">&lt;p&gt;The stable release of Chrome 112, which is releasing today, is the first stable
+browser to add support for the new &lt;a href=&#34;https://drafts.csswg.org/css-nesting/&#34;&gt;native CSS nesting feature&lt;/a&gt;. This
+feature—inspired by Sass’s nesting—adds the ability to nest style rules in plain
+CSS, and even uses Sass’s convention of &lt;code&gt;&amp;amp;&lt;/code&gt; to refer to the parent selector.&lt;/p&gt;
+&lt;p&gt;We here at Sass HQ are honored every time our language design inspires
+improvements in CSS itself. We’re excited to see the usability and clarity
+benefits of nesting brought to even more CSS authors as more browsers continue
+to roll out support for this feature.&lt;/p&gt;
+&lt;h2 id=&#34;the-future-of-sass-nesting&#34; tabindex=&#34;-1&#34;&gt;The Future of Sass Nesting&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/sass-and-native-nesting/#the-future-of-sass-nesting&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;The Future of Sass Nesting permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This raises an important question, though: what will happen to Sass’s nesting?
+First of all, we won’t ever change existing valid Sass code so that it starts
+emitting CSS that’s incompatible with widely-used browsers. This means that even
+if we did decide to phase out Sass nesting and just emit plain CSS nesting
+instead, we wouldn’t do so until &lt;a href=&#34;https://github.com/sass/dart-sass#browser-compatibility&#34;&gt;98% of the global browser market share&lt;/a&gt;
+supported native nesting.&lt;/p&gt;
+&lt;p&gt;More importantly, though, &lt;strong&gt;native CSS nesting is subtly incompatible with Sass
+nesting&lt;/strong&gt;. This affects three different cases:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Native CSS nesting implicitly wraps the parent selector in &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/CSS/:is&#34;&gt;&lt;code&gt;:is()&lt;/code&gt;&lt;/a&gt;, while
+Sass copies its text into the resolved selector. That means that&lt;/p&gt;
+&lt;pre class=&#34;language-scss&#34;&gt;&lt;code class=&#34;language-scss&#34;&gt;&lt;span class=&#34;token selector&#34;&gt;.foo, #bar &lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;token selector&#34;&gt;.baz &lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;token comment&#34;&gt;/* ... */&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;token punctuation&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;produces the selector &lt;code&gt;.foo .baz, #bar .baz&lt;/code&gt; in Sass but &lt;code&gt;:is(.foo, #bar) .baz&lt;/code&gt; in native CSS. This changes the specificity: &lt;code&gt;:is()&lt;/code&gt; always has the
+specificity of its &lt;em&gt;most specific selector&lt;/em&gt;, so &lt;code&gt;:is(.foo, #bar) .baz&lt;/code&gt; will
+match&lt;/p&gt;
+&lt;pre class=&#34;language-html&#34;&gt;&lt;code class=&#34;language-html&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;foo&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;p&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;baz&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;with specificity 1 0 1 in native CSS and 0 0 2 in Sass even though neither
+element is matched by ID.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Also because native CSS nesting uses &lt;code&gt;:is()&lt;/code&gt;, a parent selector with
+descendant combinators will behave differently.&lt;/p&gt;
+&lt;pre class=&#34;language-scss&#34;&gt;&lt;code class=&#34;language-scss&#34;&gt;&lt;span class=&#34;token selector&#34;&gt;.foo .bar &lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;token selector&#34;&gt;.green-theme &lt;span class=&#34;token parent important&#34;&gt;&amp;amp;&lt;/span&gt; &lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;token comment&#34;&gt;/* ... */&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;token punctuation&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;produces the selector &lt;code&gt;.green-theme .foo .bar&lt;/code&gt; in Sass, but in native CSS it
+produces &lt;code&gt;.green-theme :is(.foo .bar)&lt;/code&gt;. This means that the native CSS
+version will match&lt;/p&gt;
+&lt;pre class=&#34;language-html&#34;&gt;&lt;code class=&#34;language-html&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;foo&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;green-theme&lt;span class=&#34;token punctuation&#34;&gt;&#34;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;p&lt;/span&gt; &lt;span class=&#34;token attr-name&#34;&gt;class&lt;/span&gt;&lt;span class=&#34;token attr-value&#34;&gt;&lt;span class=&#34;token punctuation attr-equals&#34;&gt;=&lt;/span&gt;bar&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token tag&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;but Sass will not, since the element matching &lt;code&gt;.foo&lt;/code&gt; is outside the element
+matching &lt;code&gt;.green-theme&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sass nesting and native CSS nesting both support syntax that looks like
+&lt;code&gt;&amp;amp;foo&lt;/code&gt;, but it means different things. In Sass, this adds a suffix to the
+parent selector, so&lt;/p&gt;
+&lt;pre class=&#34;language-scss&#34;&gt;&lt;code class=&#34;language-scss&#34;&gt;&lt;span class=&#34;token selector&#34;&gt;.foo &lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;token selector&#34;&gt;&lt;span class=&#34;token parent important&#34;&gt;&amp;amp;&lt;/span&gt;-suffix &lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;token comment&#34;&gt;/* ... */&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;token punctuation&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;produces the selector &lt;code&gt;.foo-suffix&lt;/code&gt;. But in native CSS, this adds a type
+selector to the parent selector, so&lt;/p&gt;
+&lt;pre class=&#34;language-scss&#34;&gt;&lt;code class=&#34;language-scss&#34;&gt;&lt;span class=&#34;token selector&#34;&gt;.foo &lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;{&lt;/span&gt;
+  &lt;span class=&#34;token selector&#34;&gt;&lt;span class=&#34;token parent important&#34;&gt;&amp;amp;&lt;/span&gt;div &lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;token comment&#34;&gt;/* ... */&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;token punctuation&#34;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;produces the selector &lt;code&gt;div.foo&lt;/code&gt; (where Sass would produce &lt;code&gt;.foodiv&lt;/code&gt; instead).
+Native CSS nesting has no way to add a suffix to a selector like Sass.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;design-commitments&#34; tabindex=&#34;-1&#34;&gt;Design Commitments&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/sass-and-native-nesting/#design-commitments&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Design Commitments permalink&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;When considering how to handle this new CSS feature, we have two important
+design commitments to keep in mind:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;We’re committed to being a CSS superset. All valid CSS that’s supported by a
+real browser should also work in Sass with the same semantics.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We’re committed to backwards compatibility. As much as possible, we want to
+avoid changing the semantics of existing stylesheets, and if we need to do so
+we want to give users as much time and resources as possible to make the
+change gracefully.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In most cases, remaining a CSS superset trumps backwards compatibility. However,
+nesting is one of the oldest and most widely-used Sass features so we’re
+particularly reluctant to change it, especially in ways that would drop support
+for widely-used features like &lt;code&gt;&amp;amp;-suffix&lt;/code&gt; that don’t have an elegant equivalent
+in native CSS.&lt;/p&gt;
+&lt;h3 id=&#34;the-plan-for-sass&#34; tabindex=&#34;-1&#34;&gt;The Plan for Sass&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/sass-and-native-nesting/#the-plan-for-sass&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;The Plan for Sass permalink&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;In the short term&lt;/strong&gt;, we don’t intend to change anything about Sass nesting.
+Sass will simply not support plain CSS nesting unless we can do so in a way
+that’s fully compatible with existing Sass behavior.&lt;/p&gt;
+&lt;p&gt;We &lt;em&gt;will&lt;/em&gt; add support for parsing plain CSS nesting in &lt;code&gt;.css&lt;/code&gt; files. This
+nesting won’t be resolved in any way; Sass will just emit it as-is.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;In the long term&lt;/strong&gt;, once &lt;a href=&#34;https://caniuse.com/css-matches-pseudo&#34;&gt;&lt;code&gt;:is()&lt;/code&gt; is supported by 98% of the global browser
+market share&lt;/a&gt;, we’ll start transitioning Sass to emit &lt;code&gt;:is()&lt;/code&gt; when resolving
+Sass nesting. This will make Sass behave like CSS in the first two behavioral
+incompatibilities. We will consider this a breaking change, and release it as
+part of a major version release to avoid unexpectedly breaking existing
+stylesheets. We’ll do our best to make this transition as smooth as possible
+using the &lt;a href=&#34;https://sass-lang.com/documentation/cli/migrator&#34;&gt;Sass Migrator&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;We will &lt;em&gt;not&lt;/em&gt; drop our current behavior for &lt;code&gt;&amp;amp;-suffix&lt;/code&gt; unless we can come up
+with a comparably ergonomic way to represent it that’s more compatible with CSS.
+This behavior is too important to existing Sass users, and the benefit of the
+plain CSS version is not strong enough to override that.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Security Alert: Tar Permissions</title>
+    <link href="https://sass-lang.com/blog/security-alert-tar-permissions/" rel="alternate"/>
+    <id>https://sass-lang.com/blog/security-alert-tar-permissions/</id>
+    <published>2022-12-10T00:00:00Z</published>
+    <updated>2022-12-10T00:00:00Z</updated>
+    <author>
+      <name>Natalie Weizenbaum</name>
+    </author>
+    <content type="html">&lt;p&gt;The Sass team was recently alerted by prolific external contributor &lt;a href=&#34;https://github.com/ntkme&#34;&gt;@ntkme&lt;/a&gt; to
+a security issue in our release process.&lt;/p&gt;
+&lt;h2 id=&#34;tl-dr&#34; tabindex=&#34;-1&#34;&gt;TL;DR&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/security-alert-tar-permissions/#tl-dr&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;TL;DR permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you’re using Linux or Mac OS, run &lt;code&gt;ls -ax path/to/sass&lt;/code&gt;. If the last group of
+letters in the first column contains &lt;code&gt;w&lt;/code&gt;, you’re vulnerable:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Vulnerable:
+-rwxr-xrwx 1 nweiz primarygroup 407 Dec 13 12:33 sass-1.56.2/sass
+
+Not vulnerable:
+-rwxr-xr-x 1 nweiz primarygroup 407 Dec 13 12:33 sass-1.56.2/sass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you’re using the &lt;code&gt;sass-embedded&lt;/code&gt; package, do the same thing for
+&lt;code&gt;node_modules/sass-embedded/dist/lib/src/vendor/dart-sass-embedded/dart-sass-embedded&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;who-s-affected&#34; tabindex=&#34;-1&#34;&gt;Who’s Affected?&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/security-alert-tar-permissions/#who-s-affected&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Who’s Affected? permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;While we don’t expect this issue to be a problem for the vast majority of users,
+it does affect the following groups:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Users who downloaded the stand-alone Dart Sass, Dart Sass Embedded, or Sass
+Migrator &lt;code&gt;.tar.gz&lt;/code&gt; archives from the Dart Sass website and extracted them as
+the Unix root user.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Users who installed the &lt;code&gt;sass-embedded&lt;/code&gt; npm package as the Unix root user
+prior to version 1.54.5.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Users who installed the “non-native” version of the community-maintained
+&lt;code&gt;sass-embedded&lt;/code&gt; RubyGems package as the Unix root user prior to version
+1.56.2.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Users on multi-user systems who downloaded the stand-alone Dart Sass, Dart
+Sass Embedded, or Sass Migrator &lt;code&gt;.tar.gz&lt;/code&gt; archives from the Dart Sass website
+and explicitly passed the &lt;code&gt;-p&lt;/code&gt;/&lt;code&gt;--preserve-permissions&lt;/code&gt; flag when extracting
+them.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Users who installed Dart Sass via the &lt;code&gt;sass&lt;/code&gt; npm package, Homebrew, or
+Chocolatey are categorically not at risk, nor are users on Windows.&lt;/p&gt;
+&lt;p&gt;We strongly recommend that users in these vulnerable groups delete and
+re-install Sass. All the &lt;code&gt;.tar.gz&lt;/code&gt; files on GitHub have been scrubbed to remove
+the vulnerability, so you can reinstall the same version you were previously
+using without needing to upgrade to the latest version.&lt;/p&gt;
+&lt;p&gt;This is a privilege-escalation issue, which means it could allow a hypothetical
+attacker with access to a low-privilege account on your computer to escalate
+their access to your account’s privileges. However, this also means that it’s
+not a risk &lt;em&gt;unless&lt;/em&gt; an attacker already has access to an account on your
+machine.&lt;/p&gt;
+&lt;h2 id=&#34;what-went-wrong&#34; tabindex=&#34;-1&#34;&gt;What went wrong?&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/security-alert-tar-permissions/#what-went-wrong&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;What went wrong? permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We were inadvertently uploading &lt;code&gt;.tar.gz&lt;/code&gt; archives with permissions metadata
+indicating that executable files could be overwritten by all users, not just the
+owner.&lt;/p&gt;
+&lt;p&gt;In most cases, this metadata is ignored when extracting the archives and the
+permissions are set to only be writable by the user doing the extraction.
+However, when extracting archives as the Unix root user or explicitly passing
+the &lt;code&gt;-p&lt;/code&gt;/&lt;code&gt;--preserve-permissions&lt;/code&gt; flag, the permissions for the extracted files
+are set according to the archive’s metadata. Because the metadata was incorrect,
+an attacker with access to a low-privilege account would be able to overwrite
+the executable file and escalate their privileges once it’s executed.&lt;/p&gt;
+&lt;h2 id=&#34;how-did-this-happen&#34; tabindex=&#34;-1&#34;&gt;How did this happen?&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/security-alert-tar-permissions/#how-did-this-happen&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;How did this happen? permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Dart Sass is automatically deployed to various different release platforms using
+a Dart package called &lt;a href=&#34;https://pub.dev/packages/cli_pkg&#34;&gt;&lt;code&gt;cli_pkg&lt;/code&gt;&lt;/a&gt;, which is also written maintained by the Sass
+team. This package uses the Dart &lt;a href=&#34;https://pub.dev/packages/archive&#34;&gt;&lt;code&gt;archive&lt;/code&gt;&lt;/a&gt; package to generate &lt;code&gt;.tar.gz&lt;/code&gt; files
+for stand-alone release packages which are then uploaded to GitHub, and when
+initially writing the code to use this package I wrote the following function:&lt;/p&gt;
+&lt;pre class=&#34;language-dart&#34;&gt;&lt;code class=&#34;language-dart&#34;&gt;&lt;span class=&#34;token class-name&#34;&gt;ArchiveFile&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;fileFromBytes&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token class-name&#34;&gt;String&lt;/span&gt; path&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;token generics&#34;&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;lt;&lt;/span&gt;int&lt;span class=&#34;token punctuation&#34;&gt;&gt;&lt;/span&gt;&lt;/span&gt; data&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;token punctuation&#34;&gt;{&lt;/span&gt;bool executable &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token boolean&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&#34;token class-name&#34;&gt;ArchiveFile&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;path&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; data&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;length&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; data&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;mode &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; executable &lt;span class=&#34;token operator&#34;&gt;?&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;495&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;428&lt;/span&gt;
+      &lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;lastModTime &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token class-name&#34;&gt;DateTime&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;now&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;millisecondsSinceEpoch &lt;span class=&#34;token operator&#34;&gt;~/&lt;/span&gt; &lt;span class=&#34;token number&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;My intention was to set the executable mode to &lt;code&gt;755&lt;/code&gt; (read/write/execute for the
+owner, read/execute only for the other users) and the non-executable mode to
+&lt;code&gt;644&lt;/code&gt; (read/write for the owner, read-only for other users). However, Dart
+doesn’t support literal octal numbers and I must have done the decimal-to-octal
+conversion wrong. The actual permissions that got set were &lt;code&gt;757&lt;/code&gt;
+(read/write/execute for the owner &lt;strong&gt;and other users&lt;/strong&gt;, read/execute for the
+group) and &lt;code&gt;654&lt;/code&gt; (read/write for the owner, read/execute for the group, and
+read-only for other users).&lt;/p&gt;
+&lt;p&gt;This went unnoticed for several years, until @ntkme notified us of the issue
+last week and provided a fix to &lt;code&gt;cli_pkg&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;what-s-been-done&#34; tabindex=&#34;-1&#34;&gt;What’s been done?&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/security-alert-tar-permissions/#what-s-been-done&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;What’s been done? permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We’ve released &lt;code&gt;cli_pkg&lt;/code&gt; 2.1.7 which sets the archive permissions correctly. In
+addition, we’ve updated all &lt;code&gt;.tar.gz&lt;/code&gt; files in the Dart Sass, Dart Sass
+Embedded, and Sass Migrator repositories to correctly limit write permissions to
+only the owner of the files. We’re announcing the vulnerability here and on the
+&lt;a href=&#34;https://twitter.com/SassCSS&#34;&gt;@SassCSS Twitter account&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Request for Comments: Color Spaces</title>
+    <link href="https://sass-lang.com/blog/request-for-comments-color-spaces/" rel="alternate"/>
+    <id>https://sass-lang.com/blog/request-for-comments-color-spaces/</id>
+    <published>2022-09-21T21:00:00Z</published>
+    <updated>2022-09-21T21:00:00Z</updated>
+    <author>
+      <name>Miriam Suzanne and Natalie Weizenbaum</name>
+    </author>
+    <content type="html">&lt;p&gt;There’s been a lot of exciting work in the CSS color specifications lately, and
+as it begins to land in browsers we’ve been preparing to add support for it in
+Sass as well. The first and largest part of that is adding support for &lt;em&gt;color
+spaces&lt;/em&gt; to Sass, which represents a huge (but largely backwards-compatible)
+rethinking of the way colors work.&lt;/p&gt;
+&lt;p&gt;Historically, all colors in CSS have existed in the same color space, known as
+“sRGB”. Whether you represent them as a hex code, an &lt;code&gt;hsl()&lt;/code&gt; function, or a
+color name, they represented the same set of visible colors you could tell a
+screen to display. While this is conceptually simple, there are some major
+downsides:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;As monitors have improved over time, they’ve become capable of displaying more
+colors than can be represented in the sRGB color space.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;sRGB, even when you’re using it via &lt;code&gt;hsl()&lt;/code&gt;, doesn’t correspond very well with
+how humans perceive colors. Cyan looks noticeably lighter than purple with the
+same saturation and lightness values.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;There’s no way to represent domain- or device-specific color spaces, such as
+the &lt;a href=&#34;https://en.wikipedia.org/wiki/CMYK_color_model&#34;&gt;CMYK&lt;/a&gt; color space that’s used by printers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Color spaces solve all of these problems. Now not every color has a red, green,
+and blue channel (which can be interpreted as hue, saturation, and lightness).
+Instead, every color has a specific &lt;em&gt;color space&lt;/em&gt; which specifies which
+channels it has. For example, the color &lt;code&gt;oklch(80% 50% 90deg)&lt;/code&gt; has &lt;code&gt;oklch&lt;/code&gt; as
+its color space, &lt;code&gt;80%&lt;/code&gt; lightness, &lt;code&gt;50%&lt;/code&gt; chroma, and &lt;code&gt;90deg&lt;/code&gt; hue.&lt;/p&gt;
+&lt;h2 id=&#34;color-spaces-in-sass&#34; tabindex=&#34;-1&#34;&gt;Color Spaces in Sass&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#color-spaces-in-sass&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Color Spaces in Sass permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Today we’re announcing &lt;a href=&#34;https://github.com/sass/sass/blob/main/proposal/color-4-new-spaces.md&#34;&gt;a proposal for how to handle color spaces in Sass&lt;/a&gt;. In
+addition to expanding Sass’s color values to support color spaces, this proposal
+defines Sassified versions of all the color functions in &lt;a href=&#34;https://www.w3.org/TR/css-color-4/&#34;&gt;CSS Color Level
+4&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;rules-of-thumb&#34; tabindex=&#34;-1&#34;&gt;Rules of Thumb&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#rules-of-thumb&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Rules of Thumb permalink&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;There are several rules of thumb for working with color spaces in Sass:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;rgb&lt;/code&gt;, &lt;code&gt;hsl&lt;/code&gt;, and &lt;code&gt;hwb&lt;/code&gt; spaces are considered “legacy spaces”, and will
+often get special handling for the sake of backwards compatibility. Colors
+defined using hex notation or CSS color names are considered part of the &lt;code&gt;rgb&lt;/code&gt;
+color space. Legacy colors are emitted in the most compatible format. This
+matches CSS’s own backwards-compatibility behavior.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Otherwise, any color defined in a given space will remain in that space, and
+be emitted in that space.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Authors can explicitly convert a color’s space by using &lt;code&gt;color.to-space()&lt;/code&gt;.
+This can be useful to enforce non-legacy behavior, by converting into a
+non-legacy space, or to ensure the color output is compatible with older
+browsers by converting colors into a legacy space before emitting.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;srgb&lt;/code&gt; color space is equivalent to &lt;code&gt;rgb&lt;/code&gt;, except that one is a legacy
+space, and the other is not. They also use different coordinate systems, with
+&lt;code&gt;rgb()&lt;/code&gt; accepting a range from 0-255, and &lt;code&gt;srgb&lt;/code&gt; using a range of 0-1.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Color functions that allow specifying a color space for manipulation will
+always use the source color space by default. When an explicit space is
+provided for manipulation, the resulting color will still be returned in the
+same space as the origin color. For &lt;code&gt;color.mix()&lt;/code&gt;, the first color parameter
+is considered the origin color.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;All legacy and RGB-style spaces represent bounded gamuts of color. Since
+mapping colors into gamut is a lossy process, it should generally be left to
+browsers, which can map colors as-needed, based on the capabilities of a
+display. For that reason, out-of-gamut channel values are maintained by Sass
+whenever possible, even when converting into gamut-bounded color spaces. The
+only exception is that &lt;code&gt;hsl&lt;/code&gt; and &lt;code&gt;hwb&lt;/code&gt; color spaces are not able to express
+out-of-gamut color, so converting colors into those spaces will gamut-map the
+colors as well. Authors can also perform explicit gamut mapping with the
+&lt;code&gt;color.to-gamut()&lt;/code&gt; function.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Legacy browsers require colors in the &lt;code&gt;srgb&lt;/code&gt; gamut. However, most modern
+displays support the wider &lt;code&gt;display-p3&lt;/code&gt; gamut.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;standard-css-color-functions&#34; tabindex=&#34;-1&#34;&gt;Standard CSS Color Functions&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#standard-css-color-functions&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Standard CSS Color Functions permalink&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;oklab-and-oklch&#34; tabindex=&#34;-1&#34;&gt;&lt;code&gt;oklab()&lt;/code&gt; and &lt;code&gt;oklch()&lt;/code&gt;&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#oklab-and-oklch&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;oklab() and oklch() permalink&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;The &lt;code&gt;oklab()&lt;/code&gt; (cubic) and &lt;code&gt;oklch()&lt;/code&gt; (cylindrical) functions provide access to an
+unbounded gamut of colors in a perceptually uniform space. Authors can use these
+functions to define reliably uniform colors. For example, the following colors
+are perceptually similar in lightness and saturation:&lt;/p&gt;
+&lt;pre class=&#34;language-scss&#34;&gt;&lt;code class=&#34;language-scss&#34;&gt;&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$pink&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;oklch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;64% 0.196 353&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;token comment&#34;&gt;// hsl(329.8 70.29% 58.75%)&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$blue&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;oklch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;64% 0.196 253&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;token comment&#34;&gt;// hsl(207.4 99.22% 50.69%)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The &lt;code&gt;oklch()&lt;/code&gt; format uses consistent “lightness” and “chroma” values, while the
+&lt;code&gt;hsl()&lt;/code&gt; format shows dramatic changes in both “lightness” and “saturation”. As
+such, &lt;code&gt;oklch&lt;/code&gt; is often the best space for consistent transforms.&lt;/p&gt;
+&lt;h4 id=&#34;lab-and-lch&#34; tabindex=&#34;-1&#34;&gt;&lt;code&gt;lab()&lt;/code&gt; and &lt;code&gt;lch()&lt;/code&gt;&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#lab-and-lch&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;lab() and lch() permalink&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;The &lt;code&gt;lab()&lt;/code&gt; and &lt;code&gt;lch()&lt;/code&gt; functions provide access to an unbounded gamut of colors
+in a space that’s less perpetually-uniform but more widely-adopted than OKLab
+and OKLCH.&lt;/p&gt;
+&lt;h4 id=&#34;hwb&#34; tabindex=&#34;-1&#34;&gt;&lt;code&gt;hwb()&lt;/code&gt;&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#hwb&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;hwb() permalink&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Sass now supports a top-level &lt;code&gt;hwb()&lt;/code&gt; function that uses the same syntax as
+CSS’s built-in &lt;code&gt;hwb()&lt;/code&gt; syntax.&lt;/p&gt;
+&lt;h4 id=&#34;color&#34; tabindex=&#34;-1&#34;&gt;&lt;code&gt;color()&lt;/code&gt;&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#color&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;color() permalink&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;The new &lt;code&gt;color()&lt;/code&gt; function provides access to a number of specialty spaces. Most
+notably, &lt;code&gt;display-p3&lt;/code&gt; is a common space for wide-gamut monitors, making it
+likely one of the more popular options for authors who simply want access to a
+wider range of colors. For example, P3 greens are significantly ‘brighter’ and
+more saturated than the greens available in sRGB:&lt;/p&gt;
+&lt;pre class=&#34;language-scss&#34;&gt;&lt;code class=&#34;language-scss&#34;&gt;&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$fallback-green&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;rgb&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;0% 100% 0%&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$brighter-green&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;color&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;display-p3 0 1 0&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Sass will natively support all predefined color spaces declared in the Colors
+Level 4 specification. It will also support unknown color spaces, although these
+can’t be converted to and from any other color space.&lt;/p&gt;
+&lt;h3 id=&#34;new-sass-color-functions&#34; tabindex=&#34;-1&#34;&gt;New Sass Color Functions&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#new-sass-color-functions&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;New Sass Color Functions permalink&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;color-channel&#34; tabindex=&#34;-1&#34;&gt;&lt;code&gt;color.channel()&lt;/code&gt;&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#color-channel&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;color.channel() permalink&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;This function returns the value of a single channel in a color. By default, it
+only supports channels that are available in the color’s own space, but you can
+pass the &lt;code&gt;$space&lt;/code&gt; parameter to return the value of the channel after converting
+to the given space.&lt;/p&gt;
+&lt;pre class=&#34;language-scss&#34;&gt;&lt;code class=&#34;language-scss&#34;&gt;&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$brand&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;hsl&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;0 100% 25.1%&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;token comment&#34;&gt;// result: 25.1%&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$hsl-lightness&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; color.&lt;span class=&#34;token function&#34;&gt;channel&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$brand&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;lightness&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;token comment&#34;&gt;// result: 37.67%&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$oklch-lightness&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; color.&lt;span class=&#34;token function&#34;&gt;channel&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$brand&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;lightness&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$space&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; oklch&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;color-space&#34; tabindex=&#34;-1&#34;&gt;&lt;code&gt;color.space()&lt;/code&gt;&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#color-space&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;color.space() permalink&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;This function returns the name of the color’s space.&lt;/p&gt;
+&lt;pre class=&#34;language-scss&#34;&gt;&lt;code class=&#34;language-scss&#34;&gt;&lt;span class=&#34;token comment&#34;&gt;// result: hsl&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$hsl-space&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; color.&lt;span class=&#34;token function&#34;&gt;space&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;hsl&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;0 100% 25.1%&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;token comment&#34;&gt;// result: oklch&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$oklch-space&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; color.&lt;span class=&#34;token function&#34;&gt;space&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;oklch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;37.7% 38.75% 29.23deg&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;color-is-in-gamut-color-is-legacy&#34; tabindex=&#34;-1&#34;&gt;&lt;code&gt;color.is-in-gamut()&lt;/code&gt;, &lt;code&gt;color.is-legacy()&lt;/code&gt;&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#color-is-in-gamut-color-is-legacy&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;color.is-in-gamut(), color.is-legacy() permalink&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;These functions return various facts about the color. &lt;code&gt;color.is-in-gamut()&lt;/code&gt;
+returns whether the color is in-gamut for its color space (as opposed to having
+one or more of its channels out of bounds, like &lt;code&gt;rgb(300 0 0)&lt;/code&gt;).
+&lt;code&gt;color.is-legacy()&lt;/code&gt; returns whether the color is a legacy color in the &lt;code&gt;rgb&lt;/code&gt;,
+&lt;code&gt;hsl&lt;/code&gt;, or &lt;code&gt;hwb&lt;/code&gt; color space.&lt;/p&gt;
+&lt;h4 id=&#34;color-is-powerless&#34; tabindex=&#34;-1&#34;&gt;&lt;code&gt;color.is-powerless()&lt;/code&gt;&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#color-is-powerless&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;color.is-powerless() permalink&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;This function returns whether a given channel is “powerless” in the given color.
+This is a special state that’s defined for individual color spaces, which
+indicates that a channel’s value won’t affect how a color is displayed.&lt;/p&gt;
+&lt;pre class=&#34;language-scss&#34;&gt;&lt;code class=&#34;language-scss&#34;&gt;&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$grey&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;hsl&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;0 0% 60%&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;token comment&#34;&gt;// result: true, because saturation is 0&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$hue-powerless&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; color.&lt;span class=&#34;token function&#34;&gt;is-powerless&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$grey&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;hue&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;token comment&#34;&gt;// result: false&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$hue-powerless&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; color.&lt;span class=&#34;token function&#34;&gt;is-powerless&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$grey&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;lightness&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;color-same&#34; tabindex=&#34;-1&#34;&gt;&lt;code&gt;color.same()&lt;/code&gt;&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#color-same&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;color.same() permalink&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;This function returns whether two colors will be displayed the same way, even if
+this requires converting between spaces. This is unlike the &lt;code&gt;==&lt;/code&gt; operator, which
+always considers colors in different non-legacy spaces to be inequal.&lt;/p&gt;
+&lt;pre class=&#34;language-scss&#34;&gt;&lt;code class=&#34;language-scss&#34;&gt;&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$orange-rgb&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; #ff5f00&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$orange-oklch&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;oklch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;68.72% 20.966858279% 41.4189852913deg&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;token comment&#34;&gt;// result: false&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$equal&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$orange-rgb&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$orange-oklch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;token comment&#34;&gt;// result: true&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$same&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; color.&lt;span class=&#34;token function&#34;&gt;same&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$orange-rgb&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$orange-oklch&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;existing-sass-color-functions&#34; tabindex=&#34;-1&#34;&gt;Existing Sass Color Functions&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#existing-sass-color-functions&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Existing Sass Color Functions permalink&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h4 id=&#34;color-scale-color-adjust-and-color-change&#34; tabindex=&#34;-1&#34;&gt;&lt;code&gt;color.scale()&lt;/code&gt;, &lt;code&gt;color.adjust()&lt;/code&gt;, and &lt;code&gt;color.change()&lt;/code&gt;&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#color-scale-color-adjust-and-color-change&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;color.scale(), color.adjust(), and color.change() permalink&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;By default, all Sass color transformations are handled and returned in the color
+space of the original color parameter. However, all relevant functions now allow
+specifying an explicit color space for transformations. For example, lightness &amp;amp;
+darkness adjustments are most reliable in &lt;code&gt;oklch&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&#34;language-scss&#34;&gt;&lt;code class=&#34;language-scss&#34;&gt;&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$brand&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;hsl&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;0 100% 25.1%&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;token comment&#34;&gt;// result: hsl(0 100% 43.8%)&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$hsl-lightness&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; color.&lt;span class=&#34;token function&#34;&gt;scale&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$brand&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$lightness&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; 25%&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;token comment&#34;&gt;// result: hsl(5.76 56% 45.4%)&lt;/span&gt;
+&lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$oklch-lightness&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; color.&lt;span class=&#34;token function&#34;&gt;scale&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$brand&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$lightness&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; 25%&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token property&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$space&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;:&lt;/span&gt; oklch&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note that the returned color is still emitted in the original color space, even
+when the adjustment is performed in a different space.&lt;/p&gt;
+&lt;h4 id=&#34;color-mix&#34; tabindex=&#34;-1&#34;&gt;&lt;code&gt;color.mix()&lt;/code&gt;&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#color-mix&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;color.mix() permalink&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;The &lt;code&gt;color.mix()&lt;/code&gt; function will retain its existing behavior for legacy color
+spaces, but for new color spaces it will match CSS’s “color interpolation”
+specification. This is how CSS computes which color to use in between two colors
+in a gradient or an animation.&lt;/p&gt;
+&lt;h4 id=&#34;deprecations&#34; tabindex=&#34;-1&#34;&gt;Deprecations&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#deprecations&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Deprecations permalink&lt;/span&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;A number of existing functions only make sense for legacy colors, and so are
+being deprecated in favor of color-space-friendly functions like
+&lt;code&gt;color.channel()&lt;/code&gt; and &lt;code&gt;color.adjust()&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;color.red()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.green()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.blue()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.hue()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.saturation()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.lightness()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.whiteness()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;color.blackness()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;adjust-hue()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;saturate()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;desaturate()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;transparentize()&lt;/code&gt;/&lt;code&gt;fade-out()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opacify()&lt;/code&gt;/&lt;code&gt;fade-in()&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;lighten()&lt;/code&gt;/&lt;code&gt;darken()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;let-us-know-what-you-think&#34; tabindex=&#34;-1&#34;&gt;Let Us Know What You Think!&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-color-spaces/#let-us-know-what-you-think&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Let Us Know What You Think! permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;There’s lots more detail to this proposal, and it’s not set in stone yet. We
+want your feedback on it! Read it over &lt;a href=&#34;https://github.com/sass/sass/blob/main/proposal/color-4-new-spaces.md#deprecated-functions&#34;&gt;on GitHub&lt;/a&gt;, and &lt;a href=&#34;https://github.com/sass/sass/issues/new&#34;&gt;file an issue&lt;/a&gt; with any
+thoughts or concerns you may have.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Request for Comments: Strict Unary Operators</title>
+    <link href="https://sass-lang.com/blog/request-for-comments-strict-unary-operators/" rel="alternate"/>
+    <id>https://sass-lang.com/blog/request-for-comments-strict-unary-operators/</id>
+    <published>2022-06-15T23:30:00Z</published>
+    <updated>2022-06-15T23:30:00Z</updated>
+    <author>
+      <name>Natalie Weizenbaum</name>
+    </author>
+    <content type="html">&lt;p&gt;Do you know what &lt;code&gt;margin: $a -$b&lt;/code&gt; does in Sass? If you said &amp;quot;the same thing as
+&lt;code&gt;margin: $a (-$b)&lt;/code&gt;, I’m sorry, but you’re wrong. It’s &lt;em&gt;actually&lt;/em&gt; the same thing
+as &lt;code&gt;margin: $a - $b&lt;/code&gt;. Don’t worry, you’re not the first person to get tripped up
+by this weird corner of Sass’s parser! But our new language proposal aims to fix
+that.&lt;/p&gt;
+&lt;p&gt;In the &lt;a href=&#34;https://github.com/sass/sass/blob/main/accepted/strict-unary.md&#34;&gt;Strict Unary Operators&lt;/a&gt; proposal, which is currently open for community
+feedback, we propose to first deprecate and then eventually disallow expressions
+of the form &lt;code&gt;$a -$b&lt;/code&gt;. We know deprecations are never pleasant, but this should
+be fairly painless as they go: you can simply write &lt;code&gt;$a - $b&lt;/code&gt; or &lt;code&gt;$a (-$b)&lt;/code&gt;,
+depending which you intend. We’ll also provide a &lt;a href=&#34;https://sass-lang.com/documentation/cli/migrator&#34;&gt;Sass migrator&lt;/a&gt; migration to
+automatically update your stylesheets.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Deprecated:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$a -$b&lt;/code&gt; will no longer be allowed, because it’s unclear what the author
+intended and the current behavior is likely to be incorrect.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Still allowed:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;$a - $b&lt;/code&gt; will continue to work, since it’s clearly supposed to indicate
+subtraction.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;$a (-$b)&lt;/code&gt; will continue to work, since the parentheses make the unary minus
+unambiguous.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The &lt;code&gt;$a - $b&lt;/code&gt; or &lt;code&gt;$a (-$b)&lt;/code&gt; options are supported by all widely-used Sass
+versions, so there shouldn’t be any trouble for libraries to avoid this
+deprecation warning and continue to support older Sass versions. In addition,
+you can always use the &lt;a href=&#34;https://sass-lang.com/documentation/cli/dart-sass/#quiet-deps&#34;&gt;&lt;code&gt;--quiet-deps&lt;/code&gt; command-line flag&lt;/a&gt; or the &lt;a href=&#34;https://sass-lang.com/documentation/js-api/interfaces/Options/#quietDeps&#34;&gt;&lt;code&gt;quietDeps&lt;/code&gt; JS
+API option&lt;/a&gt; to silence warnings from dependencies you don’t control.&lt;/p&gt;
+&lt;h2 id=&#34;why-does-it-work-this-way&#34; tabindex=&#34;-1&#34;&gt;Why does it work this way?&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-strict-unary-operators/#why-does-it-work-this-way&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Why does it work this way? permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Why, you might wonder, does &lt;code&gt;$a -$b&lt;/code&gt; parse this way in the first place? The
+short answer is, “because other programming languages do it that way”. In most
+programming languages, operators are parsed the same way regardless of the
+whitespace that may or may not surround them. If you parse &lt;code&gt;$a - $b&lt;/code&gt; as
+subtraction, you should parse &lt;code&gt;$a -$b&lt;/code&gt; as subtraction as well.&lt;/p&gt;
+&lt;p&gt;The problem for Sass is that we also inherit CSS’s use of space-separated lists
+of values, so in some contexts users expect to be able to write two expressions
+next to one another and have them parse the same way they would if they were
+each used on their own. These two principles come into conflict and produce the
+confusion this proposal seeks to address.&lt;/p&gt;
+&lt;h2 id=&#34;why-not-just-change-the-way-it-works&#34; tabindex=&#34;-1&#34;&gt;Why not just change the way it works?&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-strict-unary-operators/#why-not-just-change-the-way-it-works&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Why not just change the way it works? permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In theory, we could change Sass so that &lt;code&gt;$a -$b&lt;/code&gt; parses the same as &lt;code&gt;$a (-$b)&lt;/code&gt;:
+a space-separated list of two values, the latter with a unary minus. We chose
+not to do that for two reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Pragmatically, it’s more painful to make a breaking change that changes the
+behavior of existing syntax than it is to make one that just forbids the
+syntax entirely. It requires more releases and more different versions of
+Sass with different behaviors. It also opens the door for a stylesheet that
+upgrades many versions at once to switch to the new behavior &lt;em&gt;without
+producing an error&lt;/em&gt;, which could lead to the worst-case scenario: shipping
+incorrect styles.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It’s not obvious that &lt;code&gt;$a -$b&lt;/code&gt; &lt;em&gt;should&lt;/em&gt; parse as &lt;code&gt;$a (-$b)&lt;/code&gt; in every case.
+Users coming from other programming languages may expect it to parse the same
+way it does in those languages. Even in Sass, &lt;code&gt;$a -$b&lt;/code&gt; will continue to be a
+valid binary operation within &lt;code&gt;calc()&lt;/code&gt;. It may not be elegant style, but
+sometimes formatting isn’t at the top of an author’s mind!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;let-us-know-what-you-think&#34; tabindex=&#34;-1&#34;&gt;Let us know what you think!&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/request-for-comments-strict-unary-operators/#let-us-know-what-you-think&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Let us know what you think! permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you’ve got thoughts or opinions about this change, please read over &lt;a href=&#34;https://github.com/sass/sass/blob/main/accepted/strict-unary.md&#34;&gt;the full
+proposal&lt;/a&gt; and then &lt;a href=&#34;https://github.com/sass/sass/issues/new&#34;&gt;file an issue&lt;/a&gt; with your feedback. We’ll be leaving this
+open to comments for a month, after which we’ll finalize the proposal and start
+implementing it.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Embedded Sass is Live</title>
+    <link href="https://sass-lang.com/blog/embedded-sass-is-live/" rel="alternate"/>
+    <id>https://sass-lang.com/blog/embedded-sass-is-live/</id>
+    <published>2022-02-01T10:00:00Z</published>
+    <updated>2022-02-01T10:00:00Z</updated>
+    <author>
+      <name>Natalie Weizenbaum</name>
+    </author>
+    <content type="html">&lt;p&gt;After several years of planning and development, I’m excited to finally announce
+the stable release of Embedded Dart Sass along with its first official wrapper,
+the &lt;a href=&#34;https://www.npmjs.com/package/sass-embedded&#34;&gt;&lt;code&gt;sass-embedded&lt;/code&gt;&lt;/a&gt; package available now on npm!&lt;/p&gt;
+&lt;p&gt;Embedded Sass is an ongoing effort to make a highly-performant Sass library
+available to as many different languages as possible, starting with Node.js.
+Although Node.js already has access to the pure-JS &lt;code&gt;sass&lt;/code&gt; package, the nature of
+JavaScript inherently limits how quickly this package can process large Sass
+files especially in asynchronous mode. We expect &lt;code&gt;sass-embedded&lt;/code&gt; to be a major
+boon to developers for whom compilation speed is a concern, particularly the
+remaining users of &lt;code&gt;node-sass&lt;/code&gt; for whom performance has been a major reason to
+avoid Dart Sass.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;sass-embedded&lt;/code&gt; package fully supports the &lt;a href=&#34;https://sass-lang.com/documentation/js-api/#md:usage&#34;&gt;new JS API&lt;/a&gt; as well as the
+&lt;a href=&#34;https://sass-lang.com/documentation/js-api/#md:legacy-api&#34;&gt;legacy API&lt;/a&gt; other than a few cosmetic options. You can use it as a drop-in
+replacement for the &lt;code&gt;sass&lt;/code&gt; package, and it should work with all the same build
+plugins and libraries. Note that &lt;code&gt;sass-embedded&lt;/code&gt; is a bit faster in
+&lt;em&gt;asynchronous&lt;/em&gt; mode than it is in synchronous mode (whereas the &lt;code&gt;sass&lt;/code&gt; package
+was faster in synchronous mode). For substantial Sass files, running
+&lt;code&gt;sass-embedded&lt;/code&gt; in either mode will generally be much faster than &lt;code&gt;sass&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;In order to limit the confusion about which version of which package supports
+which feature, the &lt;code&gt;sass-embedded&lt;/code&gt; package will always have the same version as
+the &lt;code&gt;sass&lt;/code&gt; package. When new features are added to the JS API, they’ll be
+supported at the same time in both packages, and when new language features are
+added to Sass they’ll always be included in a new &lt;code&gt;sass-embedded&lt;/code&gt; release
+straight away.&lt;/p&gt;
+&lt;h2 id=&#34;how-it-works&#34; tabindex=&#34;-1&#34;&gt;How it Works&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/embedded-sass-is-live/#how-it-works&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;How it Works permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Embedded Sass is composed of three parts:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/sass/dart-sass-embedded&#34;&gt;The compiler&lt;/a&gt;, a Dart executable that wraps Dart Sass and does the actual
+heavy lifting of parsing and compiling the files. Dart native executables are
+generally much faster than JavaScript, so using them for the
+computationally-intensive work of stylesheet evaluation is where Embedded
+Sass gets its speed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/sass/embedded-host-node&#34;&gt;The host&lt;/a&gt;, a library in any language (in this case JavaScript) that provides a
+usable end-user API for invoking the compiler. The host provides callers with
+configuration options, including the ability to define custom importers and
+Sass functions that are used by the compilation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/sass/embedded-protocol&#34;&gt;The protocol&lt;/a&gt;, a &lt;a href=&#34;https://en.wikipedia.org/wiki/Protocol_Buffers&#34;&gt;protocol-buffer&lt;/a&gt;-based specification of how the host and
+the compiler communicate with one another. This communication happens over
+the standard input and output streams of the compiler executable, which is
+invoked by the host to perform each compilation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;other-languages&#34; tabindex=&#34;-1&#34;&gt;Other Languages&lt;a class=&#34;anchor&#34; href=&#34;https://sass-lang.com/blog/embedded-sass-is-live/#other-languages&#34;&gt;&lt;span class=&#34;visuallyhidden&#34;&gt;Other Languages permalink&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Embedded Sass was designed in part as a way for languages other than JavaScript
+to have access to the full power of Sass compilation with custom importers and
+functions, similarly to how C++ wrappers for &lt;a href=&#34;https://sass-lang.com/libsass&#34;&gt;LibSass&lt;/a&gt; worked in the past. We
+hope that community members will use this protocol to implement embedded hosts
+for many other popular frontend languages. If you end up doing so, message us
+&lt;a href=&#34;https://twitter.com/SassCSS&#34;&gt;on Twitter&lt;/a&gt; or &lt;a href=&#34;https://gitter.im/sass/sass&#34;&gt;Gitter&lt;/a&gt; and we’ll link it on this site!&lt;/p&gt;
+</content>
+  </entry>
+</feed>

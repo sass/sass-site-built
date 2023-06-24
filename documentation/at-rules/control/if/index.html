@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: @if and @else</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation at-rules control if">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">@if and @else</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section open selected">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section open selected">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class="open selected"><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary sl-l-large-holy-grail__complementary--contents">
+              
+                
+                
+                
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    <ul><li>
+      <a href="#else" class="section open"><code>@else</code></a><ul><li class="overview">
+      <a href="#else" >Overview</a>
+    </li><li>
+      <a href="#else-if" class="open"><code>@else if</code></a></li></ul>
+</li><li>
+      <a href="#truthiness-and-falsiness" class="open">Truthiness and<span class="widont">&nbsp;</span>Falsiness</a></li></ul>
+
+                  </nav>
+                
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+  <div class="sl-c-introduction">
+    <p>The <code>@if</code> rule is written <code>@if &lt;expression&gt; { ... }</code>, and it controls whether or not its block gets evaluated (including emitting any styles as <span class="caps">CSS</span>). The <a href="/documentation/syntax/structure#expressions">expression</a> usually returns either <a href="/documentation/values/booleans"><code>true</code> or <code>false</code></a>—if the expression returns <code>true</code>, the block is evaluated, and if the expression returns <code>false</code> it’s not.</p>
+
+  </div>
+
+
+
+              <div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-example-if-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-example-if-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-example-if-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-example-if-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:math"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@mixin</span> <span class="token function">avatar</span><span class="token punctuation">(</span><span class="token variable">$size</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$circle</span></span><span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token variable">$size</span><span class="token punctuation">;</span>&#10;  <span class="token property">height</span><span class="token punctuation">:</span> <span class="token variable">$size</span><span class="token punctuation">;</span>&#10;&#10;  <span class="token keyword">@if</span> <span class="token selector"><span class="token variable">$circle</span> </span><span class="token punctuation">{</span>&#10;    <span class="token property">border-radius</span><span class="token punctuation">:</span> math.<span class="token function">div</span><span class="token punctuation">(</span><span class="token variable">$size</span><span class="token punctuation">,</span> 2<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.square-av </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@include</span> <span class="token function">avatar</span><span class="token punctuation">(</span>100px<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$circle</span></span><span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;<span class="token selector">.circle-av </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@include</span> <span class="token function">avatar</span><span class="token punctuation">(</span>100px<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$circle</span></span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-example-if-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:math"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@mixin</span> avatar($size, $circle: false)</span>&#10;<span class="token property-line">  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token variable">$size</span></span>&#10;<span class="token property-line">  <span class="token property">height</span><span class="token punctuation">:</span> <span class="token variable">$size</span></span>&#10;&#10;<span class="token atrule-line">  <span class="token atrule">@if</span> $circle</span>&#10;<span class="token property-line">    <span class="token property">border-radius</span><span class="token punctuation">:</span> math.div(<span class="token variable">$size</span>, 2)</span>&#10;&#10;&#10;&#10;<span class="token selector">.square-av</span>&#10;<span class="token atrule-line">  <span class="token atrule">@include</span> avatar(100px, $circle: false)</span>&#10;&#10;<span class="token selector">.circle-av</span>&#10;<span class="token atrule-line">  <span class="token atrule">@include</span> avatar(100px, $circle: true)</span>&#10;&#10;</code></pre></div>
+<div id="example-example-if-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.square-av</span> <span class="token punctuation">{</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>&#10;  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.circle-av</span> <span class="token punctuation">{</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>&#10;  <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>&#10;  <span class="token property">border-radius</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<h2 id="else" tabindex="-1"><code>@else</code><a class="anchor" href="#else"><span class="visuallyhidden">@else permalink</span></a></h2>
+<p>An <code>@if</code> rule can optionally be followed by an <code>@else</code> rule, written <code>@else { ... }</code>. This rule’s block is evaluated if the <code>@if</code> expression returns <code>false</code>.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-if-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-if-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-if-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-if-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$light-background</span></span><span class="token punctuation">:</span> #f2ece4<span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$light-text</span></span><span class="token punctuation">:</span> #036<span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$dark-background</span></span><span class="token punctuation">:</span> #6b717f<span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$dark-text</span></span><span class="token punctuation">:</span> #d2e1dd<span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@mixin</span> <span class="token function">theme-colors</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$light-theme</span></span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token keyword">@if</span> <span class="token selector"><span class="token variable">$light-theme</span> </span><span class="token punctuation">{</span>&#10;    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$light-background</span><span class="token punctuation">;</span>&#10;    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$light-text</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span> <span class="token keyword">@else</span> <span class="token punctuation">{</span>&#10;    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$dark-background</span><span class="token punctuation">;</span>&#10;    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$dark-text</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.banner </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@include</span> <span class="token function">theme-colors</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$light-theme</span></span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token selector">body.dark <span class="token parent important">&amp;</span> </span><span class="token punctuation">{</span>&#10;    <span class="token keyword">@include</span> <span class="token function">theme-colors</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$light-theme</span></span><span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-if-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$light-background</span><span class="token punctuation">:</span> #f2ece4</span>&#10;<span class="token variable-line"><span class="token variable">$light-text</span><span class="token punctuation">:</span> #036</span>&#10;<span class="token variable-line"><span class="token variable">$dark-background</span><span class="token punctuation">:</span> #6b717f</span>&#10;<span class="token variable-line"><span class="token variable">$dark-text</span><span class="token punctuation">:</span> #d2e1dd</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@mixin</span> theme-colors($light-theme: true)</span>&#10;<span class="token atrule-line">  <span class="token atrule">@if</span> $light-theme</span>&#10;<span class="token property-line">    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$light-background</span></span>&#10;<span class="token property-line">    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$light-text</span></span>&#10;<span class="token atrule-line">  <span class="token atrule">@else</span></span>&#10;<span class="token property-line">    <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$dark-background</span></span>&#10;<span class="token property-line">    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$dark-text</span></span>&#10;&#10;&#10;&#10;<span class="token selector">.banner</span>&#10;<span class="token atrule-line">  <span class="token atrule">@include</span> theme-colors($light-theme: true)</span>&#10;  <span class="token selector">body.dark &amp;</span>&#10;<span class="token atrule-line">    <span class="token atrule">@include</span> theme-colors($light-theme: false)</span>&#10;&#10;&#10;</code></pre></div>
+<div id="example-if-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.banner</span> <span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #f2ece4<span class="token punctuation">;</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> #036<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;<span class="token selector">body.dark .banner</span> <span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #6b717f<span class="token punctuation">;</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> #d2e1dd<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<p>Conditional expressions may contain <a href="/documentation/operators/boolean">boolean operators</a> (<code>and</code>, <code>or</code>, <code>not</code>).</p>
+<h3 id="else-if" tabindex="-1"><code>@else if</code><a class="anchor" href="#else-if"><span class="visuallyhidden">@else if permalink</span></a></h3>
+<p>You can also choose whether to evaluate an <code>@else</code> rule’s block by writing it
+<code>@else if &lt;expression&gt; { ... }</code>. If you do, the block is evaluated only if the
+preceding <code>@if</code>’s expression returns <code>false</code> <em>and</em> the <code>@else if</code>’s expression
+returns <code>true</code>.</p>
+<p>In fact, you can chain as many <code>@else if</code>s as you want after an <code>@if</code>. The first
+block in the chain whose expression returns <code>true</code> will be evaluated, and no
+others. If there’s a plain <code>@else</code> at the end of the chain, its block will be
+evaluated if every other block<span class="widont">&nbsp;</span>fails.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-else-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-else-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-else-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-else-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:math"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@mixin</span> <span class="token function">triangle</span><span class="token punctuation">(</span><span class="token variable">$size</span><span class="token punctuation">,</span> <span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token variable">$direction</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token property">height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;&#10;  <span class="token property">border-color</span><span class="token punctuation">:</span> transparent<span class="token punctuation">;</span>&#10;  <span class="token property">border-style</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>&#10;  <span class="token property">border-width</span><span class="token punctuation">:</span> math.<span class="token function">div</span><span class="token punctuation">(</span><span class="token variable">$size</span><span class="token punctuation">,</span> 2<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;  <span class="token keyword">@if</span> <span class="token selector"><span class="token variable">$direction</span> == up </span><span class="token punctuation">{</span>&#10;    <span class="token property">border-bottom-color</span><span class="token punctuation">:</span> <span class="token variable">$color</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span> <span class="token keyword">@else if</span> <span class="token selector"><span class="token variable">$direction</span> == right </span><span class="token punctuation">{</span>&#10;    <span class="token property">border-left-color</span><span class="token punctuation">:</span> <span class="token variable">$color</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span> <span class="token keyword">@else if</span> <span class="token selector"><span class="token variable">$direction</span> == down </span><span class="token punctuation">{</span>&#10;    <span class="token property">border-top-color</span><span class="token punctuation">:</span> <span class="token variable">$color</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span> <span class="token keyword">@else if</span> <span class="token selector"><span class="token variable">$direction</span> == left </span><span class="token punctuation">{</span>&#10;    <span class="token property">border-right-color</span><span class="token punctuation">:</span> <span class="token variable">$color</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span> <span class="token keyword">@else</span> <span class="token punctuation">{</span>&#10;    <span class="token atrule"><span class="token rule">@error</span> <span class="token string">"Unknown direction #{$direction}."</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;.next</span> <span class="token punctuation">{</span>&#10;  <span class="token keyword">@include</span> <span class="token function">triangle</span><span class="token punctuation">(</span>5px<span class="token punctuation">,</span> black<span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-else-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:math"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@mixin</span> triangle($size, $color, $direction)</span>&#10;<span class="token property-line">  <span class="token property">height</span><span class="token punctuation">:</span> 0</span>&#10;<span class="token property-line">  <span class="token property">width</span><span class="token punctuation">:</span> 0</span>&#10;&#10;<span class="token property-line">  <span class="token property">border-color</span><span class="token punctuation">:</span> transparent</span>&#10;<span class="token property-line">  <span class="token property">border-style</span><span class="token punctuation">:</span> solid</span>&#10;<span class="token property-line">  <span class="token property">border-width</span><span class="token punctuation">:</span> math.div(<span class="token variable">$size</span>, 2)</span>&#10;&#10;<span class="token atrule-line">  <span class="token atrule">@if</span> $direction <span class="token atrule">=</span><span class="token atrule">=</span> up</span>&#10;<span class="token property-line">    <span class="token property">border-bottom-color</span><span class="token punctuation">:</span> <span class="token variable">$color</span></span>&#10;<span class="token atrule-line">  <span class="token atrule">@else</span> if $direction <span class="token atrule">=</span><span class="token atrule">=</span> right</span>&#10;<span class="token property-line">    <span class="token property">border-left-color</span><span class="token punctuation">:</span> <span class="token variable">$color</span></span>&#10;<span class="token atrule-line">  <span class="token atrule">@else</span> if $direction <span class="token atrule">=</span><span class="token atrule">=</span> down</span>&#10;<span class="token property-line">    <span class="token property">border-top-color</span><span class="token punctuation">:</span> <span class="token variable">$color</span></span>&#10;<span class="token atrule-line">  <span class="token atrule">@else</span> if $direction <span class="token atrule">=</span><span class="token atrule">=</span> left</span>&#10;<span class="token property-line">    <span class="token property">border-right-color</span><span class="token punctuation">:</span> <span class="token variable">$color</span></span>&#10;<span class="token atrule-line">  <span class="token atrule">@else</span></span>&#10;<span class="token atrule-line">    <span class="token atrule">@error</span> "Unknown direction #{$direction}."</span>&#10;&#10;&#10;&#10;<span class="token selector">.next</span>&#10;<span class="token atrule-line">  <span class="token atrule">@include</span> triangle(5px, black, right)</span>&#10;&#10;</code></pre></div>
+<div id="example-else-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.next</span> <span class="token punctuation">{</span>&#10;  <span class="token property">height</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;  <span class="token property">border-color</span><span class="token punctuation">:</span> transparent<span class="token punctuation">;</span>&#10;  <span class="token property">border-style</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>&#10;  <span class="token property">border-width</span><span class="token punctuation">:</span> 2.5px<span class="token punctuation">;</span>&#10;  <span class="token property">border-left-color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<h2 id="truthiness-and-falsiness" tabindex="-1">Truthiness and Falsiness<a class="anchor" href="#truthiness-and-falsiness"><span class="visuallyhidden">Truthiness and Falsiness<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>Anywhere <code>true</code> or <code>false</code> are allowed, you can use other values as well. The
+values <code>false</code> and <a href="/documentation/values/null"><code>null</code></a> are <em>falsey</em>, which means Sass considers them to
+indicate falsehood and cause conditions to fail. Every other value is considered
+<em>truthy</em>, so Sass considers them to work like <code>true</code> and cause conditions to<span class="widont">&nbsp;</span>succeed.</p>
+<p>For example, if you want to check if a string contains a space, you can just
+write <code>string.index($string, &quot; &quot;)</code>. The <a href="/documentation/modules/string#index"><code>string.index()</code> function</a> returns
+<code>null</code> if the string isn’t found and a number<span class="widont">&nbsp;</span>otherwise.</p>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Some languages consider more values falsey than just <code>false</code> and <code>null</code>. Sass
+isn’t one of those languages! Empty strings, empty lists, and the number <code>0</code> are
+all truthy in<span class="widont">&nbsp;</span>Sass.</p>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/at-rules/control/if/ -->
+  </body>
+</html>

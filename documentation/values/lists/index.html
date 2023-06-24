@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Lists</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation values lists">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Lists</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section open selected">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="open selected">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary sl-l-large-holy-grail__complementary--contents">
+              
+                
+                
+                
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    <ul><li>
+      <a href="#slash-separated-lists" class="open">Slash-Separated Lists</a></li><li>
+      <a href="#using-lists" class="section open">Using Lists</a><ul><li class="overview">
+      <a href="#using-lists" >Overview</a>
+    </li><li>
+      <a href="#indexes" class="open">Indexes</a></li><li>
+      <a href="#access-an-element" class="open">Access an<span class="widont">&nbsp;</span>Element</a></li><li>
+      <a href="#do-something-for-every-element" class="open">Do Something for Every<span class="widont">&nbsp;</span>Element</a></li><li>
+      <a href="#add-to-a-list" class="open">Add to a<span class="widont">&nbsp;</span>List</a></li><li>
+      <a href="#find-an-element-in-a-list" class="open">Find an Element in a<span class="widont">&nbsp;</span>List</a></li></ul>
+</li><li>
+      <a href="#immutability" class="open">Immutability</a></li><li>
+      <a href="#argument-lists" class="open">Argument Lists</a></li></ul>
+
+                  </nav>
+                
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+
+
+              <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility (Square Brackets):
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✓</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>since 3.5.0</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>since 3.5.0</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Older implementations of LibSass and Ruby Sass didn’t support lists with
+square<span class="widont">&nbsp;</span>brackets.</p>
+  </div>
+<p>Lists contain a sequence of other values. In Sass, elements in lists can be
+separated by commas (<code>Helvetica, Arial, sans-serif</code>), spaces (<code>10px 15px 0 0</code>),
+or <a href="#slash-separated-lists">slashes</a> as long as it’s consistent within the list. Unlike most other
+languages, lists in Sass don’t require special brackets; any <a href="/documentation/syntax/structure#expressions">expressions</a>
+separated with spaces or commas count as a list. However, you’re allowed to
+write lists with square brackets (<code>[line1 line2]</code>), which is useful when using
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns"><code>grid-template-columns</code></a>.</p>
+<p>Sass lists can contain one or even zero elements. A single-element list can be
+written either <code>(&lt;expression&gt;,)</code> or <code>[&lt;expression&gt;]</code>, and a zero-element list
+can be written either <code>()</code> or <code>[]</code>. Also, all <a href="/documentation/modules/list">list functions</a> will treat
+individual values that aren’t in lists as though they’re lists containing that
+value, which means you rarely need to explicitly create single-element<span class="widont">&nbsp;</span>lists.</p>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Empty lists without brackets aren’t valid <span class="caps">CSS</span>, so Sass won’t let you use one
+in a property<span class="widont">&nbsp;</span>value.</p>
+</div>
+<h2 id="slash-separated-lists" tabindex="-1">Slash-Separated Lists<a class="anchor" href="#slash-separated-lists"><span class="visuallyhidden">Slash-Separated Lists permalink</span></a></h2>
+<p>Lists in Sass can be separated by slashes, to represent values like the <code>font: 12px/30px</code> shorthand for setting <code>font-size</code> and <code>line-height</code> or the <code>hsl(80 100% 50% / 0.5)</code> syntax for creating a color with a given opacity value.
+However, <strong>slash-separated lists can’t currently be written literally.</strong> Sass
+historically used the <code>/</code> character to indicate division, so while existing
+stylesheets transition to using <a href="/documentation/modules/math#div"><code>math.div()</code></a> slash-separated lists can only be
+written using <a href="/documentation/modules/list#slash"><code>list.slash()</code></a>.</p>
+<p>For more details, see <a href="/documentation/breaking-changes/slash-div">Breaking Change: Slash as<span class="widont">&nbsp;</span>Division</a>.</p>
+<h2 id="using-lists" tabindex="-1">Using Lists<a class="anchor" href="#using-lists"><span class="visuallyhidden">Using Lists permalink</span></a></h2>
+<p>Sass provides a handful of <a href="/documentation/modules/list">functions</a> that make it possible to use lists to
+write powerful style libraries, or to make your app’s stylesheet cleaner and
+more<span class="widont">&nbsp;</span>maintainable.</p>
+<h3 id="indexes" tabindex="-1">Indexes<a class="anchor" href="#indexes"><span class="visuallyhidden">Indexes permalink</span></a></h3>
+<p>Many of these functions take or return numbers, called <em>indexes</em>, that refer to
+the elements in a list. The index 1 indicates the first element of the list.
+Note that this is different than many programming languages where indexes start
+at 0! Sass also makes it easy to refer to the end of a list. The index -1 refers
+to the last element in a list, -2 refers to the second-to-last, and so<span class="widont">&nbsp;</span>on.</p>
+<h3 id="access-an-element" tabindex="-1">Access an Element<a class="anchor" href="#access-an-element"><span class="visuallyhidden">Access an Element<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>Lists aren’t much use if you can’t get values out of them. You can use the
+<a href="/documentation/modules/list#nth"><code>list.nth($list, $n)</code> function</a> to get the element at a given index in a
+list. The first argument is the list itself, and the second is the index of the
+value you want to get<span class="widont">&nbsp;</span>out.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-example-list-nth-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-example-list-nth-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-example-list-nth-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> list.<span class="token function">nth</span><span class="token punctuation">(</span>10px 12px 16px<span class="token punctuation">,</span> 2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 12px</span>&#10;<span class="token keyword">@debug</span> list.<span class="token function">nth</span><span class="token punctuation">(</span>[line1<span class="token punctuation">,</span> line2<span class="token punctuation">,</span> line3]<span class="token punctuation">,</span> -1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// line3</span>&#10;</code></pre></div>
+<div id="example-example-list-nth-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> list.nth(10px 12px 16px, 2)  // 12px</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> list.nth([line1, line2, line3], -1)  // line3</span>&#10;</code></pre></div>
+</div>
+<h3 id="do-something-for-every-element" tabindex="-1">Do Something for Every Element<a class="anchor" href="#do-something-for-every-element"><span class="visuallyhidden">Do Something for Every Element<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>This doesn’t actually use a function, but it’s still one of the most common ways
+to use lists. The <a href="/documentation/at-rules/control/each"><code>@each</code> rule</a> evaluates a block of styles for each element
+in a list, and assigns that element to a<span class="widont">&nbsp;</span>variable.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-each-list-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-each-list-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-each-list-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-each-list-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$sizes</span></span><span class="token punctuation">:</span> 40px<span class="token punctuation">,</span> 50px<span class="token punctuation">,</span> 80px<span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@each</span> <span class="token selector"><span class="token variable">$size</span> in <span class="token variable">$sizes</span> </span><span class="token punctuation">{</span>&#10;  <span class="token selector">.icon-<span class="token variable">#{$size}</span> </span><span class="token punctuation">{</span>&#10;    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$size</span><span class="token punctuation">;</span>&#10;    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token variable">$size</span><span class="token punctuation">;</span>&#10;    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token variable">$size</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+<div id="example-each-list-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$sizes</span><span class="token punctuation">:</span> 40px, 50px, 80px</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@each</span> $size in $sizes</span>&#10;  <span class="token selector">.icon-#{$size}</span>&#10;<span class="token property-line">    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token variable">$size</span></span>&#10;<span class="token property-line">    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token variable">$size</span></span>&#10;<span class="token property-line">    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token variable">$size</span></span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+<div id="example-each-list-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.icon-40px</span> <span class="token punctuation">{</span>&#10;  <span class="token property">font-size</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span>&#10;  <span class="token property">height</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.icon-50px</span> <span class="token punctuation">{</span>&#10;  <span class="token property">font-size</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>&#10;  <span class="token property">height</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.icon-80px</span> <span class="token punctuation">{</span>&#10;  <span class="token property">font-size</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>&#10;  <span class="token property">height</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+</div>
+<h3 id="add-to-a-list" tabindex="-1">Add to a List<a class="anchor" href="#add-to-a-list"><span class="visuallyhidden">Add to a List<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>It’s also useful to add elements to a list. The <a href="/documentation/modules/list#append"><code>list.append($list, $val)</code>
+function</a> takes a list and a value, and returns a copy of the list with the
+value added to the end. Note that because Sass lists are <a href="#immutability">immutable</a>, it
+doesn’t modify the original<span class="widont">&nbsp;</span>list.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-lists-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-lists-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-lists-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> <span class="token function">append</span><span class="token punctuation">(</span>10px 12px 16px<span class="token punctuation">,</span> 25px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10px 12px 16px 25px</span>&#10;<span class="token keyword">@debug</span> <span class="token function">append</span><span class="token punctuation">(</span>[col1-line1]<span class="token punctuation">,</span> col1-line2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [col1-line1, col1-line2]</span>&#10;</code></pre></div>
+<div id="example-lists-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> append(10px 12px 16px, 25px)  // 10px 12px 16px 25px</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> append([col1-line1], col1-line2)  // [col1-line1, col1-line2]</span>&#10;</code></pre></div>
+</div>
+<h3 id="find-an-element-in-a-list" tabindex="-1">Find an Element in a List<a class="anchor" href="#find-an-element-in-a-list"><span class="visuallyhidden">Find an Element in a List<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>If you need to check if an element is in a list or figure out what index it’s
+at, use the <a href="/documentation/modules/list#index"><code>list.index($list, $value)</code> function</a>. This takes a list and a
+value to locate in that list, and returns the index of that<span class="widont">&nbsp;</span>value.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-example-list-index-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-example-list-index-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-example-list-index-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> list.<span class="token function">index</span><span class="token punctuation">(</span>1px solid red<span class="token punctuation">,</span> 1px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>&#10;<span class="token keyword">@debug</span> list.<span class="token function">index</span><span class="token punctuation">(</span>1px solid red<span class="token punctuation">,</span> solid<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>&#10;<span class="token keyword">@debug</span> list.<span class="token function">index</span><span class="token punctuation">(</span>1px solid red<span class="token punctuation">,</span> dashed<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// null</span>&#10;</code></pre></div>
+<div id="example-example-list-index-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> list.index(1px solid red, 1px)  // 1</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> list.index(1px solid red, solid)  // 2</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> list.index(1px solid red, dashed)  // null</span>&#10;</code></pre></div>
+</div>
+<p>If the value isn’t in the list at all, <code>list.index()</code> returns <a href="/documentation/values/null"><code>null</code></a>.
+Because <code>null</code> is <a href="/documentation/at-rules/control/if#truthiness-and-falsiness">falsey</a>, you can use <code>list.index()</code> with <a href="/documentation/at-rules/control/if"><code>@if</code></a> or
+<a href="/documentation/modules#if"><code>if()</code></a> to check whether a list does or doesn’t contain a given<span class="widont">&nbsp;</span>value.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-list-index-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-list-index-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-list-index-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:list"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token property"><span class="token variable">$valid-sides</span></span><span class="token punctuation">:</span> top<span class="token punctuation">,</span> bottom<span class="token punctuation">,</span> left<span class="token punctuation">,</span> right<span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@mixin</span> <span class="token function">attach</span><span class="token punctuation">(</span><span class="token variable">$side</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token keyword">@if</span> <span class="token operator">not</span> list.<span class="token function">index</span><span class="token punctuation">(</span><span class="token variable">$valid-sides</span><span class="token punctuation">,</span> <span class="token variable">$side</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;    @error <span class="token string">"#{$side} is not a valid side. Expected one of #{$valid-sides}."</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;&#10;  <span class="token comment">// ...</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-list-index-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:list"</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$valid-sides</span><span class="token punctuation">:</span> top, bottom, left, right</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@mixin</span> attach($side)</span>&#10;<span class="token atrule-line">  <span class="token atrule">@if</span> not list.index($valid-sides, $side)</span>&#10;<span class="token atrule-line">    <span class="token atrule">@error</span> "#{$side} is not a valid side. Expected one of #{$valid-sides}."</span>&#10;&#10;&#10;  <span class="token comment">// ...</span>&#10;&#10;</code></pre></div>
+</div>
+<h2 id="immutability" tabindex="-1">Immutability<a class="anchor" href="#immutability"><span class="visuallyhidden">Immutability permalink</span></a></h2>
+<p>Lists in Sass are <em>immutable</em>, which means that the contents of a list value
+never changes. Sass’s list functions all return new lists rather than modifying
+the originals. Immutability helps avoid lots of sneaky bugs that can creep in
+when the same list is shared across different parts of the<span class="widont">&nbsp;</span>stylesheet.</p>
+<p>You can still update your state over time by assigning new lists to the same
+variable, though. This is often used in functions and mixins to collect a bunch
+of values into one<span class="widont">&nbsp;</span>list.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-immutability-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-immutability-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-immutability-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:list"</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@use</span> <span class="token string">"sass:map"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token property"><span class="token variable">$prefixes-by-browser</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"firefox"</span><span class="token punctuation">:</span> moz<span class="token punctuation">,</span> <span class="token string">"safari"</span><span class="token punctuation">:</span> webkit<span class="token punctuation">,</span> <span class="token string">"ie"</span><span class="token punctuation">:</span> ms<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@function</span> <span class="token function">prefixes-for-browsers</span><span class="token punctuation">(</span><span class="token variable">$browsers</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$prefixes</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token keyword">@each</span> <span class="token selector"><span class="token variable">$browser</span> in <span class="token variable">$browsers</span> </span><span class="token punctuation">{</span>&#10;    <span class="token property"><span class="token variable">$prefixes</span></span><span class="token punctuation">:</span> list.<span class="token function">append</span><span class="token punctuation">(</span><span class="token variable">$prefixes</span><span class="token punctuation">,</span> map.<span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$prefixes-by-browser</span><span class="token punctuation">,</span> <span class="token variable">$browser</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;  <span class="token keyword">@return</span> <span class="token variable">$prefixes</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token keyword">@debug</span> <span class="token function">prefixes-for-browsers</span><span class="token punctuation">(</span><span class="token string">"firefox"</span> <span class="token string">"ie"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// moz ms</span>&#10;</code></pre></div>
+<div id="example-immutability-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:list"</span>&#10;<span class="token atrule-line"><span class="token atrule">@use</span> "sass:map"</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$prefixes-by-browser</span><span class="token punctuation">:</span> ("firefox"<span class="token punctuation">:</span> moz, "safari"<span class="token punctuation">:</span> webkit, "ie"<span class="token punctuation">:</span> ms)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@function</span> prefixes-for-browsers($browsers)</span>&#10;<span class="token variable-line">  <span class="token variable">$prefixes</span><span class="token punctuation">:</span> ()</span>&#10;<span class="token atrule-line">  <span class="token atrule">@each</span> $browser in $browsers</span>&#10;<span class="token variable-line">    <span class="token variable">$prefixes</span><span class="token punctuation">:</span> list.append(<span class="token variable">$prefixes</span>, map.get(<span class="token variable">$prefixes-by-browser</span>, <span class="token variable">$browser</span>))</span>&#10;&#10;<span class="token atrule-line">  <span class="token atrule">@return</span> $prefixes</span>&#10;&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> prefixes-for-browsers("firefox" "ie")  // moz ms</span>&#10;</code></pre></div>
+</div>
+<h2 id="argument-lists" tabindex="-1">Argument Lists<a class="anchor" href="#argument-lists"><span class="visuallyhidden">Argument Lists permalink</span></a></h2>
+<p>When you declare a mixin or function that takes <a href="/documentation/at-rules/mixin#taking-arbitrary-arguments">arbitrary arguments</a>, the
+value you get is a special list known as an <em>argument list</em>. It acts just like a
+list that contains all the arguments passed to the mixin or function, with one
+extra feature: if the user passed keyword arguments, they can be accessed as a
+map by passing the argument list to the <a href="/documentation/modules/meta#keywords"><code>meta.keywords()</code> function</a>.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 71.36363636363636%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-mixin-arbitrary-kwargs-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-mixin-arbitrary-kwargs-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-mixin-arbitrary-kwargs-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-mixin-arbitrary-kwargs-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:meta"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@mixin</span> <span class="token function">syntax-colors</span><span class="token punctuation">(</span><span class="token variable">$args</span>...<span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token keyword">@debug</span> meta.<span class="token function">keywords</span><span class="token punctuation">(</span><span class="token variable">$args</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token comment">// (string: #080, comment: #800, variable: #60b)</span>&#10;&#10;  <span class="token keyword">@each</span> <span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token variable">$color</span> in meta.<span class="token function">keywords</span><span class="token punctuation">(</span><span class="token variable">$args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;    <span class="token selector">pre span.stx-<span class="token variable">#{$name}</span> </span><span class="token punctuation">{</span>&#10;      <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$color</span><span class="token punctuation">;</span>&#10;    <span class="token punctuation">}</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token keyword">@include</span> <span class="token function">syntax-colors</span><span class="token punctuation">(</span>&#10;  <span class="token property"><span class="token variable">$string</span></span><span class="token punctuation">:</span> #080<span class="token punctuation">,</span>&#10;  <span class="token property"><span class="token variable">$comment</span></span><span class="token punctuation">:</span> #800<span class="token punctuation">,</span>&#10;  <span class="token property"><span class="token variable">$variable</span></span><span class="token punctuation">:</span> #60b<span class="token punctuation">,</span>&#10;<span class="token punctuation">)</span>&#10;</code></pre></div>
+<div id="example-mixin-arbitrary-kwargs-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:meta"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@mixin</span> syntax-colors($args...)</span>&#10;<span class="token atrule-line">  <span class="token atrule">@debug</span> meta.keywords($args)</span>&#10;  <span class="token comment">// (string: #080, comment: #800, variable: #60b)</span>&#10;&#10;<span class="token atrule-line">  <span class="token atrule">@each</span> $name, $color in meta.keywords($args)</span>&#10;    <span class="token selector">pre span.stx-#{$name}</span>&#10;<span class="token property-line">      <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$color</span></span>&#10;&#10;&#10;&#10;&#10;<span class="token atrule-line"><span class="token atrule">@include</span> syntax-colors($string: #080, $comment: #800, $variable: #60b)</span>&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+<div id="example-mixin-arbitrary-kwargs-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">pre span.stx-string</span> <span class="token punctuation">{</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> #080<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">pre span.stx-comment</span> <span class="token punctuation">{</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> #800<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">pre span.stx-variable</span> <span class="token punctuation">{</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> #60b<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/values/lists/ -->
+  </body>
+</html>

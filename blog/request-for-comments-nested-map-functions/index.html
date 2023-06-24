@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Request for Comments: Nested Map Functions</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 025-request-for-comments-nested-map-functions">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Request for Comments: Nested Map<span class="widont">&nbsp;</span>Functions</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 16 September 2020 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>As Sass libraries and design systems get more complex and have more users with
+different needs, they tend to develop the need to share and override
+configuration and design tokens. This configuration is often hierarchical, and
+ends up being represented as maps that contain maps that contain still more
+maps. Up until now, Sass’s map functions haven’t really made it easy to work
+with this sort of nested map structure. But that’s changing with the latest
+language proposal, written by Sass core team member <a href="https://www.miriamsuzanne.com/">Miriam<span class="widont">&nbsp;</span>Suzanne</a>.</p>
+<p>This proposal expands the existing map functions and adds a few new ones to make
+working with nested maps much easier than it was before. It’s based on helper
+functions that pop up in all sorts of Sass projects around the web,
+incorporating best practices back into the language<span class="widont">&nbsp;</span>itself.</p>
+<h2 id="the-functions" tabindex="-1">The Functions<a class="anchor" href="#the-functions"><span class="visuallyhidden">The Functions permalink</span></a></h2>
+<p>Here are the new and improved functions this proposal<span class="widont">&nbsp;</span>adds:</p>
+<h3 id="map-get-and-map-has-key" tabindex="-1"><code>map.get()</code> and <code>map.has-key()</code><a class="anchor" href="#map-get-and-map-has-key"><span class="visuallyhidden">map.get() and map.has-key()<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>The <a href="/documentation/modules/map#get"><code>map.get()</code></a> and <a href="/documentation/modules/map#has-key"><code>map.has-key()</code></a> functions both now take any number of
+keys as arguments. Each key drills deeper into a nested map, allowing you to
+easily inspect nested values without needing to chain a bunch of function calls<span class="widont">&nbsp;</span>together.</p>
+<p>For example, let’s take the following simplified configuration<span class="widont">&nbsp;</span>map:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$config</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>
+  <span class="token string">"colors"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>
+    <span class="token string">"primary"</span><span class="token punctuation">:</span> red<span class="token punctuation">,</span>
+    <span class="token string">"secondary"</span><span class="token punctuation">:</span> blue
+  <span class="token punctuation">)</span>
+<span class="token punctuation">)</span></code></pre>
+<p>For this map, <code>map.get($config, &quot;colors&quot;, &quot;primary&quot;)</code> gets the value of the
+<code>&quot;colors&quot;</code> key (<code>(&quot;primary&quot;: red)</code>) then the value of the <code>&quot;primary&quot;</code> key and
+returns <code>red</code>.</p>
+<p>Similarly, <code>map.has-key($config, &quot;colors&quot;, &quot;primary&quot;)</code> returns <code>true</code> while
+<code>map.has-key($config, &quot;colors&quot;, &quot;tertiary&quot;)</code> returns <code>false</code>.</p>
+<h3 id="map-merge" tabindex="-1"><code>map.merge()</code><a class="anchor" href="#map-merge"><span class="visuallyhidden">map.merge() permalink</span></a></h3>
+<p>The <a href="/documentation/modules/map#merge"><code>map.merge()</code></a> function can now be called as <code>map.merge($map1, $keys..., $map2)</code>. This will merge <code>$map2</code> with a child of <code>$map1</code> at the location given
+by the keys, updating the parent maps as it<span class="widont">&nbsp;</span>goes.</p>
+<p>For example, using the configuration map <a href="#map-get-and-map-has-key">defined above</a> <code>map.merge($config, &quot;colors&quot;, (&quot;primary&quot;: green))</code> will return</p>
+<pre><code>(
+  &quot;colors&quot;: (
+    &quot;primary&quot;: green,
+    &quot;secondary&quot;: blue
+  )
+)
+</code></pre>
+<h3 id="map-set" tabindex="-1"><code>map.set()</code><a class="anchor" href="#map-set"><span class="visuallyhidden">map.set() permalink</span></a></h3>
+<p>The <code>map.set($map, $keys..., $value)</code> function is all-new. Although updating
+individual values in maps was always possible with <code>map.merge()</code>, we’ve found
+that users get confused by the absence of a dedicated <code>set()</code> function. This
+function not only fills that role, but makes it possible to set values within
+nested maps as<span class="widont">&nbsp;</span>well.</p>
+<p>You can use <code>map.set()</code> for normal single-layer maps by just passing one key.
+For example, <code>map.set((&quot;wide&quot;: 200px, &quot;narrow&quot;: 70px), &quot;wide&quot;, 180px)</code> will
+return <code>(&quot;wide&quot;: 180px, &quot;narrow&quot;: 70px)</code>.</p>
+<p>But you can also use it for nested maps. For example, <code>map.set($config, &quot;colors&quot;, &quot;tertiary&quot;, yellow)</code> will return</p>
+<pre><code>(
+  &quot;colors&quot;: (
+    &quot;primary&quot;: red,
+    &quot;secondary&quot;: blue,
+    &quot;tertiary&quot;: yellow
+  )
+)
+</code></pre>
+<h3 id="map-deep-remove" tabindex="-1"><code>map.deep-remove()</code><a class="anchor" href="#map-deep-remove"><span class="visuallyhidden">map.deep-remove() permalink</span></a></h3>
+<p>Because the existing <a href="/documentation/modules/map#remove"><code>map.remove()</code></a> function already takes any number of
+arguments, we couldn’t just update it to work with nested maps. Instead, we
+chose to add a new function just for nested maps, called <code>map.deep-remove($map, $keys...)</code>. This function removes the value at the final key in the list, and
+updates all the parent maps<span class="widont">&nbsp;</span>accordingly.</p>
+<p>For example, <code>map.deep-remove($config, &quot;colors&quot;, &quot;secondary&quot;)</code> will return
+<code>(&quot;colors&quot;: (&quot;primary&quot;: red))</code>.</p>
+<h3 id="map-deep-merge" tabindex="-1"><code>map.deep-merge()</code><a class="anchor" href="#map-deep-merge"><span class="visuallyhidden">map.deep-merge() permalink</span></a></h3>
+<p>The final new function may be the most exciting. <code>map.deep-merge($map1, $map2)</code>
+works just like <code>map.merge()</code>, except that any nested maps are <em>also</em> merged,
+including maps within those maps and so on. This makes it easy to combine two
+configuration maps that have the same structure without having to manually merge
+each level by<span class="widont">&nbsp;</span>hand.</p>
+<p>For example, <code>map.deep-merge($config, (&quot;colors&quot;: (&quot;secondary&quot;: teal)))</code> returns</p>
+<pre><code>(
+  &quot;colors&quot;: (
+    &quot;primary&quot;: red,
+    &quot;secondary&quot;: teal
+  )
+)
+</code></pre>
+<h2 id="let-us-know-what-you-think" tabindex="-1">Let us know what you think!<a class="anchor" href="#let-us-know-what-you-think"><span class="visuallyhidden">Let us know what you think!<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>If you’re interested in learning more about this proposal, <a href="https://github.com/sass/sass/blob/main/accepted/nested-map-functions.md">read it in full</a> on
+GitHub. It’s open for comments and revisions for the next month, so if you’d
+like to see something change please <a href="https://github.com/sass/sass/issues/new">file an issue</a> and we can discuss<span class="widont">&nbsp;</span>it!</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/request-for-comments-nested-map-functions/ -->
+  </body>
+</html>

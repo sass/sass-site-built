@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Sass 3.4 is Released</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 004-sass-34-is-released">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Sass 3.4 is<span class="widont">&nbsp;</span>Released</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 19 August 2014 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>We’ve been trying to increase the pace of Sass releases, and it looks like we’ve
+succeeded. A mere five months after the release of <a href="/blog/sass-33-is-released">Sass
+3.3</a>, we’re announcing the release of Sass 3.4.0,
+codename Selective Steve. Faster releases mean fewer major features per release,
+so there are only two big new things to talk about (although there are plenty of
+little improvements you can read about in <a href="https://github.com/sass/ruby-sass/blob/stable/doc-src/SASS_CHANGELOG.md">the
+changelog</a>).
+As the version name suggests, both of these features have to do with<span class="widont">&nbsp;</span>selectors.</p>
+<h2 id="using-and-in-sass-script" tabindex="-1">Using <code>&amp;</code> in SassScript<a class="anchor" href="#using-and-in-sass-script"><span class="visuallyhidden">Using <span class="amp">&amp;</span> in SassScript<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>“SassScript” is what we call the mini-language Sass uses for variables, property
+values, and so forth. It’s mostly just <span class="caps">CSS</span> values, but it also supports custom
+functions, arithmetic, and so forth. In Sass 3.4, we added support for something
+new: the parent selector, <code>&amp;</code>.</p>
+<p>Most Sass users will probably recognize <code>&amp;</code> from its previous appearances in
+selectors around the world, where it’s used to explicitly refer to the parent
+selector. For example, in <code>.parent { .child &amp; { ... } }</code>, <code>&amp;</code> refers to
+<code>.parent</code>, and this compiles to <code>.child .parent { ... }</code>.</p>
+<p>Now <code>&amp;</code> works much the same way in SassScript. It refers to the same parent
+selector, but instead of just being dropped in it’s exposed as a list of lists
+to make it easy for functions to inspect and manipulate it. For example, if you
+write <code>.foo .bar, .baz { $selector: &amp; }</code>, <code>$selector</code> will be <code>((&quot;.foo&quot; &quot;.bar&quot;), (&quot;.baz&quot;,))</code>.</p>
+<p>We had originally slated this feature for version 3.3, but we took it out when
+we realized <a href="/blog/a-change-in-plans-for-sass-33">it was really hard to use these selectors in a way that didn’t
+break when they contained commas</a>.
+Because of that, we decided to delay it for a version to give us time to come up
+with its compantion feature: selector<span class="widont">&nbsp;</span>functions.</p>
+<h2 id="selector-functions" tabindex="-1">Selector Functions<a class="anchor" href="#selector-functions"><span class="visuallyhidden">Selector Functions permalink</span></a></h2>
+<p>The problem with just exposing <code>&amp;</code> was that the only way to use it with other
+selectors was by glomming them together as strings. This works okay in simple
+cases, but when you write <code>#{$selector} .child</code> and <code>$selector</code> is <code>.foo, .bar</code>,
+you want <code>.foo .child, .bar .child</code> but you get <code>.foo, .bar .child</code>. This is no
+good at<span class="widont">&nbsp;</span>all.</p>
+<p>To solve this, we added a slew of functions that use Sass’s powerful built-in
+selector logic to do the right thing. For example, you can now write
+<strong><code>selector-nest(&quot;.foo, .bar&quot;, &quot;.child&quot;)</code></strong> and get exactly what you want. These
+functions all return the same sort of nested-list representation that <code>&amp;</code>
+uses,but they’re very liberal in what they accept: anything from nested lists to
+plain old<span class="widont">&nbsp;</span>strings.</p>
+<p>If you want to see every selector function we thought up, check out <a href="https://github.com/sass/ruby-sass/blob/stable/doc-src/SASS_CHANGELOG.md">the
+changelog</a>.
+I do want to highlight a few that I’m particularly fond of, though. You’ve
+already seen <code>selector-nest()</code>, and <strong><code>selector-append()</code></strong> is a close relative.
+The difference between them is whitespace: <code>selector-nest()</code> adds a space
+between its selectors, where <code>selector-append()</code> doesn’t. This means that
+<code>selector-append(&quot;.foo, .bar&quot;, &quot;-suffix&quot;)</code> returns <code>.foo-suffix, .bar-suffix</code>.</p>
+<p>Another function I like a lot is <strong><code>selector-replace()</code></strong>. This does a
+search-and-replace of one selector within another, but it’s a lot more clever
+than your basic string replace. It uses Sass’s <code>@extend</code> logic to replace
+selectors <em>semantically</em>, as though every element matched by the replacement
+selector was also matched by the replaced selector. For example,
+<code>selector-replace(&quot;.foo.bar.baz&quot;, &quot;.foo.baz&quot;, &quot;.qux&quot;)</code> returns <code>.bar.qux</code>.</p>
+<p>The last really powerful function I want to draw your attention to is
+<strong><code>selector-unify()</code></strong>. This takes two selectors and returns a new selector that
+matches only elements that are matched by <em>both</em> input selectors. This is an
+operation Sass uses a lot internally, and now users can access it as well. For
+example, <code>selector-unify(&quot;.foo.bar&quot;, &quot;.bar.baz&quot;)</code> will return <code>.foo.bar.baz</code>.</p>
+<h2 id="what-s-next" tabindex="-1">What’s Next?<a class="anchor" href="#what-s-next"><span class="visuallyhidden">What’s Next? permalink</span></a></h2>
+<p>I won’t rule out the possibility of Sass 3.5 existing, but
+<a href="https://twitter.com/chriseppstein">Chris</a> and I plan to focus pretty hard on
+Sass 4.0. The big feature for 4.0 is going to be <code>@import</code>, or rather the lack
+thereof. Our current import system is beginning to show its age in a major way,
+and we intend to replace it wholesale, up to and including the name. As of 4.0,
+the recommended way of pulling in other Sass files will be <code>@use</code>.</p>
+<p>Among the features we’re planning for <code>@use</code> are two that have been widely
+requested. You’ll be able to import <span class="caps">CSS</span> stylesheets directly into your Sass
+ones, and each stylesheet will only be run once, no matter how many times it’s<span class="widont">&nbsp;</span>imported.</p>
+<p>Until then, though, run <code>gem update sass</code> and enjoy Selective<span class="widont">&nbsp;</span>Steve!</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/sass-34-is-released/ -->
+  </body>
+</html>

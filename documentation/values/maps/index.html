@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Maps</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation values maps">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Maps</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section open selected">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="open selected">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary sl-l-large-holy-grail__complementary--contents">
+              
+                
+                
+                
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    <ul><li>
+      <a href="#using-maps" class="section open">Using Maps</a><ul><li class="overview">
+      <a href="#using-maps" >Overview</a>
+    </li><li>
+      <a href="#look-up-a-value" class="open">Look Up a<span class="widont">&nbsp;</span>Value</a></li><li>
+      <a href="#do-something-for-every-pair" class="open">Do Something for Every<span class="widont">&nbsp;</span>Pair</a></li><li>
+      <a href="#add-to-a-map" class="open">Add to a<span class="widont">&nbsp;</span>Map</a></li></ul>
+</li><li>
+      <a href="#immutability" class="open">Immutability</a></li></ul>
+
+                  </nav>
+                
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+
+
+              <p>Maps in Sass hold pairs of keys and values, and make it easy to look up a value
+by its corresponding key. They’re written <code>(&lt;expression&gt;: &lt;expression&gt;, &lt;expression&gt;: &lt;expression&gt;)</code>. The
+<a href="/documentation/syntax/structure#expressions">expression</a> before the <code>:</code> is the
+key, and the expression after is the value associated with that key. The keys
+must be unique, but the values may be duplicated. Unlike
+<a href="/documentation/values/lists">lists</a>, maps <em>must</em> be written with parentheses
+around them. A map with no pairs is written <code>()</code>.</p>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>Astute readers may note that an empty map, <code>()</code>, is written the same as an
+empty list. That’s because it counts as both a map and a list. In fact, <em>all</em>
+maps count as lists! Every map counts as a list that contains a two-element
+list for each key/value pair. For example, <code>(1: 2, 3: 4)</code> counts as <code>(1 2, 3 4)</code>.</p>
+</div>
+<p>Maps allow any Sass values to be used as their keys. The <a href="/documentation/operators/equality"><code>==</code> operator</a> is
+used to determine whether two keys are the<span class="widont">&nbsp;</span>same.</p>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Most of the time, it’s a good idea to use <a href="/documentation/values/strings#quoted">quoted strings</a> rather than
+<a href="/documentation/values/strings#unquoted">unquoted strings</a> for map keys. This is because some values, such as color
+names, may <em>look</em> like unquoted strings but actually be other types. To avoid
+confusing problems down the line, just use<span class="widont">&nbsp;</span>quotes!</p>
+</div>
+<h2 id="using-maps" tabindex="-1">Using Maps<a class="anchor" href="#using-maps"><span class="visuallyhidden">Using Maps permalink</span></a></h2>
+<p>Since maps aren’t valid <span class="caps">CSS</span> values, they don’t do much of anything on their own.
+That’s why Sass provides a bunch of <a href="/documentation/modules/map">functions</a> to create maps and access the
+values they<span class="widont">&nbsp;</span>contain.</p>
+<h3 id="look-up-a-value" tabindex="-1">Look Up a Value<a class="anchor" href="#look-up-a-value"><span class="visuallyhidden">Look Up a Value<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>Maps are all about associating keys and values, so naturally there’s a way to
+get the value associated with a key: the <a href="/documentation/modules/map#get"><code>map.get($map, $key)</code> function</a>!
+This function returns the value in the map associated with the given key. It
+returns <a href="/documentation/values/null"><code>null</code></a> if the map doesn’t contain the<span class="widont">&nbsp;</span>key.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-get-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-get-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-get-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$font-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span> <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"medium"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 500</span>&#10;<span class="token keyword">@debug</span> map.<span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"extra-bold"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// null</span>&#10;</code></pre></div>
+<div id="example-map-get-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-weights</span><span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.get($font-weights, "medium")  // 500</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.get($font-weights, "extra-bold")  // null</span>&#10;</code></pre></div>
+</div>
+<h3 id="do-something-for-every-pair" tabindex="-1">Do Something for Every Pair<a class="anchor" href="#do-something-for-every-pair"><span class="visuallyhidden">Do Something for Every Pair<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>This doesn’t actually use a function, but it’s still one of the most common ways
+to use maps. The <a href="/documentation/at-rules/control/each"><code>@each</code> rule</a> evaluates a block of styles for each key/value
+pair in a map. The key and the value are assigned to variables so they can
+easily be accessed in the<span class="widont">&nbsp;</span>block.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 65%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-each-map-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-each-map-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-each-map-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-each-map-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$icons</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"eye"</span><span class="token punctuation">:</span> <span class="token string">"\f112"</span><span class="token punctuation">,</span> <span class="token string">"start"</span><span class="token punctuation">:</span> <span class="token string">"\f12e"</span><span class="token punctuation">,</span> <span class="token string">"stop"</span><span class="token punctuation">:</span> <span class="token string">"\f12f"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@each</span> <span class="token selector"><span class="token variable">$name</span>, <span class="token variable">$glyph</span> in <span class="token variable">$icons</span> </span><span class="token punctuation">{</span>&#10;  <span class="token selector">.icon-<span class="token variable">#{$name}</span>:before </span><span class="token punctuation">{</span>&#10;    <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>&#10;    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Icon Font"</span><span class="token punctuation">;</span>&#10;    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token variable">$glyph</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+<div id="example-each-map-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$icons</span><span class="token punctuation">:</span> ("eye"<span class="token punctuation">:</span> "\f112", "start"<span class="token punctuation">:</span> "\f12e", "stop"<span class="token punctuation">:</span> "\f12f")</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@each</span> $name, $glyph in $icons</span>&#10;<span class="token property-line">  <span class="token property">.icon-#{$name}</span><span class="token punctuation">:</span><span class="token property">before</span></span>&#10;<span class="token property-line">    <span class="token property">display</span><span class="token punctuation">:</span> inline-block</span>&#10;<span class="token property-line">    <span class="token property">font-family</span><span class="token punctuation">:</span> "Icon Font"</span>&#10;<span class="token property-line">    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token variable">$glyph</span></span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+<div id="example-each-map-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.icon-eye:before</span> <span class="token punctuation">{</span>&#10;  <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>&#10;  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Icon Font"</span><span class="token punctuation">;</span>&#10;  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"\f112"</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.icon-start:before</span> <span class="token punctuation">{</span>&#10;  <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>&#10;  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Icon Font"</span><span class="token punctuation">;</span>&#10;  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"\f12e"</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.icon-stop:before</span> <span class="token punctuation">{</span>&#10;  <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>&#10;  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Icon Font"</span><span class="token punctuation">;</span>&#10;  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"\f12f"</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+</div>
+<h3 id="add-to-a-map" tabindex="-1">Add to a Map<a class="anchor" href="#add-to-a-map"><span class="visuallyhidden">Add to a Map<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>It’s also useful to add new pairs to a map, or to replace the value for an
+existing key. The <a href="/documentation/modules/map#set"><code>map.set($map, $key, $value)</code> function</a> does this: it
+returns a copy of <code>$map</code> with the value at <code>$key</code> set to <code>$value</code>.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-maps-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-maps-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-maps-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:map"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token property"><span class="token variable">$font-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span> <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">set</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"extra-bold"</span><span class="token punctuation">,</span> 900<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// ("regular": 400, "medium": 500, "bold": 700, "extra-bold": 900)</span>&#10;<span class="token keyword">@debug</span> map.<span class="token function">set</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">,</span> 900<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// ("regular": 400, "medium": 500, "bold": 900)</span>&#10;</code></pre></div>
+<div id="example-maps-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:map"</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$font-weights</span><span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.set($font-weights, "extra-bold": 900)</span>&#10;<span class="token comment">// ("regular": 400, "medium": 500, "bold": 700, "extra-bold": 900)</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.set($font-weights, "bold", 900)</span>&#10;<span class="token comment">// ("regular": 400, "medium": 500, "bold": 900)</span>&#10;</code></pre></div>
+</div>
+<p>Instead of setting values one-by-one, you can also merge two existing maps using
+<a href="/documentation/modules/map#merge"><code>map.merge($map1, $map2)</code></a>.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-merge-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-merge-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-merge-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:map"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token property"><span class="token variable">$light-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"lightest"</span><span class="token punctuation">:</span> 100<span class="token punctuation">,</span> <span class="token string">"light"</span><span class="token punctuation">:</span> 300<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$heavy-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">merge</span><span class="token punctuation">(</span><span class="token variable">$light-weights</span><span class="token punctuation">,</span> <span class="token variable">$heavy-weights</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// ("lightest": 100, "light": 300, "medium": 500, "bold": 700)</span>&#10;</code></pre></div>
+<div id="example-map-merge-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:map"</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$light-weights</span><span class="token punctuation">:</span> ("lightest"<span class="token punctuation">:</span> 100, "light"<span class="token punctuation">:</span> 300)</span>&#10;<span class="token variable-line"><span class="token variable">$heavy-weights</span><span class="token punctuation">:</span> ("medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.merge($light-weights, $heavy-weights)</span>&#10;<span class="token comment">// ("lightest": 100, "light": 300, "medium": 500, "bold": 700)</span>&#10;</code></pre></div>
+</div>
+<p>If both maps have the same keys, the second map’s values are used in the map
+that gets<span class="widont">&nbsp;</span>returned.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-same-keys-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-same-keys-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-same-keys-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:map"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token property"><span class="token variable">$weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"light"</span><span class="token punctuation">:</span> 300<span class="token punctuation">,</span> <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">merge</span><span class="token punctuation">(</span><span class="token variable">$weights</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token string">"medium"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// ("light": 300, "medium": 700)</span>&#10;</code></pre></div>
+<div id="example-map-same-keys-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:map";</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$weights</span><span class="token punctuation">:</span> ("light"<span class="token punctuation">:</span> 300, "medium"<span class="token punctuation">:</span> 500)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.merge($weights, ("medium": 700))</span>&#10;<span class="token comment">// ("light": 300, "medium": 700)</span>&#10;</code></pre></div>
+</div>
+<p>Note that because Sass maps are <a href="#immutability">immutable</a>, <code>map.set()</code> and <code>map.merge()</code> do
+not modify the original<span class="widont">&nbsp;</span>list.</p>
+<h2 id="immutability" tabindex="-1">Immutability<a class="anchor" href="#immutability"><span class="visuallyhidden">Immutability permalink</span></a></h2>
+<p>Maps in Sass are <em>immutable</em>, which means that the contents of a map value never
+changes. Sass’s map functions all return new maps rather than modifying the
+originals. Immutability helps avoid lots of sneaky bugs that can creep in when
+the same map is shared across different parts of the<span class="widont">&nbsp;</span>stylesheet.</p>
+<p>You can still update your state over time by assigning new maps to the same
+variable, though. This is often used in functions and mixins to track
+configuration in a<span class="widont">&nbsp;</span>map.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-immutability-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-immutability-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-immutability-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:map"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token property"><span class="token variable">$prefixes-by-browser</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"firefox"</span><span class="token punctuation">:</span> moz<span class="token punctuation">,</span> <span class="token string">"safari"</span><span class="token punctuation">:</span> webkit<span class="token punctuation">,</span> <span class="token string">"ie"</span><span class="token punctuation">:</span> ms<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@mixin</span> <span class="token function">add-browser-prefix</span><span class="token punctuation">(</span><span class="token variable">$browser</span><span class="token punctuation">,</span> <span class="token variable">$prefix</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$prefixes-by-browser</span></span><span class="token punctuation">:</span> map.<span class="token function">merge</span><span class="token punctuation">(</span><span class="token variable">$prefixes-by-browser</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token property"><span class="token variable">$browser</span></span><span class="token punctuation">:</span> <span class="token variable">$prefix</span><span class="token punctuation">)</span><span class="token punctuation">)</span> !global<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token keyword">@include</span> <span class="token function">add-browser-prefix</span><span class="token punctuation">(</span><span class="token string">"opera"</span><span class="token punctuation">,</span> o<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@debug</span> <span class="token variable">$prefixes-by-browser</span><span class="token punctuation">;</span>&#10;<span class="token comment">// ("firefox": moz, "safari": webkit, "ie": ms, "opera": o)</span>&#10;</code></pre></div>
+<div id="example-immutability-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:map"</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$prefixes-by-browser</span><span class="token punctuation">:</span> ("firefox"<span class="token punctuation">:</span> moz, "safari"<span class="token punctuation">:</span> webkit, "ie"<span class="token punctuation">:</span> ms)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@mixin</span> add-browser-prefix($browser, $prefix)</span>&#10;<span class="token variable-line">  <span class="token variable">$prefixes-by-browser</span><span class="token punctuation">:</span> map.merge(<span class="token variable">$prefixes-by-browser</span>, (<span class="token variable">$browser</span><span class="token punctuation">:</span> <span class="token variable">$prefix</span>)) !global</span>&#10;&#10;&#10;<span class="token atrule-line"><span class="token atrule">@include</span> add-browser-prefix("opera", o)</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> $prefixes-by-browser</span>&#10;<span class="token comment">// ("firefox": moz, "safari": webkit, "ie": ms, "opera": o)</span>&#10;</code></pre></div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/values/maps/ -->
+  </body>
+</html>

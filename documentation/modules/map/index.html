@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: sass:map</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation modules map">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">sass:map</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section open selected">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class="open selected"><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+
+
+              <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.23.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass currently supports loading built-in modules with <code>@use</code>. Users
+of other implementations must call functions using their global names<span class="widont">&nbsp;</span>instead.</p>
+  </div>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>Sass libraries and design systems tend to share and override configurations
+that are represented as nested maps (maps that contain maps that contain<span class="widont">&nbsp;</span>maps).</p>
+<p>To help you work with nested maps, some map functions support deep operations.
+For example, if you pass multiple keys to <code>map.get()</code>, it will follow those
+keys to find the desired nested<span class="widont">&nbsp;</span>map:</p>
+<div class="code-example ui-tabs">
+<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+<a href="#example-map-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+<a href="#example-map-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-scss" class="ui-tabs-panel scss">
+<h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$config</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token property">a</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token property">b</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token property">c</span><span class="token punctuation">:</span> d<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@debug</span> map.<span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$config</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// d</span>&#10;</code></pre></div>
+<div id="example-map-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+<h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$config</span><span class="token punctuation">:</span> (a<span class="token punctuation">:</span> (b<span class="token punctuation">:</span> (c<span class="token punctuation">:</span> d)))</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.get($config, a, b, c) // d</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="deep-merge"><pre class="signature language-scss"><a class="anchor" href="#deep-merge"></a><code class="language-scss">map.<span class="token function docSearch-function" name="map.deep-merge">deep-merge</span><span class="token punctuation">(</span><span class="token variable">$map1</span><span class="token punctuation">,</span> <span class="token variable">$map2</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/maps">map</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.27.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Identical to <a href="#merge"><code>map.merge()</code></a>, except that nested map values are <em>also</em>
+recursively<span class="widont">&nbsp;</span>merged.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-deep-merge-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-deep-merge-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-deep-merge-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$helvetica-light</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;  <span class="token string">"weights"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;    <span class="token string">"lightest"</span><span class="token punctuation">:</span> 100<span class="token punctuation">,</span>&#10;    <span class="token string">"light"</span><span class="token punctuation">:</span> 300&#10;  <span class="token punctuation">)</span>&#10;<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$helvetica-heavy</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;  <span class="token string">"weights"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;    <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span>&#10;    <span class="token string">"bold"</span><span class="token punctuation">:</span> 700&#10;  <span class="token punctuation">)</span>&#10;<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">deep-merge</span><span class="token punctuation">(</span><span class="token variable">$helvetica-light</span><span class="token punctuation">,</span> <span class="token variable">$helvetica-heavy</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// (</span>&#10;<span class="token comment">//   "weights": (</span>&#10;<span class="token comment">//     "lightest": 100,</span>&#10;<span class="token comment">//     "light": 300,</span>&#10;<span class="token comment">//     "medium": 500,</span>&#10;<span class="token comment">//     "bold": 700</span>&#10;<span class="token comment">//   )</span>&#10;<span class="token comment">// )</span>&#10;<span class="token keyword">@debug</span> map.<span class="token function">merge</span><span class="token punctuation">(</span><span class="token variable">$helvetica-light</span><span class="token punctuation">,</span> <span class="token variable">$helvetica-heavy</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// (</span>&#10;<span class="token comment">//   "weights": (</span>&#10;<span class="token comment">//     "medium: 500,</span>&#10;<span class="token comment">//     "bold": 700</span>&#10;<span class="token comment">//   )</span>&#10;<span class="token comment">// )</span>&#10;</code></pre></div>
+<div id="example-map-deep-merge-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$helvetica-light</span><span class="token punctuation">:</span> ("weights"<span class="token punctuation">:</span> ("lightest"<span class="token punctuation">:</span> 100, "light"<span class="token punctuation">:</span> 300))</span>&#10;<span class="token variable-line"><span class="token variable">$helvetica-heavy</span><span class="token punctuation">:</span> ("weights"<span class="token punctuation">:</span> ("medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700))</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.deep-merge($helvetica-light, $helvetica-heavy)</span>&#10;<span class="token comment">// (</span>&#10;<span class="token comment">//   "weights": (</span>&#10;<span class="token comment">//     "lightest": 100,</span>&#10;<span class="token comment">//     "light": 300,</span>&#10;<span class="token comment">//     "medium": 500,</span>&#10;<span class="token comment">//     "bold": 700</span>&#10;<span class="token comment">//   )</span>&#10;<span class="token comment">// )</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.merge($helvetica-light, $helvetica-heavy);</span>&#10;<span class="token comment">// (</span>&#10;<span class="token comment">//   "weights": (</span>&#10;<span class="token comment">//     "medium: 500,</span>&#10;<span class="token comment">//     "bold": 700</span>&#10;<span class="token comment">//   )</span>&#10;<span class="token comment">// )</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="deep-remove"><pre class="signature language-scss"><a class="anchor" href="#deep-remove"></a><code class="language-scss">map.<span class="token function docSearch-function" name="map.deep-remove">deep-remove</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token variable">$keys</span>...<span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/maps">map</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.27.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>If <code>$keys</code> is empty, returns a copy of <code>$map</code> without a value associated with
+<code>$key</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-deep-remove-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-deep-remove-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-deep-remove-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$font-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span> <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">deep-remove</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"regular"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// ("medium": 500, "bold": 700)</span>&#10;</code></pre></div>
+<div id="example-map-deep-remove-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-weights</span><span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.deep-remove($font-weights, "regular")</span>&#10;<span class="token comment">// ("medium": 500, "bold": 700)</span>&#10;</code></pre></div>
+</div>
+<hr>
+<p>If <code>$keys</code> is not empty, follows the set of keys including <code>$key</code> and
+excluding the last key in <code>$keys</code>, from left to right, to find the nested map
+targeted for<span class="widont">&nbsp;</span>updating.</p>
+<p>Returns a copy of <code>$map</code> where the targeted map does not have a value
+associated with the last key in <code>$keys</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-deep-remove-2-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-deep-remove-2-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-deep-remove-2-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$fonts</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;  <span class="token string">"Helvetica"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;    <span class="token string">"weights"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;      <span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span>&#10;      <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span>&#10;      <span class="token string">"bold"</span><span class="token punctuation">:</span> 700&#10;    <span class="token punctuation">)</span>&#10;  <span class="token punctuation">)</span>&#10;<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">deep-remove</span><span class="token punctuation">(</span><span class="token variable">$fonts</span><span class="token punctuation">,</span> <span class="token string">"Helvetica"</span><span class="token punctuation">,</span> <span class="token string">"weights"</span><span class="token punctuation">,</span> <span class="token string">"regular"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// (</span>&#10;<span class="token comment">//   "Helvetica": (</span>&#10;<span class="token comment">//     "weights: (</span>&#10;<span class="token comment">//       "medium": 500,</span>&#10;<span class="token comment">//       "bold": 700</span>&#10;<span class="token comment">//     )</span>&#10;<span class="token comment">//   )</span>&#10;<span class="token comment">// )</span>&#10;</code></pre></div>
+<div id="example-map-deep-remove-2-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$fonts</span><span class="token punctuation">:</span> ("Helvetica"<span class="token punctuation">:</span> ("weights"<span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)))</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.deep-remove($fonts, "Helvetica", "weights", "regular")</span>&#10;<span class="token comment">// (</span>&#10;<span class="token comment">//   "Helvetica": (</span>&#10;<span class="token comment">//     "weights: (</span>&#10;<span class="token comment">//       "medium": 500,</span>&#10;<span class="token comment">//       "bold": 700</span>&#10;<span class="token comment">//     )</span>&#10;<span class="token comment">//   )</span>&#10;<span class="token comment">// )</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+<div id="map-get">
+<div class="sl-c-callout sl-c-callout--function" id="get"><pre class="signature language-scss"><a class="anchor" href="#get"></a><code class="language-scss">map.<span class="token function docSearch-function" name="map.get">get</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token variable">$keys</span>...<span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="map-get">map-get</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token variable">$keys</span>...<span class="token punctuation">)</span></code></pre>
+<p>If <code>$keys</code> is empty, returns the value in <code>$map</code> associated with <code>$key</code>.</p>
+<p>If <code>$map</code> doesn’t have a value associated with <code>$key</code>, returns <a href="/documentation/values/null"><code>null</code></a>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-get-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-get-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-get-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$font-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span> <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"medium"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 500</span>&#10;<span class="token keyword">@debug</span> map.<span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"extra-bold"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// null</span>&#10;</code></pre></div>
+<div id="example-map-get-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-weights</span><span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.get($font-weights, "medium")  // 500</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.get($font-weights, "extra-bold")  // null</span>&#10;</code></pre></div>
+</div>
+<hr>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.27.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass supports calling <code>map.get()</code> with more than two<span class="widont">&nbsp;</span>arguments.</p>
+  </div>
+<p>If <code>$keys</code> is not empty, follows the set of keys including <code>$key</code> and
+excluding the last key in <code>$keys</code>, from left to right, to find the nested map
+targeted for<span class="widont">&nbsp;</span>searching.</p>
+<p>Returns the value in the targeted map associated with the last key in <code>$keys</code>.</p>
+<p>Returns <a href="/documentation/values/null"><code>null</code></a> if the map does not have a value associated with the key,
+or if any key in <code>$keys</code> is missing from a map or references a value that is
+not a<span class="widont">&nbsp;</span>map.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-deep-remove-2-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-deep-remove-2-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-deep-remove-2-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$fonts</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;  <span class="token string">"Helvetica"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;    <span class="token string">"weights"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;      <span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span>&#10;      <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span>&#10;      <span class="token string">"bold"</span><span class="token punctuation">:</span> 700&#10;    <span class="token punctuation">)</span>&#10;  <span class="token punctuation">)</span>&#10;<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$fonts</span><span class="token punctuation">,</span> <span class="token string">"Helvetica"</span><span class="token punctuation">,</span> <span class="token string">"weights"</span><span class="token punctuation">,</span> <span class="token string">"regular"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 400</span>&#10;<span class="token keyword">@debug</span> map.<span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$fonts</span><span class="token punctuation">,</span> <span class="token string">"Helvetica"</span><span class="token punctuation">,</span> <span class="token string">"colors"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// null</span>&#10;</code></pre></div>
+<div id="example-map-deep-remove-2-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$fonts</span><span class="token punctuation">:</span> ("Helvetica"<span class="token punctuation">:</span> ("weights"<span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)))</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.get($fonts, "Helvetica", "weights", "regular") // 400</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.get($fonts, "Helvetica", "colors") // null</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div id="map-has-key">
+<div class="sl-c-callout sl-c-callout--function" id="has-key"><pre class="signature language-scss"><a class="anchor" href="#has-key"></a><code class="language-scss">map.<span class="token function docSearch-function" name="map.has-key">has-key</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token variable">$keys</span>...<span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="map-has-key">map-has-key</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token variable">$keys</span>...<span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/booleans">boolean</a></span></code></pre>
+<p>If <code>$keys</code> is empty, returns whether <code>$map</code> contains a value associated with
+<code>$key</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-has-key-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-has-key-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-has-key-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$font-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span> <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">has-key</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"regular"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;<span class="token keyword">@debug</span> map.<span class="token function">has-key</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"bolder"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>&#10;</code></pre></div>
+<div id="example-map-has-key-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-weights</span><span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.has-key($font-weights, "regular") // true</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.has-key($font-weights, "bolder") // false</span>&#10;</code></pre></div>
+</div>
+<hr>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.27.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass supports calling <code>map.has-key()</code> with more than two<span class="widont">&nbsp;</span>arguments.</p>
+  </div>
+<p>If <code>$keys</code> is not empty, follows the set of keys including <code>$key</code> and
+excluding the last key in <code>$keys</code>, from left to right, to find the nested map
+targeted for<span class="widont">&nbsp;</span>searching.</p>
+<p>Returns true if the targeted map contains a value associated with the last key
+in <code>$keys</code>.</p>
+<p>Returns false if it does not, or if any key in <code>$keys</code> is missing from a map
+or references a value that is not a<span class="widont">&nbsp;</span>map.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-has-key-2-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-has-key-2-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-has-key-2-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$fonts</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;  <span class="token string">"Helvetica"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;    <span class="token string">"weights"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;      <span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span>&#10;      <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span>&#10;      <span class="token string">"bold"</span><span class="token punctuation">:</span> 700&#10;    <span class="token punctuation">)</span>&#10;  <span class="token punctuation">)</span>&#10;<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">has-key</span><span class="token punctuation">(</span><span class="token variable">$fonts</span><span class="token punctuation">,</span> <span class="token string">"Helvetica"</span><span class="token punctuation">,</span> <span class="token string">"weights"</span><span class="token punctuation">,</span> <span class="token string">"regular"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;<span class="token keyword">@debug</span> map.<span class="token function">has-key</span><span class="token punctuation">(</span><span class="token variable">$fonts</span><span class="token punctuation">,</span> <span class="token string">"Helvetica"</span><span class="token punctuation">,</span> <span class="token string">"colors"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>&#10;</code></pre></div>
+<div id="example-map-has-key-2-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$fonts</span><span class="token punctuation">:</span> ("Helvetica"<span class="token punctuation">:</span> ("weights"<span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)))</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.has-key($fonts, "Helvetica", "weights", "regular") // true</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.has-key($fonts, "Helvetica", "colors") // false</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div id="map-keys">
+<div class="sl-c-callout sl-c-callout--function" id="keys"><pre class="signature language-scss"><a class="anchor" href="#keys"></a><code class="language-scss">map.<span class="token function docSearch-function" name="map.keys">keys</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="map-keys">map-keys</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/lists">list</a></span></code></pre>
+<p>Returns a comma-separated list of all the keys in <code>$map</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-keys-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-keys-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-keys-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$font-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span> <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">keys</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "regular", "medium", "bold"</span>&#10;</code></pre></div>
+<div id="example-map-keys-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-weights</span><span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.keys($font-weights)  // "regular", "medium", "bold"</span>&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div id="map-merge">
+<div class="sl-c-callout sl-c-callout--function" id="merge"><pre class="signature language-scss"><a class="anchor" href="#merge"></a><code class="language-scss">map.<span class="token function docSearch-function" name="map.merge">merge</span><span class="token punctuation">(</span><span class="token variable">$map1</span><span class="token punctuation">,</span> <span class="token variable">$map2</span><span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="map-merge">map-merge</span><span class="token punctuation">(</span><span class="token variable">$map1</span><span class="token punctuation">,</span> <span class="token variable">$map2</span><span class="token punctuation">)</span>
+map.<span class="token function">merge</span><span class="token punctuation">(</span><span class="token variable">$map1</span><span class="token punctuation">,</span> <span class="token variable">$keys</span>...<span class="token punctuation">,</span> <span class="token variable">$map2</span><span class="token punctuation">)</span>
+<span class="token function">map-merge</span><span class="token punctuation">(</span><span class="token variable">$map1</span><span class="token punctuation">,</span> <span class="token variable">$keys</span>...<span class="token punctuation">,</span> <span class="token variable">$map2</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/maps">map</a></span></code></pre>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>In practice, the actual arguments to <code>map.merge($map1, $keys..., $map2)</code> are
+passed as <code>map.merge($map1, $args...)</code>. They are described here as <code>$map1, $keys..., $map2</code> for explanation purposes<span class="widont">&nbsp;</span>only.</p>
+</div>
+<p>If no <code>$keys</code> are passed, returns a new map with all the keys and values from
+both <code>$map1</code> and <code>$map2</code>.</p>
+<p>If both <code>$map1</code> and <code>$map2</code> have the same key, <code>$map2</code>’s value takes<span class="widont">&nbsp;</span>precedence.</p>
+<p>All keys in the returned map that also appear in <code>$map1</code> have the same order
+as in <code>$map1</code>. New keys from <code>$map2</code> appear at the end of the<span class="widont">&nbsp;</span>map.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-merge-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-merge-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-merge-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$light-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"lightest"</span><span class="token punctuation">:</span> 100<span class="token punctuation">,</span> <span class="token string">"light"</span><span class="token punctuation">:</span> 300<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$heavy-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">merge</span><span class="token punctuation">(</span><span class="token variable">$light-weights</span><span class="token punctuation">,</span> <span class="token variable">$heavy-weights</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// ("lightest": 100, "light": 300, "medium": 500, "bold": 700)</span>&#10;</code></pre></div>
+<div id="example-map-merge-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$light-weights</span><span class="token punctuation">:</span> ("lightest"<span class="token punctuation">:</span> 100, "light"<span class="token punctuation">:</span> 300)</span>&#10;<span class="token variable-line"><span class="token variable">$heavy-weights</span><span class="token punctuation">:</span> ("medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.merge($light-weights, $heavy-weights)</span>&#10;<span class="token comment">// ("lightest": 100, "light": 300, "medium": 500, "bold": 700)</span>&#10;</code></pre></div>
+</div>
+<hr>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.27.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass supports calling <code>map.merge()</code> with more than two<span class="widont">&nbsp;</span>arguments.</p>
+  </div>
+<p>If <code>$keys</code> is not empty, follows the <code>$keys</code> to find the nested map targeted
+for merging. If any key in <code>$keys</code> is missing from a map or references a value
+that is not a map, sets the value at that key to an empty<span class="widont">&nbsp;</span>map.</p>
+<p>Returns a copy of <code>$map1</code> where the targeted map is replaced by a new map that
+contains all the keys and values from both the targeted map and <code>$map2</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-merge-2-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-merge-2-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-merge-2-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$fonts</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;  <span class="token string">"Helvetica"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;    <span class="token string">"weights"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;      <span class="token string">"lightest"</span><span class="token punctuation">:</span> 100<span class="token punctuation">,</span>&#10;      <span class="token string">"light"</span><span class="token punctuation">:</span> 300&#10;    <span class="token punctuation">)</span>&#10;  <span class="token punctuation">)</span>&#10;<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$heavy-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">merge</span><span class="token punctuation">(</span><span class="token variable">$fonts</span><span class="token punctuation">,</span> <span class="token string">"Helvetica"</span><span class="token punctuation">,</span> <span class="token string">"weights"</span><span class="token punctuation">,</span> <span class="token variable">$heavy-weights</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// (</span>&#10;<span class="token comment">//   "Helvetica": (</span>&#10;<span class="token comment">//     "weights": (</span>&#10;<span class="token comment">//       "lightest": 100,</span>&#10;<span class="token comment">//       "light": 300,</span>&#10;<span class="token comment">//       "medium": 500,</span>&#10;<span class="token comment">//       "bold": 700</span>&#10;<span class="token comment">//     )</span>&#10;<span class="token comment">//   )</span>&#10;<span class="token comment">// )</span>&#10;</code></pre></div>
+<div id="example-map-merge-2-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$fonts</span><span class="token punctuation">:</span> ("Helvetica"<span class="token punctuation">:</span> ("weights"<span class="token punctuation">:</span> ("lightest"<span class="token punctuation">:</span> 100, "light"<span class="token punctuation">:</span> 300)))</span>&#10;<span class="token variable-line"><span class="token variable">$heavy-weights</span><span class="token punctuation">:</span> ("medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.merge($fonts, "Helvetica", "weights", $heavy-weights)</span>&#10;<span class="token comment">// (</span>&#10;<span class="token comment">//   "Helvetica": (</span>&#10;<span class="token comment">//     "weights": (</span>&#10;<span class="token comment">//       "lightest": 100,</span>&#10;<span class="token comment">//       "light": 300,</span>&#10;<span class="token comment">//       "medium": 500,</span>&#10;<span class="token comment">//       "bold": 700</span>&#10;<span class="token comment">//     )</span>&#10;<span class="token comment">//   )</span>&#10;<span class="token comment">// )</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div id="map-remove">
+<div class="sl-c-callout sl-c-callout--function" id="remove"><pre class="signature language-scss"><a class="anchor" href="#remove"></a><code class="language-scss">map.<span class="token function docSearch-function" name="map.remove">remove</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">,</span> <span class="token variable">$keys</span>...<span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="map-remove">map-remove</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">,</span> <span class="token variable">$keys</span>...<span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/maps">map</a></span></code></pre>
+<p>Returns a copy of <code>$map</code> without any values associated with <code>$keys</code>.</p>
+<p>If a key in <code>$keys</code> doesn’t have an associated value in <code>$map</code>, it’s ignored.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-remove-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-remove-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-remove-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$font-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span> <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">remove</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"regular"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ("medium": 500, "bold": 700)</span>&#10;<span class="token keyword">@debug</span> map.<span class="token function">remove</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"regular"</span><span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ("medium": 500)</span>&#10;<span class="token keyword">@debug</span> map.<span class="token function">remove</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"bolder"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// ("regular": 400, "medium": 500, "bold": 700)</span>&#10;</code></pre></div>
+<div id="example-map-remove-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-weights</span><span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.remove($font-weights, "regular")  // ("medium": 500, "bold": 700)</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.remove($font-weights, "regular", "bold")  // ("medium": 500)</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.remove($font-weights, "bolder")</span>&#10;<span class="token comment">// ("regular": 400, "medium": 500, "bold": 700)</span>&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="set"><pre class="signature language-scss"><a class="anchor" href="#set"></a><code class="language-scss">map.<span class="token function docSearch-function" name="map.set">set</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span>
+map.<span class="token function">set</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">,</span> <span class="token variable">$keys</span>...<span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/maps">map</a></span></code></pre>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>In practice, the actual arguments to <code>map.set($map, $keys..., $key, $value)</code>
+are passed as <code>map.set($map, $args...)</code>. They are described here as <code>$map, $keys..., $key, $value</code> for explanation purposes<span class="widont">&nbsp;</span>only.</p>
+</div>
+<p>If <code>$keys</code> are not passed, returns a copy of <code>$map</code> with the value at <code>$key</code>
+set to <code>$value</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-set-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-set-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-set-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$font-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span> <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">set</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">,</span> <span class="token string">"regular"</span><span class="token punctuation">,</span> 300<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// ("regular": 300, "medium": 500, "bold": 700)</span>&#10;</code></pre></div>
+<div id="example-map-set-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-weights</span><span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.set($font-weights, "regular", 300)</span>&#10;<span class="token comment">// ("regular": 300, "medium": 500, "bold": 700)</span>&#10;</code></pre></div>
+</div>
+<hr>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.27.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass supports calling <code>map.set()</code> with more than three<span class="widont">&nbsp;</span>arguments.</p>
+  </div>
+<p>If <code>$keys</code> are passed, follows the <code>$keys</code> to find the nested map targeted for
+updating. If any key in <code>$keys</code> is missing from a map or references a value
+that is not a map, sets the value at that key to an empty<span class="widont">&nbsp;</span>map.</p>
+<p>Returns a copy of <code>$map</code> with the targeted map’s value at <code>$key</code> set to
+<code>$value</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-set-2-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-set-2-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-set-2-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$fonts</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;  <span class="token string">"Helvetica"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;    <span class="token string">"weights"</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;      <span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span>&#10;      <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span>&#10;      <span class="token string">"bold"</span><span class="token punctuation">:</span> 700&#10;    <span class="token punctuation">)</span>&#10;  <span class="token punctuation">)</span>&#10;<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">set</span><span class="token punctuation">(</span><span class="token variable">$fonts</span><span class="token punctuation">,</span> <span class="token string">"Helvetica"</span><span class="token punctuation">,</span> <span class="token string">"weights"</span><span class="token punctuation">,</span> <span class="token string">"regular"</span><span class="token punctuation">,</span> 300<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// (</span>&#10;<span class="token comment">//   "Helvetica": (</span>&#10;<span class="token comment">//     "weights": (</span>&#10;<span class="token comment">//       "regular": 300,</span>&#10;<span class="token comment">//       "medium": 500,</span>&#10;<span class="token comment">//       "bold": 700</span>&#10;<span class="token comment">//     )</span>&#10;<span class="token comment">//   )</span>&#10;<span class="token comment">// )</span>&#10;</code></pre></div>
+<div id="example-map-set-2-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$fonts</span><span class="token punctuation">:</span> ("Helvetica"<span class="token punctuation">:</span> ("weights"<span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)))</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.set($fonts, "Helvetica", "weights", "regular", 300)</span>&#10;<span class="token comment">// (</span>&#10;<span class="token comment">//   "Helvetica": (</span>&#10;<span class="token comment">//     "weights": (</span>&#10;<span class="token comment">//       "regular": 300,</span>&#10;<span class="token comment">//       "medium": 500,</span>&#10;<span class="token comment">//       "bold": 700</span>&#10;<span class="token comment">//     )</span>&#10;<span class="token comment">//   )</span>&#10;<span class="token comment">// )</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+<div id="map-values">
+<div class="sl-c-callout sl-c-callout--function" id="values"><pre class="signature language-scss"><a class="anchor" href="#values"></a><code class="language-scss">map.<span class="token function docSearch-function" name="map.values">values</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="map-values">map-values</span><span class="token punctuation">(</span><span class="token variable">$map</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/lists">list</a></span></code></pre>
+<p>Returns a comma-separated list of all the values in <code>$map</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-map-values-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-map-values-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-map-values-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$font-weights</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"regular"</span><span class="token punctuation">:</span> 400<span class="token punctuation">,</span> <span class="token string">"medium"</span><span class="token punctuation">:</span> 500<span class="token punctuation">,</span> <span class="token string">"bold"</span><span class="token punctuation">:</span> 700<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> map.<span class="token function">values</span><span class="token punctuation">(</span><span class="token variable">$font-weights</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 400, 500, 700</span>&#10;</code></pre></div>
+<div id="example-map-values-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$font-weights</span><span class="token punctuation">:</span> ("regular"<span class="token punctuation">:</span> 400, "medium"<span class="token punctuation">:</span> 500, "bold"<span class="token punctuation">:</span> 700)</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> map.values($font-weights)  // 400, 500, 700</span>&#10;</code></pre></div>
+</div>
+</div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/modules/map/ -->
+  </body>
+</html>

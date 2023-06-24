@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Request for Comments: New JS API</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 030-request-for-comments-new-js-api">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Request for Comments: New <span class="caps">JS</span><span class="widont">&nbsp;</span><span class="caps">API</span></h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 5 August 2021 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>I’m excited to officially unveil something that’s been in the works for quite a
+while now: a (proposal for a) brand new JavaScript <span class="caps">API</span> for Sass. This <span class="caps">API</span> has
+been redesigned from the ground up based on lessons learned from both the Node
+Sass <span class="caps">API</span> and various other historical Sass APIs in other languages through the
+years, and it addresses many of the shortcomings of the existing<span class="widont">&nbsp;</span><span class="caps">API</span>.</p>
+<p>The <span class="caps">API</span> has four main components, all of which I’ll cover in this<span class="widont">&nbsp;</span>post:</p>
+<ul>
+<li><a href="#compilation">The core compilation<span class="widont">&nbsp;</span><span class="caps">API</span></a></li>
+<li><a href="#loggers">The logger <span class="caps">API</span></a></li>
+<li><a href="#importers">The importer <span class="caps">API</span></a></li>
+<li><a href="#functions">The function <span class="caps">API</span></a></li>
+</ul>
+<p>As you read on, remember that this <span class="caps">API</span> is still just a proposal. We want to hear
+from you, our users, whether it meets your needs and how we can improve it
+before we lock it in to a full release. So go ahead and make your voices known
+<a href="https://github.com/sass/sass/issues/new">on the issue tracker</a>!</p>
+<h2 id="why-a-new-api" tabindex="-1">Why a New <span class="caps">API</span>?<a class="anchor" href="#why-a-new-api"><span class="visuallyhidden">Why a New <span class="caps">API</span>?<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>The existing JavaScript <span class="caps">API</span> is showing its age. It predates Dart Sass, having
+been originally designed for the <code>node-sass</code> package, which wrapped the
+now-<a href="/blog/libsass-is-deprecated">deprecated</a> <a href="/libsass">LibSass</a> implementation. (That’s why we call it the “Node Sass
+<span class="caps">API</span>”!) It grew organically and often messily along with LibSass, and ended up
+with more than a few awkward legacy behaviors. Many of these behaviors are more
+of a pain for implementation than anything else, but a few of them made life
+quite<span class="widont">&nbsp;</span>difficult:</p>
+<ul>
+<li>
+<p>The importer <span class="caps">API</span> was built around file paths rather than URLs, and was tightly
+coupled to the physical filesystem. This made it impossible to override <em>all</em>
+file-based loads and present a fully virtual filesystem, and caused custom
+Node importers to interact poorly with the new <a href="/blog/the-module-system-is-launched">module<span class="widont">&nbsp;</span>system</a>.</p>
+</li>
+<li>
+<p>The function <span class="caps">API</span> was built around mutable value objects, which runs counter to
+Sass’s immutable nature. It also provided no utility methods (such as looking
+up a key in a map) to make it easier to implement idiomatic custom functions,
+and didn’t provide access to crucial information about values such as whether
+strings were<span class="widont">&nbsp;</span>quoted.</p>
+</li>
+<li>
+<p>All of the asynchronous functions were callback-based rather than<span class="widont">&nbsp;</span>promise-based.</p>
+</li>
+</ul>
+<p>The new <span class="caps">API</span> addresses these issues and more with a modern, idiomatic <span class="caps">API</span> that
+will make working with Sass from <span class="caps">JS</span> a<span class="widont">&nbsp;</span>breeze.</p>
+<h2 id="compilation" tabindex="-1">Compilation<a class="anchor" href="#compilation"><span class="visuallyhidden">Compilation permalink</span></a></h2>
+<p>At the heart of the <span class="caps">API</span> are four functions that do the actual Sass compilation,
+two synchronous and two asynchronous. They’re presented here in TypeScript
+syntax to clarify exactly what they take and return, but you can always call
+them from plain<span class="widont">&nbsp;</span><span class="caps">JS</span>:</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">function</span> <span class="token function">compile</span><span class="token punctuation">(</span>
+  path<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+  options<span class="token operator">?</span><span class="token operator">:</span> Options<span class="token operator">&lt;</span><span class="token string">'sync'</span><span class="token operator">></span>
+<span class="token punctuation">)</span><span class="token operator">:</span> CompileResult<span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">compileString</span><span class="token punctuation">(</span>
+  source<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+  options<span class="token operator">?</span><span class="token operator">:</span> StringOptions<span class="token operator">&lt;</span><span class="token string">'sync'</span><span class="token operator">></span>
+<span class="token punctuation">)</span><span class="token operator">:</span> CompileResult<span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">compileAsync</span><span class="token punctuation">(</span>
+  path<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+  options<span class="token operator">?</span><span class="token operator">:</span> Options<span class="token operator">&lt;</span><span class="token string">'async'</span><span class="token operator">></span>
+<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span>CompileResult<span class="token operator">></span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">compileStringAsync</span><span class="token punctuation">(</span>
+  source<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+  options<span class="token operator">?</span><span class="token operator">:</span> StringOptions<span class="token operator">&lt;</span><span class="token string">'async'</span><span class="token operator">></span>
+<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span>CompileResult<span class="token operator">></span><span class="token punctuation">;</span></code></pre>
+<p>The <code>compile()</code> and <code>compileAsync()</code> functions load a Sass file from a path on
+disk, whereas <code>compileString()</code> and <code>compileStringAsync()</code> compile Sass source
+code passed in as a string. All these take the following<span class="widont">&nbsp;</span>options:</p>
+<ul>
+<li><code>alertAscii</code>: Whether errors and warnings should use only <span class="caps">ASCII</span> characters (as
+opposed to, for example, Unicode box-drawing<span class="widont">&nbsp;</span>characters).</li>
+<li><code>alertColor</code>: Whether errors and warnings should use terminal<span class="widont">&nbsp;</span>colors.</li>
+<li><code>loadPaths</code>: A list of file paths to use to look up files to load, just like
+<code>includePaths</code> in the old<span class="widont">&nbsp;</span><span class="caps">API</span>.</li>
+<li><code>importers</code>: A list of <a href="#importers">custom importers</a> to use to load Sass
+source<span class="widont">&nbsp;</span>files.</li>
+<li><code>functions</code>: An object whose keys are Sass function signatures and whose
+values are <a href="#functions">custom<span class="widont">&nbsp;</span>functions</a>.</li>
+<li><code>quietDeps</code>: Whether to silence deprecation warnings in<span class="widont">&nbsp;</span>dependencies.</li>
+<li><code>logger</code>: The <a href="#loggers">custom logger</a> to use to emit warnings and debug<span class="widont">&nbsp;</span>messages.</li>
+<li><code>sourceMap</code>: Whether to generate a source map during<span class="widont">&nbsp;</span>compilation.</li>
+<li><code>style</code>: The output style, <code>'compressed'</code> or <code>'expanded'</code>.</li>
+<li><code>verbose</code>: Whether to emit every deprecation warning<span class="widont">&nbsp;</span>encountered.</li>
+</ul>
+<p>The <code>compileString()</code> and <code>compileStringAsync()</code> functions take a few additional<span class="widont">&nbsp;</span>options:</p>
+<ul>
+<li><code>syntax</code>: The syntax of the file, <code>'scss'</code> (the default), <code>'indented'</code>, or
+<code>'css'</code>.</li>
+<li><code>url</code>: The <a href="#canonicalizing">canonical <span class="caps">URL</span></a> of the<span class="widont">&nbsp;</span>file.</li>
+<li><code>importer</code>: The <a href="#importers">custom importer</a> to treat as the file’s source.
+If this is passed, this importer will be used to resolve relative loads from
+this<span class="widont">&nbsp;</span>stylesheet.</li>
+</ul>
+<p>All these functions return an object with the following<span class="widont">&nbsp;</span>fields:</p>
+<ul>
+<li><code>css</code>: The compiled <span class="caps">CSS</span>, as a<span class="widont">&nbsp;</span>string.</li>
+<li><code>loadedUrls</code>: All the URLs loaded during the compilation, in no particular<span class="widont">&nbsp;</span>order.</li>
+<li><code>sourceMap</code>: The source map for the file if <code>sourceMap: true</code> was passed, as
+a decoded<span class="widont">&nbsp;</span>object.</li>
+</ul>
+<p>As with the Node Sass <span class="caps">API</span>, the synchronous functions will be substantially
+faster than their asynchronous counterparts. Unfortunately the new <span class="caps">API</span> will not
+support the <code>fibers</code> option for speeding up asynchronous compilation, since <a href="/blog/node-fibers-discontinued">the
+<code>fibers</code> package has been<span class="widont">&nbsp;</span>discontinued</a>.</p>
+<h2 id="loggers" tabindex="-1">Loggers<a class="anchor" href="#loggers"><span class="visuallyhidden">Loggers permalink</span></a></h2>
+<p>The logger <span class="caps">API</span> gives you more fine-grained control over how and when warnings
+and debug messages are emitted. Unlike other aspects of this proposal, a
+<code>logger</code> option will also be added to the <em>old</em> <span class="caps">API</span> to allow you to control your
+messages there without needing to upgrade to the new <span class="caps">API</span><span class="widont">&nbsp;</span>immediately.</p>
+<p>A logger implements the following<span class="widont">&nbsp;</span>interface:</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">interface</span> <span class="token class-name">Logger</span> <span class="token punctuation">{</span>
+  warn<span class="token operator">?</span><span class="token punctuation">(</span>
+    message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+    options<span class="token operator">:</span> <span class="token punctuation">{</span>
+      deprecation<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+      span<span class="token operator">?</span><span class="token operator">:</span> SourceSpan<span class="token punctuation">;</span>
+      stack<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span><span class="token punctuation">;</span>
+
+  debug<span class="token operator">?</span><span class="token punctuation">(</span>
+    message<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+    options<span class="token operator">:</span> <span class="token punctuation">{</span>span<span class="token operator">:</span> SourceSpan<span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The <code>warn</code> function handles warnings, including both warnings from the compiler
+itself and from <code>@warn</code> rules. It’s<span class="widont">&nbsp;</span>passed:</p>
+<ul>
+<li>The warning message</li>
+<li>A flag indicating whether it’s specifically a deprecation<span class="widont">&nbsp;</span>warning</li>
+<li>A span indicating where the warning was located, if it comes from a specific<span class="widont">&nbsp;</span>location</li>
+<li>The Sass stack trace at the point at which the warning was encountered, if it
+was encountered during<span class="widont">&nbsp;</span>execution</li>
+</ul>
+<p>The <code>debug</code> function handles only <code>@debug</code> rules, and is just passed the message
+and the rule’s span. For more information on the <code>SourceSpan</code> type, see <a href="https://github.com/sass/sass/blob/main/accepted/js-logger.d.ts">the
+Logger<span class="widont">&nbsp;</span>proposal</a>.</p>
+<p>Sass will also provide a built-in logger, <code>Logger.silent</code>, that never emits any
+messages. This will allow you to easily run Sass in “quiet mode” where no
+warnings are ever<span class="widont">&nbsp;</span>surfaced.</p>
+<h2 id="importers" tabindex="-1">Importers<a class="anchor" href="#importers"><span class="visuallyhidden">Importers permalink</span></a></h2>
+<p>Rather than modeling importers as single-function callbacks, the new <span class="caps">API</span> models
+them as objects that expose two methods: one that <em>canonicalizes</em> a <span class="caps">URL</span>, and one
+that <em>loads</em> a canonical<span class="widont">&nbsp;</span><span class="caps">URL</span>.</p>
+<pre class="language-ts"><code class="language-ts"><span class="token comment">// Importers for compileAsync() and compileStringAsync() are the same, except</span>
+<span class="token comment">// they may return Promises as well.</span>
+<span class="token keyword">interface</span> <span class="token class-name">Importer</span> <span class="token punctuation">{</span>
+  <span class="token function">canonicalize</span><span class="token punctuation">(</span>
+    url<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+    options<span class="token operator">:</span> <span class="token punctuation">{</span>fromImport<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token operator">:</span> <span class="token constant"><span class="caps">URL</span></span> <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+  <span class="token function">load</span><span class="token punctuation">(</span>canonicalUrl<span class="token operator">:</span> <span class="token constant"><span class="caps">URL</span></span><span class="token punctuation">)</span><span class="token operator">:</span> ImporterResult <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Note that even stylesheets that are loaded directly from the filesystem through
+<code>compile()</code> or <code>loadPaths</code> are treated as though they’re loaded by an importer.
+This built-in filesystem importer canonicalizes all paths to <code>file:</code> URLs, and
+loads those URLs from the physical<span class="widont">&nbsp;</span>filesystem.</p>
+<h3 id="canonicalizing" tabindex="-1">Canonicalizing<a class="anchor" href="#canonicalizing"><span class="visuallyhidden">Canonicalizing permalink</span></a></h3>
+<p>The first step determines the canonical <span class="caps">URL</span> for a stylesheet. Each stylesheet
+has exactly one canonical <span class="caps">URL</span> that in turn refers to exactly one stylesheet. The
+canonical <span class="caps">URL</span> must be absolute, including a scheme, but the specific structure
+is up to the importer. In most cases, the stylesheet in question will exist on
+disk and the importer will just return a <code>file:</code> <span class="caps">URL</span> for<span class="widont">&nbsp;</span>it.</p>
+<p>The <code>canonicalize()</code> method takes a <span class="caps">URL</span> string that may be either relative or
+absolute. If the importer recognizes that <span class="caps">URL</span>, it returns a corresponding
+absolute <span class="caps">URL</span> (including a scheme). This is the <em>canonical <span class="caps">URL</span></em> for the
+stylesheet in question. Although the input <span class="caps">URL</span> may omit a file extension or
+an initial underscore, the canonical <span class="caps">URL</span> must be fully<span class="widont">&nbsp;</span>resolved.</p>
+<p>For a stylesheet that’s loaded from the filesystem, the canonical <span class="caps">URL</span> will be
+the absolute <code>file:</code> <span class="caps">URL</span> of the physical file on disk. If it’s generated
+in-memory, the importer should choose a custom <span class="caps">URL</span> scheme to guarantee that
+its canonical URLs don’t conflict with any other<span class="widont">&nbsp;</span>importer’s.</p>
+<p>For example, if you’re loading Sass files from a database, you might use the
+scheme <code>db:</code>. The canonical <span class="caps">URL</span> for a stylesheet associated with key <code>styles</code>
+in the database might be <code>db:styles</code>.</p>
+<p>This function also takes a <code>fromImport</code> option that indicates whether the
+importer is being invoked from an <code>@import</code> rule (as opposed to <code>@use</code>,
+<code>@forward</code>, or <code>meta.load-css()</code>).</p>
+<p>Having a canonical <span class="caps">URL</span> for each stylesheet allows Sass to ensure that the
+same stylesheet isn’t loaded multiple times in the new module<span class="widont">&nbsp;</span>system.</p>
+<h4 id="canonicalizing-relative-loads" tabindex="-1">Canonicalizing Relative Loads<a class="anchor" href="#canonicalizing-relative-loads"><span class="visuallyhidden">Canonicalizing Relative Loads<span class="widont">&nbsp;</span>permalink</span></a></h4>
+<p>When a stylesheet tries to load a relative <span class="caps">URL</span>, such as <code>@use &quot;variables&quot;</code>, it’s
+not clear from the document itself whether that refers to a file that exists
+relative to the stylesheet or to another importer or load path. Here’s how the
+importer <span class="caps">API</span> resolves that<span class="widont">&nbsp;</span>ambiguity:</p>
+<ul>
+<li>
+<p>First, the relative <span class="caps">URL</span> is resolved relative to the canonical <span class="caps">URL</span> of the
+stylesheet that contained the <code>@use</code> (or <code>@forward</code> or <code>@import</code>). For
+example, if the canonical <span class="caps">URL</span> is <code>file:///path/to/my/_styles.scss</code>, then the
+resolved <span class="caps">URL</span> will be <code>file:///path/to/my/variables</code>.</p>
+</li>
+<li>
+<p>This <span class="caps">URL</span> is then passed to the <code>canonicalize()</code> method of the importer that
+loaded the old stylesheet. (That means it’s important for your importers to
+support absolute URLs!) If the importer recognizes it, it returns the
+canonical value which is then passed to that importer’s <code>load()</code>; otherwise,
+it returns <code>null</code>.</p>
+</li>
+<li>
+<p>If the old stylesheet’s importer didn’t recognize the <span class="caps">URL</span>, it’s passed to all
+the <code>importers</code>’ canonicalize functions in the order they appear in <code>options</code>,
+then checked for in all the <code>loadPaths</code>. If none of those recognizes it, the
+load<span class="widont">&nbsp;</span>fails.</p>
+</li>
+</ul>
+<p>It’s important that local relative paths take precedence over other importers or
+load paths, because otherwise your local stylesheets could get unexpectedly
+broken by a dependency adding a file with a conflicting<span class="widont">&nbsp;</span>name.</p>
+<h3 id="loading" tabindex="-1">Loading<a class="anchor" href="#loading"><span class="visuallyhidden">Loading permalink</span></a></h3>
+<p>The second step actually loads the text of the stylesheet. The <code>load()</code>
+method takes a canonical <span class="caps">URL</span> that was returned by <code>canonicalize()</code> and
+returns the contents of the stylesheet at that <span class="caps">URL</span>. This is only called once
+per compilation for each canonical <span class="caps">URL</span>; future loads of the same <span class="caps">URL</span> will
+re-use either the existing module (for <code>@use</code> and <code>@forward</code>) or the parse
+tree (for <code>@import</code>).</p>
+<p>The <code>load()</code> method returns an object with the following<span class="widont">&nbsp;</span>fields:</p>
+<ul>
+<li><code>css</code>: The text of the loaded<span class="widont">&nbsp;</span>stylesheet.</li>
+<li><code>syntax</code>: The syntax of the file: <code>'scss'</code>, <code>'indented'</code>, or <code>'css'</code>.</li>
+<li><code>sourceMapUrl</code>: An optional browser-accessible <code>URL</code> to include in source maps
+when referring to this<span class="widont">&nbsp;</span>file.</li>
+</ul>
+<h3 id="file-importer" tabindex="-1"><code>FileImporter</code><a class="anchor" href="#file-importer"><span class="visuallyhidden">FileImporter permalink</span></a></h3>
+<p>This proposal also adds a special type of importer known as a <code>FileImporter</code>.
+This importer makes the common case of redirecting loads to somewhere on the
+physical filesystem easier. It doesn’t require the caller to implement
+<code>load()</code>, since that’s always going to be the same for files on<span class="widont">&nbsp;</span>disk.</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">interface</span> <span class="token class-name">FileImporter</span> <span class="token punctuation">{</span>
+  <span class="token function">findFileUrl</span><span class="token punctuation">(</span>
+    url<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+    options<span class="token operator">:</span> <span class="token punctuation">{</span>fromImport<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token operator">:</span> FileImporterResult <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The <code>findFileUrl()</code> method takes a relative <span class="caps">URL</span> and returns an object with the
+following<span class="widont">&nbsp;</span>fields:</p>
+<ul>
+<li><code>url</code>: The absolute <code>file:</code> <span class="caps">URL</span> of the file to load. This <span class="caps">URL</span> doesn’t need to
+be fully canonicalized: the Sass compiler will take care of resolving
+partials, file extensions, index files, and so<span class="widont">&nbsp;</span>on.</li>
+<li><code>sourceMapUrl</code>: An optional browser-accessible <code>URL</code> to include in source maps
+when referring to this<span class="widont">&nbsp;</span>file.</li>
+</ul>
+<h2 id="functions" tabindex="-1">Functions<a class="anchor" href="#functions"><span class="visuallyhidden">Functions permalink</span></a></h2>
+<p>The new function <span class="caps">API</span>’s function type is very similar to the old<span class="widont">&nbsp;</span><span class="caps">API</span>’s:</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">type</span> <span class="token class-name">CustomFunctionCallback</span> <span class="token operator">=</span> <span class="token punctuation">(</span>args<span class="token operator">:</span> Value<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=></span> Value<span class="token punctuation">;</span></code></pre>
+<p>The only differences<span class="widont">&nbsp;</span>are:</p>
+<ul>
+<li>Async functions return a <code>Promise&lt;Value&gt;</code> rather than calling a<span class="widont">&nbsp;</span>callback.</li>
+<li>The value types themselves are<span class="widont">&nbsp;</span>different.</li>
+</ul>
+<p>The second point is pretty substantial, though! The new value types are much
+more fleshed out than the old versions. Let’s start with the parent<span class="widont">&nbsp;</span>class:</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Value</span> <span class="token punctuation">{</span>
+  <span class="token comment">/**
+   * Returns the values of `this` when interpreted as a list.
+   *
+   * - For a list, this returns its elements.
+   * - For a map, this returns each of its key/value pairs as a `SassList`.
+   * - For any other value, this returns a list that contains only that value.
+   */</span>
+  <span class="token keyword">get</span> <span class="token function">asList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> List<span class="token operator">&lt;</span>Value<span class="token operator">></span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Whether `this` is a bracketed Sass list. */</span>
+  <span class="token keyword">get</span> <span class="token function">hasBrackets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Whether `this` is truthy (any value other than `null` or `false`). */</span>
+  <span class="token keyword">get</span> <span class="token function">isTruthy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Returns <span class="caps">JS'</span>s null if this is `sassNull`, or `this` otherwise. */</span>
+  <span class="token keyword">get</span> <span class="token function">realNull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">null</span> <span class="token operator">|</span> Value<span class="token punctuation">;</span>
+
+  <span class="token comment">/** If `this` is a list, return its separator. Otherwise, return `null`. */</span>
+  <span class="token keyword">get</span> <span class="token function">separator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> ListSeparator<span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Converts the Sass index `sassIndex` to a <span class="caps">JS</span> index into the array returned
+   * by `asList`.
+   *
+   * Sass indices start counting at 1, and may be negative in order to index
+   * from the end of the list.
+   */</span>
+  <span class="token function">sassIndexToListIndex</span><span class="token punctuation">(</span>sassIndex<span class="token operator">:</span> Value<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Returns `this` if it's a `SassBoolean`, and throws an error otherwise.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of a parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="token function">assertBoolean</span><span class="token punctuation">(</span>name<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> SassBoolean<span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Returns `this` if it's a `SassColor`, and throws an error otherwise.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of a parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="token function">assertColor</span><span class="token punctuation">(</span>name<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> SassColor<span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Returns `this` if it's a `SassFunction`, and throws an error otherwise.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of the parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="token function">assertFunction</span><span class="token punctuation">(</span>name<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> SassFunction<span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Returns `this` if it's a `SassMap` (or converts it to a `SassMap` if it's
+   * an empty list), and throws an error otherwise.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of the parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="token function">assertMap</span><span class="token punctuation">(</span>name<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> SassMap<span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Returns `this` if it's a `SassNumber`, and throws an error otherwise.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of a parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="token function">assertNumber</span><span class="token punctuation">(</span>name<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> SassNumber<span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Returns `this` if it's a `SassString`, and throws an error otherwise.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of a parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="token function">assertString</span><span class="token punctuation">(</span>name<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> SassString<span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Returns the value of `this` if it can be interpreted as a map.
+   *
+   * - If this is a map, returns its contents.
+   * - If this is an empty list, returns an empty map.
+   * - Otherwise, returns `null`.
+   */</span>
+  <span class="token function">tryMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> OrderedMap<span class="token operator">&lt;</span>Value<span class="token punctuation">,</span> Value<span class="token operator">></span> <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Returns whether `this == other` in SassScript. */</span>
+  <span class="token function">equals</span><span class="token punctuation">(</span>other<span class="token operator">:</span> Value<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>There are a couple important things to note<span class="widont">&nbsp;</span>here:</p>
+<ul>
+<li>
+<p>Because <span class="caps">CSS</span> doesn’t have a strong syntactic differentiation between a single
+element and a list containing one element, any Sass value may be treated as
+though it’s a list. The <code>Value</code> makes it easy to follow this convention by
+making the <code>asList()</code>, <code>hasBrackets()</code>, and <code>separator()</code> getters available
+for every <code>Value</code>.</p>
+</li>
+<li>
+<p>The list returned this was and the map returned by <code>asMap()</code> are immutable
+types from the <a href="https://immutable-js.com/"><code>immutable</code> package</a>. This reflects Sass’s built-in
+immutability of all its types. Although these values can’t be modified
+directly, their APIs make it easy and efficient to create new values with
+changes<span class="widont">&nbsp;</span>applied.</p>
+</li>
+<li>
+<p>Sass’s list-indexing conventions are different than JavaScript’s. The
+<code>sassIndexToListIndex()</code> function makes it easy to convert from Sass index to
+<span class="caps">JS</span><span class="widont">&nbsp;</span>index.</p>
+</li>
+<li>
+<p>In Sass, any value may be used in a boolean context, with <code>false</code>
+and <code>null</code> counting as “falsey” values. The <code>isTruthy</code> getter makes this
+convention easy to<span class="widont">&nbsp;</span>follow.</p>
+</li>
+<li>
+<p>The <code>assert*()</code> functions make it easy to ensure that you’re being passed the
+arguments you expect, and to throw an idiomatic error if you’re not. They’re
+particularly useful for TypeScript users since they’ll automatically narrow
+the type of the <code>Value</code>.</p>
+</li>
+</ul>
+<p>Most Sass values have their own subclasses, but there are three singleton values
+that are just available as constants: <code>sassTrue</code>, <code>sassFalse</code>, and <code>sassNull</code>
+represent Sass’s <code>true</code>, <code>false</code>, and <code>null</code> values respectively.</p>
+<h3 id="colors" tabindex="-1">Colors<a class="anchor" href="#colors"><span class="visuallyhidden">Colors permalink</span></a></h3>
+<p>The new <span class="caps">API</span>’s <code>SassColor</code> class provides access to colors in <span class="caps">RGB</span>, <span class="caps">HSL</span>, and <span class="caps">HWB</span>
+format. As with built-in Sass color functions, any attribute can be accessed on
+any color regardless of how it was initially<span class="widont">&nbsp;</span>created.</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">class</span> <span class="token class-name">SassColor</span> <span class="token keyword">extends</span> <span class="token class-name">Value</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** Creates an <span class="caps">RGB</span> color. */</span>
+  <span class="token keyword">static</span> <span class="token function">rgb</span><span class="token punctuation">(</span>
+    red<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
+    green<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
+    blue<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
+    alpha<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span>
+  <span class="token punctuation">)</span><span class="token operator">:</span> SassColor<span class="token punctuation">;</span>
+
+  <span class="token comment">/** Creates an <span class="caps">HSL</span> color. */</span>
+  <span class="token keyword">static</span> <span class="token function">hsl</span><span class="token punctuation">(</span>
+    hue<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
+    saturation<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
+    lightness<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
+    alpha<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span>
+  <span class="token punctuation">)</span><span class="token operator">:</span> SassColor<span class="token punctuation">;</span>
+
+  <span class="token comment">/** Creates an <span class="caps">HWB</span> color. */</span>
+  <span class="token keyword">static</span> <span class="token function">hwb</span><span class="token punctuation">(</span>
+    hue<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
+    whiteness<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
+    blackness<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
+    alpha<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span>
+  <span class="token punctuation">)</span><span class="token operator">:</span> SassColor<span class="token punctuation">;</span>
+
+  <span class="token comment">/** The color's red channel. */</span>
+  <span class="token keyword">get</span> <span class="token function">red</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** The color's green channel. */</span>
+  <span class="token keyword">get</span> <span class="token function">green</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** The color's blue channel. */</span>
+  <span class="token keyword">get</span> <span class="token function">blue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** The color's hue. */</span>
+  <span class="token keyword">get</span> <span class="token function">hue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** The color's saturation. */</span>
+  <span class="token keyword">get</span> <span class="token function">saturation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** The color's lightness. */</span>
+  <span class="token keyword">get</span> <span class="token function">lightness</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** The color's whiteness. */</span>
+  <span class="token keyword">get</span> <span class="token function">whiteness</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** The color's blackeness. */</span>
+  <span class="token keyword">get</span> <span class="token function">blackness</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** The color's alpha channel. */</span>
+  <span class="token keyword">get</span> <span class="token function">alpha</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Returns a copy of `this` with the <span class="caps">RGB</span> channels updated to match `options`.
+   */</span>
+  <span class="token function">changeRgb</span><span class="token punctuation">(</span>options<span class="token operator">:</span> <span class="token punctuation">{</span>
+    red<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    green<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    blue<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    alpha<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token operator">:</span> SassColor<span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Returns a copy of `this` with the <span class="caps">HSL</span> values updated to match `options`.
+   */</span>
+  <span class="token function">changeHsl</span><span class="token punctuation">(</span>options<span class="token operator">:</span> <span class="token punctuation">{</span>
+    hue<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    saturation<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    lightness<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    alpha<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token operator">:</span> SassColor<span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Returns a copy of `this` with the <span class="caps">HWB</span> values updated to match `options`.
+   */</span>
+  <span class="token function">changeHwb</span><span class="token punctuation">(</span>options<span class="token operator">:</span> <span class="token punctuation">{</span>
+    hue<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    whiteness<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    blackness<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+    alpha<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token operator">:</span> SassColor<span class="token punctuation">;</span>
+
+  <span class="token comment">/** Returns a copy of `this` with `alpha` as its alpha channel. */</span>
+  <span class="token function">changeAlpha</span><span class="token punctuation">(</span>alpha<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token operator">:</span> SassColor<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="numbers" tabindex="-1">Numbers<a class="anchor" href="#numbers"><span class="visuallyhidden">Numbers permalink</span></a></h3>
+<p>The <code>SassNumber</code> class stores its numerator and denominator units as arrays
+rather than strings. In addition, it provides methods for asserting that it has
+specific units (<code>assertNoUnits()</code>, <code>assertUnit()</code>) and for converting it to
+specific units (<code>convert()</code>, <code>convertToMatch()</code>, <code>convertValue()</code>,
+<code>convertValueToMatch()</code>, <code>coerce()</code>, <code>coerceValue()</code>, <code>coerceValueToMatch()</code>).</p>
+<p>Sass’s numeric logic is also subtly different from <span class="caps">JS</span>, since Sass considers
+numbers that differ by less than the 10<span class="ord">th</span> decimal digit to be identical. This
+<span class="caps">API</span> provides a number of methods that help convert between this and JavaScript’s
+numeric<span class="widont">&nbsp;</span>logic.</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">class</span> <span class="token class-name">SassNumber</span> <span class="token keyword">extends</span> <span class="token class-name">Value</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** Creates a Sass number with no units or a single numerator unit. */</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>value<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> unit<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Creates a Sass number with multiple numerator and/or denominator units. */</span>
+  <span class="token keyword">static</span> <span class="token function">withUnits</span><span class="token punctuation">(</span>
+    value<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span>
+    options<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      numeratorUnits<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">|</span> List<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+      denominatorUnits<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">|</span> List<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token operator">:</span> SassNumber<span class="token punctuation">;</span>
+
+  <span class="token comment">/** This number's value. */</span>
+  <span class="token keyword">get</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Whether `value` is an integer according to Sass's numeric logic.
+   *
+   * The integer value can be accessed using `asInt`.
+   */</span>
+  <span class="token keyword">get</span> <span class="token function">isInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * If `value` is an integer according to Sass's numeric logic, returns the
+   * corresponding <span class="caps">JS</span> integer, or `null` if `value` isn't an integer.
+   */</span>
+  <span class="token keyword">get</span> <span class="token function">asInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token operator">|</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** This number's numerator units. */</span>
+  <span class="token keyword">get</span> <span class="token function">numeratorUnits</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> List<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** This number's denominator units. */</span>
+  <span class="token keyword">get</span> <span class="token function">denominatorUnits</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> List<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Whether `this` has numerator or denominator units. */</span>
+  <span class="token keyword">get</span> <span class="token function">hasUnits</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * If `value` is an integer according to Sass's numeric logic, returns the
+   * corresponding <span class="caps">JS</span> integer, or throws an error if `value` isn't an integer.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of the parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="token function">assertInt</span><span class="token punctuation">(</span>name<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * If `value` is between `min` and `max` according to Sass's numeric logic,
+   * returns it clamped to that range. Otherwise, throws an error.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of the parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="token function">assertInRange</span><span class="token punctuation">(</span>min<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> max<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> name<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Returns `this` if it has no units. Otherwise, throws an error.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of a parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="token function">assertNoUnits</span><span class="token punctuation">(</span>name<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> SassNumber<span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Returns `this` if it has `unit` as its single (numerator) unit. Otherwise,
+   * throws an error.
+   *
+   * The `name` parameter is used for error reporting. It should match the name
+   * of a parameter passed to the custom function (without the `$`).
+   */</span>
+  <span class="token function">assertUnit</span><span class="token punctuation">(</span>name<span class="token operator">?</span><span class="token operator">:</span> stringunit<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> SassNumber<span class="token punctuation">;</span>
+
+  <span class="token comment">/** Returns whether `this` has the single numerator unit `unit`. */</span>
+  <span class="token function">hasUnit</span><span class="token punctuation">(</span>unit<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Returns whether this number's units are compatible with `unit`. */</span>
+  <span class="token function">compatibleWithUnit</span><span class="token punctuation">(</span>unit<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * If this number's units are compatible with `newNumerators` and
+   * `newDenominators`, returns a new number with those units that's equal to
+   * `this`. Otherwise, throws an error.
+   *
+   * Note that unitless numbers are only compatible with other unitless numbers.
+   */</span>
+  <span class="token function">convert</span><span class="token punctuation">(</span>
+    newNumerators<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">|</span> List<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">,</span>
+    newDenominators<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">|</span> List<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token operator">:</span> SassNumber<span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * If this number's units are compatible with `other`'s, returns a new number
+   * with `other`'s units that's equal to `this`. Otherwise, throws an error.
+   *
+   * Note that unitless numbers are only compatible with other unitless numbers.
+   */</span>
+  <span class="token function">convertToMatch</span><span class="token punctuation">(</span>other<span class="token operator">:</span> SassNumber<span class="token punctuation">)</span><span class="token operator">:</span> SassNumber<span class="token punctuation">;</span>
+
+  <span class="token comment">/** Equivalent to `convert(newNumerators, newDenominators).value`. */</span>
+  <span class="token function">convertValue</span><span class="token punctuation">(</span>
+    newNumerators<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">|</span> List<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">,</span>
+    newDenominators<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">|</span> List<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Equivalent to `convertToMatch(other).value`. */</span>
+  <span class="token function">convertValueToMatch</span><span class="token punctuation">(</span>other<span class="token operator">:</span> SassNumber<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Like `convert()`, but if `this` is unitless returns a copy of it with the
+   * same value and the given units.
+   */</span>
+  <span class="token function">coerce</span><span class="token punctuation">(</span>
+    newNumerators<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">|</span> List<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">,</span>
+    newDenominators<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">|</span> List<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token operator">:</span> SassNumber<span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Like `convertToMatch()`, but if `this` is unitless returns a copy of it
+   * with the same value and `other`'s units.
+   */</span>
+  <span class="token function">coerceToMatch</span><span class="token punctuation">(</span>other<span class="token operator">:</span> SassNumber<span class="token punctuation">)</span><span class="token operator">:</span> SassNumber<span class="token punctuation">;</span>
+
+  <span class="token comment">/** Equivalent to `coerce(newNumerators, newDenominators).value`. */</span>
+  <span class="token function">coerceValue</span><span class="token punctuation">(</span>
+    newNumerators<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">|</span> List<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span><span class="token punctuation">,</span>
+    newDenominators<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">|</span> List<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Equivalent to `coerceToMatch(other).value`. */</span>
+  <span class="token function">coerceValueToMatch</span><span class="token punctuation">(</span>other<span class="token operator">:</span> SassNumber<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="strings" tabindex="-1">Strings<a class="anchor" href="#strings"><span class="visuallyhidden">Strings permalink</span></a></h3>
+<p>The <code>SassString</code> class provides access to information about whether or not the
+string is quoted. As with lists, <span class="caps">JS</span>’s notion of indexes differs from Sass’s, so
+it also provides the <code>sassIndexToStringIndex()</code> method to convert a <span class="caps">JS</span> index
+into a Sass<span class="widont">&nbsp;</span>index.</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">class</span> <span class="token class-name">SassString</span> <span class="token keyword">extends</span> <span class="token class-name">Value</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** Creates a string with the given `text`. */</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>
+    text<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+    options<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">/** @default true */</span>
+      quotes<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Creates an empty string`. */</span>
+  <span class="token keyword">static</span> <span class="token function">empty</span><span class="token punctuation">(</span>options<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">/** @default true */</span>
+    quotes<span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token operator">:</span> SassString<span class="token punctuation">;</span>
+
+  <span class="token comment">/** The contents of `this`. */</span>
+  <span class="token keyword">get</span> <span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Whether `this` has quotes. */</span>
+  <span class="token keyword">get</span> <span class="token function">hasQuotes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** The number of Unicode code points in `text`. */</span>
+  <span class="token keyword">get</span> <span class="token function">sassLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/**
+   * Converts the Sass index `sassIndex` to a <span class="caps">JS</span> index into `text`.
+   *
+   * Sass indices start counting at 1, and may be negative in order to index
+   * from the end of the list. In addition, Sass indexes strings by Unicode code
+   * point, while <span class="caps">JS</span> indexes them by <span class="caps">UTF</span>-16 code unit.
+   */</span>
+  <span class="token function">sassIndexToStringIndex</span><span class="token punctuation">(</span>sassIndex<span class="token operator">:</span> Value<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="lists" tabindex="-1">Lists<a class="anchor" href="#lists"><span class="visuallyhidden">Lists permalink</span></a></h3>
+<p>As mentioned above, most list functions are on the <code>Value</code> superclass to make it
+easy to follow the Sass convention of treating all values as lists. However, the
+<code>SassList</code> class can still be constructed to make new<span class="widont">&nbsp;</span>lists:</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">class</span> <span class="token class-name">SassList</span> <span class="token keyword">extends</span> <span class="token class-name">Value</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** Creates a Sass list with the given `contents`. */</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>
+    contents<span class="token operator">:</span> Value<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">|</span> List<span class="token operator">&lt;</span>Value<span class="token operator">></span><span class="token punctuation">,</span>
+    options<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">/** @default ',' */</span>
+      separator<span class="token operator">?</span><span class="token operator">:</span> ListSeparator<span class="token punctuation">;</span>
+      <span class="token comment">/** @default false */</span>
+      brackets<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Creates an empty Sass list. */</span>
+  <span class="token keyword">static</span> <span class="token function">empty</span><span class="token punctuation">(</span>options<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">/** @default null */</span>
+    separator<span class="token operator">?</span><span class="token operator">:</span> ListSeparator<span class="token punctuation">;</span>
+    <span class="token comment">/** @default false */</span>
+    brackets<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token operator">:</span> SassList<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="maps" tabindex="-1">Maps<a class="anchor" href="#maps"><span class="visuallyhidden">Maps permalink</span></a></h3>
+<p>The <code>SassMap</code> class simply exposes its contents as an <code>OrderedMap</code> from the
+<a href="https://immutable-js.com/"><code>immutable</code> package</a>.</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">class</span> <span class="token class-name">SassMap</span> <span class="token keyword">extends</span> <span class="token class-name">Value</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** Creates a Sass map with the given `contents`. */</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>contents<span class="token operator">:</span> OrderedMap<span class="token operator">&lt;</span>Value<span class="token punctuation">,</span> Value<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/** Creates an empty Sass map. */</span>
+  <span class="token keyword">static</span> <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> SassMap<span class="token punctuation">;</span>
+
+  <span class="token comment">/** Returns this map's contents. */</span>
+  <span class="token keyword">get</span> <span class="token function">contents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> OrderedMap<span class="token operator">&lt;</span>Value<span class="token punctuation">,</span> Value<span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="functions-1" tabindex="-1">Functions<a class="anchor" href="#functions-1"><span class="visuallyhidden">Functions permalink</span></a></h3>
+<p>The <code>SassFunction</code> class is fairly restrictive: it just allows a new first-class
+function to be created with a synchronous callback. These functions can’t be
+invoked by custom functions—but they still provide more power than the old<span class="widont">&nbsp;</span><span class="caps">API</span>!</p>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">class</span> <span class="token class-name">SassFunction</span> <span class="token keyword">extends</span> <span class="token class-name">Value</span> <span class="token punctuation">{</span>
+  <span class="token comment">/**
+   * Creates a Sass function value with the given `signature` that calls
+   * `callback` when it's invoked.
+   */</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>
+    signature<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span>
+    callback<span class="token operator">:</span> CustomFunctionCallback
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="more-information" tabindex="-1">More Information<a class="anchor" href="#more-information"><span class="visuallyhidden">More Information permalink</span></a></h2>
+<p>If you want to know more about these proposals and see their most up-to-date
+forms, they’re available on GitHub to view in<span class="widont">&nbsp;</span>full:</p>
+<ul>
+<li><a href="https://github.com/sass/sass/blob/main/accepted/new-js-api.d.ts">Compile <span class="caps">API</span> proposal</a></li>
+<li><a href="https://github.com/sass/sass/blob/main/accepted/js-logger.d.ts">Logger proposal</a></li>
+<li><a href="https://github.com/sass/sass/blob/main/accepted/new-js-importer.d.ts">Importer proposal</a></li>
+<li><a href="https://github.com/sass/sass/blob/main/accepted/new-function-and-values-api.d.ts">Functions and values<span class="widont">&nbsp;</span>proposal</a></li>
+</ul>
+<p>We’re eager for feedback, so please <a href="https://github.com/sass/sass/issues/new">let us know what you think</a>! The proposals
+in question will be open for at least a month after this blog post goes live,
+and possibly more depending on how lively the discussion around them<span class="widont">&nbsp;</span>is.</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/request-for-comments-new-js-api/ -->
+  </body>
+</html>

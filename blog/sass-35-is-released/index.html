@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Sass 3.5 is Released</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 013-sass-35-is-released">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Sass 3.5 is<span class="widont">&nbsp;</span>Released</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 7 July 2017 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>I’m excited to announce that I’ve just released the stable version of Sass 3.5.
+This release focuses on compatibility with new <span class="caps">CSS</span> syntax, and helps lay the
+groundwork for the upcoming module system and compatibility with <a href="/blog/announcing-dart-sass">Dart<span class="widont">&nbsp;</span>Sass</a>.</p>
+<p>Most of the major features in 3.5 were already in the release candidate, which
+<a href="/blog/sass-35-release-candidate">you can read about here</a>. But there are a
+handful of other changes that have been added since<span class="widont">&nbsp;</span>then:</p>
+<ul>
+<li>
+<p>Sass now supports the <a href="https://drafts.csswg.org/css-scoping-1/#slotted-pseudo">the <code>::slotted()</code>
+pseudo-element</a>,
+including extending its selector<span class="widont">&nbsp;</span>arguments.</p>
+</li>
+<li>
+<p><a href="https://www.w3.org/TR/css-variables-1/#using-variables">The <code>var()</code> function</a>
+may be safely passed to the <span class="caps">CSS</span> color functions <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>,
+and <code>hsla()</code>.</p>
+</li>
+<li>
+<p>Transparent colors created by Sass’s color functions will now be written as
+<code>rgba(0, 0, 0, 0)</code> rather than <code>transparent</code> to work around a bug in Internet
+Explorer. Colors written as <code>transparent</code> in the document will still be
+emitted as<span class="widont">&nbsp;</span>written.</p>
+</li>
+</ul>
+<h3 id="dart-sass-compatibility" tabindex="-1">Dart Sass Compatibility<a class="anchor" href="#dart-sass-compatibility"><span class="visuallyhidden">Dart Sass Compatibility<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p><a href="http://sass.logdown.com/posts/1909151">I wrote last month</a> about our plans for
+keeping Ruby Sass compatible with Dart Sass in the short term. Sass 3.5 begins
+to implement those plans by adding support for a number of small behavioral
+extensions added by Dart<span class="widont">&nbsp;</span>Sass:</p>
+<ul>
+<li>
+<p>It’s no longer an error to <code>@extend</code> a selector that appears in the
+stylesheet, but for which unification fails. The purpose of extension errors
+was to prevent typos, which weren’t occurring in this<span class="widont">&nbsp;</span>case.</p>
+</li>
+<li>
+<p>Pseudo selectors that take arguments can now take any argument that matches
+<span class="caps">CSS</span>’s <a href="https://drafts.csswg.org/css-syntax-3/#typedef-declaration-value"><code>&lt;declataion-value&gt;</code>
+syntax</a>.
+This will provide better forwards-compatibility with new<span class="widont">&nbsp;</span>selectors.</p>
+</li>
+<li>
+<p>Pseudo selectors that contain placeholder selectors as well as
+non-placeholders—for example, <code>:matches(.foo, %bar)</code>—will no longer be
+eliminated. This matches the definition of a placeholder as a selector that
+matches<span class="widont">&nbsp;</span>nothing.</p>
+</li>
+<li>
+<p>You can now vary the indentation within an indented-syntax file, as long as it
+still defines a consistent tree<span class="widont">&nbsp;</span>structure.</p>
+</li>
+</ul>
+<p>There are also some deprecations for functionality that’s not supported in Ruby<span class="widont">&nbsp;</span>Sass:</p>
+<ul>
+<li>
+<p>Extending compound selectors, such as <code>@extend .foo.bar</code>, is deprecated. This
+never followed the stated semantics of extend: elements that match the
+extending selector are styled as though they matches the extended<span class="widont">&nbsp;</span>selector.</p>
+<p>When you write <code>h1 {@extend .a.b}</code>, this <em>should</em> mean that all <code>h1</code> elements
+are styled as though they match <code>.a.b</code>—that is, as though they have <code>class=&quot;a b&quot;</code>, which means they’d match both <code>.a</code> and <code>.b</code> separately. But instead we
+extend only selectors that contain <em>both</em> <code>.a</code> and <code>.b</code>, which is<span class="widont">&nbsp;</span>incorrect.</p>
+</li>
+<li>
+<p>Color arithmetic is deprecated. Channel-by-channel arithmetic doesn’t
+correspond closely to intuitive understandings of color. Sass’s suite of
+<a href="/documentation/modules/color/">color functions</a>
+are a much cleaner and more comprehensible way of manipulating colors<span class="widont">&nbsp;</span>dynamically.</p>
+</li>
+<li>
+<p>The reference combinator, <code>/foo/</code>, is deprecated since it hasn’t been in the
+<span class="caps">CSS</span> specification for some time and is being removed from Chrome<span class="widont">&nbsp;</span>soon.</p>
+</li>
+<li>
+<p>The old-style <code>:name value</code> property syntax is deprecated. This syntax is not
+widely used, and is unnecessarily different from<span class="widont">&nbsp;</span><span class="caps">CSS</span>.</p>
+</li>
+</ul>
+<h3 id="lib-sass-compatibility" tabindex="-1">LibSass Compatibility<a class="anchor" href="#lib-sass-compatibility"><span class="visuallyhidden">LibSass Compatibility permalink</span></a></h3>
+<p><a href="/libsass">LibSass</a>, the C++ implementation of Sass, is well on its way to
+compatibility with all these features. It’s not quite there yet, but we decided
+we didn’t want to block the 3.5 release on 100% compatibility. LibSass will
+release these features as it implements<span class="widont">&nbsp;</span>them.</p>
+<h3 id="what-s-next" tabindex="-1">What’s Next?<a class="anchor" href="#what-s-next"><span class="visuallyhidden">What’s Next? permalink</span></a></h3>
+<p>In the most immediate future, I’m going on leave for a few months, so there’s
+not likely to be a huge amount of work. Once that’s over, I’ll be focusing on
+getting Dart Sass to a full 1.0.0 release, which means spending a bunch of time
+making its JavaScript <span class="caps">API</span> compatible with
+<a href="http://npmjs.com/package/node-sass">node-sass</a>.</p>
+<p>As far as Ruby Sass goes, I’ll continue to fix bugs and add support for the <span class="caps">CSS</span>
+features as browsers start to support them. Once Dart Sass 1.0.0 is out, I’ll
+add new features concurrently across both Ruby and Dart until the one-year
+support period is<span class="widont">&nbsp;</span>up.</p>
+<p>But for now, run <code>gem update sass</code> and enjoy<span class="widont">&nbsp;</span>3.5!</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/sass-35-is-released/ -->
+  </body>
+</html>

@@ -1,0 +1,1169 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: sass:color</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation modules color">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">sass:color</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section open selected">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class="open selected"><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+
+
+              <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.23.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass currently supports loading built-in modules with <code>@use</code>. Users
+of other implementations must call functions using their global names<span class="widont">&nbsp;</span>instead.</p>
+  </div>
+<div id="adjust-color">
+<div class="sl-c-callout sl-c-callout--function" id="adjust"><pre class="signature language-scss"><a class="anchor" href="#adjust"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.adjust">adjust</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$green</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$blue</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$hue</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$saturation</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$whiteness</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$blackness</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$alpha</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="adjust-color">adjust-color</span><span class="token punctuation">(</span>...<span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility ($whiteness and $blackness):
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.28.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Increases or decreases one or more properties of <code>$color</code> by fixed<span class="widont">&nbsp;</span>amounts.</p>
+<p>Adds the value passed for each keyword argument to the corresponding property
+of the color, and returns the adjusted color. It’s an error to specify an <span class="caps">RGB</span>
+property (<code>$red</code>, <code>$green</code>, and/or <code>$blue</code>) at the same time as an <span class="caps">HSL</span>
+property (<code>$hue</code>, <code>$saturation</code>, and/or <code>$lightness</code>), or either of those at
+the same time as an <a href="https://en.wikipedia.org/wiki/HWB_color_model"><span class="caps">HWB</span></a> property (<code>$hue</code>, <code>$whiteness</code>, and/or
+<code>$blackness</code>).</p>
+<p>All optional arguments must be numbers. The <code>$red</code>, <code>$green</code>, and <code>$blue</code>
+arguments must be <a href="/documentation/values/numbers#units">unitless</a> and between -255 and 255 (inclusive). The
+<code>$hue</code> argument must have either the unit <code>deg</code> or no unit. The <code>$saturation</code>,
+<code>$lightness</code>, <code>$whiteness</code>, and <code>$blackness</code> arguments must be between <code>-100%</code>
+and <code>100%</code> (inclusive), and may not be unitless. The <code>$alpha</code> argument must be
+unitless and between -1 and 1<span class="widont">&nbsp;</span>(inclusive).</p>
+<p>See also:</p>
+<ul>
+<li><a href="#scale"><code>color.scale()</code></a> for fluidly scaling a color’s<span class="widont">&nbsp;</span>properties.</li>
+<li><a href="#change"><code>color.change()</code></a> for setting a color’s<span class="widont">&nbsp;</span>properties.</li>
+</ul>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-adjust-color-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-adjust-color-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-adjust-color-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">adjust</span><span class="token punctuation">(</span>#6b717f<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> 15<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #7a717f</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">adjust</span><span class="token punctuation">(</span>#d2e1dd<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> -10<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$blue</span></span><span class="token punctuation">:</span> 10<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #c8e1e7</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">adjust</span><span class="token punctuation">(</span>#998099<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> -30%<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$alpha</span></span><span class="token punctuation">:</span> -0.4<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// rgba(71, 57, 71, 0.6)</span>&#10;</code></pre></div>
+<div id="example-adjust-color-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.adjust(#6b717f, $red: 15)  // #7a717f</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.adjust(#d2e1dd, $red: -10, $blue: 10)  // #c8e1e7</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.adjust(#998099, $lightness: -30%, $alpha: -0.4)  // rgba(71, 57, 71, 0.6)</span>&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="adjust-hue"><pre class="signature language-scss"><a class="anchor" href="#adjust-hue"></a><code class="language-scss"><span class="token function docSearch-function" name="adjust-hue">adjust-hue</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token variable">$degrees</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+<p>Increases or decreases <code>$color</code>’s hue.</p>
+<p>The <code>$hue</code> must be a number between <code>-360deg</code> and <code>360deg</code> (inclusive) to add
+to <code>$color</code>’s hue. It may be <a href="/documentation/values/numbers#units">unitless</a> but it may not have any unit other
+than <code>deg</code>.</p>
+<p>See also <a href="#adjust"><code>color.adjust()</code></a>, which can adjust any property of a<span class="widont">&nbsp;</span>color.</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Because <code>adjust-hue()</code> is redundant with <a href="#adjust"><code>adjust()</code></a>, it’s not
+included directly in the new module system. Instead of <code>adjust-hue($color, $amount)</code>, you can write <a href="#adjust"><code>color.adjust($color, $hue: $amount)</code></a>.</p>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-adjust-hue-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-adjust-hue-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-adjust-hue-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// Hue 222deg becomes 282deg.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">adjust-hue</span><span class="token punctuation">(</span>#6b717f<span class="token punctuation">,</span> 60deg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #796b7f</span>&#10;&#10;<span class="token comment">// Hue 164deg becomes 104deg.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">adjust-hue</span><span class="token punctuation">(</span>#d2e1dd<span class="token punctuation">,</span> -60deg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #d6e1d2</span>&#10;&#10;<span class="token comment">// Hue 210deg becomes 255deg.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">adjust-hue</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> 45<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #1a0066</span>&#10;</code></pre></div>
+<div id="example-adjust-hue-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// Hue 222deg becomes 282deg.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> adjust-hue(#6b717f, 60deg)  // #796b7f</span>&#10;&#10;<span class="token comment">// Hue 164deg becomes 104deg.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> adjust-hue(#d2e1dd, -60deg)  // #d6e1d2</span>&#10;&#10;<span class="token comment">// Hue 210deg becomes 255deg.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> adjust-hue(#036, 45)  // #1a0066</span>&#10;</code></pre></div>
+</div>
+</div>
+<div id="opacity">
+<div class="sl-c-callout sl-c-callout--function" id="alpha"><pre class="signature language-scss"><a class="anchor" href="#alpha"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.alpha">alpha</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span>
+<span class="token function">alpha</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="opacity">opacity</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Returns the alpha channel of <code>$color</code> as a number between 0 and<span class="widont">&nbsp;</span>1.</p>
+<p>As a special case, this supports the Internet Explorer syntax
+<code>alpha(opacity=20)</code>, for which it returns an <a href="/documentation/values/strings#unquoted">unquoted<span class="widont">&nbsp;</span>string</a>.</p>
+<p>See also:</p>
+<ul>
+<li><a href="#red"><code>color.red()</code></a> for getting a color’s red<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#green"><code>color.green()</code></a> for getting a color’s green<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#blue"><code>color.blue()</code></a> for getting a color’s blue<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#hue"><code>color.hue()</code></a> for getting a color’s<span class="widont">&nbsp;</span>hue.</li>
+<li><a href="#saturation"><code>color.saturation()</code></a> for getting a color’s<span class="widont">&nbsp;</span>saturation.</li>
+<li><a href="#lightness"><code>color.lightness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>lightness.</li>
+</ul>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-alpha-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-alpha-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-alpha-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">alpha</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">opacity</span><span class="token punctuation">(</span><span class="token function">rgb</span><span class="token punctuation">(</span>210<span class="token punctuation">,</span> 225<span class="token punctuation">,</span> 221<span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.4</span>&#10;<span class="token keyword">@debug</span> <span class="token function">alpha</span><span class="token punctuation">(</span>opacity=20<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// alpha(opacity=20)</span>&#10;</code></pre></div>
+<div id="example-color-alpha-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.alpha(#e1d7d2)  // 1</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.opacity(rgb(210, 225, 221, 0.4))  // 0.4</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> alpha(opacity<span class="token atrule">=</span>20)  // alpha(opacity<span class="token atrule">=</span>20)</span>&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="blackness"><pre class="signature language-scss"><a class="anchor" href="#blackness"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.blackness">blackness</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.28.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the <a href="https://en.wikipedia.org/wiki/HWB_color_model"><span class="caps">HWB</span></a> blackness of <code>$color</code> as a number between <code>0%</code> and <code>100%</code>.</p>
+<p>See also:</p>
+<ul>
+<li><a href="#red"><code>color.red()</code></a> for getting a color’s red<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#green"><code>color.green()</code></a> for getting a color’s green<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#hue"><code>color.hue()</code></a> for getting a color’s<span class="widont">&nbsp;</span>hue.</li>
+<li><a href="#saturation"><code>color.saturation()</code></a> for getting a color’s<span class="widont">&nbsp;</span>saturation.</li>
+<li><a href="#lightness"><code>color.lightness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>lightness.</li>
+<li><a href="#whiteness"><code>color.whiteness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>whiteness.</li>
+<li><a href="#alpha"><code>color.alpha()</code></a> for getting a color’s alpha<span class="widont">&nbsp;</span>channel.</li>
+</ul>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-blackness-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-blackness-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-blackness-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">blackness</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 11.7647058824%</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">blackness</span><span class="token punctuation">(</span>white<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0%</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">blackness</span><span class="token punctuation">(</span>black<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 100%</span>&#10;</code></pre></div>
+<div id="example-color-blackness-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.blackness(#e1d7d2)  // 11.7647058824%</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.blackness(white)  // 0%</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.blackness(black)  // 100%</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="blue"><pre class="signature language-scss"><a class="anchor" href="#blue"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.blue">blue</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span>
+<span class="token function">blue</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Returns the blue channel of <code>$color</code> as a number between 0 and<span class="widont">&nbsp;</span>255.</p>
+<p>See also:</p>
+<ul>
+<li><a href="#red"><code>color.red()</code></a> for getting a color’s red<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#green"><code>color.green()</code></a> for getting a color’s green<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#hue"><code>color.hue()</code></a> for getting a color’s<span class="widont">&nbsp;</span>hue.</li>
+<li><a href="#saturation"><code>color.saturation()</code></a> for getting a color’s<span class="widont">&nbsp;</span>saturation.</li>
+<li><a href="#lightness"><code>color.lightness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>lightness.</li>
+<li><a href="#whiteness"><code>color.whiteness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>whiteness.</li>
+<li><a href="#blackness"><code>color.blackness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>blackness.</li>
+<li><a href="#alpha"><code>color.alpha()</code></a> for getting a color’s alpha<span class="widont">&nbsp;</span>channel.</li>
+</ul>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-blue-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-blue-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-blue-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">blue</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 210</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">blue</span><span class="token punctuation">(</span>white<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 255</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">blue</span><span class="token punctuation">(</span>black<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>&#10;</code></pre></div>
+<div id="example-color-blue-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.blue(#e1d7d2)  // 210</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.blue(white)  // 255</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.blue(black)  // 0</span>&#10;</code></pre></div>
+</div>
+</div>
+<div id="change-color">
+<div class="sl-c-callout sl-c-callout--function" id="change"><pre class="signature language-scss"><a class="anchor" href="#change"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.change">change</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$green</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$blue</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$hue</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$saturation</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$whiteness</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$blackness</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$alpha</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="change-color">change-color</span><span class="token punctuation">(</span>...<span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility ($whiteness and $blackness):
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.28.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Sets one or more properties of a color to new<span class="widont">&nbsp;</span>values.</p>
+<p>Uses the value passed for each keyword argument in place of the corresponding
+property of the color, and returns the changed color. It’s an error to specify
+an <span class="caps">RGB</span> property (<code>$red</code>, <code>$green</code>, and/or <code>$blue</code>) at the same time as an <span class="caps">HSL</span>
+property (<code>$hue</code>, <code>$saturation</code>, and/or <code>$lightness</code>), or either of those at
+the same time as an <a href="https://en.wikipedia.org/wiki/HWB_color_model"><span class="caps">HWB</span></a> property (<code>$hue</code>, <code>$whiteness</code>, and/or
+<code>$blackness</code>).</p>
+<p>All optional arguments must be numbers. The <code>$red</code>, <code>$green</code>, and <code>$blue</code>
+arguments must be <a href="/documentation/values/numbers#units">unitless</a> and between 0 and 255 (inclusive). The <code>$hue</code>
+argument must have either the unit <code>deg</code> or no unit. The <code>$saturation</code>,
+<code>$lightness</code>, <code>$whiteness</code>, and <code>$blackness</code> arguments must be between <code>0%</code>
+and <code>100%</code> (inclusive), and may not be unitless. The <code>$alpha</code> argument must be
+unitless and between 0 and 1<span class="widont">&nbsp;</span>(inclusive).</p>
+<p>See also:</p>
+<ul>
+<li><a href="#scale"><code>color.scale()</code></a> for fluidly scaling a color’s<span class="widont">&nbsp;</span>properties.</li>
+<li><a href="#adjust"><code>color.adjust()</code></a> for adjusting a color’s properties by fixed<span class="widont">&nbsp;</span>amounts.</li>
+</ul>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-change-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-change-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-change-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">change</span><span class="token punctuation">(</span>#6b717f<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> 100<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #64717f</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">change</span><span class="token punctuation">(</span>#d2e1dd<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> 100<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$blue</span></span><span class="token punctuation">:</span> 50<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #64e132</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">change</span><span class="token punctuation">(</span>#998099<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> 30%<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$alpha</span></span><span class="token punctuation">:</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// rgba(85, 68, 85, 0.5)</span>&#10;</code></pre></div>
+<div id="example-color-change-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.change(#6b717f, $red: 100)  // #64717f</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.change(#d2e1dd, $red: 100, $blue: 50)  // #64e132</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.change(#998099, $lightness: 30%, $alpha: 0.5)  // rgba(85, 68, 85, 0.5)</span>&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="complement"><pre class="signature language-scss"><a class="anchor" href="#complement"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.complement">complement</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span>
+<span class="token function">complement</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+<p>Returns the <span class="caps">RGB</span> <a href="https://en.wikipedia.org/wiki/Complementary_colors">complement</a> of <code>$color</code>.</p>
+<p>This is identical to <a href="#adjust"><code>color.adjust($color, $hue: 180deg)</code></a>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-complement-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-complement-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-complement-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// Hue 222deg becomes 42deg.</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">complement</span><span class="token punctuation">(</span>#6b717f<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #7f796b</span>&#10;&#10;<span class="token comment">// Hue 164deg becomes 344deg.</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">complement</span><span class="token punctuation">(</span>#d2e1dd<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #e1d2d6</span>&#10;&#10;<span class="token comment">// Hue 210deg becomes 30deg.</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">complement</span><span class="token punctuation">(</span>#036<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #663300</span>&#10;</code></pre></div>
+<div id="example-color-complement-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// Hue 222deg becomes 42deg.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.complement(#6b717f)  // #7f796b</span>&#10;&#10;<span class="token comment">// Hue 164deg becomes 344deg.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.complement(#d2e1dd)  // #e1d2d6</span>&#10;&#10;<span class="token comment">// Hue 210deg becomes 30deg.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.complement(#036)  // #663300</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="darken"><pre class="signature language-scss"><a class="anchor" href="#darken"></a><code class="language-scss"><span class="token function docSearch-function" name="darken">darken</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token variable">$amount</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+<p>Makes <code>$color</code> darker.</p>
+<p>The <code>$amount</code> must be a number between <code>0%</code> and <code>100%</code> (inclusive). Decreases
+the <span class="caps">HSL</span> lightness of <code>$color</code> by that<span class="widont">&nbsp;</span>amount.</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>The <code>darken()</code> function decreases lightness by a fixed amount, which is
+often not the desired effect. To make a color a certain percentage darker
+than it was before, use <a href="#scale"><code>color.scale()</code></a> instead.</p>
+<p>Because <code>darken()</code> is usually not the best way to make a color darker, it’s
+not included directly in the new module system. However, if you have to
+preserve the existing behavior, <code>darken($color, $amount)</code> can be written
+<a href="#adjust"><code>color.adjust($color, $lightness: -$amount)</code></a>.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-darken-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-darken-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-darken-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// #036 has lightness 20%, so when darken() subtracts 30% it just returns black.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">darken</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> 30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// black</span>&#10;&#10;<span class="token comment">// scale() instead makes it 30% darker than it was originally.</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">scale</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> -30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #002447</span>&#10;</code></pre></div>
+<div id="example-color-darken-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// #036 has lightness 20%, so when darken() subtracts 30% it just returns black.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> darken(#036, 30%)  // black</span>&#10;&#10;<span class="token comment">// scale() instead makes it 30% darker than it was originally.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.scale(#036, $lightness: -30%)  // #002447</span>&#10;</code></pre></div>
+</div>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-darken-2-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-darken-2-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-darken-2-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// Lightness 92% becomes 72%.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">darken</span><span class="token punctuation">(</span>#b37399<span class="token punctuation">,</span> 20%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #7c4465</span>&#10;&#10;<span class="token comment">// Lightness 85% becomes 45%.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">darken</span><span class="token punctuation">(</span>#f2ece4<span class="token punctuation">,</span> 40%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #b08b5a</span>&#10;&#10;<span class="token comment">// Lightness 20% becomes 0%.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">darken</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> 30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// black</span>&#10;</code></pre></div>
+<div id="example-color-darken-2-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// Lightness 92% becomes 72%.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> darken(#b37399, 20%)  // #7c4465</span>&#10;&#10;<span class="token comment">// Lightness 85% becomes 45%.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> darken(#f2ece4, 40%)  // #b08b5a</span>&#10;&#10;<span class="token comment">// Lightness 20% becomes 0%.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> darken(#036, 30%)  // black</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="desaturate"><pre class="signature language-scss"><a class="anchor" href="#desaturate"></a><code class="language-scss"><span class="token function docSearch-function" name="desaturate">desaturate</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token variable">$amount</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+<p>Makes <code>$color</code> less saturated.</p>
+<p>The <code>$amount</code> must be a number between <code>0%</code> and <code>100%</code> (inclusive). Decreases
+the <span class="caps">HSL</span> saturation of <code>$color</code> by that<span class="widont">&nbsp;</span>amount.</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>The <code>desaturate()</code> function decreases saturation by a fixed amount, which is
+often not the desired effect. To make a color a certain percentage less
+saturated than it was before, use <a href="#scale"><code>color.scale()</code></a> instead.</p>
+<p>Because <code>desaturate()</code> is usually not the best way to make a color less
+saturated, it’s not included directly in the new module system. However, if
+you have to preserve the existing behavior, <code>desaturate($color, $amount)</code>
+can be written <a href="#adjust"><code>color.adjust($color, $saturation: -$amount)</code></a>.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-desaturate-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-desaturate-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-desaturate-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// #d2e1dd has saturation 20%, so when desaturate() subtracts 30% it just</span>&#10;<span class="token comment">// returns gray.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">desaturate</span><span class="token punctuation">(</span>#d2e1dd<span class="token punctuation">,</span> 30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #dadada</span>&#10;&#10;<span class="token comment">// scale() instead makes it 30% less saturated than it was originally.</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">scale</span><span class="token punctuation">(</span>#6b717f<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$saturation</span></span><span class="token punctuation">:</span> -30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #6e727c</span>&#10;</code></pre></div>
+<div id="example-color-desaturate-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// #6b717f has saturation 20%, so when desaturate() subtracts 30% it just</span>&#10;<span class="token comment">// returns gray.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> desaturate(#d2e1dd, 30%)  // #dadada</span>&#10;&#10;<span class="token comment">// scale() instead makes it 30% less saturated than it was originally.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.scale(#6b717f, $saturation: -30%)  // #6e727c</span>&#10;</code></pre></div>
+</div>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-desaturate-2-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-desaturate-2-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-desaturate-2-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// Saturation 100% becomes 80%.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">desaturate</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> 20%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #0a335c</span>&#10;&#10;<span class="token comment">// Saturation 35% becomes 15%.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">desaturate</span><span class="token punctuation">(</span>#f2ece4<span class="token punctuation">,</span> 20%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #eeebe8</span>&#10;&#10;<span class="token comment">// Saturation 20% becomes 0%.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">desaturate</span><span class="token punctuation">(</span>#d2e1dd<span class="token punctuation">,</span> 30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #dadada</span>&#10;</code></pre></div>
+<div id="example-color-desaturate-2-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// Saturation 100% becomes 80%.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> desaturate(#036, 20%)  // #0a335c</span>&#10;&#10;<span class="token comment">// Saturation 35% becomes 15%.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> desaturate(#f2ece4, 20%)  // #eeebe8</span>&#10;&#10;<span class="token comment">// Saturation 20% becomes 0%.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> desaturate(#d2e1dd, 30%)  // #dadada</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="grayscale"><pre class="signature language-scss"><a class="anchor" href="#grayscale"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.grayscale">grayscale</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span>
+<span class="token function">grayscale</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+<p>Returns a gray color with the same lightness as <code>$color</code>.</p>
+<p>This is identical to <a href="#change"><code>color.change($color, $saturation: 0%)</code></a>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-grayscale-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-grayscale-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-grayscale-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">grayscale</span><span class="token punctuation">(</span>#6b717f<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #757575</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">grayscale</span><span class="token punctuation">(</span>#d2e1dd<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #dadada</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">grayscale</span><span class="token punctuation">(</span>#036<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #333333</span>&#10;</code></pre></div>
+<div id="example-color-grayscale-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.grayscale(#6b717f)  // #757575</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.grayscale(#d2e1dd)  // #dadada</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.grayscale(#036)  // #333333</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="green"><pre class="signature language-scss"><a class="anchor" href="#green"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.green">green</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span>
+<span class="token function">green</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Returns the green channel of <code>$color</code> as a number between 0 and<span class="widont">&nbsp;</span>255.</p>
+<p>See also:</p>
+<ul>
+<li><a href="#red"><code>color.red()</code></a> for getting a color’s red<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#blue"><code>color.blue()</code></a> for getting a color’s blue<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#hue"><code>color.hue()</code></a> for getting a color’s<span class="widont">&nbsp;</span>hue.</li>
+<li><a href="#saturation"><code>color.saturation()</code></a> for getting a color’s<span class="widont">&nbsp;</span>saturation.</li>
+<li><a href="#lightness"><code>color.lightness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>lightness.</li>
+<li><a href="#whiteness"><code>color.whiteness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>whiteness.</li>
+<li><a href="#blackness"><code>color.blackness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>blackness.</li>
+<li><a href="#alpha"><code>color.alpha()</code></a> for getting a color’s alpha<span class="widont">&nbsp;</span>channel.</li>
+</ul>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-green-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-green-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-green-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">green</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 215</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">green</span><span class="token punctuation">(</span>white<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 255</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">green</span><span class="token punctuation">(</span>black<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>&#10;</code></pre></div>
+<div id="example-color-green-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.green(#e1d7d2)  // 215</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.green(white)  // 255</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.green(black)  // 0</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="hue"><pre class="signature language-scss"><a class="anchor" href="#hue"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.hue">hue</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span>
+<span class="token function">hue</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Returns the hue of <code>$color</code> as a number between <code>0deg</code> and <code>360deg</code>.</p>
+<p>See also:</p>
+<ul>
+<li><a href="#red"><code>color.red()</code></a> for getting a color’s red<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#green"><code>color.green()</code></a> for getting a color’s green<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#blue"><code>color.blue()</code></a> for getting a color’s blue<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#saturation"><code>color.saturation()</code></a> for getting a color’s<span class="widont">&nbsp;</span>saturation.</li>
+<li><a href="#lightness"><code>color.lightness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>lightness.</li>
+<li><a href="#whiteness"><code>color.whiteness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>whiteness.</li>
+<li><a href="#blackness"><code>color.blackness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>blackness.</li>
+<li><a href="#alpha"><code>color.alpha()</code></a> for getting a color’s alpha<span class="widont">&nbsp;</span>channel.</li>
+</ul>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-hue-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-hue-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-hue-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">hue</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20deg</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">hue</span><span class="token punctuation">(</span>#f2ece4<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 34.2857142857deg</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">hue</span><span class="token punctuation">(</span>#dadbdf<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 228deg</span>&#10;</code></pre></div>
+<div id="example-color-hue-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.hue(#e1d7d2)  // 20deg</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.hue(#f2ece4)  // 34.2857142857deg</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.hue(#dadbdf)  // 228deg</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="hwb"><pre class="signature language-scss"><a class="anchor" href="#hwb"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.hwb">hwb</span><span class="token punctuation">(</span><span class="token variable">$hue</span> <span class="token variable">$whiteness</span> <span class="token variable">$blackness</span><span class="token punctuation">)</span>
+color.<span class="token function">hwb</span><span class="token punctuation">(</span><span class="token variable">$hue</span> <span class="token variable">$whiteness</span> <span class="token variable">$blackness</span> <span class="token operator">/</span> <span class="token variable">$alpha</span><span class="token punctuation">)</span>
+color.<span class="token function">hwb</span><span class="token punctuation">(</span><span class="token variable">$hue</span><span class="token punctuation">,</span> <span class="token variable">$whiteness</span><span class="token punctuation">,</span> <span class="token variable">$blackness</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$alpha</span></span><span class="token punctuation">:</span> 1<span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.28.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns a color with the given <a href="https://en.wikipedia.org/wiki/HWB_color_model">hue, whiteness, and blackness</a> and the given
+alpha<span class="widont">&nbsp;</span>channel.</p>
+<p>The hue is a number between <code>0deg</code> and <code>360deg</code> (inclusive). The whiteness and
+blackness are numbers between <code>0%</code> and <code>100%</code> (inclusive). The hue may be
+<a href="/documentation/values/numbers#units">unitless</a>, but the whiteness and blackness must have unit <code>%</code>. The alpha
+channel can be specified as either a unitless number between 0 and 1
+(inclusive), or a percentage between <code>0%</code> and <code>100%</code> (inclusive).</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Sass’s <a href="/documentation/operators/numeric#slash-separated-values">special parsing rules</a> for slash-separated values make it
+difficult to pass variables for <code>$blackness</code> or <code>$alpha</code> when using the
+<code>color.hwb($hue $whiteness $blackness / $alpha)</code> signature. Consider using
+<code>color.hwb($hue, $whiteness, $blackness, $alpha)</code> instead.</p>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-hwb-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-hwb-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-hwb-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">hwb</span><span class="token punctuation">(</span>210<span class="token punctuation">,</span> 0%<span class="token punctuation">,</span> 60%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #036</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">hwb</span><span class="token punctuation">(</span>34<span class="token punctuation">,</span> 89%<span class="token punctuation">,</span> 5%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #f2ece4</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">hwb</span><span class="token punctuation">(</span>210 0% 60% <span class="token operator">/</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// rgba(0, 51, 102, 0.5)</span>&#10;</code></pre></div>
+<div id="example-color-hwb-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.hwb(210, 0%, 60%)  // #036</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.hwb(34, 89%, 5%)  // #f2ece4</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.hwb(210 0% 60% / 0.5)  // rgba(0, 51, 102, 0.5)</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="ie-hex-str"><pre class="signature language-scss"><a class="anchor" href="#ie-hex-str"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.ie-hex-str">ie-hex-str</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span>
+<span class="token function">ie-hex-str</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/strings#unquoted">unquoted string</a></span></code></pre>
+<p>Returns an unquoted string that represents <code>$color</code> in the <code>#AARRGGBB</code> format
+expected by Internet Explorer’s <a href="https://learn.microsoft.com/en-us/previous-versions/ms530752(v=vs.85)"><code>-ms-filter</code></a> property.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-ie-hex-str-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-ie-hex-str-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-ie-hex-str-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">ie-hex-str</span><span class="token punctuation">(</span>#b37399<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #<span class="caps">FFB37399</span></span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">ie-hex-str</span><span class="token punctuation">(</span>#808c99<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #<span class="caps">FF808C99</span></span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">ie-hex-str</span><span class="token punctuation">(</span><span class="token function">rgba</span><span class="token punctuation">(</span>242<span class="token punctuation">,</span> 236<span class="token punctuation">,</span> 228<span class="token punctuation">,</span> 0.6<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #<span class="caps">99F2ECE4</span></span>&#10;</code></pre></div>
+<div id="example-color-ie-hex-str-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.ie-hex-str(#b37399); // #<span class="caps">FFB37399</span></span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.ie-hex-str(#808c99); // #<span class="caps">FF808C99</span></span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.ie-hex-str(rgba(242, 236, 228, 0.6)); // #<span class="caps">99F2ECE4</span></span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="invert"><pre class="signature language-scss"><a class="anchor" href="#invert"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.invert">invert</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$weight</span></span><span class="token punctuation">:</span> 100%<span class="token punctuation">)</span>
+<span class="token function">invert</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$weight</span></span><span class="token punctuation">:</span> 100%<span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+<p>Returns the inverse or <a href="https://en.wikipedia.org/wiki/Negative_(photography)">negative</a> of <code>$color</code>.</p>
+<p>The <code>$weight</code> must be a number between <code>0%</code> and <code>100%</code> (inclusive). A higher
+weight means the result will be closer to the negative, and a lower weight
+means it will be closer to <code>$color</code>. Weight <code>50%</code> will always produce
+<code>#808080</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-invert-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-invert-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-invert-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">invert</span><span class="token punctuation">(</span>#b37399<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #4c8c66</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">invert</span><span class="token punctuation">(</span>black<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// white</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">invert</span><span class="token punctuation">(</span>#550e0c<span class="token punctuation">,</span> 20%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #663b3a</span>&#10;</code></pre></div>
+<div id="example-color-invert-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.invert(#b37399)  // #4c8c66</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.invert(black)  // white</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.invert(#550e0c, 20%)  // #663b3a</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="lighten"><pre class="signature language-scss"><a class="anchor" href="#lighten"></a><code class="language-scss"><span class="token function docSearch-function" name="lighten">lighten</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token variable">$amount</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+<p>Makes <code>$color</code> lighter.</p>
+<p>The <code>$amount</code> must be a number between <code>0%</code> and <code>100%</code> (inclusive). Increases
+the <span class="caps">HSL</span> lightness of <code>$color</code> by that<span class="widont">&nbsp;</span>amount.</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>The <code>lighten()</code> function increases lightness by a fixed amount, which is
+often not the desired effect. To make a color a certain percentage lighter
+than it was before, use <a href="#scale"><code>scale()</code></a> instead.</p>
+<p>Because <code>lighten()</code> is usually not the best way to make a color lighter,
+it’s not included directly in the new module system. However, if you have to
+preserve the existing behavior, <code>lighten($color, $amount)</code> can be written
+<a href="#adjust"><code>adjust($color, $lightness: $amount)</code></a>.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-lighten-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-lighten-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-lighten-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// #e1d7d2 has lightness 85%, so when lighten() adds 30% it just returns white.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">lighten</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">,</span> 30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// white</span>&#10;&#10;<span class="token comment">// scale() instead makes it 30% lighter than it was originally.</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">scale</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> 30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #eae3e0</span>&#10;</code></pre></div>
+<div id="example-color-lighten-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// #e1d7d2 has lightness 85%, so when lighten() adds 30% it just returns white.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> lighten(#e1d7d2, 30%)  // white</span>&#10;&#10;<span class="token comment">// scale() instead makes it 30% lighter than it was originally.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.scale(#e1d7d2, $lightness: 30%)  // #eae3e0</span>&#10;</code></pre></div>
+</div>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-lighten-2-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-lighten-2-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-lighten-2-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// Lightness 46% becomes 66%.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">lighten</span><span class="token punctuation">(</span>#6b717f<span class="token punctuation">,</span> 20%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #a1a5af</span>&#10;&#10;<span class="token comment">// Lightness 20% becomes 80%.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">lighten</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> 60%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #99ccff</span>&#10;&#10;<span class="token comment">// Lightness 85% becomes 100%.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">lighten</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">,</span> 30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// white</span>&#10;</code></pre></div>
+<div id="example-color-lighten-2-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// Lightness 46% becomes 66%.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> lighten(#6b717f, 20%)  // #a1a5af</span>&#10;&#10;<span class="token comment">// Lightness 20% becomes 80%.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> lighten(#036, 60%)  // #99ccff</span>&#10;&#10;<span class="token comment">// Lightness 85% becomes 100%.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> lighten(#e1d7d2, 30%)  // white</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="lightness"><pre class="signature language-scss"><a class="anchor" href="#lightness"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.lightness">lightness</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span>
+<span class="token function">lightness</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Returns the <span class="caps">HSL</span> lightness of <code>$color</code> as a number between <code>0%</code> and <code>100%</code>.</p>
+<p>See also:</p>
+<ul>
+<li><a href="#red"><code>color.red()</code></a> for getting a color’s red<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#green"><code>color.green()</code></a> for getting a color’s green<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#blue"><code>color.blue()</code></a> for getting a color’s blue<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#hue"><code>color.hue()</code></a> for getting a color’s<span class="widont">&nbsp;</span>hue.</li>
+<li><a href="#saturation"><code>color.saturation()</code></a> for getting a color’s<span class="widont">&nbsp;</span>saturation.</li>
+<li><a href="#whiteness"><code>color.whiteness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>whiteness.</li>
+<li><a href="#blackness"><code>color.blackness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>blackness.</li>
+<li><a href="#alpha"><code>color.alpha()</code></a> for getting a color’s alpha<span class="widont">&nbsp;</span>channel.</li>
+</ul>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-lightness-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-lightness-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-lightness-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">lightness</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 85.2941176471%</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">lightness</span><span class="token punctuation">(</span>#f2ece4<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 92.1568627451%</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">lightness</span><span class="token punctuation">(</span>#dadbdf<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 86.4705882353%</span>&#10;</code></pre></div>
+<div id="example-color-lightness-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.lightness(#e1d7d2)  // 85.2941176471%</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.lightness(#f2ece4)  // 92.1568627451%</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.lightness(#dadbdf)  // 86.4705882353%</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="mix"><pre class="signature language-scss"><a class="anchor" href="#mix"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.mix">mix</span><span class="token punctuation">(</span><span class="token variable">$color1</span><span class="token punctuation">,</span> <span class="token variable">$color2</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$weight</span></span><span class="token punctuation">:</span> 50%<span class="token punctuation">)</span>
+<span class="token function">mix</span><span class="token punctuation">(</span><span class="token variable">$color1</span><span class="token punctuation">,</span> <span class="token variable">$color2</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$weight</span></span><span class="token punctuation">:</span> 50%<span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+<p>Returns a color that’s a mixture of <code>$color1</code> and <code>$color2</code>.</p>
+<p>Both the <code>$weight</code> and the relative opacity of each color determines how much
+of each color is in the result. The <code>$weight</code> must be a number between <code>0%</code>
+and <code>100%</code> (inclusive). A larger weight indicates that more of <code>$color1</code>
+should be used, and a smaller weight indicates that more of <code>$color2</code> should
+be<span class="widont">&nbsp;</span>used.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-mix-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-mix-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-mix-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">mix</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> #d2e1dd<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #698aa2</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">mix</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> #d2e1dd<span class="token punctuation">,</span> 75%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #355f84</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">mix</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> #d2e1dd<span class="token punctuation">,</span> 25%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #9eb6bf</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">mix</span><span class="token punctuation">(</span><span class="token function">rgba</span><span class="token punctuation">(</span>242<span class="token punctuation">,</span> 236<span class="token punctuation">,</span> 228<span class="token punctuation">,</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">,</span> #6b717f<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// rgba(141, 144, 152, 0.75)</span>&#10;</code></pre></div>
+<div id="example-color-mix-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.mix(#036, #d2e1dd)  // #698aa2</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.mix(#036, #d2e1dd, 75%)  // #355f84</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.mix(#036, #d2e1dd, 25%)  // #9eb6bf</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.mix(rgba(242, 236, 228, 0.5), #6b717f)  // rgba(141, 144, 152, 0.75)</span>&#10;</code></pre></div>
+</div>
+</div>
+<div id="fade-in">
+<div class="sl-c-callout sl-c-callout--function" id="opacify"><pre class="signature language-scss"><a class="anchor" href="#opacify"></a><code class="language-scss"><span class="token function docSearch-function" name="opacify">opacify</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token variable">$amount</span><span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="fade-in">fade-in</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token variable">$amount</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+<p>Makes <code>$color</code> more opaque.</p>
+<p>The <code>$amount</code> must be a number between <code>0</code> and <code>1</code> (inclusive). Increases the
+alpha channel of <code>$color</code> by that<span class="widont">&nbsp;</span>amount.</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>The <code>opacify()</code> function increases the alpha channel by a fixed amount,
+which is often not the desired effect. To make a color a certain percentage
+more opaque than it was before, use <a href="#scale"><code>scale()</code></a> instead.</p>
+<p>Because <code>opacify()</code> is usually not the best way to make a color more opaque,
+it’s not included directly in the new module system. However, if you have to
+preserve the existing behavior, <code>opacify($color, $amount)</code> can be written
+<a href="#adjust"><code>adjust($color, $alpha: -$amount)</code></a>.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-opacify-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-opacify-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-opacify-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// rgba(#036, 0.7) has alpha 0.7, so when opacify() adds 0.3 it returns a fully</span>&#10;<span class="token comment">// opaque color.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">opacify</span><span class="token punctuation">(</span><span class="token function">rgba</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> 0.7<span class="token punctuation">)</span><span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #036</span>&#10;&#10;<span class="token comment">// scale() instead makes it 30% more opaque than it was originally.</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">scale</span><span class="token punctuation">(</span><span class="token function">rgba</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> 0.7<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$alpha</span></span><span class="token punctuation">:</span> 30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// rgba(0, 51, 102, 0.79)</span>&#10;</code></pre></div>
+<div id="example-color-opacify-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// rgba(#036, 0.7) has alpha 0.7, so when opacify() adds 0.3 it returns a fully</span>&#10;<span class="token comment">// opaque color.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> opacify(rgba(#036, 0.7), 0.3)  // #036</span>&#10;&#10;<span class="token comment">// scale() instead makes it 30% more opaque than it was originally.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.scale(rgba(#036, 0.7), $alpha: 30%)  // rgba(0, 51, 102, 0.79)</span>&#10;</code></pre></div>
+</div>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-opacify-2-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-opacify-2-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-opacify-2-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> <span class="token function">opacify</span><span class="token punctuation">(</span><span class="token function">rgba</span><span class="token punctuation">(</span>#6b717f<span class="token punctuation">,</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">,</span> 0.2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// rgba(107, 113, 127, 0.7)</span>&#10;<span class="token keyword">@debug</span> <span class="token function">fade-in</span><span class="token punctuation">(</span><span class="token function">rgba</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">,</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// rgba(225, 215, 210, 0.9)</span>&#10;<span class="token keyword">@debug</span> <span class="token function">opacify</span><span class="token punctuation">(</span><span class="token function">rgba</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> 0.7<span class="token punctuation">)</span><span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #036</span>&#10;</code></pre></div>
+<div id="example-color-opacify-2-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> opacify(rgba(#6b717f, 0.5), 0.2)  // rgba(107, 113, 127, 0.7)</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> fade-in(rgba(#e1d7d2, 0.5), 0.4)  // rgba(225, 215, 210, 0.9)</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> opacify(rgba(#036, 0.7), 0.3)  // #036</span>&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="red"><pre class="signature language-scss"><a class="anchor" href="#red"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.red">red</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span>
+<span class="token function">red</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Returns the red channel of <code>$color</code> as a number between 0 and<span class="widont">&nbsp;</span>255.</p>
+<p>See also:</p>
+<ul>
+<li><a href="#green"><code>color.green()</code></a> for getting a color’s green<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#blue"><code>color.blue()</code></a> for getting a color’s blue<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#hue"><code>color.hue()</code></a> for getting a color’s<span class="widont">&nbsp;</span>hue.</li>
+<li><a href="#saturation"><code>color.saturation()</code></a> for getting a color’s<span class="widont">&nbsp;</span>saturation.</li>
+<li><a href="#lightness"><code>color.lightness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>lightness.</li>
+<li><a href="#whiteness"><code>color.whiteness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>whiteness.</li>
+<li><a href="#blackness"><code>color.blackness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>blackness.</li>
+<li><a href="#alpha"><code>color.alpha()</code></a> for getting a color’s alpha<span class="widont">&nbsp;</span>channel.</li>
+</ul>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-red-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-red-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-red-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">red</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 225</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">red</span><span class="token punctuation">(</span>white<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 255</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">red</span><span class="token punctuation">(</span>black<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>&#10;</code></pre></div>
+<div id="example-color-red-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.red(#e1d7d2)  // 225</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.red(white)  // 255</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.red(black)  // 0</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="saturate"><pre class="signature language-scss"><a class="anchor" href="#saturate"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.saturate">saturate</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token variable">$amount</span><span class="token punctuation">)</span>
+<span class="token function">saturate</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token variable">$amount</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+<p>Makes <code>$color</code> more saturated.</p>
+<p>The <code>$amount</code> must be a number between <code>0%</code> and <code>100%</code> (inclusive). Increases
+the <span class="caps">HSL</span> saturation of <code>$color</code> by that<span class="widont">&nbsp;</span>amount.</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>The <code>saturate()</code> function increases saturation by a fixed amount, which is
+often not the desired effect. To make a color a certain percentage more
+saturated than it was before, use <a href="#scale"><code>scale()</code></a> instead.</p>
+<p>Because <code>saturate()</code> is usually not the best way to make a color more
+saturated, it’s not included directly in the new module system. However, if
+you have to preserve the existing behavior, <code>saturate($color, $amount)</code> can
+be written <a href="#adjust"><code>adjust($color, $saturation: $amount)</code></a>.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-saturate-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-saturate-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-saturate-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// #0e4982 has saturation 80%, so when saturate() adds 30% it just becomes</span>&#10;<span class="token comment">// fully saturated.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">saturate</span><span class="token punctuation">(</span>#0e4982<span class="token punctuation">,</span> 30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #004990</span>&#10;&#10;<span class="token comment">// scale() instead makes it 30% more saturated than it was originally.</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">scale</span><span class="token punctuation">(</span>#0e4982<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$saturation</span></span><span class="token punctuation">:</span> 30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #0a4986</span>&#10;</code></pre></div>
+<div id="example-color-saturate-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// #0e4982 has saturation 80%, so when saturate() adds 30% it just becomes</span>&#10;<span class="token comment">// fully saturated.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> saturate(#0e4982, 30%)  // #004990</span>&#10;&#10;<span class="token comment">// scale() instead makes it 30% more saturated than it was originally.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.scale(#0e4982, $saturation: 30%)  // #0a4986</span>&#10;</code></pre></div>
+</div>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-saturate-2-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-saturate-2-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-saturate-2-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// Saturation 50% becomes 70%.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">saturate</span><span class="token punctuation">(</span>#c69<span class="token punctuation">,</span> 20%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #e05299</span>&#10;&#10;<span class="token comment">// Saturation 35% becomes 85%.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">desaturate</span><span class="token punctuation">(</span>#f2ece4<span class="token punctuation">,</span> 50%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #ebebeb</span>&#10;&#10;<span class="token comment">// Saturation 80% becomes 100%.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">saturate</span><span class="token punctuation">(</span>#0e4982<span class="token punctuation">,</span> 30%<span class="token punctuation">)</span>  <span class="token comment">// #004990</span>&#10;</code></pre></div>
+<div id="example-color-saturate-2-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// Saturation 50% becomes 70%.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> saturate(#c69, 20%); // #e05299</span>&#10;&#10;<span class="token comment">// Saturation 35% becomes 85%.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> desaturate(#f2ece4, 50%); // #ebebeb</span>&#10;&#10;<span class="token comment">// Saturation 80% becomes 100%.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> saturate(#0e4982, 30%)  // #004990</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="saturation"><pre class="signature language-scss"><a class="anchor" href="#saturation"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.saturation">saturation</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span>
+<span class="token function">saturation</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Returns the <span class="caps">HSL</span> saturation of <code>$color</code> as a number between <code>0%</code> and <code>100%</code>.</p>
+<p>See also:</p>
+<ul>
+<li><a href="#red"><code>color.red()</code></a> for getting a color’s red<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#green"><code>color.green()</code></a> for getting a color’s green<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#blue"><code>color.blue()</code></a> for getting a color’s blue<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#hue"><code>color.hue()</code></a> for getting a color’s<span class="widont">&nbsp;</span>hue.</li>
+<li><a href="#lightness"><code>color.lightness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>lightness.</li>
+<li><a href="#whiteness"><code>color.whiteness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>whiteness.</li>
+<li><a href="#blackness"><code>color.blackness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>blackness.</li>
+<li><a href="#alpha"><code>color.alpha()</code></a> for getting a color’s alpha<span class="widont">&nbsp;</span>channel.</li>
+</ul>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-saturation-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-saturation-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-saturation-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">saturation</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20%</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">saturation</span><span class="token punctuation">(</span>#f2ece4<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 30%</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">saturation</span><span class="token punctuation">(</span>#dadbdf<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 7.2463768116%</span>&#10;</code></pre></div>
+<div id="example-color-saturation-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.saturation(#e1d7d2)  // 20%</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.saturation(#f2ece4)  // 30%</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.saturation(#dadbdf)  // 7.2463768116%</span>&#10;</code></pre></div>
+</div>
+</div>
+<div id="scale-color">
+<div class="sl-c-callout sl-c-callout--function" id="scale"><pre class="signature language-scss"><a class="anchor" href="#scale"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.scale">scale</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$green</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$blue</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$saturation</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$whiteness</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$blackness</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+  <span class="token property"><span class="token variable">$alpha</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="scale-color">scale-color</span><span class="token punctuation">(</span>...<span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility ($whiteness and $blackness):
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.28.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Fluidly scales one or more properties of <code>$color</code>.</p>
+<p>Each keyword argument must be a number between <code>-100%</code> and <code>100%</code> (inclusive).
+This indicates how far the corresponding property should be moved from its
+original position towards the maximum (if the argument is positive) or the
+minimum (if the argument is negative). This means that, for example,
+<code>$lightness: 50%</code> will make all colors <code>50%</code> closer to maximum lightness
+without making them fully<span class="widont">&nbsp;</span>white.</p>
+<p>It’s an error to specify an <span class="caps">RGB</span> property (<code>$red</code>, <code>$green</code>, and/or <code>$blue</code>) at
+the same time as an <span class="caps">HSL</span> property (<code>$saturation</code>, and/or <code>$lightness</code>), or
+either of those at the same time as an <a href="https://en.wikipedia.org/wiki/HWB_color_model"><span class="caps">HWB</span></a> property (<code>$whiteness</code>, and/or
+<code>$blackness</code>).</p>
+<p>See also:</p>
+<ul>
+<li><a href="#adjust"><code>color.adjust()</code></a> for changing a color’s properties by fixed<span class="widont">&nbsp;</span>amounts.</li>
+<li><a href="#change"><code>color.change()</code></a> for setting a color’s<span class="widont">&nbsp;</span>properties.</li>
+</ul>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-scale-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-scale-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-scale-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">scale</span><span class="token punctuation">(</span>#6b717f<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$red</span></span><span class="token punctuation">:</span> 15%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #81717f</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">scale</span><span class="token punctuation">(</span>#d2e1dd<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> -10%<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$saturation</span></span><span class="token punctuation">:</span> 10%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// #b3d4cb</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">scale</span><span class="token punctuation">(</span>#998099<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$alpha</span></span><span class="token punctuation">:</span> -40%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// rgba(153, 128, 153, 0.6)</span>&#10;</code></pre></div>
+<div id="example-color-scale-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.scale(#6b717f, $red: 15%)  // #81717f</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.scale(#d2e1dd, $lightness: -10%, $saturation: 10%)  // #b3d4cb</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.scale(#998099, $alpha: -40%)  // rgba(153, 128, 153, 0.6)</span>&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div id="fade-out">
+<div class="sl-c-callout sl-c-callout--function" id="transparentize"><pre class="signature language-scss"><a class="anchor" href="#transparentize"></a><code class="language-scss"><span class="token function docSearch-function" name="transparentize">transparentize</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token variable">$amount</span><span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="fade-out">fade-out</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">,</span> <span class="token variable">$amount</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/colors">color</a></span></code></pre>
+<p>Makes <code>$color</code> more transparent.</p>
+<p>The <code>$amount</code> must be a number between <code>0</code> and <code>1</code> (inclusive). Decreases the
+alpha channel of <code>$color</code> by that<span class="widont">&nbsp;</span>amount.</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>The <code>transparentize()</code> function decreases the alpha channel by a fixed
+amount, which is often not the desired effect. To make a color a certain
+percentage more transparent than it was before, use
+<a href="#scale"><code>color.scale()</code></a> instead.</p>
+<p>Because <code>transparentize()</code> is usually not the best way to make a color more
+transparent, it’s not included directly in the new module system. However,
+if you have to preserve the existing behavior, <code>transparentize($color, $amount)</code> can be written <a href="#adjust"><code>color.adjust($color, $alpha: -$amount)</code></a>.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-transparentize-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-transparentize-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-transparentize-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// rgba(#036, 0.3) has alpha 0.3, so when transparentize() subtracts 0.3 it</span>&#10;<span class="token comment">// returns a fully transparent color.</span>&#10;<span class="token keyword">@debug</span> <span class="token function">transparentize</span><span class="token punctuation">(</span><span class="token function">rgba</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// rgba(0, 51, 102, 0)</span>&#10;&#10;<span class="token comment">// scale() instead makes it 30% more transparent than it was originally.</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">scale</span><span class="token punctuation">(</span><span class="token function">rgba</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$alpha</span></span><span class="token punctuation">:</span> -30%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// rgba(0, 51, 102, 0.21)</span>&#10;</code></pre></div>
+<div id="example-transparentize-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// rgba(#036, 0.3) has alpha 0.3, so when transparentize() subtracts 0.3 it</span>&#10;<span class="token comment">// returns a fully transparent color.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> transparentize(rgba(#036, 0.3), 0.3)  // rgba(0, 51, 102, 0)</span>&#10;&#10;<span class="token comment">// scale() instead makes it 30% more transparent than it was originally.</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.scale(rgba(#036, 0.3), $alpha: -30%)  // rgba(0, 51, 102, 0.21)</span>&#10;</code></pre></div>
+</div>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-transparentize-2-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-transparentize-2-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-transparentize-2-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> <span class="token function">transparentize</span><span class="token punctuation">(</span><span class="token function">rgba</span><span class="token punctuation">(</span>#6b717f<span class="token punctuation">,</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">,</span> 0.2<span class="token punctuation">)</span>  <span class="token comment">// rgba(107, 113, 127, 0.3)</span>&#10;<span class="token keyword">@debug</span> <span class="token function">fade-out</span><span class="token punctuation">(</span><span class="token function">rgba</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">,</span> 0.5<span class="token punctuation">)</span><span class="token punctuation">,</span> 0.4<span class="token punctuation">)</span>  <span class="token comment">// rgba(225, 215, 210, 0.1)</span>&#10;<span class="token keyword">@debug</span> <span class="token function">transparentize</span><span class="token punctuation">(</span><span class="token function">rgba</span><span class="token punctuation">(</span>#036<span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span>  <span class="token comment">// rgba(0, 51, 102, 0)</span>&#10;</code></pre></div>
+<div id="example-transparentize-2-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> transparentize(rgba(#6b717f, 0.5), 0.2)  // rgba(107, 113, 127, 0.3)</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> fade-out(rgba(#e1d7d2, 0.5), 0.4)  // rgba(225, 215, 210, 0.1)</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> transparentize(rgba(#036, 0.3), 0.3)  // rgba(0, 51, 102, 0)</span>&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="whiteness"><pre class="signature language-scss"><a class="anchor" href="#whiteness"></a><code class="language-scss">color.<span class="token function docSearch-function" name="color.whiteness">whiteness</span><span class="token punctuation">(</span><span class="token variable">$color</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.28.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the <a href="https://en.wikipedia.org/wiki/HWB_color_model"><span class="caps">HWB</span></a> whiteness of <code>$color</code> as a number between <code>0%</code> and <code>100%</code>.</p>
+<p>See also:</p>
+<ul>
+<li><a href="#red"><code>color.red()</code></a> for getting a color’s red<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#green"><code>color.green()</code></a> for getting a color’s green<span class="widont">&nbsp;</span>channel.</li>
+<li><a href="#hue"><code>color.hue()</code></a> for getting a color’s<span class="widont">&nbsp;</span>hue.</li>
+<li><a href="#saturation"><code>color.saturation()</code></a> for getting a color’s<span class="widont">&nbsp;</span>saturation.</li>
+<li><a href="#lightness"><code>color.lightness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>lightness.</li>
+<li><a href="#blackness"><code>color.blackness()</code></a> for getting a color’s<span class="widont">&nbsp;</span>blackness.</li>
+<li><a href="#alpha"><code>color.alpha()</code></a> for getting a color’s alpha<span class="widont">&nbsp;</span>channel.</li>
+</ul>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-color-whiteness-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-color-whiteness-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-color-whiteness-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> color.<span class="token function">whiteness</span><span class="token punctuation">(</span>#e1d7d2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 82.3529411765%</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">whiteness</span><span class="token punctuation">(</span>white<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 100%</span>&#10;<span class="token keyword">@debug</span> color.<span class="token function">whiteness</span><span class="token punctuation">(</span>black<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0%</span>&#10;</code></pre></div>
+<div id="example-color-whiteness-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> color.whiteness(#e1d7d2)  // 82.3529411765%</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.whiteness(white)  // 100%</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> color.whiteness(black)  // 0%</span>&#10;</code></pre></div>
+</div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/modules/color/ -->
+  </body>
+</html>

@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Migrator</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation cli migrator">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Migrator</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section open selected">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="open selected">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary sl-l-large-holy-grail__complementary--contents">
+              
+                
+                
+                
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    <ul><li>
+      <a href="#usage" class="">Usage</a></li><li>
+      <a href="#installation" class="section ">Installation</a><ul><li class="overview">
+      <a href="#installation" >Overview</a>
+    </li><li>
+      <a href="#standalone" class="">Standalone</a></li><li>
+      <a href="#npm" class="">npm</a></li><li>
+      <a href="#chocolatey" class="">Chocolatey</a></li><li>
+      <a href="#homebrew" class="">Homebrew</a></li></ul>
+</li><li>
+      <a href="#global-options" class="section ">Global Options</a><ul><li class="overview">
+      <a href="#global-options" >Overview</a>
+    </li><li>
+      <a href="#migrate-deps" class=""><code>--migrate-deps</code></a></li><li>
+      <a href="#load-path" class=""><code>--load-path</code></a></li><li>
+      <a href="#dry-run" class="section "><code>--dry-run</code></a><ul><li class="overview">
+      <a href="#dry-run" >Overview</a>
+    </li><li>
+      <a href="#no-unicode" class=""><code>--no-unicode</code></a></li></ul>
+</li><li>
+      <a href="#verbose" class=""><code>--verbose</code></a></li></ul>
+</li><li>
+      <a href="#migrations" class="section ">Migrations</a><ul><li class="overview">
+      <a href="#migrations" >Overview</a>
+    </li><li>
+      <a href="#division" class="section ">Division</a><ul><li class="overview">
+      <a href="#division" >Overview</a>
+    </li><li>
+      <a href="#pessimistic" class=""><code>--pessimistic</code></a></li></ul>
+</li><li>
+      <a href="#module" class="section ">Module</a><ul><li class="overview">
+      <a href="#module" >Overview</a>
+    </li><li>
+      <a href="#loading-dependencies" class="">Loading Dependencies</a></li><li>
+      <a href="#remove-prefix" class=""><code>--remove-prefix</code></a></li><li>
+      <a href="#forward" class=""><code>--forward</code></a></li></ul>
+</li><li>
+      <a href="#namespace" class="section ">Namespace</a><ul><li class="overview">
+      <a href="#namespace" >Overview</a>
+    </li><li>
+      <a href="#rename" class=""><code>--rename</code></a></li><li>
+      <a href="#force" class=""><code>--force</code></a></li></ul>
+</li></ul>
+</li></ul>
+
+                  </nav>
+                
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+  <div class="sl-c-introduction">
+    <p>The Sass migrator automatically updates your Sass files to help you move on to the latest and greatest version of the language. Each of its commands migrates a single feature, to give you as much control as possible over what you update and<span class="widont">&nbsp;</span>when.</p>
+
+  </div>
+
+
+
+              <h2 id="usage" tabindex="-1">Usage<a class="anchor" href="#usage"><span class="visuallyhidden">Usage permalink</span></a></h2>
+<p>To use the Sass migrator, tell it <a href="#migrations">which migration</a> you want to run and what
+Sass files you want to<span class="widont">&nbsp;</span>migrate:</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token output">sass-migrator &lt;migration> &lt;entrypoint.scss...>
+</span></code></pre>
+<p>By default, the migrator will only change files that you explicitly pass on the
+command line. Passing the <a href="#migrate-deps"><code>--migrate-deps</code> option</a> tells the migrator to also
+change all the stylesheets that are loaded using the <a href="/documentation/at-rules/use"><code>@use</code> rule</a>,
+<a href="/documentation/at-rules/forward"><code>@forward</code> rule</a>, or <a href="/documentation/at-rules/import"><code>@import</code> rule</a>. And if you want to do a test run to
+see what changes will be made without actually saving them, you can pass
+<code><a href="#dry-run">–dry-run</a> <a href="#verbose">–verbose</a></code> (or <code>-nv</code> for short).</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">cat</span> style.scss</span></span>
+<span class="token output">$body-bg: #000;
+$body-color: #111;
+
+@import "bootstrap";
+
+@include media-breakpoint-up(sm) {
+  .navbar {
+    display: block;
+  }
+}
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator --migrate-deps module style.scss</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">cat</span> style.scss</span></span>
+<span class="token output">@use "bootstrap" with (
+  $body-bg: #000,
+  $body-color: #111
+);
+
+@include bootstrap.media-breakpoint-up(sm) {
+  .navbar {
+    display: block;
+  }
+}
+</span></code></pre>
+<h2 id="installation" tabindex="-1">Installation<a class="anchor" href="#installation"><span class="visuallyhidden">Installation permalink</span></a></h2>
+<p>You can install the Sass migrator from most of the same places that you can
+install <a href="/dart-sass">Dart Sass</a>:</p>
+<h3 id="standalone" tabindex="-1">Standalone<a class="anchor" href="#standalone"><span class="visuallyhidden">Standalone permalink</span></a></h3>
+<p>You can install the Sass migrator on Windows, Mac, or Linux by downloading the
+package for your operating system <a href="https://github.com/sass/migrator/releases/tag/1.7.3">from GitHub</a> and <a href="https://katiek2.github.io/path-doc/">adding it to your
+<code>PATH</code></a>.</p>
+<h3 id="npm" tabindex="-1">npm<a class="anchor" href="#npm"><span class="visuallyhidden">npm permalink</span></a></h3>
+<p>If you use Node.js, you can also install the Sass migrator using <a href="https://www.npmjs.com">npm</a> by<span class="widont">&nbsp;</span>running</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token output">npm install -g sass-migrator
+</span></code></pre>
+<h3 id="chocolatey" tabindex="-1">Chocolatey<a class="anchor" href="#chocolatey"><span class="visuallyhidden">Chocolatey permalink</span></a></h3>
+<p>If you use <a href="https://chocolatey.org">the Chocolatey package manager</a> for Windows, you can install the
+Sass migrator by<span class="widont">&nbsp;</span>running</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token output">choco install sass-migrator
+</span></code></pre>
+<h3 id="homebrew" tabindex="-1">Homebrew<a class="anchor" href="#homebrew"><span class="visuallyhidden">Homebrew permalink</span></a></h3>
+<p>If you use <a href="https://brew.sh">the Homebrew package manager</a> for Mac <span class="caps">OS</span> X, you can install Dart
+Sass by<span class="widont">&nbsp;</span>running</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token output">brew install sass/sass/migrator
+</span></code></pre>
+<h2 id="global-options" tabindex="-1">Global Options<a class="anchor" href="#global-options"><span class="visuallyhidden">Global Options permalink</span></a></h2>
+<p>These options are available for all<span class="widont">&nbsp;</span>migrators.</p>
+<h3 id="migrate-deps" tabindex="-1"><code>--migrate-deps</code><a class="anchor" href="#migrate-deps"><span class="visuallyhidden">&#8211;migrate-deps permalink</span></a></h3>
+<p>This option (abbreviated <code>-d</code>) tells the migrator to change not just the
+stylesheets that are explicitly passed on the command line, but also any
+stylesheets that they depend on using the <a href="/documentation/at-rules/use"><code>@use</code> rule</a>, <a href="/documentation/at-rules/forward"><code>@forward</code> rule</a>,
+or <a href="/documentation/at-rules/import"><code>@import</code> rule</a>.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator module <span class="token parameter variable">--verbose</span> style.scss</span></span>
+<span class="token output">Migrating style.scss
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator module <span class="token parameter variable">--verbose</span> --migrate-deps style.scss</span></span>
+<span class="token output">Migrating style.scss
+Migrating _theme.scss
+Migrating _fonts.scss
+Migrating _grid.scss
+</span></code></pre>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>The <a href="#module">module migrator</a> assumes that any stylesheet that is depended on using
+a <a href="/documentation/at-rules/use"><code>@use</code> rule</a> or a <a href="/documentation/at-rules/forward"><code>@forward</code> rule</a> has already been migrated to the
+module system, so it won’t attempt to migrate them, even when the
+<code>--migrate-deps</code> option is<span class="widont">&nbsp;</span>passed.</p>
+</div>
+<h3 id="load-path" tabindex="-1"><code>--load-path</code><a class="anchor" href="#load-path"><span class="visuallyhidden">&#8211;load-path permalink</span></a></h3>
+<p>This option (abbreviated <code>-I</code>) tells the migrator a <a href="/documentation/at-rules/use#load-paths">load path</a> where it
+should look for stylesheets. It can be passed multiple times to provide multiple
+load paths. Earlier load paths will take precedence over later<span class="widont">&nbsp;</span>ones.</p>
+<p>Dependencies loaded from load paths are assumed to be third-party libraries, so
+the migrator will not migrate them even when the <a href="#migrate-deps"><code>--migrate-deps</code> option</a> is<span class="widont">&nbsp;</span>passed.</p>
+<h3 id="dry-run" tabindex="-1"><code>--dry-run</code><a class="anchor" href="#dry-run"><span class="visuallyhidden">&#8211;dry-run permalink</span></a></h3>
+<p>This flag (abbreviated <code>-n</code>) tells the migrator not to save any changes to
+disk. It instead prints the list of files that it would have changed. This is
+commonly paired with the <a href="#verbose"><code>--verbose</code> option</a> to print the contents of the
+changes that would have been made as<span class="widont">&nbsp;</span>well.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator module --dry-run --migrate-deps style.scss</span></span>
+<span class="token output">Dry run. Logging migrated files instead of overwriting...
+
+style.scss
+_theme.scss
+_fonts.scss
+_grid.scss
+</span></code></pre>
+<h4 id="no-unicode" tabindex="-1"><code>--no-unicode</code><a class="anchor" href="#no-unicode"><span class="visuallyhidden">&#8211;no-unicode permalink</span></a></h4>
+<p>This flag tells the Sass migrator only to emit <span class="caps">ASCII</span> characters to the terminal
+as part of error messages. By default, or if <code>--unicode</code> is passed, the migrator
+will emit non-<span class="caps">ASCII</span> characters for these messages. This flag does not affect the
+<span class="caps">CSS</span><span class="widont">&nbsp;</span>output.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator --no-unicode module style.scss</span></span>
+<span class="token output">line 1, column 9 of style.scss: Error: Could not find Sass file at 'typography'.
+  ,
+1 | @import "typography";
+  |         ^^^^^^^^^^^^
+  '
+Migration failed!
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator <span class="token parameter variable">--unicode</span> module style.scss</span></span>
+<span class="token output">line 1, column 9 of style.scss: Error: Could not find Sass file at 'typography'.
+  ╷
+1 │ @import "typography";
+  │         ^^^^^^^^^^^^
+  ╵
+Migration failed!
+</span></code></pre>
+<h3 id="verbose" tabindex="-1"><code>--verbose</code><a class="anchor" href="#verbose"><span class="visuallyhidden">&#8211;verbose permalink</span></a></h3>
+<p>This flag (abbreviated <code>-v</code>) tells the migrator to print extra information to
+the console. By default, it just prints the name of files that are changed, but
+when combined with the <a href="#dry-run"><code>--dry-run</code> option</a> it also prints those files’ new<span class="widont">&nbsp;</span>contents.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator module <span class="token parameter variable">--verbose</span> --dry-run style.scss</span></span>
+<span class="token output">Dry run. Logging migrated files instead of overwriting...
+&lt;==> style.scss
+@use "bootstrap" with (
+  $body-bg: #000,
+  $body-color: #111
+);
+
+@include bootstrap.media-breakpoint-up(sm) {
+  .navbar {
+    display: block;
+  }
+}
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator module <span class="token parameter variable">--verbose</span> style.scss</span></span>
+<span class="token output">Migrating style.scss
+</span></code></pre>
+<h2 id="migrations" tabindex="-1">Migrations<a class="anchor" href="#migrations"><span class="visuallyhidden">Migrations permalink</span></a></h2>
+<h3 id="division" tabindex="-1">Division<a class="anchor" href="#division"><span class="visuallyhidden">Division permalink</span></a></h3>
+<p>This migration converts stylesheets that use <a href="/documentation/breaking-changes/slash-div"><code>/</code> as division</a> to use the
+built-in <code>math.div</code> function instead.</p>
+<h4 id="pessimistic" tabindex="-1"><code>--pessimistic</code><a class="anchor" href="#pessimistic"><span class="visuallyhidden">&#8211;pessimistic permalink</span></a></h4>
+<p>By default, the migrator converts <code>/</code> operations to <code>math.div</code> even when it
+isn’t sure that it will be division when evaluated. It only leaves them as-is
+when it can statically determine that they’re doing something else (such as when
+there’s no SassScript involved, or when one of the operands is a string). The
+<code>math.div</code> function currently functions identically to the <code>/</code> operator, so
+this is safe to do, but may result in new warnings if one of the arguments to
+<code>math.div</code> at runtime is not a<span class="widont">&nbsp;</span>number.</p>
+<p>If you want to avoid this behavior, you can pass the <code>--pessimistic</code> flag. With
+this flag, the migrator will only convert <code>/</code> operations that it knows for sure
+are doing division. This will prevent any unnecessary <code>math.div</code> conversions,
+but it’s likely to leave some division unmigrated if it can’t be statically<span class="widont">&nbsp;</span>determined.</p>
+<h3 id="module" tabindex="-1">Module<a class="anchor" href="#module"><span class="visuallyhidden">Module permalink</span></a></h3>
+<p>This migration converts stylesheets that use the old <a href="/documentation/at-rules/import"><code>@import</code> rule</a> to load
+dependencies so that they use the Sass module system via the <a href="/documentation/at-rules/use"><code>@use</code> rule</a>
+instead. It doesn’t just naïvely change <code>@import</code>s to <code>@use</code>s—it updates
+stylesheets intelligently so that they keep working the same way they did
+before,<span class="widont">&nbsp;</span>including:</p>
+<ul>
+<li>
+<p>Adding namespaces to uses of members (variables, mixins, and functions) from
+other<span class="widont">&nbsp;</span>modules.</p>
+</li>
+<li>
+<p>Adding new <code>@use</code> rules to stylesheets that were using members without
+importing<span class="widont">&nbsp;</span>them.</p>
+</li>
+<li>
+<p>Converting overridden default variables to <a href="/documentation/at-rules/use#configuration"><code>with</code> clauses</a>.</p>
+</li>
+<li>
+<p>Automatically removing <code>-</code> and <code>_</code> prefixes from members that are used from
+other files (because otherwise they’d be considered <a href="/documentation/at-rules/use#private-members">private</a> and could only
+be used in the module they’re<span class="widont">&nbsp;</span>declared).</p>
+</li>
+<li>
+<p>Converting <a href="/documentation/at-rules/import/#nesting">nested imports</a> to use the <a href="/documentation/modules/meta#load-css"><code>meta.load-css()</code> mixin</a> instead.</p>
+</li>
+</ul>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Because the module migrator may need to modify both member definitions <em>and</em>
+member names, it’s important to either run it with the <a href="#migrate-deps"><code>--migrate-deps</code>
+option</a> or ensure that you pass it all the stylesheets in your package or<span class="widont">&nbsp;</span>application.</p>
+</div>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">cat</span> style.scss</span></span>
+<span class="token output">$body-bg: #000;
+$body-color: #111;
+
+@import "bootstrap";
+
+@include media-breakpoint-up(sm) {
+  .navbar {
+    display: block;
+  }
+}
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator --migrate-deps module style.scss</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">cat</span> style.scss</span></span>
+<span class="token output">@use "bootstrap" with (
+  $body-bg: #000,
+  $body-color: #111
+);
+
+@include bootstrap.media-breakpoint-up(sm) {
+  .navbar {
+    display: block;
+  }
+}
+</span></code></pre>
+<h4 id="loading-dependencies" tabindex="-1">Loading Dependencies<a class="anchor" href="#loading-dependencies"><span class="visuallyhidden">Loading Dependencies permalink</span></a></h4>
+<p>The module migrator needs to be able to read all of the stylesheets depended on
+by the ones it’s migrating, even if the <a href="#migrate-deps"><code>--migrate-deps</code> option</a> is not
+passed. If the migrator fails to find a dependency, you’ll get an<span class="widont">&nbsp;</span>error.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">ls</span> <span class="token builtin class-name">.</span></span></span>
+<span class="token output">style.scss  node_modules
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator module style.scss</span></span>
+<span class="token output">Error: Could not find Sass file at 'dependency'.
+  ,
+1 | @import "dependency";
+  |         ^^^^^^^^^^^^
+  '
+  style.scss 1:9  root stylesheet
+Migration failed!
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator --load-path node_modules module style.scss</span></span></code></pre>
+<p>If you use a <a href="/documentation/at-rules/use#load-paths">load path</a> when compiling your stylesheets, make sure to pass
+that to the migrator using the <a href="#load-path"><code>--load-path</code> option</a>.</p>
+<p>Unfortunately, the migrator does not support custom importers, but it does have
+built-in support for resolving URLs starting with <code>~</code> by searching in
+<code>node_modules</code>, similar to <a href="https://github.com/webpack-contrib/sass-loader#resolving-import-at-rules">what Webpack<span class="widont">&nbsp;</span>supports</a>.</p>
+<h4 id="remove-prefix" tabindex="-1"><code>--remove-prefix</code><a class="anchor" href="#remove-prefix"><span class="visuallyhidden">&#8211;remove-prefix permalink</span></a></h4>
+<p>This option (abbreviated <code>-p</code>) takes an identifier prefix to remove from the
+beginning of all variable, mixin, and function names when they’re migrated.
+Members that don’t start with this prefix will remain<span class="widont">&nbsp;</span>unchanged.</p>
+<p>The <a href="/documentation/at-rules/import"><code>@import</code> rule</a> put all top-level members in one global scope, so when it
+was the standard way of loading stylesheets, everyone was incentivized to add
+prefixes to all their member names to avoid accidentally redefining some other
+stylesheet’s. The module system solves this problem, so it’s useful to
+automatically strip those old prefixes now that they’re<span class="widont">&nbsp;</span>unnecessary.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">cat</span> style.scss</span></span>
+<span class="token output">@import "theme";
+
+@mixin app-inverted {
+  color: $app-bg-color;
+  background-color: $app-color;
+}
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator --migrate-deps module --remove-prefix<span class="token operator">=</span>app- style.scss</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">cat</span> style.scss</span></span>
+<span class="token output">@import "theme";
+
+@mixin inverted {
+  color: theme.$bg-color;
+  background-color: theme.$color;
+}
+</span></code></pre>
+<p>When you pass this option, the migrator will also generate an <a href="/documentation/at-rules/import/#import-only-files">import-only
+stylesheet</a> that <a href="/documentation/at-rules/forward">forwards</a> all the members with the prefix added back, to
+preserve backwards-compatibility for users who were importing the<span class="widont">&nbsp;</span>library.</p>
+<p>This option may be passed multiple times, or with multiple values separated by
+commas. Each prefix will be removed from any members that have it. If a member
+matches multiple prefixes, the longest matching prefix will be<span class="widont">&nbsp;</span>removed.</p>
+<h4 id="forward" tabindex="-1"><code>--forward</code><a class="anchor" href="#forward"><span class="visuallyhidden">&#8211;forward permalink</span></a></h4>
+<p>This option tells the migrator which members to forward using the <a href="/documentation/at-rules/forward"><code>@forward</code>
+rule</a>. It supports the following<span class="widont">&nbsp;</span>settings:</p>
+<ul>
+<li>
+<p><code>none</code> (the default) doesn’t forward any<span class="widont">&nbsp;</span>members.</p>
+</li>
+<li>
+<p><code>all</code> forwards all members except those that started with <code>-</code> or <code>_</code> in the
+original stylesheet, since that was commonly used to mark a package-private
+member before the module system was<span class="widont">&nbsp;</span>introduced.</p>
+</li>
+<li>
+<p><code>prefixed</code> forwards only members that begin with the prefix passed to the
+<a href="#remove-prefix"><code>--remove-prefix</code> option</a>. This option may only be used in conjunction with
+the <code>--remove-prefix</code> option.</p>
+</li>
+</ul>
+<p>All files that are passed explicitly on the command line will forward members
+that are transitively loaded by those files using the <code>@import</code> rule. Files
+loaded using the <a href="#migrate-deps"><code>--migrate-deps</code> option</a> will not forward any new members.
+This option is particularly useful when migrating a Sass library, because it
+ensures that users of that library will still be able to access all the members
+it<span class="widont">&nbsp;</span>defines.</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">cat</span> _index.scss</span></span>
+<span class="token output">@import "theme";
+@import "typography";
+@import "components";
+</span><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">sass-migrator --migrate-deps module <span class="token parameter variable">--forward</span><span class="token operator">=</span>all style.scss</span></span>
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">cat</span> _index.scss</span></span>
+<span class="token output">@forward "theme";
+@forward "typography";
+@forward "components";
+</span></code></pre>
+<h3 id="namespace" tabindex="-1">Namespace<a class="anchor" href="#namespace"><span class="visuallyhidden">Namespace permalink</span></a></h3>
+<p>This migration allows you to easily change the <a href="/documentation/at-rules/use#choosing-a-namespace">namespaces</a> of the <code>@use</code>
+rules in a stylesheet. This is useful if the namespaces that the module migrator
+generates to resolve conflicts are non-ideal, or if you don’t want to use the
+default namespace that Sass determines based on the rule’s<span class="widont">&nbsp;</span><span class="caps">URL</span>.</p>
+<h4 id="rename" tabindex="-1"><code>--rename</code><a class="anchor" href="#rename"><span class="visuallyhidden">&#8211;rename permalink</span></a></h4>
+<p>You can tell the migrator which namespace(s) you want it to change by passing
+expressions to the <code>--rename</code> option.</p>
+<p>These expressions are of the form <code>&lt;old-namespace&gt; to &lt;new-namespace&gt;</code> or
+<code>url &lt;rule-url&gt; to &lt;new-namespace&gt;</code>. In these expressions, <code>&lt;old-namespace&gt;</code> and
+<code>&lt;rule-url&gt;</code> are <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">regular expressions</a> which match against the entirety of the
+existing namespace or the <code>@use</code> rule’s <span class="caps">URL</span>,<span class="widont">&nbsp;</span>respectively.</p>
+<p>For simple use cases, this just looks like <code>--rename 'old to new'</code>, which would
+rename a <code>@use</code> rule with the namespace <code>old</code> to instead be <code>new</code>.</p>
+<p>However, you can also do this to accomplish more complicated renames. For
+instance, say that you previously had a stylesheet that looked like<span class="widont">&nbsp;</span>this:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@import</span> <span class="token string">'components/button/lib/mixins'</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">'components/input/lib/mixins'</span><span class="token punctuation">;</span>
+<span class="token keyword">@import</span> <span class="token string">'components/table/lib/mixins'</span><span class="token punctuation">;</span>
+<span class="token comment">// ...</span></code></pre>
+<p>Since all of these URLs would have the default namespace <code>mixins</code> when migrated
+to <code>@use</code> rules, the module migrator may end up generating something like<span class="widont">&nbsp;</span>this:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">'components/button/lib/mixins'</span> <span class="token module-modifier keyword">as</span> button-lib-mixins<span class="token punctuation">;</span>
+<span class="token keyword">@use</span> <span class="token string">'components/input/lib/mixins'</span> <span class="token module-modifier keyword">as</span> input-lib-mixins<span class="token punctuation">;</span>
+<span class="token keyword">@use</span> <span class="token string">'components/table/lib/mixins'</span> <span class="token module-modifier keyword">as</span> table-lib-mixins<span class="token punctuation">;</span>
+<span class="token comment">// ...</span></code></pre>
+<p>This is valid code since the namespaces don’t conflict, but they’re way more
+complicated than they need to be. The relevant part of the <span class="caps">URL</span> is the component
+name, so we can use the namespace migrator to extract that part<span class="widont">&nbsp;</span>out.</p>
+<p>If we run the namespace migrator with
+<code>--rename 'url components/(\w+)/lib/mixins to \1'</code>, we’ll end up<span class="widont">&nbsp;</span>with:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">'components/button/lib/mixins'</span> <span class="token module-modifier keyword">as</span> button<span class="token punctuation">;</span>
+<span class="token keyword">@use</span> <span class="token string">'components/input/lib/mixins'</span> <span class="token module-modifier keyword">as</span> input<span class="token punctuation">;</span>
+<span class="token keyword">@use</span> <span class="token string">'components/table/lib/mixins'</span> <span class="token module-modifier keyword">as</span> table<span class="token punctuation">;</span>
+<span class="token comment">// ...</span></code></pre>
+<p>The rename script here says to find all of the <code>@use</code> rules whose URLs look like
+<code>components/(\w+)/lib/mixins</code> (<code>\w+</code> in a regular expression means to match any
+word of one or more characters). The <code>\1</code> in the output clause means to
+substitute in the contents of the first set of parentheses in the regular
+expression (called a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">group</a>).</p>
+<p>If you wish to apply multiple renames, you can pass the <code>--rename</code> option
+multiple times, or separate them with a semicolon or a line break. Only the
+first rename that applies to a given rule will be used, so you could pass
+something like <code>--rename 'a to b; b to a'</code> to swap the namespaces <code>a</code> and <code>b</code>.</p>
+<h4 id="force" tabindex="-1"><code>--force</code><a class="anchor" href="#force"><span class="visuallyhidden">&#8211;force permalink</span></a></h4>
+<p>By default, if two or more <code>@use</code> rules have the same namespace after the
+migration, the migrator will fail, and no changes will be<span class="widont">&nbsp;</span>made.</p>
+<p>In this case, you’ll usually want to adjust your <code>--rename</code> script to avoid
+creating conflicts, but if you’d prefer to force the migration, you can instead
+pass <code>--force</code>.</p>
+<p>With <code>--force</code>, if any conflicts are encountered, the first <code>@use</code> rule will
+get its preferred namespace, while subsequent <code>@use</code> rules with the same
+preferred namespace will instead have a numerical suffix added to<span class="widont">&nbsp;</span>them.</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/cli/migrator/ -->
+  </body>
+</html>

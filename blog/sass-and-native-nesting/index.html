@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Sass and Native Nesting</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 036-sass-and-native-nesting">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Sass and Native<span class="widont">&nbsp;</span>Nesting</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 29 March 2023 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>The stable release of Chrome 112, which is releasing today, is the first stable
+browser to add support for the new <a href="https://drafts.csswg.org/css-nesting/">native <span class="caps">CSS</span> nesting feature</a>. This
+feature—inspired by Sass’s nesting—adds the ability to nest style rules in plain
+<span class="caps">CSS</span>, and even uses Sass’s convention of <code>&amp;</code> to refer to the parent<span class="widont">&nbsp;</span>selector.</p>
+<p>We here at Sass <span class="caps">HQ</span> are honored every time our language design inspires
+improvements in <span class="caps">CSS</span> itself. We’re excited to see the usability and clarity
+benefits of nesting brought to even more <span class="caps">CSS</span> authors as more browsers continue
+to roll out support for this<span class="widont">&nbsp;</span>feature.</p>
+<h2 id="the-future-of-sass-nesting" tabindex="-1">The Future of Sass Nesting<a class="anchor" href="#the-future-of-sass-nesting"><span class="visuallyhidden">The Future of Sass Nesting<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>This raises an important question, though: what will happen to Sass’s nesting?
+First of all, we won’t ever change existing valid Sass code so that it starts
+emitting <span class="caps">CSS</span> that’s incompatible with widely-used browsers. This means that even
+if we did decide to phase out Sass nesting and just emit plain <span class="caps">CSS</span> nesting
+instead, we wouldn’t do so until <a href="https://github.com/sass/dart-sass#browser-compatibility">98% of the global browser market share</a>
+supported native<span class="widont">&nbsp;</span>nesting.</p>
+<p>More importantly, though, <strong>native <span class="caps">CSS</span> nesting is subtly incompatible with Sass
+nesting</strong>. This affects three different<span class="widont">&nbsp;</span>cases:</p>
+<ol>
+<li>
+<p>Native <span class="caps">CSS</span> nesting implicitly wraps the parent selector in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is"><code>:is()</code></a>, while
+Sass copies its text into the resolved selector. That means<span class="widont">&nbsp;</span>that</p>
+<pre class="language-scss"><code class="language-scss"><span class="token selector">.foo, #bar </span><span class="token punctuation">{</span>
+  <span class="token selector">.baz </span><span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>produces the selector <code>.foo .baz, #bar .baz</code> in Sass but <code>:is(.foo, #bar) .baz</code> in native <span class="caps">CSS</span>. This changes the specificity: <code>:is()</code> always has the
+specificity of its <em>most specific selector</em>, so <code>:is(.foo, #bar) .baz</code> will
+match</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>foo</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>baz</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>with specificity 1 0 1 in native <span class="caps">CSS</span> and 0 0 2 in Sass even though neither
+element is matched by<span class="widont">&nbsp;</span><span class="caps">ID</span>.</p>
+</li>
+<li>
+<p>Also because native <span class="caps">CSS</span> nesting uses <code>:is()</code>, a parent selector with
+descendant combinators will behave<span class="widont">&nbsp;</span>differently.</p>
+<pre class="language-scss"><code class="language-scss"><span class="token selector">.foo .bar </span><span class="token punctuation">{</span>
+  <span class="token selector">.green-theme <span class="token parent important">&amp;</span> </span><span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>produces the selector <code>.green-theme .foo .bar</code> in Sass, but in native <span class="caps">CSS</span> it
+produces <code>.green-theme :is(.foo .bar)</code>. This means that the native <span class="caps">CSS</span>
+version will<span class="widont">&nbsp;</span>match</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>foo</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>green-theme<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>bar</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>but Sass will not, since the element matching <code>.foo</code> is outside the element
+matching <code>.green-theme</code>.</p>
+</li>
+<li>
+<p>Sass nesting and native <span class="caps">CSS</span> nesting both support syntax that looks like
+<code>&amp;foo</code>, but it means different things. In Sass, this adds a suffix to the
+parent selector,<span class="widont">&nbsp;</span>so</p>
+<pre class="language-scss"><code class="language-scss"><span class="token selector">.foo </span><span class="token punctuation">{</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>-suffix </span><span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>produces the selector <code>.foo-suffix</code>. But in native <span class="caps">CSS</span>, this adds a type
+selector to the parent selector,<span class="widont">&nbsp;</span>so</p>
+<pre class="language-scss"><code class="language-scss"><span class="token selector">.foo </span><span class="token punctuation">{</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>div </span><span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>produces the selector <code>div.foo</code> (where Sass would produce <code>.foodiv</code> instead).
+Native <span class="caps">CSS</span> nesting has no way to add a suffix to a selector like<span class="widont">&nbsp;</span>Sass.</p>
+</li>
+</ol>
+<h3 id="design-commitments" tabindex="-1">Design Commitments<a class="anchor" href="#design-commitments"><span class="visuallyhidden">Design Commitments permalink</span></a></h3>
+<p>When considering how to handle this new <span class="caps">CSS</span> feature, we have two important
+design commitments to keep in<span class="widont">&nbsp;</span>mind:</p>
+<ul>
+<li>
+<p>We’re committed to being a <span class="caps">CSS</span> superset. All valid <span class="caps">CSS</span> that’s supported by a
+real browser should also work in Sass with the same<span class="widont">&nbsp;</span>semantics.</p>
+</li>
+<li>
+<p>We’re committed to backwards compatibility. As much as possible, we want to
+avoid changing the semantics of existing stylesheets, and if we need to do so
+we want to give users as much time and resources as possible to make the
+change<span class="widont">&nbsp;</span>gracefully.</p>
+</li>
+</ul>
+<p>In most cases, remaining a <span class="caps">CSS</span> superset trumps backwards compatibility. However,
+nesting is one of the oldest and most widely-used Sass features so we’re
+particularly reluctant to change it, especially in ways that would drop support
+for widely-used features like <code>&amp;-suffix</code> that don’t have an elegant equivalent
+in native<span class="widont">&nbsp;</span><span class="caps">CSS</span>.</p>
+<h3 id="the-plan-for-sass" tabindex="-1">The Plan for Sass<a class="anchor" href="#the-plan-for-sass"><span class="visuallyhidden">The Plan for Sass<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p><strong>In the short term</strong>, we don’t intend to change anything about Sass nesting.
+Sass will simply not support plain <span class="caps">CSS</span> nesting unless we can do so in a way
+that’s fully compatible with existing Sass<span class="widont">&nbsp;</span>behavior.</p>
+<p>We <em>will</em> add support for parsing plain <span class="caps">CSS</span> nesting in <code>.css</code> files. This
+nesting won’t be resolved in any way; Sass will just emit it<span class="widont">&nbsp;</span>as-is.</p>
+<p><strong>In the long term</strong>, once <a href="https://caniuse.com/css-matches-pseudo"><code>:is()</code> is supported by 98% of the global browser
+market share</a>, we’ll start transitioning Sass to emit <code>:is()</code> when resolving
+Sass nesting. This will make Sass behave like <span class="caps">CSS</span> in the first two behavioral
+incompatibilities. We will consider this a breaking change, and release it as
+part of a major version release to avoid unexpectedly breaking existing
+stylesheets. We’ll do our best to make this transition as smooth as possible
+using the <a href="/documentation/cli/migrator">Sass<span class="widont">&nbsp;</span>Migrator</a>.</p>
+<p>We will <em>not</em> drop our current behavior for <code>&amp;-suffix</code> unless we can come up
+with a comparably ergonomic way to represent it that’s more compatible with <span class="caps">CSS</span>.
+This behavior is too important to existing Sass users, and the benefit of the
+plain <span class="caps">CSS</span> version is not strong enough to override<span class="widont">&nbsp;</span>that.</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/sass-and-native-nesting/ -->
+  </body>
+</html>

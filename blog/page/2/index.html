@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Sass Blog</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Sass Blog</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="docSearch-content sl-l-container sl-l-container--small">
+  
+
+
+
+  
+
+
+
+
+  <p>Page 2 of<span class="widont">&nbsp;</span>8</p>
+  
+    <p>
+      <a href="/blog/">Previous page</a>
+    </p>
+  
+
+
+<ul class="sl-c-list">
+  
+    <li>
+      <h2>
+        <a href="/blog/embedded-sass-is-live/">Embedded Sass is<span class="widont">&nbsp;</span>Live</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 1 February 2022 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>After several years of planning and development, I’m excited to finally announce
+the stable release of Embedded Dart Sass along with its first official wrapper,
+the <a href="https://www.npmjs.com/package/sass-embedded"><code>sass-embedded</code></a> package available now on<span class="widont">&nbsp;</span>npm!</p>
+<p>Embedded Sass is an ongoing effort to make a highly-performant Sass library
+available to as many different languages as possible, starting with Node.js.
+Although Node.js already has access to the pure-<span class="caps">JS</span> <code>sass</code> package, the nature of
+JavaScript inherently limits how quickly this package can process large Sass
+files especially in asynchronous mode. We expect <code>sass-embedded</code> to be a major
+boon to developers for whom compilation speed is a concern, particularly the
+remaining users of <code>node-sass</code> for whom performance has been a major reason to
+avoid Dart<span class="widont">&nbsp;</span>Sass.</p>
+<p>The <code>sass-embedded</code> package fully supports the <a href="/documentation/js-api/#md:usage">new <span class="caps">JS</span> <span class="caps">API</span></a> as well as the
+<a href="/documentation/js-api/#md:legacy-api">legacy <span class="caps">API</span></a> other than a few cosmetic options. You can use it as a drop-in
+replacement for the <code>sass</code> package, and it should work with all the same build
+plugins and libraries. Note that <code>sass-embedded</code> is a<span class="widont">&nbsp;</span>bit&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/new-js-api-release-candidate/">New <span class="caps">JS</span> <span class="caps">API</span> Release Candidate is<span class="widont">&nbsp;</span>Live</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 21 November 2021 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>The new JavaScript <span class="caps">API</span> that we <a href="/blog/request-for-comments-new-js-api">announced a few months ago</a> is now fully
+implemented in Dart Sass and ready for you to try! The new <span class="caps">API</span> is designed to be
+more idiomatic, performant, and usable than the old one, and we hope it’ll be
+adopted swiftly by tooling<span class="widont">&nbsp;</span>packages.</p>
+<p>Because this is such a substantial addition, we want to give users a chance to
+kick the tires a bit before we set it in stone, so we’ve released it as a release
+candidate in Dart Sass 1.45.0-rc.1. Download it, try it out, and let us know
+what you think by <a href="https://github.com/sass/sass/issues/new">filing issues</a> or <a href="https://twitter.com/SassCSS">sending us a tweet</a>. Unless major changes
+are necessary, we plan to make a stable release some time next<span class="widont">&nbsp;</span>week.</p>
+<h2 id="how-to-use-it" tabindex="-1">How to use it<a class="anchor" href="/blog/new-js-api-release-candidate/#how-to-use-it"><span class="visuallyhidden">How to use it<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>The new <span class="caps">API</span> comes with four new entrypoint functions: <code>compile()</code> and
+<code>compileAsync()</code> take Sass file paths and return the result of compiling them to
+<span class="caps">CSS</span>, while <code>compileString()</code> and <code>compileStringAsync()</code> take a
+string of Sass source<span class="widont">&nbsp;</span>and&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/request-for-comments-new-js-api/">Request for Comments: New <span class="caps">JS</span><span class="widont">&nbsp;</span><span class="caps">API</span></a>
+      </h2>
+      <p class="sl-c-attribution">Posted 5 August 2021 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>I’m excited to officially unveil something that’s been in the works for quite a
+while now: a (proposal for a) brand new JavaScript <span class="caps">API</span> for Sass. This <span class="caps">API</span> has
+been redesigned from the ground up based on lessons learned from both the Node
+Sass <span class="caps">API</span> and various other historical Sass APIs in other languages through the
+years, and it addresses many of the shortcomings of the existing<span class="widont">&nbsp;</span><span class="caps">API</span>.</p>
+<p>The <span class="caps">API</span> has four main components, all of which I’ll cover in this<span class="widont">&nbsp;</span>post:</p>
+<ul>
+<li><a href="/blog/request-for-comments-new-js-api/#compilation">The core compilation<span class="widont">&nbsp;</span><span class="caps">API</span></a></li>
+<li><a href="/blog/request-for-comments-new-js-api/#loggers">The logger <span class="caps">API</span></a></li>
+<li><a href="/blog/request-for-comments-new-js-api/#importers">The importer <span class="caps">API</span></a></li>
+<li><a href="/blog/request-for-comments-new-js-api/#functions">The function <span class="caps">API</span></a></li>
+</ul>
+<p>As you read on, remember that this <span class="caps">API</span> is still just a proposal. We want to hear
+from you, our users, whether it meets your needs and how we can improve it
+before we lock it in to a full release. So go ahead and make your voices known
+<a href="https://github.com/sass/sass/issues/new">on the issue tracker</a>!</p>
+<h2 id="why-a-new-api" tabindex="-1">Why a New <span class="caps">API</span>?<a class="anchor" href="/blog/request-for-comments-new-js-api/#why-a-new-api"><span class="visuallyhidden">Why a New <span class="caps">API</span>?<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>The existing JavaScript <span class="caps">API</span> is showing its age. It predates Dart<span class="widont">&nbsp;</span>Sass,&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/node-fibers-discontinued/">The Discontinuation of<span class="widont">&nbsp;</span>node-fibers</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 26 March 2021 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>We have recently received the unfortunate but not entirely surprising news that
+<a href="https://github.com/laverdet/node-fibers/commit/8f2809869cc92c28c92880c4a38317ae3dbe654d">the <code>node-fibers</code> package has reached its end-of-life</a> and will not be updated
+for compatibility with Node 16. Dart Sass has historically allowed JavaScript
+users to pass in <code>node-fibers</code> to improve the performance of the asynchronous
+<code>render()</code> method, but going forward this will unfortunately no longer be an
+option in Node 16 and<span class="widont">&nbsp;</span>on.</p>
+<p>There are a number of <a href="/blog/node-fibers-discontinued/#reclaiming-performance">alternative options</a> for reclaiming this lost
+performance, some of them which are available today, some which are in
+development, and some which are theoretical but could be made real with pull
+requests from users like you. Sadly, none of the options that are ready today
+are drop-in solutions with the same level of ease-of-use as <code>node-fibers</code>, so if
+that performance is crucial to you we recommend staying on Node 14 for the time<span class="widont">&nbsp;</span>being.</p>
+<h2 id="what-happened" tabindex="-1">What Happened?<a class="anchor" href="/blog/node-fibers-discontinued/#what-happened"><span class="visuallyhidden">What Happened? permalink</span></a></h2>
+<p>In order to understand how we got here, it’s important to know two pieces of
+history. First, why does<span class="widont">&nbsp;</span>Dart&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/request-for-comments-first-class-calc/">Request for Comments: First-Class<span class="widont">&nbsp;</span>Calc</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 15 March 2021 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>One of the absolutely most-requested features in Sass is the ability to more
+easily work with <code>calc()</code> expressions. These expressions have historically been
+parsed opaquely: between the parentheses, you can put any text at all, and
+Sass will just treat it as an unquoted string. This has simplified Sass’s
+parser, since we don’t have to support the specific <code>calc()</code> microsyntax, and
+it’s meant that we automatically support new features like the use of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties"><span class="caps">CSS</span>
+variables</a> within <code>calc()</code>.</p>
+<p>However, it comes at a substantial usability cost as well. Because each <code>calc()</code>
+is totally opaque to Sass’s parser, users can’t simply use Sass variables in
+place of values; they have to <a href="/documentation/interpolation">interpolate</a> variables explicitly. And once a
+<code>calc()</code> expression has been created, there’s no way to manipulate it with Sass
+the way you can manipulate a plain<span class="widont">&nbsp;</span>number.</p>
+<p>We’re looking to change that with a new proposal we call “First-Class Calc”.
+This proposal changes <code>calc()</code> (and other supported mathematical functions) from
+being parsed as unquoted strings to being parsed in-depth,<span class="widont">&nbsp;</span>and&#8230;</p>
+    </li>
+  
+</ul>
+
+
+  <p>
+    <a href="/blog/page/3/">Next page</a>
+  </p>
+
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/page/2/ -->
+  </body>
+</html>

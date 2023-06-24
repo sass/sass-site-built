@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Request For Comments: Forward Slash as Separator</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 022-request-for-commentsforward-slash-as-separator">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Request For Comments: Forward Slash as<span class="widont">&nbsp;</span>Separator</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 7 May 2019 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>Early on in Sass’s history, the decision was made to use <code>/</code> as a division
+operator, since that was (and is) by far the most common representation across
+programming languages. The <code>/</code> character was used in very few plain <span class="caps">CSS</span>
+properties, and for those it was an optional shorthand. So Sass defined <a href="/documentation/operators/numeric#slash-separated-values">a set
+of heuristics</a> that defined when <code>/</code> would be rendered as a literal slash
+versus treated as an<span class="widont">&nbsp;</span>operator.</p>
+<p>For a long time, these heuristics worked pretty well. In recent years, however,
+new additions to <span class="caps">CSS</span> such as <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row"><span class="caps">CSS</span> Grid</a> and <a href="https://drafts.csswg.org/css-color/#rgb-functions"><span class="caps">CSS</span> Color Level 4</a> have been
+using <code>/</code> as a separator increasingly often. Using the same character for both
+division and slash-separation is becoming more and more annoying to users, and
+will likely eventually become<span class="widont">&nbsp;</span>untenable.</p>
+<p>As such, we’re planning to redefine <code>/</code> to be <em>only</em> a separator. Rather than
+creating an unquoted string (as it currently does when at least one operand
+isn’t a number), it will create a list with a new slash separator. For example,
+<code>1 / 2 / 3</code> will be a three-element slash-separated list. Division will instead
+be written as a function, <code>divide()</code> (or <code>math.div()</code> in <a href="/blog/request-for-comments-module-system-proposal">the new module
+system</a>).</p>
+<h2 id="rollout" tabindex="-1">Rollout<a class="anchor" href="#rollout"><span class="visuallyhidden">Rollout permalink</span></a></h2>
+<p>This is a major breaking change to existing Sass semantics, so we’ll roll it out
+in a three-stage<span class="widont">&nbsp;</span>process:</p>
+<ol>
+<li>
+<p>The first stage won’t introduce any breaking changes. It<span class="widont">&nbsp;</span>will:</p>
+<ul>
+<li>Add a <code>divide()</code> function which will work exactly like the <code>/</code> operator
+does today, except that it will produce deprecation warnings for any
+non-number<span class="widont">&nbsp;</span>arguments.</li>
+<li>Add slash-separated lists to Sass’s object models, <em>without</em> a literal
+syntax for creating them. That will come later, since it would otherwise be
+a breaking<span class="widont">&nbsp;</span>change.</li>
+<li>Add a <code>slash-list()</code> function that will create slash-separated<span class="widont">&nbsp;</span>lists.</li>
+<li>Produce deprecation warnings for all <code>/</code> operations that are interpreted as<span class="widont">&nbsp;</span>division.</li>
+</ul>
+</li>
+<li>
+<p>The second stage <em>will</em> be a breaking change. It<span class="widont">&nbsp;</span>will:</p>
+<ul>
+<li>Make <code>/</code> exclusively a list<span class="widont">&nbsp;</span>separator.</li>
+<li>Make <code>divide()</code> throw errors for non-number<span class="widont">&nbsp;</span>arguments.</li>
+<li>Deprecate the <code>slash-list()</code> function, since it will now be<span class="widont">&nbsp;</span>redundant.</li>
+</ul>
+</li>
+<li>
+<p>The third stage will just remove the <code>slash-list()</code> function. This is not a
+priority, and will be delayed until the next major version<span class="widont">&nbsp;</span>release.</p>
+</li>
+</ol>
+<h2 id="giving-feedback" tabindex="-1">Giving Feedback<a class="anchor" href="#giving-feedback"><span class="visuallyhidden">Giving Feedback permalink</span></a></h2>
+<p>If you want more details on exactly how the proposed behavior will work, <a href="https://github.com/sass/sass/blob/main/accepted/slash-separator.md">head
+over to the Sass language repo and read the full
+proposal</a>.
+You can skip the Background and Summary sections, since they’re included above.
+Be aware, though, that it’s written to be a specification; it’s a great for
+figuring out how exactly an edge case should work, but it’s not as
+conversational as the sections quoted<span class="widont">&nbsp;</span>above.</p>
+<p>If you have any issues with the proposal as written, or if it doesn’t cover a
+use-case that’s important to you, <a href="https://github.com/sass/sass/issues?utf8=%E2%9C%93&amp;q=is%3Aissue+is%3Aopen+label%3A%22proposal%3A+slash+separator%22">please bring that up in the Sass language
+issue
+tracker</a>.
+We’ll be leaving it open for discussion for at least two weeks before we mark
+the proposal as “accepted” and move on to the implementation<span class="widont">&nbsp;</span>phase.</p>
+<p>Please be aware, though, that while we welcome community feedback, the design of
+Sass is ultimately in the hands of the language team. We’ll absolutely consider
+the perspectives and use-cases of users who speak up, but it’s also our job to
+consider all the users who are new to Sass or even to <span class="caps">CSS</span> and who don’t yet know
+to read blogs or comment on issue trackers. Remember that our careful
+decision-making made Sass what it is today, and have patience with us if we
+don’t make the decisions you would<span class="widont">&nbsp;</span>have!</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/request-for-commentsforward-slash-as-separator/ -->
+  </body>
+</html>

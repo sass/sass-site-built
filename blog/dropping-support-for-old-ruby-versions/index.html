@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Dropping Support For Old Ruby Versions</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 006-dropping-support-for-old-ruby-versions">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Dropping Support For Old Ruby<span class="widont">&nbsp;</span>Versions</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 29 February 2016 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>As of version 3.5, Ruby Sass will drop support for Ruby 1.8.7 and Ruby 1.9.3. We
+will continue to support Ruby 2.0.0 and<span class="widont">&nbsp;</span>higher.</p>
+<p>Ruby 1.8.7 was retired by the Ruby maintainers in <a href="https://www.ruby-lang.org/en/news/2013/06/30/we-retire-1-8-7/">June
+2013</a>, and Ruby
+1.9.3 was retired in <a href="https://www.ruby-lang.org/en/news/2015/02/23/support-for-ruby-1-9-3-has-ended/">February
+2015</a>.
+Despite that, we continued to maintain support for older versions because Ruby
+1.8.7 was installed by default on Mac <span class="caps">OS</span> X through Mountain Lion (which was
+released in July<span class="widont">&nbsp;</span>2012).</p>
+<p>There are many users of Sass who aren’t independently users of Ruby. We wanted
+to minimize the amount of work these users need to do to use Sass, which means
+letting it run on their machine without also requiring them to install a new<span class="widont">&nbsp;</span>language.</p>
+<p>That decision wasn’t without costs, though. Most seriously, recent versions of
+the <a href="https://github.com/guard/listen">listen package</a> didn’t support older Ruby
+versions, and older versions of RubyGems weren’t clever enough to avoid
+downloading them on incompatible Ruby versions. To work around this, we bundled
+an older version of <code>listen</code> with Sass and used it for users who didn’t have a
+compatible version installed elsewhere, but this produced constant compatibility<span class="widont">&nbsp;</span>headaches.</p>
+<p>These headaches led us to reevaluate our policy for supporting older Ruby
+versions. We still cared a lot about users’ built-in Ruby versions, but we
+couldn’t support them forever. We needed a way to determine when the benefit of
+dropping support outweighed the<span class="widont">&nbsp;</span>costs.</p>
+<p>We decided to use the analytics data for sass-lang.com to approximate the
+proportion of our user base that was still using operating systems that shipped
+with old Ruby versions. Before we looked at the data, we decided that we would
+drop support for a Ruby version if it had been retired by the Ruby maintainers,
+<em>and</em> less than 2% of our visitors across the previous month were using an <span class="caps">OS</span>
+that shipped it by<span class="widont">&nbsp;</span>default.</p>
+<p>Once we did that, we looked at the data. 34.3% of our visitors were using <span class="caps">OS</span> X,
+and 1.4% of <span class="caps">OS</span> X users were using Mountain Lion or earlier. We were clearly able
+to drop support for 1.8.7. In addition, 1.9.3 was never shipped with <span class="caps">OS</span> X so we
+were able to drop it as well. Ruby 2.0.0, despite retired <a href="https://www.ruby-lang.org/en/news/2016/02/24/support-plan-of-ruby-2-0-0-and-2-1/">last
+week</a>,
+was shipped with the most recent <span class="caps">OS</span> X version—we won’t be dropping support for
+it any time<span class="widont">&nbsp;</span>soon.</p>
+<img class="center" src="/assets/img/blog/006-sass-visitors.png" alt="sass-lang.com visitors by operating system">
+<p>For Sass 3.4, we’re just planning on printing deprecation messages for users of
+deprecated Ruby versions. But once 3.5 releases, support will be fully dropped
+and we’ll switch to using <code>listen</code> as a proper gem dependency. If you’re on an
+older version of <span class="caps">OS</span> X and you haven’t upgraded your Ruby version, there are some
+simple instructions <a href="https://www.ruby-lang.org/en/documentation/installation/#homebrew">on the Ruby
+site</a> for how
+to do so easily using<span class="widont">&nbsp;</span>Homebrew.</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/dropping-support-for-old-ruby-versions/ -->
+  </body>
+</html>

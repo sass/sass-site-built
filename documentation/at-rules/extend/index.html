@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: @extend</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation at-rules extend">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">@extend</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section open selected">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class="open selected"><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary sl-l-large-holy-grail__complementary--contents">
+              
+                
+                
+                
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    <ul><li>
+      <a href="#how-it-works" class="open">How It<span class="widont">&nbsp;</span>Works</a></li><li>
+      <a href="#placeholder-selectors" class="section open">Placeholder Selectors</a><ul><li class="overview">
+      <a href="#placeholder-selectors" >Overview</a>
+    </li><li>
+      <a href="#private-placeholders" class="open">Private Placeholders</a></li></ul>
+</li><li>
+      <a href="#extension-scope" class="open">Extension Scope</a></li><li>
+      <a href="#mandatory-and-optional-extends" class="open">Mandatory and Optional<span class="widont">&nbsp;</span>Extends</a></li><li>
+      <a href="#extends-or-mixins" class="open">Extends or<span class="widont">&nbsp;</span>Mixins?</a></li><li>
+      <a href="#limitations" class="section open">Limitations</a><ul><li class="overview">
+      <a href="#limitations" >Overview</a>
+    </li><li>
+      <a href="#disallowed-selectors" class="open">Disallowed Selectors</a></li><li>
+      <a href="#html-heuristics" class="open"><span class="caps">HTML</span> Heuristics</a></li><li>
+      <a href="#extend-in-media" class="open">Extend in <code>@media</code></a></li></ul>
+</li></ul>
+
+                  </nav>
+                
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+  <div class="sl-c-introduction">
+    <p>There are often cases when designing a page when one class should have all the styles of another class, as well as its own specific styles. For example, the <a href="http://getbem.com/naming/"><span class="caps">BEM</span> methodology</a> encourages modifier classes that go on the same elements as block or element classes. But this can create cluttered <span class="caps">HTML</span>, it’s prone to errors from forgetting to include both classes, and it can bring non-semantic style concerns into your<span class="widont">&nbsp;</span>markup.</p>
+
+  </div>
+
+
+
+              <!-- TODO(jina): I think these code blocks should be side-by-side -->
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>error error--serious<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  Oh no! You've been hacked!
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">.error</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px #f00<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #fdd<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.error--serious</span> <span class="token punctuation">{</span>
+  <span class="token property">border-width</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Sass’s <code>@extend</code> rule solves this. It’s written <code>@extend &lt;selector&gt;</code>, and it
+tells Sass that one selector should inherit the styles of<span class="widont">&nbsp;</span>another.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-extend-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-extend-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-extend-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-extend-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token selector">.error </span><span class="token punctuation">{</span>&#10;  <span class="token property">border</span><span class="token punctuation">:</span> 1px #f00<span class="token punctuation">;</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #fdd<span class="token punctuation">;</span>&#10;&#10;  <span class="token selector"><span class="token parent important">&amp;</span>--serious </span><span class="token punctuation">{</span>&#10;    <span class="token keyword">@extend</span> .error<span class="token punctuation">;</span>&#10;    <span class="token property">border-width</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-extend-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token selector">.error</span>&#10;<span class="token property-line">  <span class="token property">border</span><span class="token punctuation">:</span> 1px #f00</span>&#10;<span class="token property-line">  <span class="token property">background-color</span><span class="token punctuation">:</span> #fdd</span>&#10;&#10;  <span class="token selector">&amp;--serious</span>&#10;<span class="token atrule-line">    <span class="token atrule">@extend</span> .error</span>&#10;<span class="token property-line">    <span class="token property">border-width</span><span class="token punctuation">:</span> 3px</span>&#10;&#10;&#10;</code></pre></div>
+<div id="example-extend-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.error, .error--serious</span> <span class="token punctuation">{</span>&#10;  <span class="token property">border</span><span class="token punctuation">:</span> 1px #f00<span class="token punctuation">;</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #fdd<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;<span class="token selector">.error--serious</span> <span class="token punctuation">{</span>&#10;  <span class="token property">border-width</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;</code></pre></div>
+</div>
+<p>When one class extends another, Sass styles all elements that match the extender
+as though they also match the class being extended. When one class selector
+extends another, it works exactly as though you added the extended class to
+every element in your <span class="caps">HTML</span> that already had the extending class. You can just
+write <code>class=&quot;error--serious&quot;</code>, and Sass will make sure it’s styled as though it
+had <code>class=&quot;error&quot;</code> as well.</p>
+<p>Of course, selectors aren’t just used on their own in style rules. Sass knows to
+extend <em>everywhere</em> the selector is used. This ensures that your elements are
+styled exactly as if they matched the extended<span class="widont">&nbsp;</span>selector.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-extended-selector-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-extended-selector-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-extended-selector-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-extended-selector-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token selector">.error:hover </span><span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #fee<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.error--serious </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@extend</span> .error<span class="token punctuation">;</span>&#10;  <span class="token property">border-width</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-extended-selector-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token property-line"><span class="token property">.error</span><span class="token punctuation">:</span><span class="token property">hover</span></span>&#10;<span class="token property-line">  <span class="token property">background-color</span><span class="token punctuation">:</span> #fee</span>&#10;&#10;&#10;<span class="token selector">.error--serious</span>&#10;<span class="token atrule-line">  <span class="token atrule">@extend</span> .error</span>&#10;<span class="token property-line">  <span class="token property">border-width</span><span class="token punctuation">:</span> 3px</span>&#10;&#10;</code></pre></div>
+<div id="example-extended-selector-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.error:hover, .error--serious:hover</span> <span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #fee<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.error--serious</span> <span class="token punctuation">{</span>&#10;  <span class="token property">border-width</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Extends are resolved after the rest of your stylesheet is compiled. In
+particular, it happens after <a href="/documentation/style-rules/parent-selector">parent selectors</a> are resolved. This means
+that if you <code>@extend .error</code>, it won’t affect the inner selector in <code>.error { &amp;__icon { ... } }</code>. It also means that <a href="/documentation/style-rules/parent-selector#in-sassscript">parent selectors in SassScript</a>
+can’t see the results of<span class="widont">&nbsp;</span>extend.</p>
+</div>
+<h2 id="how-it-works" tabindex="-1">How It Works<a class="anchor" href="#how-it-works"><span class="visuallyhidden">How It Works<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>Unlike <a href="/documentation/at-rules/mixin">mixins</a>, which copy styles into the current style rule, <code>@extend</code>
+updates style rules that contain the extended selector so that they contain the
+extending selector as well. When extending selectors, Sass does <em>intelligent
+unification</em>:</p>
+<ul>
+<li>
+<p>It never generates selectors like <code>#main#footer</code> that can’t possibly match any<span class="widont">&nbsp;</span>elements.</p>
+</li>
+<li>
+<p>It ensures that complex selectors are interleaved so that they work no matter
+which order the <span class="caps">HTML</span> elements are<span class="widont">&nbsp;</span>nested.</p>
+</li>
+<li>
+<p>It trims redundant selectors as much as possible, while still ensuring that
+the specificity is greater than or equal to that of the<span class="widont">&nbsp;</span>extender.</p>
+</li>
+<li>
+<p>It knows when one selector matches everything another does, and can combine
+them<span class="widont">&nbsp;</span>together.</p>
+</li>
+<li>
+<p>It intelligently handles <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors#Combinators">combinators</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors">universal selectors</a>, and
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:not">pseudo-classes that contain<span class="widont">&nbsp;</span>selectors</a>.</p>
+</li>
+</ul>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-how-it-works-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-how-it-works-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-how-it-works-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-how-it-works-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token selector">.content nav.sidebar </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@extend</span> .info<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token comment">// This won't be extended, because `p` is incompatible with `nav`.</span>&#10;<span class="token selector">p.info </span><span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #dee9fc<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token comment">// There's no way to know whether `&lt;div class="guide">` will be inside or</span>&#10;<span class="token comment">// outside `&lt;div class="content">`, so Sass generates both to be safe.</span>&#10;<span class="token selector">.guide .info </span><span class="token punctuation">{</span>&#10;  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">rgba</span><span class="token punctuation">(</span>#000<span class="token punctuation">,</span> 0.8<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token property">border-radius</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token comment">// Sass knows that every element matching "main.content" also matches ".content"</span>&#10;<span class="token comment">// and avoids generating unnecessary interleaved selectors.</span>&#10;<span class="token selector">main.content .info </span><span class="token punctuation">{</span>&#10;  <span class="token property">font-size</span><span class="token punctuation">:</span> 0.8em<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-how-it-works-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token selector">.content nav.sidebar</span>&#10;<span class="token atrule-line">  <span class="token atrule">@extend</span> .info</span>&#10;&#10;&#10;<span class="token comment">// This won't be extended, because `p` is incompatible with `nav`.</span>&#10;<span class="token selector">p.info</span>&#10;<span class="token property-line">  <span class="token property">background-color</span><span class="token punctuation">:</span> #dee9fc</span>&#10;&#10;&#10;<span class="token comment">// There's no way to know whether `&lt;div class="guide">` will be inside or</span>&#10;<span class="token comment">// outside `&lt;div class="content">`, so Sass generates both to be safe.</span>&#10;<span class="token selector">.guide .info</span>&#10;<span class="token property-line">  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid rgba(#000, 0.8)</span>&#10;<span class="token property-line">  <span class="token property">border-radius</span><span class="token punctuation">:</span> 2px</span>&#10;&#10;&#10;<span class="token comment">// Sass knows that every element matching "main.content" also matches ".content"</span>&#10;<span class="token comment">// and avoids generating unnecessary interleaved selectors.</span>&#10;<span class="token selector">main.content .info</span>&#10;<span class="token property-line">  <span class="token property">font-size</span><span class="token punctuation">:</span> 0.8em</span>&#10;&#10;</code></pre></div>
+<div id="example-how-it-works-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">p.info</span> <span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #dee9fc<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.guide .info, .guide .content nav.sidebar, .content .guide nav.sidebar</span> <span class="token punctuation">{</span>&#10;  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.8<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token property">border-radius</span><span class="token punctuation">:</span> 2px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">main.content .info, main.content nav.sidebar</span> <span class="token punctuation">{</span>&#10;  <span class="token property">font-size</span><span class="token punctuation">:</span> 0.8em<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>You can directly access Sass’s intelligent unification using <a href="/documentation/modules/selector">selector
+functions</a>! The <a href="/documentation/modules/selector#unify"><code>selector.unify()</code> function</a> returns a selector that
+matches the intersection of two selectors, while the <a href="/documentation/modules/selector#extend"><code>selector.extend()</code>
+function</a> works just like <code>@extend</code>, but on a single<span class="widont">&nbsp;</span>selector.</p>
+</div>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Because <code>@extend</code> updates style rules that contain the extended selector,
+their styles have precedence in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade">the cascade</a> based on where the extended
+selector’s style rules appear, <em>not</em> based on where the <code>@extend</code> appears.
+This can be confusing, but just remember: this is the same precedence those
+rules would have if you added the extended class to your<span class="widont">&nbsp;</span><span class="caps">HTML</span>!</p>
+</div>
+<h2 id="placeholder-selectors" tabindex="-1">Placeholder Selectors<a class="anchor" href="#placeholder-selectors"><span class="visuallyhidden">Placeholder Selectors permalink</span></a></h2>
+<p>Sometimes you want to write a style rule that’s <em>only</em> intended to be extended.
+In that case, you can use <a href="/documentation/style-rules/placeholder-selectors">placeholder selectors</a>, which look like class
+selectors that start with <code>%</code> instead of <code>.</code>. Any selectors that include
+placeholders aren’t included in the <span class="caps">CSS</span> output, but selectors that extend them<span class="widont">&nbsp;</span>are.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-placeholder-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-placeholder-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-placeholder-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-placeholder-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token selector">.alert:hover, <span class="token placeholder">%strong-alert</span> </span><span class="token punctuation">{</span>&#10;  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector"><span class="token placeholder">%strong-alert</span>:hover </span><span class="token punctuation">{</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-placeholder-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token property-line"><span class="token property">.alert</span><span class="token punctuation">:</span><span class="token property">hover,</span> <span class="token operator">%</span>strong-alert</span>&#10;<span class="token property-line">  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold</span>&#10;&#10;&#10;<span class="token property-line"><span class="token property">%strong-alert</span><span class="token punctuation">:</span><span class="token property">hover</span></span>&#10;<span class="token property-line">  <span class="token property">color</span><span class="token punctuation">:</span> red</span>&#10;&#10;</code></pre></div>
+<div id="example-placeholder-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.alert:hover</span> <span class="token punctuation">{</span>&#10;  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<h3 id="private-placeholders" tabindex="-1">Private Placeholders<a class="anchor" href="#private-placeholders"><span class="visuallyhidden">Private Placeholders permalink</span></a></h3>
+<p>Like <a href="/documentation/at-rules/use#private-members">module members</a>, a placeholder selector can be marked private by
+starting its name with either <code>-</code> or <code>_</code>. A private placeholder selector can
+only be extended within the stylesheet that defines it. To any other
+stylesheets, it will look as though that selector doesn’t<span class="widont">&nbsp;</span>exist.</p>
+<h2 id="extension-scope" tabindex="-1">Extension Scope<a class="anchor" href="#extension-scope"><span class="visuallyhidden">Extension Scope permalink</span></a></h2>
+<p>When one stylesheet extends a selector, that extension will only affect style
+rules written in <em>upstream</em> modules—that is, modules that are loaded by that
+stylesheet using the <a href="/documentation/at-rules/use"><code>@use</code> rule</a> or the <a href="/documentation/at-rules/forward"><code>@forward</code> rule</a>, modules loaded
+by <em>those</em> modules, and so on. This helps make your <code>@extend</code> rules more
+predictable, ensuring that they affect only the styles you were aware of when
+you wrote<span class="widont">&nbsp;</span>them.</p>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Extensions aren’t scoped at all if you’re using the <a href="/documentation/at-rules/import"><code>@import</code> rule</a>. Not
+only will they affect every stylesheet you import, they’ll affect every
+stylesheet that imports your stylesheet, everything else those stylesheets
+import, and so on. Without <code>@use</code>, extensions are <em>global</em>.</p>
+</div>
+<h2 id="mandatory-and-optional-extends" tabindex="-1">Mandatory and Optional Extends<a class="anchor" href="#mandatory-and-optional-extends"><span class="visuallyhidden">Mandatory and Optional Extends<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>Normally, if an <code>@extend</code> doesn’t match any selectors in the stylesheet, Sass
+will produce an error. This helps protect from typos or from renaming a selector
+without renaming the selectors that inherit from it. Extends that require that
+the extended selector exists are <em>mandatory</em>.</p>
+<p>This may not always be what you want, though. If you want the <code>@extend</code> to do
+nothing if the extended selector doesn’t exist, just add <code>!optional</code> to the<span class="widont">&nbsp;</span>end.</p>
+<h2 id="extends-or-mixins" tabindex="-1">Extends or Mixins?<a class="anchor" href="#extends-or-mixins"><span class="visuallyhidden">Extends or Mixins?<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>Extends and <a href="/documentation/at-rules/mixin">mixins</a> are both ways of encapsulating and re-using styles in
+Sass, which naturally raises the question of when to use which one. Mixins are
+obviously necessary when you need to configure the styles using <a href="/documentation/at-rules/mixin/#arguments">arguments</a>,
+but what if they’re just a chunk of<span class="widont">&nbsp;</span>styles?</p>
+<p>As a rule of thumb, extends are the best option when you’re expressing a
+relationship between semantic classes (or other semantic selectors). Because an
+element with class <code>.error--serious</code> <em>is an</em> error, it makes sense for it to
+extend <code>.error</code>. But for non-semantic collections of styles, writing a mixin can
+avoid cascade headaches and make it easier to configure down the<span class="widont">&nbsp;</span>line.</p>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>Most web servers compress the <span class="caps">CSS</span> they serve using an algorithm that’s very
+good at handling repeated chunks of identical text. This means that, although
+mixins may produce more <span class="caps">CSS</span> than extends, they probably won’t substantially
+increase the amount your users need to download. So choose the feature that
+makes the most sense for your use-case, not the one that generates the least<span class="widont">&nbsp;</span><span class="caps">CSS</span>!</p>
+</div>
+<h2 id="limitations" tabindex="-1">Limitations<a class="anchor" href="#limitations"><span class="visuallyhidden">Limitations permalink</span></a></h2>
+<h3 id="disallowed-selectors" tabindex="-1">Disallowed Selectors<a class="anchor" href="#disallowed-selectors"><span class="visuallyhidden">Disallowed Selectors permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility (No Compound Extensions):
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✓</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>LibSass and Ruby Sass currently allow compound selectors like <code>.message.info</code>
+to be extended. However, this behavior doesn’t match the definition of
+<code>@extend</code>: instead of styling elements that match the extending selector as
+though it had <code>class=&quot;message info&quot;</code>, which would be affected by style rules
+that included either <code>.message</code> <em>or</em> <code>.info</code>, it only styled them with rules
+that included both <code>.message</code> <em>and</em> <code>info</code>.</p>
+<p>In order to keep the definition of <code>@extend</code> straightforward and
+understandable, and to keep the implementation clean and efficient, that
+behavior is now deprecated and will be removed from future<span class="widont">&nbsp;</span>versions.</p>
+<p>See <a href="/documentation/breaking-changes/extend-compound">the breaking change page</a> for more<span class="widont">&nbsp;</span>details.</p>
+  </div>
+<p>Only <em>simple selectors</em>—individual selectors like <code>.info</code> or <code>a</code>—can be
+extended. If <code>.message.info</code> could be extended, the definition of <code>@extend</code> says
+that elements matching the extender would be styled as though they matched
+<code>.message.info</code>. That’s just the same as matching both <code>.message</code> and <code>.info</code>,
+so there wouldn’t be any benefit in writing that instead of <code>@extend .message, .info</code>.</p>
+<p>Similarly, if <code>.main .info</code> could be extended, it would do (almost) the same
+thing as extending <code>.info</code> on its own. The subtle differences aren’t worth the
+confusion of looking like it’s doing something substantially different, so this
+isn’t allowed<span class="widont">&nbsp;</span>either.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-disallowed-selectors-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-disallowed-selectors-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-disallowed-selectors-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token selector">.alert </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@extend</span> .message.info<span class="token punctuation">;</span>&#10;  <span class="token comment">//      ^^^^^^^^^^^^^</span>&#10;  <span class="token comment">// Error: Write @extend .message, .info instead.</span>&#10;&#10;  <span class="token keyword">@extend</span> .main .info<span class="token punctuation">;</span>&#10;  <span class="token comment">//      ^^^^^^^^^^^</span>&#10;  <span class="token comment">// Error: write @extend .info instead.</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-disallowed-selectors-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token selector">.alert</span>&#10;<span class="token atrule-line">  <span class="token atrule">@extend</span> .message.info</span>&#10;  <span class="token comment">//      ^^^^^^^^^^^^^</span>&#10;  <span class="token comment">// Error: Write @extend .message, .info instead.</span>&#10;&#10;<span class="token atrule-line">  <span class="token atrule">@extend</span> .main .info</span>&#10;  <span class="token comment">//      ^^^^^^^^^^^</span>&#10;  <span class="token comment">// Error: write @extend .info instead.</span>&#10;&#10;</code></pre></div>
+</div>
+<h3 id="html-heuristics" tabindex="-1"><span class="caps">HTML</span> Heuristics<a class="anchor" href="#html-heuristics"><span class="visuallyhidden"><span class="caps">HTML</span> Heuristics permalink</span></a></h3>
+<p>When <code>@extend</code> <a href="#how-it-works">interleaves complex selectors</a>, it doesn’t generate all
+possible combinations of ancestor selectors. Many of the selectors it could
+generate are unlikely to actually match real <span class="caps">HTML</span>, and generating them all would
+make stylesheets way too big for very little real value. Instead, it uses a
+<a href="https://en.wikipedia.org/wiki/Heuristic">heuristic</a>: it assumes that each selector’s ancestors will be self-contained,
+without being interleaved with any other selector’s<span class="widont">&nbsp;</span>ancestors.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-html-heuristics-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-html-heuristics-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-html-heuristics-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-html-heuristics-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token selector">header .warning li </span><span class="token punctuation">{</span>&#10;  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">aside .notice dd </span><span class="token punctuation">{</span>&#10;  <span class="token comment">// Sass doesn't generate <span class="caps">CSS</span> to match the &lt;dd> in</span>&#10;  <span class="token comment">//</span>&#10;  <span class="token comment">// &lt;header></span>&#10;  <span class="token comment">//   &lt;aside></span>&#10;  <span class="token comment">//     &lt;div class="warning"></span>&#10;  <span class="token comment">//       &lt;div class="notice"></span>&#10;  <span class="token comment">//         &lt;dd>...&lt;/dd></span>&#10;  <span class="token comment">//       &lt;/div></span>&#10;  <span class="token comment">//     &lt;/div></span>&#10;  <span class="token comment">//   &lt;/aside></span>&#10;  <span class="token comment">// &lt;/header></span>&#10;  <span class="token comment">//</span>&#10;  <span class="token comment">// because matching all elements like that would require us to generate nine</span>&#10;  <span class="token comment">// new selectors instead of just two.</span>&#10;  <span class="token keyword">@extend</span> li<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-html-heuristics-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token selector">header .warning li</span>&#10;<span class="token property-line">  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold</span>&#10;&#10;&#10;<span class="token selector">aside .notice dd</span>&#10;  <span class="token comment">// Sass doesn't generate <span class="caps">CSS</span> to match the &lt;dd> in</span>&#10;  <span class="token comment">//</span>&#10;  <span class="token comment">// &lt;header></span>&#10;  <span class="token comment">//   &lt;aside></span>&#10;  <span class="token comment">//     &lt;div class="warning"></span>&#10;  <span class="token comment">//       &lt;div class="notice"></span>&#10;  <span class="token comment">//         &lt;dd>...&lt;/dd></span>&#10;  <span class="token comment">//       &lt;/div></span>&#10;  <span class="token comment">//     &lt;/div></span>&#10;  <span class="token comment">//   &lt;/aside></span>&#10;  <span class="token comment">// &lt;/header></span>&#10;  <span class="token comment">//</span>&#10;  <span class="token comment">// because matching all elements like that would require us to generate nine</span>&#10;  <span class="token comment">// new selectors instead of just two.</span>&#10;<span class="token atrule-line">  <span class="token atrule">@extend</span> li</span>&#10;&#10;</code></pre></div>
+<div id="example-html-heuristics-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">header .warning li, header .warning aside .notice dd, aside .notice header .warning dd</span> <span class="token punctuation">{</span>&#10;  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<h3 id="extend-in-media" tabindex="-1">Extend in <code>@media</code><a class="anchor" href="#extend-in-media"><span class="visuallyhidden">Extend in @media<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>While <code>@extend</code> is allowed within <a href="/documentation/at-rules/css"><code>@media</code> and other <span class="caps">CSS</span> at-rules</a>, it’s not
+allowed to extend selectors that appear outside its at-rule. This is because the
+extending selector only applies within the given media context, and there’s no
+way to make sure that restriction is preserved in the generated selector without
+duplicating the entire style<span class="widont">&nbsp;</span>rule.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-extend-media-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-extend-media-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-extend-media-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token atrule"><span class="token rule">@media</span> screen <span class="token operator">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 600px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>&#10;  <span class="token selector">.error--serious </span><span class="token punctuation">{</span>&#10;    <span class="token keyword">@extend</span> .error<span class="token punctuation">;</span>&#10;    <span class="token comment">//      ^^^^^^</span>&#10;    <span class="token comment">// Error: ".error" was extended in @media, but used outside it.</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.error </span><span class="token punctuation">{</span>&#10;  <span class="token property">border</span><span class="token punctuation">:</span> 1px #f00<span class="token punctuation">;</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #fdd<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-extend-media-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@media</span> screen and (max-width: 600px)</span>&#10;  <span class="token selector">.error--serious</span>&#10;<span class="token atrule-line">    <span class="token atrule">@extend</span> .error</span>&#10;    <span class="token comment">//      ^^^^^^</span>&#10;    <span class="token comment">// Error: ".error" was extended in @media, but used outside it.</span>&#10;&#10;&#10;&#10;<span class="token selector">.error</span>&#10;<span class="token property-line">  <span class="token property">border</span><span class="token punctuation">:</span> 1px #f00</span>&#10;<span class="token property-line">  <span class="token property">background-color</span><span class="token punctuation">:</span> #fdd</span>&#10;&#10;</code></pre></div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/at-rules/extend/ -->
+  </body>
+</html>

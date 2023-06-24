@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Embedded Sass is Live</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 032-embedded-sass-is-live">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Embedded Sass is<span class="widont">&nbsp;</span>Live</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 1 February 2022 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>After several years of planning and development, I’m excited to finally announce
+the stable release of Embedded Dart Sass along with its first official wrapper,
+the <a href="https://www.npmjs.com/package/sass-embedded"><code>sass-embedded</code></a> package available now on<span class="widont">&nbsp;</span>npm!</p>
+<p>Embedded Sass is an ongoing effort to make a highly-performant Sass library
+available to as many different languages as possible, starting with Node.js.
+Although Node.js already has access to the pure-<span class="caps">JS</span> <code>sass</code> package, the nature of
+JavaScript inherently limits how quickly this package can process large Sass
+files especially in asynchronous mode. We expect <code>sass-embedded</code> to be a major
+boon to developers for whom compilation speed is a concern, particularly the
+remaining users of <code>node-sass</code> for whom performance has been a major reason to
+avoid Dart<span class="widont">&nbsp;</span>Sass.</p>
+<p>The <code>sass-embedded</code> package fully supports the <a href="/documentation/js-api/#md:usage">new <span class="caps">JS</span> <span class="caps">API</span></a> as well as the
+<a href="/documentation/js-api/#md:legacy-api">legacy <span class="caps">API</span></a> other than a few cosmetic options. You can use it as a drop-in
+replacement for the <code>sass</code> package, and it should work with all the same build
+plugins and libraries. Note that <code>sass-embedded</code> is a bit faster in
+<em>asynchronous</em> mode than it is in synchronous mode (whereas the <code>sass</code> package
+was faster in synchronous mode). For substantial Sass files, running
+<code>sass-embedded</code> in either mode will generally be much faster than <code>sass</code>.</p>
+<p>In order to limit the confusion about which version of which package supports
+which feature, the <code>sass-embedded</code> package will always have the same version as
+the <code>sass</code> package. When new features are added to the <span class="caps">JS</span> <span class="caps">API</span>, they’ll be
+supported at the same time in both packages, and when new language features are
+added to Sass they’ll always be included in a new <code>sass-embedded</code> release
+straight<span class="widont">&nbsp;</span>away.</p>
+<h2 id="how-it-works" tabindex="-1">How it Works<a class="anchor" href="#how-it-works"><span class="visuallyhidden">How it Works<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>Embedded Sass is composed of three<span class="widont">&nbsp;</span>parts:</p>
+<ol>
+<li>
+<p><a href="https://github.com/sass/dart-sass-embedded">The compiler</a>, a Dart executable that wraps Dart Sass and does the actual
+heavy lifting of parsing and compiling the files. Dart native executables are
+generally much faster than JavaScript, so using them for the
+computationally-intensive work of stylesheet evaluation is where Embedded
+Sass gets its<span class="widont">&nbsp;</span>speed.</p>
+</li>
+<li>
+<p><a href="https://github.com/sass/embedded-host-node">The host</a>, a library in any language (in this case JavaScript) that provides a
+usable end-user <span class="caps">API</span> for invoking the compiler. The host provides callers with
+configuration options, including the ability to define custom importers and
+Sass functions that are used by the<span class="widont">&nbsp;</span>compilation.</p>
+</li>
+<li>
+<p><a href="https://github.com/sass/embedded-protocol">The protocol</a>, a <a href="https://en.wikipedia.org/wiki/Protocol_Buffers">protocol-buffer</a>-based specification of how the host and
+the compiler communicate with one another. This communication happens over
+the standard input and output streams of the compiler executable, which is
+invoked by the host to perform each<span class="widont">&nbsp;</span>compilation.</p>
+</li>
+</ol>
+<h2 id="other-languages" tabindex="-1">Other Languages<a class="anchor" href="#other-languages"><span class="visuallyhidden">Other Languages permalink</span></a></h2>
+<p>Embedded Sass was designed in part as a way for languages other than JavaScript
+to have access to the full power of Sass compilation with custom importers and
+functions, similarly to how C++ wrappers for <a href="/libsass">LibSass</a> worked in the past. We
+hope that community members will use this protocol to implement embedded hosts
+for many other popular frontend languages. If you end up doing so, message us
+<a href="https://twitter.com/SassCSS">on Twitter</a> or <a href="https://gitter.im/sass/sass">Gitter</a> and we’ll link it on this<span class="widont">&nbsp;</span>site!</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/embedded-sass-is-live/ -->
+  </body>
+</html>

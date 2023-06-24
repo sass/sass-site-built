@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Strings</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation values strings">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Strings</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section open selected">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="open selected">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary sl-l-large-holy-grail__complementary--contents">
+              
+                
+                
+                
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    <ul><li>
+      <a href="#escapes" class="open">Escapes</a></li><li>
+      <a href="#quoted" class="open">Quoted</a></li><li>
+      <a href="#unquoted" class="section open">Unquoted</a><ul><li class="overview">
+      <a href="#unquoted" >Overview</a>
+    </li><li>
+      <a href="#escapes-in-unquoted-strings" class="open">Escapes in Unquoted<span class="widont">&nbsp;</span>Strings</a></li></ul>
+</li><li>
+      <a href="#string-indexes" class="open">String Indexes</a></li></ul>
+
+                  </nav>
+                
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+  <div class="sl-c-introduction">
+    <p>Strings are sequences of characters (specifically <a href="https://en.wikipedia.org/wiki/Code_point">Unicode code points</a>). Sass supports two kinds of strings whose internal structure is the same but which are rendered differently: <a href="#quoted">quoted strings</a>, like <code>&quot;Helvetica Neue&quot;</code>, and <a href="#unquoted">unquoted strings</a> (also known as <em>identifiers</em>), like <code>bold</code>. Together, these cover the different kinds of text that appear in<span class="widont">&nbsp;</span><span class="caps">CSS</span>.</p>
+
+  </div>
+
+
+
+              <div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>You can convert a quoted string to an unquoted string using the
+<a href="/documentation/modules/string#unquote"><code>string.unquote()</code> function</a>, and you can convert an unquoted string to a
+quoted string using the <a href="/documentation/modules/string#quote"><code>string.quote()</code> function</a>.</p>
+<div class="code-example ui-tabs">
+<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+<a href="#example-fun-fact-strings-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+<a href="#example-fun-fact-strings-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-fun-fact-strings-scss" class="ui-tabs-panel scss">
+<h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:string"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> string.<span class="token function">unquote</span><span class="token punctuation">(</span><span class="token string">".widget:hover"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// .widget:hover</span>&#10;<span class="token keyword">@debug</span> string.<span class="token function">quote</span><span class="token punctuation">(</span>bold<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "bold"</span>&#10;</code></pre></div>
+<div id="example-fun-fact-strings-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+<h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:string"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> string.unquote(".widget:hover")  // .widget:hover</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> string.quote(bold)  // "bold"</span>&#10;</code></pre></div>
+</div>
+</div>
+<h2 id="escapes" tabindex="-1">Escapes<a class="anchor" href="#escapes"><span class="visuallyhidden">Escapes permalink</span></a></h2>
+<p>All Sass strings support the standard <span class="caps">CSS</span> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/string#Syntax">escape codes</a>:</p>
+<ul>
+<li>
+<p>Any character other than a letter from A to F or a number from 0 to 9 (even a
+newline!) can be included as part of a string by writing <code>\</code> in front of<span class="widont">&nbsp;</span>it.</p>
+</li>
+<li>
+<p>Any character can be included as part of a string by writing <code>\</code> followed by
+its <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">Unicode code point number</a> written in <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a>. You can
+optionally include a space after the code point number to indicate where the
+Unicode number<span class="widont">&nbsp;</span>ends.</p>
+</li>
+</ul>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-escapes-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-escapes-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-escapes-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> <span class="token string">"\""</span><span class="token punctuation">;</span> <span class="token comment">// '"'</span>&#10;<span class="token keyword">@debug</span> \.widget<span class="token punctuation">;</span> <span class="token comment">// \.widget</span>&#10;<span class="token keyword">@debug</span> <span class="token string">"\a"</span><span class="token punctuation">;</span> <span class="token comment">// "\a" (a string containing only a newline)</span>&#10;<span class="token keyword">@debug</span> <span class="token string">"line1\a line2"</span><span class="token punctuation">;</span> <span class="token comment">// "line1\a line2"</span>&#10;<span class="token keyword">@debug</span> <span class="token string">"Nat + Liz \<span class="caps">1F46D</span>"</span><span class="token punctuation">;</span> <span class="token comment">// "Nat + Liz 👭"</span>&#10;</code></pre></div>
+<div id="example-escapes-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> "\""  // '"'</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> \.widget  // \.widget</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> "\a"  // "\a" (a string containing only a newline)</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> "line1\a line2"  // "line1\a line2" (foo and bar are separated by a newline)</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> "Nat <span class="token atrule">+</span> Liz \<span class="caps">1F46D</span>"  // "Nat <span class="token atrule">+</span> Liz 👭"</span>&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>For characters that are allowed to appear in strings, writing the Unicode
+escape produces exactly the same string as writing the character<span class="widont">&nbsp;</span>itself.</p>
+</div>
+<h2 id="quoted" tabindex="-1">Quoted<a class="anchor" href="#quoted"><span class="visuallyhidden">Quoted permalink</span></a></h2>
+<p>Quoted strings are written between either single or double quotes, as in
+<code>&quot;Helvetica Neue&quot;</code>. They can contain <a href="/documentation/interpolation">interpolation</a>, as well as any unescaped
+character except<span class="widont">&nbsp;</span>for:</p>
+<ul>
+<li><code>\</code>, which can be escaped as <code>\\</code>;</li>
+<li><code>'</code> or <code>&quot;</code>, whichever was used to define that string, which can be escaped as
+<code>\'</code> or <code>\&quot;</code>;</li>
+<li>newlines, which can be escaped as <code>\a </code> (including a trailing<span class="widont">&nbsp;</span>space).</li>
+</ul>
+<p>Quoted strings are guaranteed to be compiled to <span class="caps">CSS</span> strings that have the same
+contents as the original Sass strings. The exact format may vary based on the
+implementation or configuration—a string containing a double quote may be
+compiled to <code>&quot;\&quot;&quot;</code> or <code>'&quot;'</code>, and a non-<a href="https://en.wikipedia.org/wiki/ASCII"><span class="caps">ASCII</span></a> character may or may not be
+escaped. But that should be parsed the same in any standards-compliant <span class="caps">CSS</span>
+implementation, including all<span class="widont">&nbsp;</span>browsers.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-quoted-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-quoted-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-quoted-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> <span class="token string">"Helvetica Neue"</span><span class="token punctuation">;</span> <span class="token comment">// "Helvetica Neue"</span>&#10;<span class="token keyword">@debug</span> <span class="token string">"C:\\Program Files"</span><span class="token punctuation">;</span> <span class="token comment">// "C:\\Program Files"</span>&#10;<span class="token keyword">@debug</span> <span class="token string">"\"Don't Fear the Reaper\""</span><span class="token punctuation">;</span> <span class="token comment">// "\"Don't Fear the Reaper\""</span>&#10;<span class="token keyword">@debug</span> <span class="token string">"line1\a line2"</span><span class="token punctuation">;</span> <span class="token comment">// "line1\a line2"</span>&#10;&#10;<span class="token property"><span class="token variable">$roboto-variant</span></span><span class="token punctuation">:</span> <span class="token string">"Mono"</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@debug</span> <span class="token string">"Roboto #{$roboto-variant}"</span><span class="token punctuation">;</span> <span class="token comment">// "Roboto Mono"</span>&#10;</code></pre></div>
+<div id="example-quoted-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> "Helvetica Neue"  // "Helvetica Neue"</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> "C:\\Program Files"  // "C:\\Program Files"</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> "\"Don't Fear the Reaper\""  // "\"Don't Fear the Reaper\""</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> "line1\a line2"  // "line1\a line2"</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$roboto-variant</span><span class="token punctuation">:</span> "Mono"</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> "Roboto #{$roboto-variant}"  // "Roboto Mono"</span>&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>When a quoted string is injected into another value via interpolation, <a href="/documentation/interpolation#quoted-strings">its
+quotes are removed</a>! This makes it easy to write strings containing
+selectors, for example, that can be injected into style rules without adding<span class="widont">&nbsp;</span>quotes.</p>
+</div>
+<h2 id="unquoted" tabindex="-1">Unquoted<a class="anchor" href="#unquoted"><span class="visuallyhidden">Unquoted permalink</span></a></h2>
+<p>Unquoted strings are written as <span class="caps">CSS</span> <a href="https://drafts.csswg.org/css-syntax-3/#ident-token-diagram">identifiers</a>, following the syntax
+diagram below. They may include <a href="/documentation/interpolation">interpolation</a><span class="widont">&nbsp;</span>anywhere.</p>
+<figure>
+  <object type="image/svg+xml" data="/assets/img/illustrations/identifier-diagram.svg"></object>
+  <figcaption class="copyright">Railroad diagram copyright © 2018 <span class="caps">W3C</span><sup>®</sup> (<span class="caps">MIT</span>, <span class="caps">ERCIM</span>, Keio, Beihang). <span class="caps">W3C</span> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply.
+</figcaption>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-unquoted-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-unquoted-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-unquoted-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> bold<span class="token punctuation">;</span> <span class="token comment">// bold</span>&#10;<span class="token keyword">@debug</span> -webkit-flex<span class="token punctuation">;</span> <span class="token comment">// -webkit-flex</span>&#10;<span class="token keyword">@debug</span> --123<span class="token punctuation">;</span> <span class="token comment">// --123</span>&#10;&#10;<span class="token property"><span class="token variable">$prefix</span></span><span class="token punctuation">:</span> ms<span class="token punctuation">;</span>&#10;<span class="token keyword">@debug</span> -<span class="token variable">#{$prefix}</span>-flex<span class="token punctuation">;</span> <span class="token comment">// -ms-flex</span>&#10;</code></pre></div>
+<div id="example-unquoted-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> bold  // bold</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> -webkit-flex  // -webkit-flex</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> --123  // --123</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$prefix</span><span class="token punctuation">:</span> ms</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> -#{$prefix}-flex  // -ms-flex</span>&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Not all identifiers are parsed as unquoted<span class="widont">&nbsp;</span>strings:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#Color_keywords"><span class="caps">CSS</span> color names</a> are parsed as <a href="/documentation/values/colors">colors</a>.</li>
+<li><code>null</code> is parsed as <a href="/documentation/values/null">Sass’s <code>null</code> value</a>.</li>
+<li><code>true</code> and <code>false</code> are parsed as <a href="/documentation/values/booleans">Booleans</a>.</li>
+<li><code>not</code>, <code>and</code>, and <code>or</code> are parsed as <a href="/documentation/operators/boolean">Boolean<span class="widont">&nbsp;</span>operators</a>.</li>
+</ul>
+<p>Because of this, it’s generally a good idea to write quoted strings unless
+you’re specifically writing the value of a <span class="caps">CSS</span> property that uses unquoted<span class="widont">&nbsp;</span>strings.</p>
+</div>
+<h3 id="escapes-in-unquoted-strings" tabindex="-1">Escapes in Unquoted Strings<a class="anchor" href="#escapes-in-unquoted-strings"><span class="visuallyhidden">Escapes in Unquoted Strings<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility (Normalization):
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.11.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>LibSass, Ruby Sass, and older versions of Dart Sass don’t normalize escapes in
+identifiers. Instead, the text in the unquoted string is the exact text the
+user wrote. For example, <code>\1F46D</code> and <code>👭</code> are not considered<span class="widont">&nbsp;</span>equivalent.</p>
+  </div>
+<p>When an unquoted string is parsed, the literal text of escapes are parsed as
+part of the string. For example, <code>\a </code> is parsed as the characters <code>\</code>, <code>a</code>, and
+space. In order to ensure that unquoted strings that have the same meanings in
+<span class="caps">CSS</span> are parsed the same way, though, these escapes are <em>normalized</em>. For each
+code point, whether it’s escaped or<span class="widont">&nbsp;</span>unescaped:</p>
+<ul>
+<li>
+<p>If it’s a valid identifier character, it’s included unescaped in the unquoted
+string. For example, <code>\1F46D</code> returns the unquoted string <code>👭</code>.</p>
+</li>
+<li>
+<p>If it’s a printable character other than a newline or a tab, it’s included
+after a <code>\</code>. For example, <code>\21 </code> returns the unquoted string <code>\!</code>.</p>
+</li>
+<li>
+<p>Otherwise, the lowercase Unicode escape is included with a trailing space. For
+example, <code>\7Fx</code> returns the unquoted string <code>\7f x</code>.</p>
+</li>
+</ul>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-normalization-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-normalization-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-normalization-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:string"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> \<span class="caps">1F46D</span><span class="token punctuation">;</span> <span class="token comment">// 👭</span>&#10;<span class="token keyword">@debug</span> \21<span class="token punctuation">;</span> <span class="token comment">// \!</span>&#10;<span class="token keyword">@debug</span> \7Fx<span class="token punctuation">;</span> <span class="token comment">// \7f x</span>&#10;<span class="token keyword">@debug</span> string.<span class="token function">length</span><span class="token punctuation">(</span>\7Fx<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>&#10;</code></pre></div>
+<div id="example-normalization-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:string"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> \<span class="caps">1F46D</span>  // 👭</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> \21  // \!</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> \7Fx  // \7f x</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> string.length(\7Fx)  // 5</span>&#10;</code></pre></div>
+</div>
+<h2 id="string-indexes" tabindex="-1">String Indexes<a class="anchor" href="#string-indexes"><span class="visuallyhidden">String Indexes permalink</span></a></h2>
+<p>Sass has a number of <a href="/documentation/modules/string">string functions</a> that take or return numbers, called
+<em>indexes</em>, that refer to the characters in a string. The index 1 indicates the
+first character of the string. Note that this is different than many programming
+languages where indexes start at 0! Sass also makes it easy to refer to the end
+of a string. The index -1 refers to the last character in a string, -2 refers to
+the second-to-last, and so<span class="widont">&nbsp;</span>on.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-string-indexes-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-string-indexes-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-string-indexes-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:string"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> string.<span class="token function">index</span><span class="token punctuation">(</span><span class="token string">"Helvetica Neue"</span><span class="token punctuation">,</span> <span class="token string">"Helvetica"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>&#10;<span class="token keyword">@debug</span> string.<span class="token function">index</span><span class="token punctuation">(</span><span class="token string">"Helvetica Neue"</span><span class="token punctuation">,</span> <span class="token string">"Neue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 11</span>&#10;<span class="token keyword">@debug</span> string.<span class="token function">slice</span><span class="token punctuation">(</span><span class="token string">"Roboto Mono"</span><span class="token punctuation">,</span> -4<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "Mono"</span>&#10;</code></pre></div>
+<div id="example-string-indexes-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:string"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> string.index("Helvetica Neue", "Helvetica")  // 1</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> string.index("Helvetica Neue", "Neue")  // 11</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> string.slice("Roboto Mono", -4)  // "Mono"</span>&#10;</code></pre></div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/values/strings/ -->
+  </body>
+</html>

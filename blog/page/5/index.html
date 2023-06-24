@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Sass Blog</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Sass Blog</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="docSearch-content sl-l-container sl-l-container--small">
+  
+
+
+
+  
+
+
+
+
+  <p>Page 5 of<span class="widont">&nbsp;</span>8</p>
+  
+    <p>
+      <a href="/blog/page/4/">Previous page</a>
+    </p>
+  
+
+
+<ul class="sl-c-list">
+  
+    <li>
+      <h2>
+        <a href="/blog/feature-watchcss-imports-and-css-compatibility/">Feature Watch: <span class="caps">CSS</span> Imports and <span class="caps">CSS</span><span class="widont">&nbsp;</span>Compatibility</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 13 August 2018 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>Dart Sass 1.11 has just been released, and with it a handful of new features.
+This is an exciting moment, because it marks the first major new feature that’s
+been added to the language since Dart Sass was launched. It’s also the first
+release with features that have gone through the new process, from
+<a href="https://github.com/sass/language/blob/main/accepted/css-imports.md">proposal</a>
+to <a href="https://github.com/sass/sass-spec/pull/1277">tests</a> to
+<a href="https://github.com/sass/dart-sass/pull/436">implementation</a>.</p>
+<h3 id="css-imports" tabindex="-1"><span class="caps">CSS</span> Imports<a class="anchor" href="/blog/feature-watchcss-imports-and-css-compatibility/#css-imports"><span class="visuallyhidden"><span class="caps">CSS</span> Imports permalink</span></a></h3>
+<p>The biggest feature in Dart Sass 1.11 is support for importing plain <span class="caps">CSS</span> files.
+This is a long-awaited feature, and while we’d initially planned on waiting on
+it until we launched the upcoming module system, we ended up deciding to
+<a href="/blog/request-for-commentsimporting-css-files">implement it<span class="widont">&nbsp;</span>earlier</a>.</p>
+<p>You can now import a <span class="caps">CSS</span> file, say <code>styles.css</code>, just by writing <code>@import &quot;styles&quot;</code>. That file will be parsed as plain <span class="caps">CSS</span>, which means that any Sass
+features like variables or mixins or interpolation will be disallowed. The <span class="caps">CSS</span>
+it defines will become part of your stylesheet, and can be <code>@extend</code>ed just like
+any other<span class="widont">&nbsp;</span>styles.</p>
+<p>There are&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/request-for-commentsimporting-css-files/">Request For Comments: Importing <span class="caps">CSS</span><span class="widont">&nbsp;</span>Files</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 9 July 2018 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>As Dart Sass catches up with Ruby Sass in terms of usability, we’re starting
+work on adding new features to the language. The first feature we’re looking at
+is one that’s long been requested by users: adding support for importing plain
+<span class="caps">CSS</span> files without having to rename them to <code>.scss</code>. Not only do we expect this
+to be very useful, it’s already partially implemented in LibSass, so this will
+help bring the implementations more in line with one<span class="widont">&nbsp;</span>another.</p>
+<p>We’re also trying out a new process with this feature. In order to help keep the
+behavior of different implementations in sync, we’re starting with a prose
+specification of the feature before moving on to writing code. We’re also taking
+this as an opportunity to solicit feedback from you, the Sass community! We want
+to hear your thoughts on the new feature while we have a chance to revise it
+based on that<span class="widont">&nbsp;</span>feedback.</p>
+<h2 id="background" tabindex="-1">Background<a class="anchor" href="/blog/request-for-commentsimporting-css-files/#background"><span class="visuallyhidden">Background permalink</span></a></h2>
+<p>Historically, the reference implementations of Sass—first Ruby Sass, then Dart
+Sass—only supported<span class="widont">&nbsp;</span>importing&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/ruby-sass-is-deprecated/">Ruby Sass is<span class="widont">&nbsp;</span>Deprecated</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 2 April 2018 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>With the release of <a href="/blog/dart-sass-100-is-released">Dart Sass 1.0.0 stable</a>
+last week, Ruby Sass was officially deprecated. I’ll continue to maintain it
+over the next year, but when 26 March 2019 rolls around it will reach its
+official end-of-life. I encourage all users to start migrating away sooner
+rather than<span class="widont">&nbsp;</span>later.</p>
+<h3 id="the-deprecation-period" tabindex="-1">The Deprecation Period<a class="anchor" href="/blog/ruby-sass-is-deprecated/#the-deprecation-period"><span class="visuallyhidden">The Deprecation Period<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>Over the next year, I’ll continue to work on Ruby Sass in a limited capacity.
+I’ll triage and fix any bugs that are reported, unless they’re minor or obscure
+enough to be unlikely to pose a practical problem over the next year. I’ll also
+add support for any new <span class="caps">CSS</span> features that require changes to the Sass parser or
+other parts of the<span class="widont">&nbsp;</span>language.</p>
+<p>I won’t be working on language features that aren’t necessary for <span class="caps">CSS</span> support,
+though. The latest and greatest features will be appearing exclusively in <a href="/dart-sass">Dart
+Sass</a> and <a href="/libsass">LibSass</a> from here on<span class="widont">&nbsp;</span>out.</p>
+<p>I also won’t be accepting pull requests for new Ruby Sass features. While pull
+requests are a<span class="widont">&nbsp;</span>great&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/dart-sass-100-is-released/">Dart Sass 1.0.0 is<span class="widont">&nbsp;</span>Released</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 26 March 2018 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>I’ve just uploaded Dart Sass 1.0.0, the very first stable release, to
+<a href="https://github.com/sass/dart-sass/releases/tag/1.0.0-rc.1">GitHub</a>,
+<a href="https://www.npmjs.com/package/sass">npm</a>,
+<a href="https://community.chocolatey.org/packages/sass">Chocolatey</a>,
+<a href="https://github.com/sass/homebrew-sass">Homebrew</a>, and
+<a href="http://pub.dartlang.org/packages/sass">pub</a>. After working on it for almost two
+years, I’m thrilled to have a stable release out there and officially ready to
+use in real-world applications. <a href="/blog/announcing-dart-sass">All the reasons we chose
+Dart</a> as the implementation language are bearing
+fruit: Dart Sass is much faster than Ruby Sass, much easier to make available
+across operating systems and language environments, and much more<span class="widont">&nbsp;</span>maintainable.</p>
+<p>The 1.0.0 stable release indicates that Dart Sass is fully compatible with the
+Sass language as defined by <a href="http://github.com/sass/sass-spec">the sass-spec test
+suite</a>, and that its npm package is compatible
+with the <a href="https://github.com/sass/node-sass#usage">Node Sass
+<span class="caps">API</span></a>, with the
+exception of source map support which is <a href="https://github.com/sass/dart-sass/issues/2">coming<span class="widont">&nbsp;</span>soon</a>.</p>
+<p>I’ve also updated sass-lang.com to cover Dart Sass. The release bar now shows
+the latest version of all three major implementations, as well as links to their
+release notes and documentation about each one. The <a href="/install">install page</a><span class="widont">&nbsp;</span>covers&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/sass-35-is-released/">Sass 3.5 is<span class="widont">&nbsp;</span>Released</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 7 July 2017 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>I’m excited to announce that I’ve just released the stable version of Sass 3.5.
+This release focuses on compatibility with new <span class="caps">CSS</span> syntax, and helps lay the
+groundwork for the upcoming module system and compatibility with <a href="/blog/announcing-dart-sass">Dart<span class="widont">&nbsp;</span>Sass</a>.</p>
+<p>Most of the major features in 3.5 were already in the release candidate, which
+<a href="/blog/sass-35-release-candidate">you can read about here</a>. But there are a
+handful of other changes that have been added since<span class="widont">&nbsp;</span>then:</p>
+<ul>
+<li>
+<p>Sass now supports the <a href="https://drafts.csswg.org/css-scoping-1/#slotted-pseudo">the <code>::slotted()</code>
+pseudo-element</a>,
+including extending its selector<span class="widont">&nbsp;</span>arguments.</p>
+</li>
+<li>
+<p><a href="https://www.w3.org/TR/css-variables-1/#using-variables">The <code>var()</code> function</a>
+may be safely passed to the <span class="caps">CSS</span> color functions <code>rgb()</code>, <code>rgba()</code>, <code>hsl()</code>,
+and <code>hsla()</code>.</p>
+</li>
+<li>
+<p>Transparent colors created by Sass’s color functions will now be written as
+<code>rgba(0, 0, 0, 0)</code> rather than <code>transparent</code> to work around a bug in Internet
+Explorer. Colors written as <code>transparent</code> in the document will still be
+emitted as<span class="widont">&nbsp;</span>written.</p>
+</li>
+</ul>
+<h3 id="dart-sass-compatibility" tabindex="-1">Dart Sass Compatibility<a class="anchor" href="/blog/sass-35-is-released/#dart-sass-compatibility"><span class="visuallyhidden">Dart Sass Compatibility<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p><a href="http://sass.logdown.com/posts/1909151">I wrote last month</a> about our plans for
+keeping Ruby Sass compatible with Dart Sass<span class="widont">&nbsp;</span>in&#8230;</p>
+    </li>
+  
+</ul>
+
+
+  <p>
+    <a href="/blog/page/6/">Next page</a>
+  </p>
+
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/page/5/ -->
+  </body>
+</html>

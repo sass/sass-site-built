@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Request for Comments: Color Spaces</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 034-request-for-comments-color-spaces">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Request for Comments: Color<span class="widont">&nbsp;</span>Spaces</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 21 September 2022 by Miriam Suzanne and Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>There’s been a lot of exciting work in the <span class="caps">CSS</span> color specifications lately, and
+as it begins to land in browsers we’ve been preparing to add support for it in
+Sass as well. The first and largest part of that is adding support for <em>color
+spaces</em> to Sass, which represents a huge (but largely backwards-compatible)
+rethinking of the way colors<span class="widont">&nbsp;</span>work.</p>
+<p>Historically, all colors in <span class="caps">CSS</span> have existed in the same color space, known as
+“sRGB”. Whether you represent them as a hex code, an <code>hsl()</code> function, or a
+color name, they represented the same set of visible colors you could tell a
+screen to display. While this is conceptually simple, there are some major<span class="widont">&nbsp;</span>downsides:</p>
+<ul>
+<li>
+<p>As monitors have improved over time, they’ve become capable of displaying more
+colors than can be represented in the sRGB color<span class="widont">&nbsp;</span>space.</p>
+</li>
+<li>
+<p>sRGB, even when you’re using it via <code>hsl()</code>, doesn’t correspond very well with
+how humans perceive colors. Cyan looks noticeably lighter than purple with the
+same saturation and lightness<span class="widont">&nbsp;</span>values.</p>
+</li>
+<li>
+<p>There’s no way to represent domain- or device-specific color spaces, such as
+the <a href="https://en.wikipedia.org/wiki/CMYK_color_model"><span class="caps">CMYK</span></a> color space that’s used by<span class="widont">&nbsp;</span>printers.</p>
+</li>
+</ul>
+<p>Color spaces solve all of these problems. Now not every color has a red, green,
+and blue channel (which can be interpreted as hue, saturation, and lightness).
+Instead, every color has a specific <em>color space</em> which specifies which
+channels it has. For example, the color <code>oklch(80% 50% 90deg)</code> has <code>oklch</code> as
+its color space, <code>80%</code> lightness, <code>50%</code> chroma, and <code>90deg</code> hue.</p>
+<h2 id="color-spaces-in-sass" tabindex="-1">Color Spaces in Sass<a class="anchor" href="#color-spaces-in-sass"><span class="visuallyhidden">Color Spaces in Sass<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>Today we’re announcing <a href="https://github.com/sass/sass/blob/main/proposal/color-4-new-spaces.md">a proposal for how to handle color spaces in Sass</a>. In
+addition to expanding Sass’s color values to support color spaces, this proposal
+defines Sassified versions of all the color functions in <a href="https://www.w3.org/TR/css-color-4/"><span class="caps">CSS</span> Color Level<span class="widont">&nbsp;</span>4</a>.</p>
+<h3 id="rules-of-thumb" tabindex="-1">Rules of Thumb<a class="anchor" href="#rules-of-thumb"><span class="visuallyhidden">Rules of Thumb<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>There are several rules of thumb for working with color spaces in<span class="widont">&nbsp;</span>Sass:</p>
+<ul>
+<li>
+<p>The <code>rgb</code>, <code>hsl</code>, and <code>hwb</code> spaces are considered “legacy spaces”, and will
+often get special handling for the sake of backwards compatibility. Colors
+defined using hex notation or <span class="caps">CSS</span> color names are considered part of the <code>rgb</code>
+color space. Legacy colors are emitted in the most compatible format. This
+matches <span class="caps">CSS</span>’s own backwards-compatibility<span class="widont">&nbsp;</span>behavior.</p>
+</li>
+<li>
+<p>Otherwise, any color defined in a given space will remain in that space, and
+be emitted in that<span class="widont">&nbsp;</span>space.</p>
+</li>
+<li>
+<p>Authors can explicitly convert a color’s space by using <code>color.to-space()</code>.
+This can be useful to enforce non-legacy behavior, by converting into a
+non-legacy space, or to ensure the color output is compatible with older
+browsers by converting colors into a legacy space before<span class="widont">&nbsp;</span>emitting.</p>
+</li>
+<li>
+<p>The <code>srgb</code> color space is equivalent to <code>rgb</code>, except that one is a legacy
+space, and the other is not. They also use different coordinate systems, with
+<code>rgb()</code> accepting a range from 0-255, and <code>srgb</code> using a range of<span class="widont">&nbsp;</span>0-1.</p>
+</li>
+<li>
+<p>Color functions that allow specifying a color space for manipulation will
+always use the source color space by default. When an explicit space is
+provided for manipulation, the resulting color will still be returned in the
+same space as the origin color. For <code>color.mix()</code>, the first color parameter
+is considered the origin<span class="widont">&nbsp;</span>color.</p>
+</li>
+<li>
+<p>All legacy and <span class="caps">RGB</span>-style spaces represent bounded gamuts of color. Since
+mapping colors into gamut is a lossy process, it should generally be left to
+browsers, which can map colors as-needed, based on the capabilities of a
+display. For that reason, out-of-gamut channel values are maintained by Sass
+whenever possible, even when converting into gamut-bounded color spaces. The
+only exception is that <code>hsl</code> and <code>hwb</code> color spaces are not able to express
+out-of-gamut color, so converting colors into those spaces will gamut-map the
+colors as well. Authors can also perform explicit gamut mapping with the
+<code>color.to-gamut()</code> function.</p>
+</li>
+<li>
+<p>Legacy browsers require colors in the <code>srgb</code> gamut. However, most modern
+displays support the wider <code>display-p3</code> gamut.</p>
+</li>
+</ul>
+<h3 id="standard-css-color-functions" tabindex="-1">Standard <span class="caps">CSS</span> Color Functions<a class="anchor" href="#standard-css-color-functions"><span class="visuallyhidden">Standard <span class="caps">CSS</span> Color Functions<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<h4 id="oklab-and-oklch" tabindex="-1"><code>oklab()</code> and <code>oklch()</code><a class="anchor" href="#oklab-and-oklch"><span class="visuallyhidden">oklab() and oklch()<span class="widont">&nbsp;</span>permalink</span></a></h4>
+<p>The <code>oklab()</code> (cubic) and <code>oklch()</code> (cylindrical) functions provide access to an
+unbounded gamut of colors in a perceptually uniform space. Authors can use these
+functions to define reliably uniform colors. For example, the following colors
+are perceptually similar in lightness and<span class="widont">&nbsp;</span>saturation:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$pink</span></span><span class="token punctuation">:</span> <span class="token function">oklch</span><span class="token punctuation">(</span>64% 0.196 353<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// hsl(329.8 70.29% 58.75%)</span>
+<span class="token property"><span class="token variable">$blue</span></span><span class="token punctuation">:</span> <span class="token function">oklch</span><span class="token punctuation">(</span>64% 0.196 253<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// hsl(207.4 99.22% 50.69%)</span></code></pre>
+<p>The <code>oklch()</code> format uses consistent “lightness” and “chroma” values, while the
+<code>hsl()</code> format shows dramatic changes in both “lightness” and “saturation”. As
+such, <code>oklch</code> is often the best space for consistent<span class="widont">&nbsp;</span>transforms.</p>
+<h4 id="lab-and-lch" tabindex="-1"><code>lab()</code> and <code>lch()</code><a class="anchor" href="#lab-and-lch"><span class="visuallyhidden">lab() and lch()<span class="widont">&nbsp;</span>permalink</span></a></h4>
+<p>The <code>lab()</code> and <code>lch()</code> functions provide access to an unbounded gamut of colors
+in a space that’s less perpetually-uniform but more widely-adopted than OKLab
+and<span class="widont">&nbsp;</span><span class="caps">OKLCH</span>.</p>
+<h4 id="hwb" tabindex="-1"><code>hwb()</code><a class="anchor" href="#hwb"><span class="visuallyhidden">hwb() permalink</span></a></h4>
+<p>Sass now supports a top-level <code>hwb()</code> function that uses the same syntax as
+<span class="caps">CSS</span>’s built-in <code>hwb()</code> syntax.</p>
+<h4 id="color" tabindex="-1"><code>color()</code><a class="anchor" href="#color"><span class="visuallyhidden">color() permalink</span></a></h4>
+<p>The new <code>color()</code> function provides access to a number of specialty spaces. Most
+notably, <code>display-p3</code> is a common space for wide-gamut monitors, making it
+likely one of the more popular options for authors who simply want access to a
+wider range of colors. For example, P3 greens are significantly ‘brighter’ and
+more saturated than the greens available in<span class="widont">&nbsp;</span>sRGB:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$fallback-green</span></span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>0% 100% 0%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$brighter-green</span></span><span class="token punctuation">:</span> <span class="token function">color</span><span class="token punctuation">(</span>display-p3 0 1 0<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Sass will natively support all predefined color spaces declared in the Colors
+Level 4 specification. It will also support unknown color spaces, although these
+can’t be converted to and from any other color<span class="widont">&nbsp;</span>space.</p>
+<h3 id="new-sass-color-functions" tabindex="-1">New Sass Color Functions<a class="anchor" href="#new-sass-color-functions"><span class="visuallyhidden">New Sass Color Functions<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<h4 id="color-channel" tabindex="-1"><code>color.channel()</code><a class="anchor" href="#color-channel"><span class="visuallyhidden">color.channel() permalink</span></a></h4>
+<p>This function returns the value of a single channel in a color. By default, it
+only supports channels that are available in the color’s own space, but you can
+pass the <code>$space</code> parameter to return the value of the channel after converting
+to the given<span class="widont">&nbsp;</span>space.</p>
+<pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$brand</span></span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>0 100% 25.1%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// result: 25.1%</span>
+<span class="token property"><span class="token variable">$hsl-lightness</span></span><span class="token punctuation">:</span> color.<span class="token function">channel</span><span class="token punctuation">(</span><span class="token variable">$brand</span><span class="token punctuation">,</span> <span class="token string">"lightness"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// result: 37.67%</span>
+<span class="token property"><span class="token variable">$oklch-lightness</span></span><span class="token punctuation">:</span> color.<span class="token function">channel</span><span class="token punctuation">(</span><span class="token variable">$brand</span><span class="token punctuation">,</span> <span class="token string">"lightness"</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$space</span></span><span class="token punctuation">:</span> oklch<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="color-space" tabindex="-1"><code>color.space()</code><a class="anchor" href="#color-space"><span class="visuallyhidden">color.space() permalink</span></a></h4>
+<p>This function returns the name of the color’s<span class="widont">&nbsp;</span>space.</p>
+<pre class="language-scss"><code class="language-scss"><span class="token comment">// result: hsl</span>
+<span class="token property"><span class="token variable">$hsl-space</span></span><span class="token punctuation">:</span> color.<span class="token function">space</span><span class="token punctuation">(</span><span class="token function">hsl</span><span class="token punctuation">(</span>0 100% 25.1%<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// result: oklch</span>
+<span class="token property"><span class="token variable">$oklch-space</span></span><span class="token punctuation">:</span> color.<span class="token function">space</span><span class="token punctuation">(</span><span class="token function">oklch</span><span class="token punctuation">(</span>37.7% 38.75% 29.23deg<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="color-is-in-gamut-color-is-legacy" tabindex="-1"><code>color.is-in-gamut()</code>, <code>color.is-legacy()</code><a class="anchor" href="#color-is-in-gamut-color-is-legacy"><span class="visuallyhidden">color.is-in-gamut(), color.is-legacy() permalink</span></a></h4>
+<p>These functions return various facts about the color. <code>color.is-in-gamut()</code>
+returns whether the color is in-gamut for its color space (as opposed to having
+one or more of its channels out of bounds, like <code>rgb(300 0 0)</code>).
+<code>color.is-legacy()</code> returns whether the color is a legacy color in the <code>rgb</code>,
+<code>hsl</code>, or <code>hwb</code> color space.</p>
+<h4 id="color-is-powerless" tabindex="-1"><code>color.is-powerless()</code><a class="anchor" href="#color-is-powerless"><span class="visuallyhidden">color.is-powerless() permalink</span></a></h4>
+<p>This function returns whether a given channel is “powerless” in the given color.
+This is a special state that’s defined for individual color spaces, which
+indicates that a channel’s value won’t affect how a color is<span class="widont">&nbsp;</span>displayed.</p>
+<pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$grey</span></span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>0 0% 60%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// result: true, because saturation is 0</span>
+<span class="token property"><span class="token variable">$hue-powerless</span></span><span class="token punctuation">:</span> color.<span class="token function">is-powerless</span><span class="token punctuation">(</span><span class="token variable">$grey</span><span class="token punctuation">,</span> <span class="token string">"hue"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// result: false</span>
+<span class="token property"><span class="token variable">$hue-powerless</span></span><span class="token punctuation">:</span> color.<span class="token function">is-powerless</span><span class="token punctuation">(</span><span class="token variable">$grey</span><span class="token punctuation">,</span> <span class="token string">"lightness"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="color-same" tabindex="-1"><code>color.same()</code><a class="anchor" href="#color-same"><span class="visuallyhidden">color.same() permalink</span></a></h4>
+<p>This function returns whether two colors will be displayed the same way, even if
+this requires converting between spaces. This is unlike the <code>==</code> operator, which
+always considers colors in different non-legacy spaces to be<span class="widont">&nbsp;</span>inequal.</p>
+<pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$orange-rgb</span></span><span class="token punctuation">:</span> #ff5f00<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$orange-oklch</span></span><span class="token punctuation">:</span> <span class="token function">oklch</span><span class="token punctuation">(</span>68.72% 20.966858279% 41.4189852913deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// result: false</span>
+<span class="token property"><span class="token variable">$equal</span></span><span class="token punctuation">:</span> <span class="token variable">$orange-rgb</span> <span class="token operator">==</span> <span class="token variable">$orange-oklch</span><span class="token punctuation">;</span>
+
+<span class="token comment">// result: true</span>
+<span class="token property"><span class="token variable">$same</span></span><span class="token punctuation">:</span> color.<span class="token function">same</span><span class="token punctuation">(</span><span class="token variable">$orange-rgb</span><span class="token punctuation">,</span> <span class="token variable">$orange-oklch</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="existing-sass-color-functions" tabindex="-1">Existing Sass Color Functions<a class="anchor" href="#existing-sass-color-functions"><span class="visuallyhidden">Existing Sass Color Functions<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<h4 id="color-scale-color-adjust-and-color-change" tabindex="-1"><code>color.scale()</code>, <code>color.adjust()</code>, and <code>color.change()</code><a class="anchor" href="#color-scale-color-adjust-and-color-change"><span class="visuallyhidden">color.scale(), color.adjust(), and color.change()<span class="widont">&nbsp;</span>permalink</span></a></h4>
+<p>By default, all Sass color transformations are handled and returned in the color
+space of the original color parameter. However, all relevant functions now allow
+specifying an explicit color space for transformations. For example, lightness <span class="amp">&amp;</span>
+darkness adjustments are most reliable in <code>oklch</code>:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$brand</span></span><span class="token punctuation">:</span> <span class="token function">hsl</span><span class="token punctuation">(</span>0 100% 25.1%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// result: hsl(0 100% 43.8%)</span>
+<span class="token property"><span class="token variable">$hsl-lightness</span></span><span class="token punctuation">:</span> color.<span class="token function">scale</span><span class="token punctuation">(</span><span class="token variable">$brand</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> 25%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// result: hsl(5.76 56% 45.4%)</span>
+<span class="token property"><span class="token variable">$oklch-lightness</span></span><span class="token punctuation">:</span> color.<span class="token function">scale</span><span class="token punctuation">(</span><span class="token variable">$brand</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$lightness</span></span><span class="token punctuation">:</span> 25%<span class="token punctuation">,</span> <span class="token property"><span class="token variable">$space</span></span><span class="token punctuation">:</span> oklch<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Note that the returned color is still emitted in the original color space, even
+when the adjustment is performed in a different<span class="widont">&nbsp;</span>space.</p>
+<h4 id="color-mix" tabindex="-1"><code>color.mix()</code><a class="anchor" href="#color-mix"><span class="visuallyhidden">color.mix() permalink</span></a></h4>
+<p>The <code>color.mix()</code> function will retain its existing behavior for legacy color
+spaces, but for new color spaces it will match <span class="caps">CSS</span>’s “color interpolation”
+specification. This is how <span class="caps">CSS</span> computes which color to use in between two colors
+in a gradient or an<span class="widont">&nbsp;</span>animation.</p>
+<h4 id="deprecations" tabindex="-1">Deprecations<a class="anchor" href="#deprecations"><span class="visuallyhidden">Deprecations permalink</span></a></h4>
+<p>A number of existing functions only make sense for legacy colors, and so are
+being deprecated in favor of color-space-friendly functions like
+<code>color.channel()</code> and <code>color.adjust()</code>:</p>
+<ul>
+<li><code>color.red()</code></li>
+<li><code>color.green()</code></li>
+<li><code>color.blue()</code></li>
+<li><code>color.hue()</code></li>
+<li><code>color.saturation()</code></li>
+<li><code>color.lightness()</code></li>
+<li><code>color.whiteness()</code></li>
+<li><code>color.blackness()</code></li>
+<li><code>adjust-hue()</code></li>
+<li><code>saturate()</code></li>
+<li><code>desaturate()</code></li>
+<li><code>transparentize()</code>/<code>fade-out()</code></li>
+<li><code>opacify()</code>/<code>fade-in()</code></li>
+<li><code>lighten()</code>/<code>darken()</code></li>
+</ul>
+<h2 id="let-us-know-what-you-think" tabindex="-1">Let Us Know What You Think!<a class="anchor" href="#let-us-know-what-you-think"><span class="visuallyhidden">Let Us Know What You Think!<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>There’s lots more detail to this proposal, and it’s not set in stone yet. We
+want your feedback on it! Read it over <a href="https://github.com/sass/sass/blob/main/proposal/color-4-new-spaces.md#deprecated-functions">on GitHub</a>, and <a href="https://github.com/sass/sass/issues/new">file an issue</a> with any
+thoughts or concerns you may<span class="widont">&nbsp;</span>have.</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/request-for-comments-color-spaces/ -->
+  </body>
+</html>

@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Request for Comments: New Embedded Protocol</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 037-rfc-embedded-protocol-2">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Request for Comments: New Embedded<span class="widont">&nbsp;</span>Protocol</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 20 May 2023 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>If you’re not an author of a host package for the Embedded Sass Protocol, you
+can skip this blog post—although if you’re a big enough nerd, you may find it
+interesting<span class="widont">&nbsp;</span>regardless!</p>
+<p>We’re planning to make a number of breaking changes to the Embedded Sass
+Protocol, and we want your feedback before we lock in the new way of doing
+things. We intend to make a number of breaking changes all at once to keep the
+total number of disruptions to a<span class="widont">&nbsp;</span>minimum.</p>
+<p>We’re planning two major breaking<span class="widont">&nbsp;</span>changes:</p>
+<ol>
+<li>
+<p>The Dart Sass embedded host will no longer be released as a separate
+executable. It will now be bundled into the main Dart Sass executable,
+accessible by running <code>sass --embedded</code>.</p>
+</li>
+<li>
+<p>Every packet in the embedded protocol now includes a compilation <span class="caps">ID</span> as part
+of the packet structure, rather than declaring it in the protocol buffer<span class="widont">&nbsp;</span>definitions.</p>
+</li>
+</ol>
+<p>We’re using this opportunity to also introduce three much smaller breaking<span class="widont">&nbsp;</span>changes:</p>
+<ol>
+<li>
+<p>The specification for the embedded protocol and the protocol buffer
+definition have been moved to <a href="https://github.com/sass/sass/blob/main/spec/embedded-protocol.md">the Sass language repository</a> so that they can
+be updated at the same time as changes to the language and the <span class="caps">JS</span><span class="widont">&nbsp;</span><span class="caps">API</span>.</p>
+</li>
+<li>
+<p>The embedded protocol now explicitly declares optional fields using the
+protocol buffers language feature. This means that “default values” for
+various fields are no longer considered to be<span class="widont">&nbsp;</span>unset.</p>
+</li>
+<li>
+<p>The <code>CompilationSuccess.loaded_urls</code> field has been moved to
+<code>CompilationResult.loaded_urls</code> so that it’s available even when a
+compilation fails. This allows watcher implementations to know which files to
+watch to redo a failed<span class="widont">&nbsp;</span>compilation.</p>
+</li>
+</ol>
+<p>The repository-organization changes have already been made, but the changes to
+the protocol itself are fully documented <a href="https://github.com/sass/sass/blob/main/accepted/embedded-protocol-2.md">in a proposal in the language<span class="widont">&nbsp;</span>repository</a>.</p>
+<h2 id="combining-executables" tabindex="-1">Combining Executables<a class="anchor" href="#combining-executables"><span class="visuallyhidden">Combining Executables permalink</span></a></h2>
+<p>The primary benefit of folding Embedded Dart Sass into the main Dart Sass
+executable is to provide embedded hosts an easy way to expose the standard Dart
+Sass command-line <span class="caps">API</span> to users. Now every user who installs any embedded host
+will have the full Dart Sass executable available to them at native Dart <span class="caps">VM</span><span class="widont">&nbsp;</span>speeds.</p>
+<p>This also helps simplify the Sass team’s organization by reducing the number of
+separate repositories and release processes we need to<span class="widont">&nbsp;</span>manage.</p>
+<h2 id="wire-level-compilation-id" tabindex="-1">Wire-Level Compilation <span class="caps">ID</span><a class="anchor" href="#wire-level-compilation-id"><span class="visuallyhidden">Wire-Level Compilation <span class="caps">ID</span><span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>We’re pulling the compilation <span class="caps">ID</span> out to the protocol level in order to provide
+better concurrency, particularly on the side of the embedded compiler. Sass
+compilations done by the embedded compiler don’t share any state between one
+another, which means that they could in theory be run in totally separate worker
+threads. However, with the embedded protocol as it exists today, directing each
+message to the correct worker thread requires parsing the entire message on the
+main thread to determine which compilation it belongs to, then parsing it
+<em>again</em> in the worker thread to actually handle<span class="widont">&nbsp;</span>it.</p>
+<p>Making the compilation <span class="caps">ID</span> part of the protocol itself solves this issue. Each
+endpoint can read the <span class="caps">ID</span>, look up the worker thread that’s handling the
+compilation, and pass the message on to that thread without parsing the rest of
+the message. This makes concurrency both easier and more efficient, which will
+help ensure that large compilations happen as fast as<span class="widont">&nbsp;</span>possible.</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/rfc-embedded-protocol-2/ -->
+  </body>
+</html>

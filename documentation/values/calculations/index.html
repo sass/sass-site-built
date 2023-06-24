@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Calculations</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation values calculations">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Calculations</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section open selected">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="open selected">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+  <div class="sl-c-introduction">
+    <p>Calculations are how Sass represents the <code>calc()</code> function, as well as similar functions like <code>clamp()</code>, <code>min()</code>, and <code>max()</code>. Sass will simplify these as much as possible, even if they’re combined with one<span class="widont">&nbsp;</span>another.</p>
+
+  </div>
+
+
+
+              <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.40.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>LibSass, Ruby Sass, and versions of Dart Sass prior to 1.40.0 parse <code>calc()</code>
+as a <a href="/documentation/syntax/special-functions#element-progid-and-expression">special function</a> like <code>element()</code>.</p>
+<p>LibSass, Ruby Sass, and versions of Dart Sass prior to 1.31.0 parse <code>clamp()</code>
+as a <a href="/documentation/at-rules/function/#plain-css-functions">plain <span class="caps">CSS</span> function</a> rather than supporting special syntax within it.
+Versions of Dart Sass between 1.31.0 and 1.40.0 parse <code>clamp()</code> as a <a href="/documentation/syntax/special-functions#element-progid-and-expression">special
+function</a> like <code>element()</code>.</p>
+  </div>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-calculations-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-calculations-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-calculations-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> <span class="token function">calc</span><span class="token punctuation">(</span>400px <span class="token operator">+</span> 10%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// calc(400px + 10%)</span>&#10;<span class="token keyword">@debug</span> <span class="token function">calc</span><span class="token punctuation">(</span>400px <span class="token operator">/</span> 2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 200px</span>&#10;<span class="token keyword">@debug</span> <span class="token function">min</span><span class="token punctuation">(</span>100px<span class="token punctuation">,</span> <span class="token function">calc</span><span class="token punctuation">(</span>1rem <span class="token operator">+</span> 10%<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// min(100px, 1rem + 10%)</span>&#10;</code></pre></div>
+<div id="example-calculations-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> calc(400px <span class="token atrule">+</span> 10%)  // calc(400px <span class="token atrule">+</span> 10%)</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> calc(400px / 2)  // 200px</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> min(100px, calc(1rem <span class="token atrule">+</span> 10%) ; // min(100px, 1rem <span class="token atrule">+</span> 10%)</span>&#10;</code></pre></div>
+</div>
+<p>Calculations use a special syntax that’s different from normal SassScript. It’s
+the same syntax as the <span class="caps">CSS</span> <code>calc()</code>, but with the additional ability to use
+<a href="/documentation/variables">Sass variables</a> and call <a href="/documentation/modules">Sass functions</a>. This means that <code>/</code> is always a
+division operator within a<span class="widont">&nbsp;</span>calculation!</p>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>The arguments to a Sass function call use the normal Sass syntax, rather than
+the special calculation<span class="widont">&nbsp;</span>syntax!</p>
+</div>
+<p>You can also use <a href="/documentation/interpolation">interpolation</a> in a calculation. However, if you do, nothing
+in the parentheses that surround that interpolation will be simplified or
+type-checked, so it’s easy to end up with extra verbose or even invalid <span class="caps">CSS</span>.
+Rather than writing <code>calc(10px + #{$var})</code>, just write <code>calc(10px + $var)</code>!</p>
+<h2 id="simplification" tabindex="-1">Simplification<a class="anchor" href="#simplification"><span class="visuallyhidden">Simplification permalink</span></a></h2>
+<p>Sass will simplify adjacent operations in calculations if they use units that
+can be combined at compile-time, such as <code>1in + 10px</code> or <code>5s * 2</code>. If possible,
+it’ll even simplify the whole calculation to a single number—for example,
+<code>clamp(0px, 30px, 20px)</code> will return <code>20px</code>.</p>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>This means that a calculation expression won’t necessarily always return a
+calculation! If you’re writing a Sass library, you can always use the
+<a href="/documentation/modules/meta#type-of"><code>meta.type-of()</code></a> function to determine what type you’re dealing<span class="widont">&nbsp;</span>with.</p>
+</div>
+<p>Calculations will also be simplified within other calculations. In particular,
+if a <code>calc()</code> end up inside any other calculation, the function call will be
+removed and it’ll be replaced by a plain old<span class="widont">&nbsp;</span>operation.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-simplification-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-simplification-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-simplification-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-simplification-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$width</span></span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>400px <span class="token operator">+</span> 10%<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token selector">.sidebar </span><span class="token punctuation">{</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token variable">$width</span><span class="token punctuation">;</span>&#10;  <span class="token property">padding-left</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token variable">$width</span> <span class="token operator">/</span> 4<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-simplification-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$width</span><span class="token punctuation">:</span> calc(400px <span class="token operator">+</span> 10<span class="token operator">%</span>)</span>&#10;&#10;<span class="token selector">.sidebar</span>&#10;<span class="token property-line">  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token variable">$width</span></span>&#10;<span class="token property-line">  <span class="token property">padding-left</span><span class="token punctuation">:</span> calc(<span class="token variable">$width</span> <span class="token operator">/</span> 4)</span>&#10;&#10;</code></pre></div>
+<div id="example-simplification-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.sidebar</span> <span class="token punctuation">{</span>&#10;  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>400px + 10%<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token property">padding-left</span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token punctuation">(</span>400px + 10%<span class="token punctuation">)</span> / 4<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;</code></pre></div>
+</div>
+<h2 id="operations" tabindex="-1">Operations<a class="anchor" href="#operations"><span class="visuallyhidden">Operations permalink</span></a></h2>
+<p>You can’t use calculations with normal SassScript operations like <code>+</code> and <code>*</code>.
+If you want to write some math functions that allow calculations just write them
+within their own <code>calc()</code> expressions—if they’re passed a bunch of numbers with
+compatible units, they’ll return plain numbers as well, and if they’re passed
+calculations they’ll return<span class="widont">&nbsp;</span>calculations.</p>
+<p>This restriction is in place to make sure that if calculations <em>aren’t</em> wanted,
+they throw an error as soon as possible. Calculations can’t be used everywhere
+plain numbers can: they can’t be injected into <span class="caps">CSS</span> identifiers (such as
+<code>.item-#{$n}</code>), for example, and they can’t be passed to Sass’s built-in <a href="/documentation/modules/math">math
+functions</a>. Reserving SassScript operations for plain numbers makes it clear
+exactly where calculations are allowed and where they<span class="widont">&nbsp;</span>aren’t.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-calc-operations-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-calc-operations-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-calc-operations-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$width</span></span><span class="token punctuation">:</span> <span class="token function">calc</span><span class="token punctuation">(</span>100% <span class="token operator">+</span> 10px<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@debug</span> <span class="token variable">$width</span> <span class="token operator">*</span> 2<span class="token punctuation">;</span> <span class="token comment">// Error!</span>&#10;<span class="token keyword">@debug</span> <span class="token function">calc</span><span class="token punctuation">(</span><span class="token variable">$width</span> <span class="token operator">*</span> 2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// calc((100% + 10px) * 2);</span>&#10;</code></pre></div>
+<div id="example-calc-operations-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$width</span><span class="token punctuation">:</span> calc(100<span class="token operator">%</span> <span class="token operator">+</span> 10px);</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> $width * 2; // Error!</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> calc($width * 2); // calc((100% <span class="token atrule">+</span> 10px) * 2);</span>&#10;</code></pre></div>
+</div>
+<h2 id="constants" tabindex="-1">Constants<a class="anchor" href="#constants"><span class="visuallyhidden">Constants permalink</span></a></h2>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.60.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Calculations can also contain constants, which are written as <span class="caps">CSS</span> identifiers.
+For forwards-compatibility with future <span class="caps">CSS</span> specs, <em>all</em> identifiers are allowed,
+and by default they’re just treated as unquoted strings that are passed-through<span class="widont">&nbsp;</span>as-is.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-calc-constants-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-calc-constants-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-calc-constants-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> <span class="token function">calc</span><span class="token punctuation">(</span>h <span class="token operator">+</span> 30deg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// calc(h + 30deg);</span>&#10;</code></pre></div>
+<div id="example-calc-constants-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> calc(h <span class="token atrule">+</span> 30deg)  // calc(h <span class="token atrule">+</span> 30deg);</span>&#10;</code></pre></div>
+</div>
+<p>Sass automatically resolves a few special constant names that are specified in
+<span class="caps">CSS</span> to unitless<span class="widont">&nbsp;</span>numbers:</p>
+<ul>
+<li>
+<p><code>pi</code> is a shorthand for the <a href="https://en.wikipedia.org/wiki/Pi">mathematical constant <em>π</em></a>.</p>
+</li>
+<li>
+<p><code>e</code> is a shorthand for the <a href="https://en.wikipedia.org/wiki/E_(mathematical_constant)">mathematical constant <em>e</em></a>.</p>
+</li>
+<li>
+<p><code>infinity</code>, <code>-infinity</code>, and <code>NaN</code> represent the corresponding floating-point<span class="widont">&nbsp;</span>values.</p>
+</li>
+</ul>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-unitless-numbers-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-unitless-numbers-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-unitless-numbers-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">'sass:math'</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> <span class="token function">calc</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3.1415926536</span>&#10;<span class="token keyword">@debug</span> <span class="token function">calc</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 2.7182818285</span>&#10;<span class="token keyword">@debug</span> <span class="token function">calc</span><span class="token punctuation">(</span>infinity<span class="token punctuation">)</span> <span class="token operator">></span> math.<span class="token variable">$max-number</span><span class="token punctuation">;</span>  <span class="token comment">// true</span>&#10;<span class="token keyword">@debug</span> <span class="token function">calc</span><span class="token punctuation">(</span>-infinity<span class="token punctuation">)</span> <span class="token operator">&lt;</span> math.<span class="token variable">$min-number</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;</code></pre></div>
+<div id="example-unitless-numbers-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> 'sass:math'</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> calc(pi)  // 3.1415926536</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> calc(e)   // 2.7182818285</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> calc(infinity) > math.$max-number   // true</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> calc(-infinity) &lt; math.$min-number  // true</span>&#10;</code></pre></div>
+</div>
+<h2 id="min-and-max" tabindex="-1"><code>min()</code> and <code>max()</code><a class="anchor" href="#min-and-max"><span class="visuallyhidden">min() and max()<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility (Special function syntax):
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since >=1.11.0 <1.42.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>LibSass, Ruby Sass, and versions of Dart Sass prior to 1.11.0 <em>always</em> parse
+<code>min()</code> and <code>max()</code> as Sass functions. To create a plain <span class="caps">CSS</span> <code>min()</code> or
+<code>max()</code> call for those implementations, you can write something like
+<code>unquote(&quot;min(#{$padding}, env(safe-area-inset-left))&quot;)</code> instead.</p>
+<p>Versions of Dart Sass between 1.11.0 and 1.40.0, and between 1.40.1 and 1.42.0
+parse <code>min()</code> and <code>max()</code> functions as <a href="/documentation/syntax/special-functions">special functions</a> if they’re valid
+plain <span class="caps">CSS</span>, but parse them as Sass functions if they contain Sass features
+other than interpolation, like variables or function<span class="widont">&nbsp;</span>calls.</p>
+<p>Dart Sass 1.41.0 parses <code>min()</code> and <code>max()</code> functions as calculations, but
+doesn’t allow unitless numbers to be combined with numbers with units. This
+was backwards-incompatible with the global <code>min()</code> and <code>max()</code> functions, so
+that behavior was<span class="widont">&nbsp;</span>reverted.</p>
+  </div>
+<p><span class="caps">CSS</span> added support for <a href="https://drafts.csswg.org/css-values-4/#calc-notation"><code>min()</code> and <code>max()</code> functions</a> in Values and Units Level
+4, from where they were quickly adopted by Safari <a href="https://webkit.org/blog/7929/designing-websites-for-iphone-x/">to support the iPhoneX</a>. But
+Sass supported its own <a href="/documentation/modules/math#min"><code>min()</code></a> and <a href="/documentation/modules/math#max"><code>max()</code></a> functions long before this, and
+it needed to be backwards-compatible with all those existing stylesheets. This
+led to the need for extra-special syntactic<span class="widont">&nbsp;</span>cleverness.</p>
+<p>If a <code>min()</code> or <code>max()</code> function call is a valid calculation expression, it will
+be parsed as a calculation. But as soon as any part of the call contains a
+SassScript feature that isn’t supported in a calculation, like the <a href="/documentation/operators/numeric">modulo
+operator</a>, it’s parsed as a call to Sass’s core <code>min()</code> or <code>max()</code> function
+instead.</p>
+<p>Since calculations are simplified to numbers when possible anyway, the only
+substantive difference is that the Sass functions only support units that can be
+combined at build time, so <code>min(12px % 10, 10%)</code> will throw an<span class="widont">&nbsp;</span>error.</p>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Other calculations don’t allow unitless numbers to be added to, subtracted
+from, or compared to numbers with units. <code>min()</code> and <code>max()</code> are different,
+though: for backwards-compatibility with the global Sass <code>min()</code> and <code>max()</code>
+functions which allow unit/unitless mixing for historical reasons, these units
+can be mixed as long as they’re contained directly within a <code>min()</code> or <code>max()</code>
+calculation.</p>
+</div>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-min-max-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-min-max-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-min-max-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-min-max-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$padding</span></span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>&#10;&#10;<span class="token selector">.post </span><span class="token punctuation">{</span>&#10;  <span class="token comment">// Since these max() calls are valid calculation expressions, they're</span>&#10;  <span class="token comment">// parsed as calculations.</span>&#10;  <span class="token property">padding-left</span><span class="token punctuation">:</span> <span class="token function">max</span><span class="token punctuation">(</span><span class="token variable">$padding</span><span class="token punctuation">,</span> <span class="token function">env</span><span class="token punctuation">(</span>safe-area-inset-left<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token property">padding-right</span><span class="token punctuation">:</span> <span class="token function">max</span><span class="token punctuation">(</span><span class="token variable">$padding</span><span class="token punctuation">,</span> <span class="token function">env</span><span class="token punctuation">(</span>safe-area-inset-right<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.sidebar </span><span class="token punctuation">{</span>&#10;  <span class="token comment">// Since these use the SassScript-only modulo operator, they're parsed as</span>&#10;  <span class="token comment">// SassScript function calls.</span>&#10;  <span class="token property">padding-left</span><span class="token punctuation">:</span> <span class="token function">max</span><span class="token punctuation">(</span><span class="token variable">$padding</span> <span class="token operator">%</span> 10<span class="token punctuation">,</span> 20px<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token property">padding-right</span><span class="token punctuation">:</span> <span class="token function">max</span><span class="token punctuation">(</span><span class="token variable">$padding</span> <span class="token operator">%</span> 10<span class="token punctuation">,</span> 20px<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-min-max-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$padding</span><span class="token punctuation">:</span> 12px</span>&#10;&#10;<span class="token selector">.post</span>&#10;  <span class="token comment">// Since these max() calls are valid calculation expressions, they're</span>&#10;  <span class="token comment">// parsed as calculations.</span>&#10;<span class="token property-line">  <span class="token property">padding-left</span><span class="token punctuation">:</span> max(<span class="token variable">$padding</span>, env(safe-area-inset-left))</span>&#10;<span class="token property-line">  <span class="token property">padding-right</span><span class="token punctuation">:</span> max(<span class="token variable">$padding</span>, env(safe-area-inset-right))</span>&#10;&#10;&#10;<span class="token selector">.sidebar</span>&#10;  <span class="token comment">// Since these use the SassScript-only modulo operator, they're parsed as</span>&#10;  <span class="token comment">// SassScript function calls.</span>&#10;<span class="token property-line">  <span class="token property">padding-left</span><span class="token punctuation">:</span> max(<span class="token variable">$padding</span> <span class="token operator">%</span> 10, 20px)</span>&#10;<span class="token property-line">  <span class="token property">padding-right</span><span class="token punctuation">:</span> max(<span class="token variable">$padding</span> <span class="token operator">%</span> 10, 20px)</span>&#10;&#10;</code></pre></div>
+<div id="example-min-max-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.post</span> <span class="token punctuation">{</span>&#10;  <span class="token property">padding-left</span><span class="token punctuation">:</span> <span class="token function">max</span><span class="token punctuation">(</span>12px<span class="token punctuation">,</span> <span class="token function">env</span><span class="token punctuation">(</span>safe-area-inset-left<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token property">padding-right</span><span class="token punctuation">:</span> <span class="token function">max</span><span class="token punctuation">(</span>12px<span class="token punctuation">,</span> <span class="token function">env</span><span class="token punctuation">(</span>safe-area-inset-right<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.sidebar</span> <span class="token punctuation">{</span>&#10;  <span class="token property">padding-left</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>&#10;  <span class="token property">padding-right</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/values/calculations/ -->
+  </body>
+</html>

@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Request For Comments: Module System</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 019-request-for-comments-module-system-proposal">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Request For Comments: Module<span class="widont">&nbsp;</span>System</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 27 November 2018 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>Many of the most frequently-requested features for Sass have to do with its
+imports. The import system that we’ve had since the very early releases of Sass
+is, to put it simply, not great. It does little more than textually include one
+Sass file in another, which makes it hard to keep track of where mixins,
+functions, and variables were defined and hard to be sure that any new additions
+won’t happen to conflict with something elsewhere in the project. To make
+matters worse, it overlaps with <span class="caps">CSS</span>’s built-in <code>@import</code> rule, which forces us
+to have <a href="/documentation/at-rules/import/">a bunch of heuristics</a>
+to decide which is<span class="widont">&nbsp;</span>which.</p>
+<p>Because of these problems and others, we’ve wanted to do a full overhaul of the
+way Sass files relate to one another for a long time. Over the last few years,
+I’ve been working with the Sass core team and Sass framework maintainers to
+create a proposal for a module system that’s fit to replace <code>@import</code>. That
+proposal is now in a place that the core team is pretty happy with, at least as
+a starting point, so we want to open it up for community<span class="widont">&nbsp;</span>feedback.</p>
+<p>If you want to read the full proposal, <a href="https://github.com/sass/language/blob/main/accepted/module-system.md">it’s available on
+GitHub</a>.
+Feel free to <a href="https://github.com/sass/language/issues/new">file issues</a> for any
+feedback you have. The main body of the proposal is written as a spec, so it’s
+very detailed, but the Goals, Summary, and <span class="caps">FAQ</span> sections (reproduced below)
+should be accessible to anyone familiar with<span class="widont">&nbsp;</span>Sass.</p>
+<h2 id="goals" tabindex="-1">Goals<a class="anchor" href="#goals"><span class="visuallyhidden">Goals permalink</span></a></h2>
+<h3 id="high-level" tabindex="-1">High-Level<a class="anchor" href="#high-level"><span class="visuallyhidden">High-Level permalink</span></a></h3>
+<p>These are the philosophical design goals for the module system as a whole. While
+they don’t uniquely specify a system, they do represent the underlying
+motivations behind many of the lower-level design<span class="widont">&nbsp;</span>decisions.</p>
+<ul>
+<li>
+<p><strong>Locality</strong>. The module system should make it possible to understand a Sass
+file by looking only at that file. An important aspect of this is that names
+in the file should be resolved based on the contents of the file rather than
+the global state of the compilation. This also applies to authoring: an author
+should be able to be confident that a name is safe to use as long as it
+doesn’t conflict with any name visible in the<span class="widont">&nbsp;</span>file.</p>
+</li>
+<li>
+<p><strong>Encapsulation</strong>. The module system should allow authors, particularly
+library authors, to choose what <span class="caps">API</span> they expose. They should be able to define
+entities for internal use without making those entities available for external
+users to access or modify. The organization of a library’s implementation into
+files should be flexible enough to change without changing the user-visible<span class="widont">&nbsp;</span><span class="caps">API</span>.</p>
+</li>
+<li>
+<p><strong>Configuration</strong>. Sass is unusual among languages in that its design leads to
+the use of files whose entire purpose is to produce side effects—specifically,
+to emit <span class="caps">CSS</span>. There’s also a broader class of libraries that may not emit <span class="caps">CSS</span>
+directly, but do define configuration variables that are used in computations,
+including computation of other top-level variables’ values. The module system
+should allow the user to flexibly use and configure modules with<span class="widont">&nbsp;</span>side-effects.</p>
+</li>
+</ul>
+<h3 id="low-level" tabindex="-1">Low-Level<a class="anchor" href="#low-level"><span class="visuallyhidden">Low-Level permalink</span></a></h3>
+<p>These are goals that are based less on philosophy than on practicality. For the
+most part, they’re derived from user feedback that we’ve collected about
+<code>@import</code> over the<span class="widont">&nbsp;</span>years.</p>
+<ul>
+<li>
+<p><strong>Import once</strong>. Because <code>@import</code> is a literal textual inclusion, multiple
+<code>@import</code>s of the same Sass file within the scope of a compilation will
+compile and run that file multiple times. At best this hurts compilation time
+for little benefit, and it can also contribute to bloated <span class="caps">CSS</span> output when the
+styles themselves are duplicated. The new module system should only compile a
+file<span class="widont">&nbsp;</span>once.</p>
+</li>
+<li>
+<p><strong>Backwards compatibility</strong>. We want to make it as easy as possible for people
+to migrate to the new module system, and that means making it work in
+conjunction with existing stylesheets that use <code>@import</code>. Existing stylesheets
+that only use <code>@import</code> should have identical importing behavior to earlier
+versions of Sass, and stylesheets should be able to change parts to <code>@use</code>
+without changing the whole thing at<span class="widont">&nbsp;</span>once.</p>
+</li>
+</ul>
+<h3 id="non-goals" tabindex="-1">Non-Goals<a class="anchor" href="#non-goals"><span class="visuallyhidden">Non-Goals permalink</span></a></h3>
+<p>These are potential goals that we have explicitly decided to avoid pursuing as
+part of this proposal for various reasons. Some of them may be on the table for
+future work, but we don’t consider them to be blocking the module<span class="widont">&nbsp;</span>system.</p>
+<ul>
+<li>
+<p><strong>Dynamic imports</strong>. Allowing the path to a module to be defined dynamically,
+whether by including variables or including it in a conditional block, moves
+away from being declarative. In addition to making stylesheets harder to read,
+this makes any sort of static analysis more difficult (and actually impossible
+in the general case). It also limits the possibility of future implementation<span class="widont">&nbsp;</span>optimizations.</p>
+</li>
+<li>
+<p><strong>Importing multiple files at once</strong>. In addition to the long-standing reason
+that this hasn’t been supported—that it opens authors up to sneaky and
+difficult-to-debug ordering bugs—this violates the principle of locality by
+obfuscating which files are imported and thus where names come<span class="widont">&nbsp;</span>from.</p>
+</li>
+<li>
+<p><strong>Extend-only imports</strong>. The idea of importing a file so that the <span class="caps">CSS</span> it
+generates isn’t emitted unless it’s <code>@extend</code>ed is cool, but it’s also a lot
+of extra work. This is the most likely feature to end up in a future release,
+but it’s not central enough to include in the initial module<span class="widont">&nbsp;</span>system.</p>
+</li>
+<li>
+<p><strong>Context-independent modules</strong>. It’s tempting to try to make the loaded form
+of a module, including the <span class="caps">CSS</span> it generates and the resolved values of all its
+variables, totally independent of the entrypoint that cause it to be loaded.
+This would make it possible to share loaded modules across multiple
+compilations and potentially even serialize them to the filesystem for
+incremental<span class="widont">&nbsp;</span>compilation.</p>
+<p>However, it’s not feasible in practice. Modules that generate <span class="caps">CSS</span> almost
+always do so based on some configuration, which may be changed by different
+entrypoints rendering caching useless. What’s more, multiple modules may
+depend on the same shared module, and one may modify its configuration before
+the other uses it. Forbidding this case in general would effectively amount to
+forbidding modules from generating <span class="caps">CSS</span> based on<span class="widont">&nbsp;</span>variables.</p>
+<p>Fortunately, implementations have a lot of leeway to cache information that
+the can statically determine to be context-independent, including source trees
+and potentially even constant-folded variable values and <span class="caps">CSS</span> trees. Full
+context independence isn’t likely to provide much value in addition to<span class="widont">&nbsp;</span>that.</p>
+</li>
+<li>
+<p><strong>Increased strictness</strong>. Large teams with many people often want stricter
+rules around how Sass stylesheets are written, to enforce best practices and
+quickly catch mistakes. It’s tempting to use a new module system as a lever to
+push strictness further; for example, we could make it harder to have partials
+directly generate <span class="caps">CSS</span>, or we could decline to move functions we’d prefer
+people avoid to the new built-in<span class="widont">&nbsp;</span>modules.</p>
+<p>As tempting as it is, though, we want to make all existing use-cases as easy
+as possible in the new system, <em>even if we think they should be avoided</em>. This
+module system is already a major departure from the existing behavior, and
+will require a substantial amount of work from Sass users to support. We want
+to make this transition as easy as possible, and part of that is avoiding
+adding any unnecessary hoops users have to jump through to get their existing
+stylesheets working in the new module<span class="widont">&nbsp;</span>system.</p>
+<p>Once <code>@use</code> is thoroughly adopted in the ecosystem, we can start thinking
+about increased strictness in the form of lints or TypeScript-style
+<code>--strict-*</code> flags.</p>
+</li>
+<li>
+<p><strong>Code splitting</strong>. The ability to split monolithic <span class="caps">CSS</span> into separate chunks
+that can be served lazily is important for maintaining quick load times for
+very large applications. However, it’s orthogonal to the problems that this
+module system is trying to solve. This system is primarily concerned with
+scoping Sass APIs (mixins, functions, and placeholders) rather than declaring
+dependencies between chunks of generated<span class="widont">&nbsp;</span><span class="caps">CSS</span>.</p>
+<p>We believe that this module system can work in concert with external
+code-splitting systems. For example, the module system can be used to load
+libraries that are used to style individual components, each of which is
+compiled to its own <span class="caps">CSS</span> file. These <span class="caps">CSS</span> files could then declare dependencies
+on one another using special comments or custom at-rules and be stitched
+together by a code-splitting<span class="widont">&nbsp;</span>post-processor.</p>
+</li>
+</ul>
+<h2 id="summary" tabindex="-1">Summary<a class="anchor" href="#summary"><span class="visuallyhidden">Summary permalink</span></a></h2>
+<p>This proposal adds two at-rules, <code>@use</code> and <code>@forward</code>, which may only appear at
+the top level of stylesheets before any rules (other than <code>@charset</code>). Together,
+they’re intended to completely replace <code>@import</code>, which will eventually be
+deprecated and even more eventually removed from the<span class="widont">&nbsp;</span>language.</p>
+<h3 id="use" tabindex="-1"><code>@use</code><a class="anchor" href="#use"><span class="visuallyhidden">@use permalink</span></a></h3>
+<p><code>@use</code> makes <span class="caps">CSS</span>, variables, mixins, and functions from another stylesheet
+accessible in the current stylesheet. By default, variables, mixins, and
+functions are available in a namespace based on the basename of the<span class="widont">&nbsp;</span><span class="caps">URL</span>.</p>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"bootstrap"</span><span class="token punctuation">;</span>
+
+<span class="token selector">.element </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> bootstrap.float-left<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In addition to namespacing, there are a few important differences between <code>@use</code>
+and <code>@import</code>:</p>
+<ul>
+<li><code>@use</code> only executes a stylesheet and includes its <span class="caps">CSS</span> once, no matter how
+many times that stylesheet is<span class="widont">&nbsp;</span>used.</li>
+<li><code>@use</code> only makes names available in the current stylesheet, as opposed to<span class="widont">&nbsp;</span>globally.</li>
+<li>Members whose names begin with <code>-</code> or <code>_</code> are private to the current
+stylesheet with <code>@use</code>.</li>
+<li>If a stylesheet includes <code>@extend</code>, that extension is only applied to
+stylesheets it imports, not stylesheets that import<span class="widont">&nbsp;</span>it.</li>
+</ul>
+<p>Note that placeholder selectors are <em>not</em> namespaced, but they <em>do</em> respect<span class="widont">&nbsp;</span>privacy.</p>
+<h4 id="controlling-namespaces" tabindex="-1">Controlling Namespaces<a class="anchor" href="#controlling-namespaces"><span class="visuallyhidden">Controlling Namespaces permalink</span></a></h4>
+<p>Although a <code>@use</code> rule’s default namespace is determined by the basename of its
+<span class="caps">URL</span>, it can also be set explicitly using <code>as</code>.</p>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"bootstrap"</span> <span class="token module-modifier keyword">as</span> b<span class="token punctuation">;</span>
+
+<span class="token selector">.element </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> b.float-left<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The special construct <code>as *</code> can also be used to include everything in the
+top-level namespace. Note that if multiple modules expose members with the same
+name and are used with <code>as *</code>, Sass will produce an<span class="widont">&nbsp;</span>error.</p>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"bootstrap"</span> <span class="token module-modifier keyword">as</span> *<span class="token punctuation">;</span>
+
+<span class="token selector">.element </span><span class="token punctuation">{</span>
+  <span class="token keyword">@include</span> float-left<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="configuring-libraries" tabindex="-1">Configuring Libraries<a class="anchor" href="#configuring-libraries"><span class="visuallyhidden">Configuring Libraries permalink</span></a></h4>
+<p>With <code>@import</code>, libraries are often configured by setting global variables that
+override <code>!default</code> variables defined by those libraries. Because variables are
+no longer global with <code>@use</code>, it supports a more explicit way of configuring
+libraries: the <code>with</code> clause.</p>
+<pre class="language-scss"><code class="language-scss"><span class="token comment">// bootstrap.scss</span>
+<span class="token property"><span class="token variable">$paragraph-margin-bottom</span></span><span class="token punctuation">:</span> 1rem <span class="token statement keyword">!default</span><span class="token punctuation">;</span>
+
+<span class="token selector">p </span><span class="token punctuation">{</span>
+  <span class="token property">margin-top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token variable">$paragraph-margin-bottom</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"bootstrap"</span> <span class="token module-modifier keyword">with</span> <span class="token punctuation">(</span>
+  <span class="token property"><span class="token variable">$paragraph-margin-bottom</span></span><span class="token punctuation">:</span> 1.2rem
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>This sets bootstrap’s <code>$paragraph-margin-bottom</code> variable to <code>1.2rem</code> before
+evaluating it. The <code>with</code> clause only allows variables defined in (or forwarded
+by) the module being imported, and only if they’re defined with <code>!default</code>, so
+users are protected against<span class="widont">&nbsp;</span>typos.</p>
+<h3 id="forward" tabindex="-1"><code>@forward</code><a class="anchor" href="#forward"><span class="visuallyhidden">@forward permalink</span></a></h3>
+<p>The <code>@forward</code> rule includes another module’s variables, mixins, and functions
+as part of the <span class="caps">API</span> exposed by the current module, without making them visible to
+code within the current module. It allows library authors to be able to split up
+their library among many different source files without sacrificing locality
+within those files. Unlike <code>@use</code>, forward doesn’t add any namespaces to<span class="widont">&nbsp;</span>names.</p>
+<pre class="language-scss"><code class="language-scss"><span class="token comment">// bootstrap.scss</span>
+<span class="token keyword">@forward</span> <span class="token string">"functions"</span><span class="token punctuation">;</span>
+<span class="token keyword">@forward</span> <span class="token string">"variables"</span><span class="token punctuation">;</span>
+<span class="token keyword">@forward</span> <span class="token string">"mixins"</span><span class="token punctuation">;</span></code></pre>
+<h4 id="visibility-controls" tabindex="-1">Visibility Controls<a class="anchor" href="#visibility-controls"><span class="visuallyhidden">Visibility Controls permalink</span></a></h4>
+<p>A <code>@forward</code> rule can choose to show only specific<span class="widont">&nbsp;</span>names:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@forward</span> <span class="token string">"functions"</span> <span class="token module-modifier keyword">show</span> color-yiq<span class="token punctuation">;</span></code></pre>
+<p>It can also hide names that are intended to be<span class="widont">&nbsp;</span>library-private:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@forward</span> <span class="token string">"functions"</span> <span class="token module-modifier keyword">hide</span> assert-ascending<span class="token punctuation">;</span></code></pre>
+<h4 id="extra-prefixing" tabindex="-1">Extra Prefixing<a class="anchor" href="#extra-prefixing"><span class="visuallyhidden">Extra Prefixing permalink</span></a></h4>
+<p>If you forward a child module through an all-in-one module, you may want to add
+some manual namespacing to that module. You can do what with the <code>as</code> clause,
+which adds a prefix to every member name that’s<span class="widont">&nbsp;</span>forwarded:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token comment">// material/_index.scss</span>
+<span class="token keyword">@forward</span> <span class="token string">"theme"</span> <span class="token module-modifier keyword">as</span> theme-*<span class="token punctuation">;</span></code></pre>
+<p>This way users can use the all-in-one module with well-scoped names for theme<span class="widont">&nbsp;</span>variables:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"material"</span> <span class="token module-modifier keyword">with</span> <span class="token punctuation">(</span><span class="token property"><span class="token variable">$theme-primary</span></span><span class="token punctuation">:</span> blue<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>or they can use the child module with simpler<span class="widont">&nbsp;</span>names:</p>
+<pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"material/theme"</span> <span class="token module-modifier keyword">with</span> <span class="token punctuation">(</span><span class="token property"><span class="token variable">$primary</span></span><span class="token punctuation">:</span> blue<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="import-compatibility" tabindex="-1"><code>@import</code> Compatibility<a class="anchor" href="#import-compatibility"><span class="visuallyhidden">@import Compatibility permalink</span></a></h3>
+<p>The Sass ecosystem won’t switch to <code>@use</code> overnight, so in the meantime it needs
+to interoperate well with <code>@import</code>. This is supported in both<span class="widont">&nbsp;</span>directions:</p>
+<ul>
+<li>
+<p>When a file that contains <code>@import</code>s is <code>@use</code>d, everything in its global
+namespace is treated as a single module. This module’s members are then
+referred to using its namespace as<span class="widont">&nbsp;</span>normal.</p>
+</li>
+<li>
+<p>When a file that contains <code>@use</code>s is <code>@import</code>ed, everything in its public <span class="caps">API</span>
+is added to the importing stylesheet’s global scope. This allows a library to
+control what specific names it exports, even for users who <code>@import</code> it rather
+than <code>@use</code> it.</p>
+</li>
+</ul>
+<p>In order to allow libraries to maintain their existing <code>@import</code>-oriented <span class="caps">API</span>,
+with explicit namespacing where necessary, this proposal also adds support for
+files that are only visible to <code>@import</code>, not to <code>@use</code>. They’re written
+<code>&quot;file.import.scss&quot;</code>, and imported when the user writes <code>@import &quot;file&quot;</code>.</p>
+<h3 id="built-in-modules" tabindex="-1">Built-In Modules<a class="anchor" href="#built-in-modules"><span class="visuallyhidden">Built-In Modules permalink</span></a></h3>
+<p>The new module system will also add seven built-in modules: <code>math</code>, <code>color</code>,
+<code>string</code>, <code>list</code>, <code>map</code>, <code>selector</code>, and <code>meta</code>. These will hold all the
+existing built-in Sass functions. Because these modules will (typically) be
+imported with a namespace, it will be much easier to use Sass functions without
+running into conflicts with plain <span class="caps">CSS</span><span class="widont">&nbsp;</span>functions.</p>
+<p>This in turn will make it much safer for Sass to add new functions. We expect to
+add a number of convenience functions to these modules in the<span class="widont">&nbsp;</span>future.</p>
+<h4 id="meta-load-css" tabindex="-1"><code>meta.load-css()</code><a class="anchor" href="#meta-load-css"><span class="visuallyhidden">meta.load-css() permalink</span></a></h4>
+<p>This proposal also adds a new built-in mixin, <code>meta.load-css($url, $with: ())</code>.
+This mixin dynamically loads the module with the given <span class="caps">URL</span> and includes its <span class="caps">CSS</span>
+(although its functions, variables, and mixins are not made available). This is
+a replacement for nested imports, and it helps address some use-cases of dynamic
+imports without many of the problems that would arise if new members could be
+loaded<span class="widont">&nbsp;</span>dynamically.</p>
+<h2 id="frequently-asked-questions" tabindex="-1">Frequently Asked Questions<a class="anchor" href="#frequently-asked-questions"><span class="visuallyhidden">Frequently Asked Questions<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<ul>
+<li>
+<p><strong>Why this privacy model?</strong> We considered a number of models for declaring
+members to be private, including a <span class="caps">JS</span>-like model where only members that were
+explicitly exported from a module were visible and a C#-like model with an
+explicit <code>@private</code> keyword. These models involve a lot more boilerplate,
+though, and they work particularly poorly for placeholder selectors where
+privacy may be mixed within a single style rule. Name-based privacy also
+provides a degree of compatibility with conventions libraries are already<span class="widont">&nbsp;</span>using.</p>
+</li>
+<li>
+<p><strong>Can I make a member library-private?</strong> There’s no language-level notion of a
+“library”, so library-privacy isn’t built in either. However, members used by
+one module aren’t automatically visible to downstream modules. If a module
+isn’t <a href="#forward"><code>@forward</code>ed</a> through a library’s main stylesheet, it won’t
+be visible to downstream consumers and thus is effectively library-private.
+<br><br> As a convention, we recommend that libraries write library-private
+stylesheets that aren’t intended to be used directly by their users in a
+directory named <code>src</code>.</p>
+</li>
+<li>
+<p><strong>How do I make my library configurable?</strong> If you have a large library made up
+of many source files that all share some core <code>!default</code>-based configuration,
+we recommend that you define that configuration in a file that gets forwarded
+from your library’s entrypoint and used by your library’s files. For<span class="widont">&nbsp;</span>example:</p>
+</li>
+</ul>
+<pre class="language-scss"><code class="language-scss"><span class="token comment">// bootstrap.scss</span>
+<span class="token keyword">@forward</span> <span class="token string">"variables"</span><span class="token punctuation">;</span>
+<span class="token keyword">@use</span> <span class="token string">"reboot"</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-scss"><code class="language-scss"><span class="token comment">// _variables.scss</span>
+<span class="token property"><span class="token variable">$paragraph-margin-bottom</span></span><span class="token punctuation">:</span> 1rem <span class="token statement keyword">!default</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-scss"><code class="language-scss"><span class="token comment">// _reboot.scss</span>
+<span class="token keyword">@use</span> <span class="token string">"variables"</span> <span class="token module-modifier keyword">as</span> *<span class="token punctuation">;</span>
+
+<span class="token selector">p </span><span class="token punctuation">{</span>
+  <span class="token property">margin-top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token variable">$paragraph-margin-bottom</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-scss"><code class="language-scss"><span class="token comment">// User's stylesheet</span>
+<span class="token keyword">@use</span> <span class="token string">"bootstrap"</span> <span class="token module-modifier keyword">with</span> <span class="token punctuation">(</span>
+  <span class="token property"><span class="token variable">$paragraph-margin-bottom</span></span><span class="token punctuation">:</span> 1.2rem
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="sending-feedback" tabindex="-1">Sending Feedback<a class="anchor" href="#sending-feedback"><span class="visuallyhidden">Sending Feedback permalink</span></a></h2>
+<p>This is still just a proposal. We’re pretty happy with the overall shape of the
+module system, but it’s not at all set in stone, and anything can change with
+enough feedback provided by users like you. If you have opinions, please <a href="https://github.com/sass/language/issues/new">file
+an issue on GitHub</a> or just <a href="https://twitter.com/SassCSS">tweet
+at @SassCSS</a>. We’ll take anything from “it looks
+awesome” to “it looks awful”, although the more specific you can be the more
+information we have to work<span class="widont">&nbsp;</span>with!</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/request-for-comments-module-system-proposal/ -->
+  </body>
+</html>

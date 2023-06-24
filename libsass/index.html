@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: LibSass</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="libsass">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">LibSass</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <h2>Wrappers</h2>
+<nav class="sl-c-list-navigation-wrapper">
+<ul>
+<li><a href="#sassc">SassC</a></li>
+<li><a href="#crystal">Crystal</a></li>
+<li><a href="#go">Go</a></li>
+<li><a href="#java">Java</a></li>
+<li><a href="#javascript">JavaScript</a></li>
+<li><a href="#lua">Lua</a></li>
+<li><a href="#net">.<span class="caps">NET</span></a></li>
+<li><a href="#node">Node</a></li>
+<li><a href="#perl">Perl</a></li>
+<li><a href="#php"><span class="caps">PHP</span></a></li>
+<li><a href="#python">Python</a></li>
+<li><a href="#ruby">Ruby</a></li>
+<li><a href="#r">R</a></li>
+<li><a href="#rust">Rust</a></li>
+<li><a href="#scala">Scala</a></li>
+</ul>
+</nav>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary">
+              
+                <h2>Resources</h2>
+<ul>
+<li><a href="https://benfrain.com/lightning-fast-sass-compiling-with-libsass-node-sass-and-grunt-sass/">Lightning fast Sass compiling with libsass, Node-sass and
+Grunt-sass</a>
+— by Ben Frain, August<span class="widont">&nbsp;</span>2013</li>
+</ul>
+
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+  <div class="sl-c-introduction">
+    <p>LibSass is an implementation of Sass in C/C++, designed to be easy to integrate into many different languages. However, as time wore on it ended up lagging behind <a href="/dart-sass">Dart Sass</a> in features and <span class="caps">CSS</span> compatibility. <strong>LibSass is now deprecated</strong>—new projects should use Dart Sass<span class="widont">&nbsp;</span>instead.</p>
+
+  </div>
+
+
+
+              <h2 id="wrappers" tabindex="-1">Wrappers<a class="anchor" href="#wrappers"><span class="visuallyhidden">Wrappers permalink</span></a></h2>
+<p>LibSass is just a library. To run the code locally (i.e. to compile your
+stylesheets), you need an implementer, or “wrapper”. There are a number of other
+wrappers for LibSass. We encourage you to write your own wrapper — the whole
+point of LibSass is that we want to bring Sass to many other languages, not just<span class="widont">&nbsp;</span>Ruby!</p>
+<p>Below are the LibSass wrappers that we’re currently aware of. Sometimes there
+are multiple wrappers per language – in those cases, we put the most
+recently-updated wrapper<span class="widont">&nbsp;</span>first.</p>
+<ul>
+<li>
+<h3 id="sassc">Sass C</h3>
+<p><a href="https://github.com/sass/sassc">SassC</a> (get it?) is a wrapper written in<span class="widont">&nbsp;</span>C.</p>
+<p>To run the compiler on your local machine, you need to build SassC. To build
+SassC, you must have either a local copy of the LibSass source or it must be
+installed into your system. For development, please use the source version.
+You must then setup an environment variable pointing to the LibSass folder,
+for<span class="widont">&nbsp;</span>example:</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token output">export SASS_LIBSASS_PATH=/Users/hampton/path/libsass
+</span></code></pre>
+<p>The executable will be in the bin folder. To run it, try something<span class="widont">&nbsp;</span>like:</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token output">./bin/sassc [input file] > output.css
+</span></code></pre>
+</li>
+<li>
+<h3 id="crystal">Crystal</h3>
+<p><a href="https://github.com/straight-shoota/sass.cr">sass.cr</a> is a LibSass wrapper for
+the <a href="https://crystal-lang.org/">Crystal programming<span class="widont">&nbsp;</span>language</a>.</p>
+</li>
+<li>
+<h3 id="go">Go</h3>
+<p><a href="https://github.com/wellington/go-libsass">go-libsass</a> has the most active
+GoLang wrapper. <a href="https://github.com/moovweb/gosass">gosass</a> is another LibSass<span class="widont">&nbsp;</span>wrapper.</p>
+<p><a href="https://github.com/c9s/c6">C6</a> is a Sass 3.2 compatible implementation
+written in pure GoLang that aims to extend Sass.
+<a href="https://github.com/wellington/sass">wellington/sass</a> is an in-progress pure
+Go Sass lexer, parser, and<span class="widont">&nbsp;</span>compiler.</p>
+</li>
+<li>
+<h3 id="java">Java</h3>
+<p>There is one Java wrapper — <a href="https://github.com/bit3/jsass">jsass</a>. There is
+also a plugin for Maven — <a href="https://gitlab.com/haynes/libsass-maven-plugin">LibSass Maven<span class="widont">&nbsp;</span>plugin</a>.</p>
+</li>
+<li>
+<h3 id="javascript">JavaScript</h3>
+<p>The <a href="https://github.com/medialize/sass.js">sass.js</a> project makes LibSass
+available as pure JavaScript. There’s a way to <a href="https://sass.js.org/">test it in the
+browser</a>, too.</p>
+</li>
+<li>
+<h3 id="lua">Lua</h3>
+<p>The Lua wrapper is found at
+<a href="https://github.com/craigbarnes/lua-sass">lua-sass</a>.</p>
+</li>
+<li>
+<h3 id="net">.<span class="caps">NET</span></h3>
+<p><a href="https://github.com/Taritsyn/LibSassHost">LibSass Host</a> is updated regularly,
+and is probably the best bet. There’s also
+<a href="https://github.com/sass/libsass-net">libsass-net</a> or
+<a href="https://github.com/TBAPI-0KA/NSass">NSass</a>, although they haven’t been
+updated in a<span class="widont">&nbsp;</span>while.</p>
+</li>
+<li>
+<h3 id="node">Node</h3>
+<p>The <a href="https://github.com/sass/node-sass">node-sass</a> project has proven to be
+popular, and we’ve taken it into the main Sass GitHub repo. Check out its
+package page <a href="https://www.npmjs.com/package/node-sass">here</a>, and <a href="https://twitter.com/nodesass">there’s a
+dedicated twitter account</a> for<span class="widont">&nbsp;</span>updates.</p>
+</li>
+<li>
+<h3 id="perl">Perl</h3>
+<p>The <a href="https://github.com/sass/perl-libsass"><span class="caps">CSS</span>::Sass</a> project is updated
+regularly. There’s the <a href="https://github.com/ysasaki/Text-Sass-XS">Text-Sass-<span class="caps">XS</span></a>
+project, too, although it hasn’t been updated in a<span class="widont">&nbsp;</span>while.</p>
+</li>
+<li>
+<h3 id="php"><span class="caps">PHP</span></h3>
+<p>The <a href="https://github.com/absalomedia/sassphp">SassPHP</a> project is an updated
+fork of an <a href="https://github.com/jamierumbelow/sassphp">older <span class="caps">PHP</span><span class="widont">&nbsp;</span>version</a>.</p>
+</li>
+<li>
+<h3 id="python">Python</h3>
+<p>The <a href="https://github.com/sass/libsass-python">libsass-python</a> project is
+updated regularly. There are more details on <a href="https://sass.github.io/libsass-python/">its own<span class="widont">&nbsp;</span>website</a>.</p>
+<p>Three other Python projects,
+<a href="https://github.com/pistolero/python-scss">python-scss</a>,
+<a href="https://github.com/rsenk330/pylibsass">pylibsass</a> and
+<a href="https://github.com/marianoguerra/SassPython">SassPython</a>, haven’t been
+updated in a<span class="widont">&nbsp;</span>while.</p>
+</li>
+<li>
+<h3 id="ruby">Ruby</h3>
+<p>LibSass has also been ported back into Ruby for the
+<a href="https://github.com/sass/sassc-ruby">sassc-ruby</a><span class="widont">&nbsp;</span>project.</p>
+</li>
+<li>
+<h3 id="r">R</h3>
+<p>The <a href="https://www.r-project.org/">R</a> <a href="https://github.com/rstudio/sass">Sass
+package</a> wraps LibSass with additional
+caching and bundling methods. <a href="https://rstudio.github.io/sass/">Extended<span class="widont">&nbsp;</span>documentation</a>.</p>
+</li>
+<li>
+<h3 id="rust">Rust</h3>
+<p>The <a href="https://github.com/compass-rs/sass-rs"><code>sass_rs</code></a> crate is a LibSass
+wrapper and is updated<span class="widont">&nbsp;</span>regularly.</p>
+</li>
+<li>
+<h3 id="scala">Scala</h3>
+<p>The only Scala project, <a href="https://github.com/kkung/Sass-Scala">Sass-Scala</a>,
+hasn’t been updated in a couple of<span class="widont">&nbsp;</span>years.</p>
+</li>
+</ul>
+<h2 id="about-lib-sass" tabindex="-1">About LibSass<a class="anchor" href="#about-lib-sass"><span class="visuallyhidden">About LibSass permalink</span></a></h2>
+<p>This project is the brainchild of <a href="https://twitter.com/HamptonMakes">Hampton
+Lintorn-Catlin</a>, the original creator of Sass.
+<a href="https://github.com/akhleung">Aaron Leung</a> is the primary<span class="widont">&nbsp;</span>developer.</p>
+<figure>
+  <img alt="LibSass logo" width="640" height="320" src="/assets/img/logos/libsass.png">
+</figure>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /libsass/ -->
+  </body>
+</html>

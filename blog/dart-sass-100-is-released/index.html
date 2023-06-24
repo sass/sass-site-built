@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Dart Sass 1.0.0 is Released</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 014-dart-sass-100-is-released">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Dart Sass 1.0.0 is<span class="widont">&nbsp;</span>Released</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 26 March 2018 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>I’ve just uploaded Dart Sass 1.0.0, the very first stable release, to
+<a href="https://github.com/sass/dart-sass/releases/tag/1.0.0-rc.1">GitHub</a>,
+<a href="https://www.npmjs.com/package/sass">npm</a>,
+<a href="https://community.chocolatey.org/packages/sass">Chocolatey</a>,
+<a href="https://github.com/sass/homebrew-sass">Homebrew</a>, and
+<a href="http://pub.dartlang.org/packages/sass">pub</a>. After working on it for almost two
+years, I’m thrilled to have a stable release out there and officially ready to
+use in real-world applications. <a href="/blog/announcing-dart-sass">All the reasons we chose
+Dart</a> as the implementation language are bearing
+fruit: Dart Sass is much faster than Ruby Sass, much easier to make available
+across operating systems and language environments, and much more<span class="widont">&nbsp;</span>maintainable.</p>
+<p>The 1.0.0 stable release indicates that Dart Sass is fully compatible with the
+Sass language as defined by <a href="http://github.com/sass/sass-spec">the sass-spec test
+suite</a>, and that its npm package is compatible
+with the <a href="https://github.com/sass/node-sass#usage">Node Sass
+<span class="caps">API</span></a>, with the
+exception of source map support which is <a href="https://github.com/sass/dart-sass/issues/2">coming<span class="widont">&nbsp;</span>soon</a>.</p>
+<p>I’ve also updated sass-lang.com to cover Dart Sass. The release bar now shows
+the latest version of all three major implementations, as well as links to their
+release notes and documentation about each one. The <a href="/install">install page</a>
+covers Dart Sass instead of Ruby Sass, and the <a href="/dart-sass">Dart Sass page</a>
+talks all about what Dart Sass is and the various ways it can be<span class="widont">&nbsp;</span>used.</p>
+<h3 id="what-s-next" tabindex="-1">What’s Next?<a class="anchor" href="#what-s-next"><span class="visuallyhidden">What’s Next? permalink</span></a></h3>
+<p>At first, the focus of Dart Sass was on compatibility with the Sass language.
+Once we reached that and <a href="/blog/dart-sass-is-in-beta">graduated to a beta
+release</a>, we shifted our focus to compatibility with
+the Node Sass <span class="caps">API</span>. Now that we’ve reached that, our primary aim for the next
+several months will be bringing the usability of Dart Sass up to (at least) the
+standard of Ruby Sass and Node<span class="widont">&nbsp;</span>Sass.</p>
+<p>This means focusing on a number of features outside the language that make
+working with Sass pleasant. This includes <a href="https://github.com/sass/dart-sass/issues/2">generating source
+maps</a> from both the command-line
+interface and the JavaScript <span class="caps">API</span>, <a href="https://github.com/sass/dart-sass/issues/264">adding a live watch
+mode</a>, and <a href="https://github.com/sass/dart-sass/issues/267">integrating Dart Sass
+into the Node ecosystem</a>. We’ve
+also got our eye on the possibility of creating <a href="https://github.com/sass/dart-sass/issues/249">a Ruby
+gem</a> that embeds Dart Sass with a
+Ruby Sass-like<span class="widont">&nbsp;</span><span class="caps">API</span>.</p>
+<p>Of course, I’ll also continue to keep on top of bug fixes and new <span class="caps">CSS</span> features.
+I probably won’t personally have a lot of bandwidth for adding new language
+features, but if anyone else is interested there are a number that <a href="https://github.com/sass/sass/issues?utf8=%E2%9C%93&amp;q=is%3Aopen+is%3Aissue+label%3A%22Help+Wanted%22+label%3APlanned">wouldn’t be
+too hard to
+add</a>.
+Dart is a very easy language to learn, and I’ve written up a <a href="https://github.com/sass/dart-sass/blob/main/CONTRIBUTING.md#readme">helpful guide on<span class="widont">&nbsp;</span>contributing</a>.</p>
+<h3 id="what-about-ruby-sass" tabindex="-1">What About Ruby Sass?<a class="anchor" href="#what-about-ruby-sass"><span class="visuallyhidden">What About Ruby Sass?<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>I’ll be posting a more detailed post about the future of Ruby Sass soon, but the
+abbreviated version is that it’s now officially deprecated. I’ll continue
+maintaining it for one more year from the date this blog post goes live,
+including fixing bugs and updating it to support new <span class="caps">CSS</span> features, but it won’t
+be getting any new language features. Once the one-year deprecation period is
+up, the repository will be archived and no new versions will be<span class="widont">&nbsp;</span>released.</p>
+<p>Of course, all that could change if someone is willing to step up as a new
+maintainer! It’s not an easy task, but it’s a chance to work on something that’s
+used by tons of people every day. If you’re interested, please email
+<a href="mailto:nex342@gmail.com">me</a> and <a href="mailto:chris@eppsteins.net">Chris</a> and we’ll
+talk to you about next<span class="widont">&nbsp;</span>steps.</p>
+<h3 id="give-it-a-whirl" tabindex="-1">Give It a Whirl<a class="anchor" href="#give-it-a-whirl"><span class="visuallyhidden">Give It a Whirl<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>One of the big benefits of switching to Dart is increased portability, which
+means it’s easier than ever to install Sass. Give it a try on whichever is
+easiest for<span class="widont">&nbsp;</span>you:</p>
+<ul>
+<li>
+<p>Standalone tarballs are <a href="https://github.com/sass/dart-sass/releases/tag/1.0.0">available on
+GitHub</a>, which you can
+just download and run from the command<span class="widont">&nbsp;</span>line.</p>
+</li>
+<li>
+<p>You can get the pure-JavaScript version from npm by running <code>npm install -g sass</code>.</p>
+</li>
+<li>
+<p><a href="https://chocolatey.org/">Chocolatey</a> users on Windows can run <code>choco install sass</code> (or <code>choco upgrade sass</code> if you already have<span class="widont">&nbsp;</span>it).</p>
+</li>
+<li>
+<p><a href="https://brew.sh/">Homebrew</a> users on Mac <span class="caps">OS</span> X can run <code>brew install sass/sass/sass</code> (or <code>brew upgrade sass</code> if you already have<span class="widont">&nbsp;</span>it).</p>
+</li>
+<li>
+<p>Or if you’re a Dart user, you can run <code>pub global activate sass</code>.</p>
+</li>
+</ul>
+<p>Now, get styling!</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/dart-sass-100-is-released/ -->
+  </body>
+</html>

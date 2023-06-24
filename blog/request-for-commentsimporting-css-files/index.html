@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Request For Comments: Importing CSS Files</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 016-request-for-commentsimporting-css-files">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Request For Comments: Importing <span class="caps">CSS</span><span class="widont">&nbsp;</span>Files</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 9 July 2018 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>As Dart Sass catches up with Ruby Sass in terms of usability, we’re starting
+work on adding new features to the language. The first feature we’re looking at
+is one that’s long been requested by users: adding support for importing plain
+<span class="caps">CSS</span> files without having to rename them to <code>.scss</code>. Not only do we expect this
+to be very useful, it’s already partially implemented in LibSass, so this will
+help bring the implementations more in line with one<span class="widont">&nbsp;</span>another.</p>
+<p>We’re also trying out a new process with this feature. In order to help keep the
+behavior of different implementations in sync, we’re starting with a prose
+specification of the feature before moving on to writing code. We’re also taking
+this as an opportunity to solicit feedback from you, the Sass community! We want
+to hear your thoughts on the new feature while we have a chance to revise it
+based on that<span class="widont">&nbsp;</span>feedback.</p>
+<h2 id="background" tabindex="-1">Background<a class="anchor" href="#background"><span class="visuallyhidden">Background permalink</span></a></h2>
+<p>Historically, the reference implementations of Sass—first Ruby Sass, then Dart
+Sass—only supported importing other Sass files. However, LibSass supported
+importing <span class="caps">CSS</span> files as well, interpreting them as though they were <span class="caps">SCSS</span>.
+Although this technically violated the <a href="/implementation">implementation guide</a>’s prohibition on
+unilaterally extending the language, these <span class="caps">CSS</span> imports were useful and were
+widely adopted in the Node.js<span class="widont">&nbsp;</span>community.</p>
+<p>This became particularly clear when, at the language team’s urging, LibSass
+added <a href="https://github.com/sass/libsass/issues/2611">deprecation warnings</a> for <span class="caps">CSS</span> imports and users were left
+without a suitable replacement. The language team came together to discuss the
+problem, and decided to move towards allowing <span class="caps">CSS</span> imports but forbidding the use
+of non-<span class="caps">CSS</span> features in the imported files. The proposal describes the specifics
+of that<span class="widont">&nbsp;</span>idea.</p>
+<p>LibSass’s behavior at time of writing is to import files with the extension
+<code>.css</code> at the same precedence level as those with the <code>.scss</code> and <code>.sass</code>
+extensions, and to throw an error if an import is ambiguous between a <code>.css</code>
+file and a <code>.scss</code> or <code>.sass</code> file.</p>
+<h2 id="summary" tabindex="-1">Summary<a class="anchor" href="#summary"><span class="visuallyhidden">Summary permalink</span></a></h2>
+<p>The proposal seeks to strike a balance between preserving compatibility with
+LibSass’s existing behavior and moving towards a more principled scheme for
+loading <span class="caps">CSS</span>. This is particularly important as we intend to allow <code>@use</code> to load
+<span class="caps">CSS</span> files without Sass features, so we want the existing <span class="caps">CSS</span> loading support to
+be as similar as<span class="widont">&nbsp;</span>possible.</p>
+<p>Locating <span class="caps">CSS</span> files for import works similarly under the proposal as it does in
+LibSass currently: a relative <code>.css</code> file takes precedence over files with any
+extension on the load path, a <code>.css</code> file earlier on the load path takes
+precedence over a file with any extension later on the load path, and <code>foo.css</code>
+takes precedence over <code>index/foo.scss</code>.</p>
+<p>The only difference in loading scheme occurs when an import is ambiguous between
+a <code>.css</code> file and a <code>.scss</code> or <code>.sass</code> file at the same path. LibSass currently
+produces an error here, but in order to maximize compatibility with existing
+Dart Sass (and Ruby Sass) behavior, the proposal has the <code>.scss</code> or <code>.sass</code> file
+taking precedence. This is not a breaking change to LibSass’s behavior, since it
+only applies in situations that would previously have produced an<span class="widont">&nbsp;</span>error.</p>
+<p>The proposal diverges significantly from LibSass in parsing the imported <span class="caps">CSS</span>
+files, though: it forbids all use of <span class="caps">SCSS</span> features in the parsed files. Most
+<span class="caps">SCSS</span> features produce errors (rather than compiling to plain, likely-invalid
+<span class="caps">CSS</span>) in order to help users who accidentally wrote <span class="caps">SCSS</span> in their <span class="caps">CSS</span> realize
+what’s going wrong. However, features like <code>@import</code> that overlap with plain <span class="caps">CSS</span>
+continue to be rendered as<span class="widont">&nbsp;</span><span class="caps">CSS</span>.</p>
+<p>In order to avoid a sudden backwards-incompatible change in LibSass, this also
+includes a proposal for a set of deprecation warnings that can be added to
+LibSass’s existing behavior to steer users away from using Sass features in
+their imported <span class="caps">CSS</span> without entirely breaking their build<span class="widont">&nbsp;</span>process.</p>
+<h2 id="giving-feedback" tabindex="-1">Giving Feedback<a class="anchor" href="#giving-feedback"><span class="visuallyhidden">Giving Feedback permalink</span></a></h2>
+<p>If you want more details on exactly how the proposed behavior will work, <a href="https://github.com/sass/language/blob/main/accepted/css-imports.md">head
+over to the <code>sass/language</code> repo and read the full
+proposal</a>.
+You can skip the Background and Summary sections, since they’re included above.
+Be aware, though, that it’s written to be a specification; it’s a great for
+figuring out how exactly an edge case should work, but it’s not as
+conversational as the sections quoted<span class="widont">&nbsp;</span>above.</p>
+<p>If you have any issues with the proposal as written, or if it doesn’t cover a
+use-case that’s important to you, <a href="https://github.com/sass/language/issues?utf8=%E2%9C%93&amp;q=is%3Aissue+is%3Aopen+label%3A%22proposal%3A+CSS+imports%22">please bring that up in the <code>sass/language</code>
+issue
+tracker</a>.
+We’ll be leaving it open for discussion for at least two weeks before we mark
+the proposal as “accepted” and move on to the implementation<span class="widont">&nbsp;</span>phase.</p>
+<p>Please be aware, though, that while we welcome community feedback, the design of
+Sass is ultimately in the hands of the language team. We’ll absolutely consider
+the perspectives and use-cases of users who speak up, but it’s also our job to
+consider all the users who are new to Sass or even to <span class="caps">CSS</span> and who don’t yet know
+to read blogs or comment on issue trackers. Remember that our careful
+decision-making made Sass what it is today, and have patience with us if we
+don’t make the decisions you would<span class="widont">&nbsp;</span>have!</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/request-for-commentsimporting-css-files/ -->
+  </body>
+</html>

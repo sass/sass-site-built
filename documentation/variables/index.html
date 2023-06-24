@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Variables</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation variables">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Variables</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="open selected">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section ">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+            <div class="sl-l-large-holy-grail__complementary sl-l-large-holy-grail__complementary--contents">
+              
+                
+                
+                
+                  <nav aria-labelledby="page-sections" class="page-sections sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+                    <h3 id="page-sections">Page Sections</h3>
+                    <ul><li>
+      <a href="#default-values" class="section open">Default Values</a><ul><li class="overview">
+      <a href="#default-values" >Overview</a>
+    </li><li>
+      <a href="#configuring-modules" class="open">Configuring Modules</a></li></ul>
+</li><li>
+      <a href="#built-in-variables" class="open">Built-in Variables</a></li><li>
+      <a href="#scope" class="section open">Scope</a><ul><li class="overview">
+      <a href="#scope" >Overview</a>
+    </li><li>
+      <a href="#shadowing" class="open">Shadowing</a></li><li>
+      <a href="#flow-control-scope" class="open">Flow Control<span class="widont">&nbsp;</span>Scope</a></li></ul>
+</li><li>
+      <a href="#advanced-variable-functions" class="open">Advanced Variable<span class="widont">&nbsp;</span>Functions</a></li></ul>
+
+                  </nav>
+                
+              
+            </div>
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+  <div class="sl-c-introduction">
+    <p>Sass variables are simple: you assign a value to a name that begins with <code>$</code>, and then you can refer to that name instead of the value itself. But despite their simplicity, they’re one of the most useful tools Sass brings to the table. Variables make it possible to reduce repetition, do complex math, configure libraries, and much<span class="widont">&nbsp;</span>more.</p>
+
+  </div>
+
+
+
+              <p>A variable declaration looks a lot like a <a href="/documentation/style-rules/declarations">property declaration</a>: it’s written
+<code>&lt;variable&gt;: &lt;expression&gt;</code>. Unlike a property, which can only be declared in a
+style rule or at-rule, variables can be declared anywhere you want. To use a
+variable, just include it in a<span class="widont">&nbsp;</span>value.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-variable-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-variable-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-variable-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-variable-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$base-color</span></span><span class="token punctuation">:</span> #c6538c<span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$border-dark</span></span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token variable">$base-color</span><span class="token punctuation">,</span> 0.88<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token selector">.alert </span><span class="token punctuation">{</span>&#10;  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token variable">$border-dark</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-variable-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$base-color</span><span class="token punctuation">:</span> #c6538c</span>&#10;<span class="token variable-line"><span class="token variable">$border-dark</span><span class="token punctuation">:</span> rgba(<span class="token variable">$base-color</span>, 0.88)</span>&#10;&#10;<span class="token selector">.alert</span>&#10;<span class="token property-line">  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token variable">$border-dark</span></span>&#10;&#10;</code></pre></div>
+<div id="example-variable-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.alert</span> <span class="token punctuation">{</span>&#10;  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token function">rgba</span><span class="token punctuation">(</span>198<span class="token punctuation">,</span> 83<span class="token punctuation">,</span> 140<span class="token punctuation">,</span> 0.88<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p><span class="caps">CSS</span> has <a href="/documentation/style-rules/declarations#custom-properties">variables of its own</a>, which are totally different than Sass
+variables. Know the<span class="widont">&nbsp;</span>differences!</p>
+<ul>
+<li>
+<p>Sass variables are all compiled away by Sass. <span class="caps">CSS</span> variables are included
+in the <span class="caps">CSS</span><span class="widont">&nbsp;</span>output.</p>
+</li>
+<li>
+<p><span class="caps">CSS</span> variables can have different values for different elements, but Sass
+variables only have one value at a<span class="widont">&nbsp;</span>time.</p>
+</li>
+<li>
+<p>Sass variables are <em>imperative</em>, which means if you use a variable and
+then change its value, the earlier use will stay the same. <span class="caps">CSS</span> variables are
+<em>declarative</em>, which means if you change the value, it’ll affect both
+earlier uses and later<span class="widont">&nbsp;</span>uses.</p>
+</li>
+</ul>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+<a href="#example-variable-heads-up-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+<a href="#example-variable-heads-up-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+<a href="#example-variable-heads-up-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-variable-heads-up-scss" class="ui-tabs-panel scss">
+<h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$variable</span></span><span class="token punctuation">:</span> value 1<span class="token punctuation">;</span>&#10;<span class="token selector">.rule-1 </span><span class="token punctuation">{</span>&#10;  <span class="token property">value</span><span class="token punctuation">:</span> <span class="token variable">$variable</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token property"><span class="token variable">$variable</span></span><span class="token punctuation">:</span> value 2<span class="token punctuation">;</span>&#10;<span class="token selector">.rule-2 </span><span class="token punctuation">{</span>&#10;  <span class="token property">value</span><span class="token punctuation">:</span> <span class="token variable">$variable</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-variable-heads-up-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+<h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$variable</span><span class="token punctuation">:</span> value 1</span>&#10;<span class="token selector">.rule-1</span>&#10;<span class="token property-line">  <span class="token property">value</span><span class="token punctuation">:</span> <span class="token variable">$variable</span></span>&#10;&#10;&#10;<span class="token variable-line"><span class="token variable">$variable</span><span class="token punctuation">:</span> value 2</span>&#10;<span class="token selector">.rule-2</span>&#10;<span class="token property-line">  <span class="token property">value</span><span class="token punctuation">:</span> <span class="token variable">$variable</span></span>&#10;&#10;</code></pre></div>
+<div id="example-variable-heads-up-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+<h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.rule-1</span> <span class="token punctuation">{</span>&#10;  <span class="token property">value</span><span class="token punctuation">:</span> value 1<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.rule-2</span> <span class="token punctuation">{</span>&#10;  <span class="token property">value</span><span class="token punctuation">:</span> value 2<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>Sass variables, like all Sass identifiers, treat hyphens and underscores as
+identical. This means that <code>$font-size</code> and <code>$font_size</code> both refer to the
+same variable. This is a historical holdover from the very early days of Sass,
+when it <em>only</em> allowed underscores in identifier names. Once Sass added
+support for hyphens to match <span class="caps">CSS</span>’s syntax, the two were made equivalent to
+make migration<span class="widont">&nbsp;</span>easier.</p>
+</div>
+<h2 id="default-values" tabindex="-1">Default Values<a class="anchor" href="#default-values"><span class="visuallyhidden">Default Values permalink</span></a></h2>
+<p>Normally when you assign a value to a variable, if that variable already had a
+value, its old value is overwritten. But if you’re writing a Sass library, you
+might want to allow your users to configure your library’s variables before you
+use them to generate<span class="widont">&nbsp;</span><span class="caps">CSS</span>.</p>
+<p>To make this possible, Sass provides the <code>!default</code> flag. This assigns a value
+to a variable <em>only if</em> that variable isn’t defined or its value is <a href="/documentation/values/null"><code>null</code></a>.
+Otherwise, the existing value will be<span class="widont">&nbsp;</span>used.</p>
+<h3 id="configuring-modules" tabindex="-1">Configuring Modules<a class="anchor" href="#configuring-modules"><span class="visuallyhidden">Configuring Modules permalink</span></a></h3>
+<dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.23.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass currently supports <code>@use</code>. Users of other implementations must
+use the <a href="/documentation/at-rules/import"><code>@import</code> rule</a> instead.</p>
+  </div>
+<p>Variables defined with <code>!default</code> can be configured when loading a module with
+the <a href="/documentation/at-rules/use"><code>@use</code> rule</a>. Sass libraries often use <code>!default</code> variables to allow
+their users to configure the library’s<span class="widont">&nbsp;</span><span class="caps">CSS</span>.</p>
+<p>To load a module with configuration, write <code>@use &lt;url&gt; with (&lt;variable&gt;: &lt;value&gt;, &lt;variable&gt;: &lt;value&gt;)</code>. The configured values will override the
+variables’ default values. Only variables written at the top level of the
+stylesheet with a <code>!default</code> flag can be<span class="widont">&nbsp;</span>configured.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 53.18181818181819%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-use-with-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-use-with-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-use-with-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-use-with-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// _library.scss</span>&#10;<span class="token property"><span class="token variable">$black</span></span><span class="token punctuation">:</span> #000 <span class="token statement keyword">!default</span><span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$border-radius</span></span><span class="token punctuation">:</span> 0.25rem <span class="token statement keyword">!default</span><span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$box-shadow</span></span><span class="token punctuation">:</span> 0 0.5rem 1rem <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token variable">$black</span><span class="token punctuation">,</span> 0.15<span class="token punctuation">)</span> <span class="token statement keyword">!default</span><span class="token punctuation">;</span>&#10;&#10;<span class="token selector">code </span><span class="token punctuation">{</span>&#10;  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token variable">$border-radius</span><span class="token punctuation">;</span>&#10;  <span class="token property">box-shadow</span><span class="token punctuation">:</span> <span class="token variable">$box-shadow</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// style.scss</span>&#10;<span class="token keyword">@use</span> <span class="token string">'library'</span> <span class="token module-modifier keyword">with</span> <span class="token punctuation">(</span>&#10;  <span class="token property"><span class="token variable">$black</span></span><span class="token punctuation">:</span> #222<span class="token punctuation">,</span>&#10;  <span class="token property"><span class="token variable">$border-radius</span></span><span class="token punctuation">:</span> 0.1rem&#10;<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;</code></pre></div>
+<div id="example-use-with-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// _library.sass</span>&#10;<span class="token variable-line"><span class="token variable">$black</span><span class="token punctuation">:</span> #000 !default</span>&#10;<span class="token variable-line"><span class="token variable">$border-radius</span><span class="token punctuation">:</span> 0.25rem !default</span>&#10;<span class="token variable-line"><span class="token variable">$box-shadow</span><span class="token punctuation">:</span> 0 0.5rem 1rem rgba(<span class="token variable">$black</span>, 0.15) !default</span>&#10;&#10;<span class="token selector">code</span>&#10;<span class="token property-line">  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token variable">$border-radius</span></span>&#10;<span class="token property-line">  <span class="token property">box-shadow</span><span class="token punctuation">:</span> <span class="token variable">$box-shadow</span></span>&#10;&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// style.sass</span>&#10;<span class="token atrule-line"><span class="token atrule">@use</span> 'library' with ($black: #222, $border-radius: 0.1rem)</span>&#10;&#10;&#10;&#10;</code></pre></div>
+<div id="example-use-with-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">code</span> <span class="token punctuation">{</span>&#10;  <span class="token property">border-radius</span><span class="token punctuation">:</span> 0.1rem<span class="token punctuation">;</span>&#10;  <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 0.5rem 1rem <span class="token function">rgba</span><span class="token punctuation">(</span>34<span class="token punctuation">,</span> 34<span class="token punctuation">,</span> 34<span class="token punctuation">,</span> 0.15<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<h2 id="built-in-variables" tabindex="-1">Built-in Variables<a class="anchor" href="#built-in-variables"><span class="visuallyhidden">Built-in Variables permalink</span></a></h2>
+<p>Variables that are defined by a <a href="/documentation/modules">built-in module</a> cannot be<span class="widont">&nbsp;</span>modified.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-built-in-variables-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-built-in-variables-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-built-in-variables-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:math"</span> <span class="token module-modifier keyword">as</span> math<span class="token punctuation">;</span>&#10;&#10;<span class="token comment">// This assignment will fail.</span>&#10;math.<span class="token property"><span class="token variable">$pi</span></span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>&#10;</code></pre></div>
+<div id="example-built-in-variables-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:math" as math</span>&#10;&#10;<span class="token comment">// This assignment will fail.</span>&#10;<span class="token property-line"><span class="token property">math.$pi</span><span class="token punctuation">:</span> 0</span>&#10;</code></pre></div>
+</div>
+<h2 id="scope" tabindex="-1">Scope<a class="anchor" href="#scope"><span class="visuallyhidden">Scope permalink</span></a></h2>
+<p>Variables declared at the top level of a stylesheet are <em>global</em>. This means
+that they can be accessed anywhere in their module after they’ve been declared.
+But that’s not true for all variables. Those declared in blocks (curly braces in
+<span class="caps">SCSS</span> or indented code in Sass) are usually <em>local</em>, and can only be accessed
+within the block they were<span class="widont">&nbsp;</span>declared.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 67.27272727272727%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-scope-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-scope-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-scope-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-scope-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$global-variable</span></span><span class="token punctuation">:</span> global value<span class="token punctuation">;</span>&#10;&#10;<span class="token selector">.content </span><span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$local-variable</span></span><span class="token punctuation">:</span> local value<span class="token punctuation">;</span>&#10;  <span class="token property">global</span><span class="token punctuation">:</span> <span class="token variable">$global-variable</span><span class="token punctuation">;</span>&#10;  <span class="token property">local</span><span class="token punctuation">:</span> <span class="token variable">$local-variable</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.sidebar </span><span class="token punctuation">{</span>&#10;  <span class="token property">global</span><span class="token punctuation">:</span> <span class="token variable">$global-variable</span><span class="token punctuation">;</span>&#10;&#10;  <span class="token comment">// This would fail, because $local-variable isn't in scope:</span>&#10;  <span class="token comment">// local: $local-variable;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-scope-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$global-variable</span><span class="token punctuation">:</span> global value</span>&#10;&#10;<span class="token selector">.content</span>&#10;<span class="token variable-line">  <span class="token variable">$local-variable</span><span class="token punctuation">:</span> local value</span>&#10;<span class="token property-line">  <span class="token property">global</span><span class="token punctuation">:</span> <span class="token variable">$global-variable</span></span>&#10;<span class="token property-line">  <span class="token property">local</span><span class="token punctuation">:</span> <span class="token variable">$local-variable</span></span>&#10;&#10;&#10;<span class="token selector">.sidebar</span>&#10;<span class="token property-line">  <span class="token property">global</span><span class="token punctuation">:</span> <span class="token variable">$global-variable</span></span>&#10;&#10;  <span class="token comment">// This would fail, because $local-variable isn't in scope:</span>&#10;  <span class="token comment">// local: $local-variable</span>&#10;&#10;</code></pre></div>
+<div id="example-scope-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.content</span> <span class="token punctuation">{</span>&#10;  <span class="token property">global</span><span class="token punctuation">:</span> global value<span class="token punctuation">;</span>&#10;  <span class="token property">local</span><span class="token punctuation">:</span> local value<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.sidebar</span> <span class="token punctuation">{</span>&#10;  <span class="token property">global</span><span class="token punctuation">:</span> global value<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<h3 id="shadowing" tabindex="-1">Shadowing<a class="anchor" href="#shadowing"><span class="visuallyhidden">Shadowing permalink</span></a></h3>
+<p>Local variables can even be declared with the same name as a global variable. If
+this happens, there are actually two different variables with the same name: one
+local and one global. This helps ensure that an author writing a local variable
+doesn’t accidentally change the value of a global variable they aren’t even
+aware<span class="widont">&nbsp;</span>of.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-shadowing-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-shadowing-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-shadowing-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-shadowing-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$variable</span></span><span class="token punctuation">:</span> global value<span class="token punctuation">;</span>&#10;&#10;<span class="token selector">.content </span><span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$variable</span></span><span class="token punctuation">:</span> local value<span class="token punctuation">;</span>&#10;  <span class="token property">value</span><span class="token punctuation">:</span> <span class="token variable">$variable</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.sidebar </span><span class="token punctuation">{</span>&#10;  <span class="token property">value</span><span class="token punctuation">:</span> <span class="token variable">$variable</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-shadowing-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$variable</span><span class="token punctuation">:</span> global value</span>&#10;&#10;<span class="token selector">.content</span>&#10;<span class="token variable-line">  <span class="token variable">$variable</span><span class="token punctuation">:</span> local value</span>&#10;<span class="token property-line">  <span class="token property">value</span><span class="token punctuation">:</span> <span class="token variable">$variable</span></span>&#10;&#10;&#10;<span class="token selector">.sidebar</span>&#10;<span class="token property-line">  <span class="token property">value</span><span class="token punctuation">:</span> <span class="token variable">$variable</span></span>&#10;&#10;</code></pre></div>
+<div id="example-shadowing-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.content</span> <span class="token punctuation">{</span>&#10;  <span class="token property">value</span><span class="token punctuation">:</span> local value<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.sidebar</span> <span class="token punctuation">{</span>&#10;  <span class="token property">value</span><span class="token punctuation">:</span> global value<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<p>If you need to set a global variable’s value from within a local scope (such as
+in a mixin), you can use the <code>!global</code> flag. A variable declaration flagged as
+<code>!global</code> will <em>always</em> assign to the global<span class="widont">&nbsp;</span>scope.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-global-variable-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-global-variable-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-global-variable-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-global-variable-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$variable</span></span><span class="token punctuation">:</span> first global value<span class="token punctuation">;</span>&#10;&#10;<span class="token selector">.content </span><span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$variable</span></span><span class="token punctuation">:</span> second global value !global<span class="token punctuation">;</span>&#10;  <span class="token property">value</span><span class="token punctuation">:</span> <span class="token variable">$variable</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.sidebar </span><span class="token punctuation">{</span>&#10;  <span class="token property">value</span><span class="token punctuation">:</span> <span class="token variable">$variable</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-global-variable-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$variable</span><span class="token punctuation">:</span> first global value</span>&#10;&#10;<span class="token selector">.content</span>&#10;<span class="token variable-line">  <span class="token variable">$variable</span><span class="token punctuation">:</span> second global value !global</span>&#10;<span class="token property-line">  <span class="token property">value</span><span class="token punctuation">:</span> <span class="token variable">$variable</span></span>&#10;&#10;&#10;<span class="token selector">.sidebar</span>&#10;<span class="token property-line">  <span class="token property">value</span><span class="token punctuation">:</span> <span class="token variable">$variable</span></span>&#10;&#10;</code></pre></div>
+<div id="example-global-variable-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.content</span> <span class="token punctuation">{</span>&#10;  <span class="token property">value</span><span class="token punctuation">:</span> second global value<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.sidebar</span> <span class="token punctuation">{</span>&#10;  <span class="token property">value</span><span class="token punctuation">:</span> second global value<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+<div class="compatibility">
+  Compatibility:
+</div><div>
+    <dt>Dart Sass</dt>
+    <dd>since 2.0.0</dd>
+  </div><div>
+    <dt>LibSass</dt>
+    <dd>✗</dd>
+  </div><div>
+    <dt>Ruby Sass</dt>
+    <dd>✗</dd>
+  </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+  <p>Older Sass versions allowed <code>!global</code> to be used for a variable that doesn’t
+exist yet. This behavior was deprecated to make sure each stylesheet
+declares the same variables no matter how it’s<span class="widont">&nbsp;</span>executed.</p>
+</div>
+<p>The <code>!global</code> flag may only be used to set a variable that has already been
+declared at the top level of a file. It <em>may not</em> be used to declare a new<span class="widont">&nbsp;</span>variable.</p>
+</div>
+<h3 id="flow-control-scope" tabindex="-1">Flow Control Scope<a class="anchor" href="#flow-control-scope"><span class="visuallyhidden">Flow Control Scope<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>Variables declared in <a href="/documentation/at-rules/control">flow control rules</a> have special scoping rules: they
+don’t shadow variables at the same level as the flow control rule. Instead, they
+just assign to those variables. This makes it much easier to conditionally
+assign a value to a variable, or build up a value as part of a<span class="widont">&nbsp;</span>loop.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 50%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-flow-control-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-flow-control-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-flow-control-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-flow-control-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token property"><span class="token variable">$dark-theme</span></span><span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token statement keyword">!default</span><span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$primary-color</span></span><span class="token punctuation">:</span> #f8bbd0 <span class="token statement keyword">!default</span><span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$accent-color</span></span><span class="token punctuation">:</span> #6a1b9a <span class="token statement keyword">!default</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@if</span> <span class="token selector"><span class="token variable">$dark-theme</span> </span><span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$primary-color</span></span><span class="token punctuation">:</span> <span class="token function">darken</span><span class="token punctuation">(</span><span class="token variable">$primary-color</span><span class="token punctuation">,</span> 60%<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token property"><span class="token variable">$accent-color</span></span><span class="token punctuation">:</span> <span class="token function">lighten</span><span class="token punctuation">(</span><span class="token variable">$accent-color</span><span class="token punctuation">,</span> 60%<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">.button </span><span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$primary-color</span><span class="token punctuation">;</span>&#10;  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token variable">$accent-color</span><span class="token punctuation">;</span>&#10;  <span class="token property">border-radius</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-flow-control-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token variable-line"><span class="token variable">$dark-theme</span><span class="token punctuation">:</span> true !default</span>&#10;<span class="token variable-line"><span class="token variable">$primary-color</span><span class="token punctuation">:</span> #f8bbd0 !default</span>&#10;<span class="token variable-line"><span class="token variable">$accent-color</span><span class="token punctuation">:</span> #6a1b9a !default</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@if</span> $dark-theme</span>&#10;<span class="token variable-line">  <span class="token variable">$primary-color</span><span class="token punctuation">:</span> darken(<span class="token variable">$primary-color</span>, 60<span class="token operator">%</span>)</span>&#10;<span class="token variable-line">  <span class="token variable">$accent-color</span><span class="token punctuation">:</span> lighten(<span class="token variable">$accent-color</span>, 60<span class="token operator">%</span>)</span>&#10;&#10;&#10;<span class="token selector">.button</span>&#10;<span class="token property-line">  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token variable">$primary-color</span></span>&#10;<span class="token property-line">  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid <span class="token variable">$accent-color</span></span>&#10;<span class="token property-line">  <span class="token property">border-radius</span><span class="token punctuation">:</span> 3px</span>&#10;&#10;</code></pre></div>
+<div id="example-flow-control-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.button</span> <span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #750c30<span class="token punctuation">;</span>&#10;  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #f5ebfc<span class="token punctuation">;</span>&#10;  <span class="token property">border-radius</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Variables in flow control scope can assign to existing variables in the outer
+scope, but new variables declared in flow control scope won’t be accessible in
+the outer scope. Make sure the variable is already declared before you assign
+to it, even if you need to declare it as <code>null</code>.</p>
+</div>
+<h2 id="advanced-variable-functions" tabindex="-1">Advanced Variable Functions<a class="anchor" href="#advanced-variable-functions"><span class="visuallyhidden">Advanced Variable Functions<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>The Sass core library provides a couple advanced functions for working with
+variables. The <a href="/documentation/modules/meta#variable-exists"><code>meta.variable-exists()</code> function</a> returns whether a variable
+with the given name exists in the current scope, and the
+<a href="/documentation/modules/meta#global-variable-exists"><code>meta.global-variable-exists()</code> function</a> does the same but only for the
+global<span class="widont">&nbsp;</span>scope.</p>
+<div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>Users occasionally want to use interpolation to define a variable name based
+on another variable. Sass doesn’t allow this, because it makes it much harder
+to tell at a glance which variables are defined where. What you <em>can</em> do,
+though, is define a <a href="/documentation/values/maps">map</a> from names to values that you can then access
+using<span class="widont">&nbsp;</span>variables.</p>
+<div class="code-example ui-tabs can-split" style="--split-location: 70%">
+<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+<a href="#example-advanced-variable-functions-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+<a href="#example-advanced-variable-functions-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+<a href="#example-advanced-variable-functions-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-advanced-variable-functions-scss" class="ui-tabs-panel scss">
+<h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:map"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token property"><span class="token variable">$theme-colors</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span>&#10;  <span class="token string">"success"</span><span class="token punctuation">:</span> #28a745<span class="token punctuation">,</span>&#10;  <span class="token string">"info"</span><span class="token punctuation">:</span> #17a2b8<span class="token punctuation">,</span>&#10;  <span class="token string">"warning"</span><span class="token punctuation">:</span> #ffc107<span class="token punctuation">,</span>&#10;<span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;&#10;<span class="token selector">.alert </span><span class="token punctuation">{</span>&#10;  <span class="token comment">// Instead of $theme-color-#{warning}</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> map.<span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$theme-colors</span><span class="token punctuation">,</span> <span class="token string">"warning"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-advanced-variable-functions-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+<h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:map"</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$theme-colors</span><span class="token punctuation">:</span> ("success"<span class="token punctuation">:</span> #28a745, "info"<span class="token punctuation">:</span> #17a2b8, "warning"<span class="token punctuation">:</span> #ffc107)</span>&#10;&#10;<span class="token selector">.alert</span>&#10;  <span class="token comment">// Instead of $theme-color-#{warning}</span>&#10;<span class="token property-line">  <span class="token property">background-color</span><span class="token punctuation">:</span> map.get(<span class="token variable">$theme-colors</span>, "warning")</span>&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+<div id="example-advanced-variable-functions-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+<h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.alert</span> <span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #ffc107<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/variables/ -->
+  </body>
+</html>

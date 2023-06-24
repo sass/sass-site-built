@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: sass:meta</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation modules meta">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">sass:meta</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section open selected">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class=""><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class="open selected"><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+
+
+              <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.23.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass currently supports loading built-in modules with <code>@use</code>. Users
+of other implementations must call functions using their global names<span class="widont">&nbsp;</span>instead.</p>
+  </div>
+<h2 id="mixins" tabindex="-1">Mixins<a class="anchor" href="#mixins"><span class="visuallyhidden">Mixins permalink</span></a></h2>
+<div class="sl-c-callout sl-c-callout--function" id="load-css"><pre class="signature language-scss"><a class="anchor" href="#load-css"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.load-css">load-css</span><span class="token punctuation">(</span><span class="token variable">$url</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$with</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.23.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass currently supports this<span class="widont">&nbsp;</span>mixin.</p>
+  </div>
+<p>Loads the <a href="/documentation/at-rules/use">module</a> at <code>$url</code> and includes its <span class="caps">CSS</span> as though it were written
+as the contents of this mixin. The <code>$with</code> parameter provides
+<a href="/documentation/at-rules/use#configuration">configuration</a> for the modules; if it’s passed, it must be a map from
+variable names (without <code>$</code>) to the values of those variables to use in the
+loaded<span class="widont">&nbsp;</span>module.</p>
+<p>If <code>$url</code> is relative, it’s interpreted as relative to the file in which
+<code>meta.load-css()</code> is included.</p>
+<p><strong>Like the <a href="/documentation/at-rules/use"><code>@use</code> rule</a></strong>:</p>
+<ul>
+<li>
+<p>This will only evaluate the given module once, even if it’s loaded multiple
+times in different<span class="widont">&nbsp;</span>ways.</p>
+</li>
+<li>
+<p>This cannot provide configuration to a module that’s already been loaded,
+whether or not it was already loaded with<span class="widont">&nbsp;</span>configuration.</p>
+</li>
+</ul>
+<p><strong>Unlike the <a href="/documentation/at-rules/use"><code>@use</code> rule</a></strong>:</p>
+<ul>
+<li>
+<p>This doesn’t make any members from the loaded module available in the
+current<span class="widont">&nbsp;</span>module.</p>
+</li>
+<li>
+<p>This can be used anywhere in a stylesheet. It can even be nested within
+style rules to create nested<span class="widont">&nbsp;</span>styles!</p>
+</li>
+<li>
+<p>The module <span class="caps">URL</span> being loaded can come from a variable and include
+<a href="/documentation/interpolation">interpolation</a>.</p>
+</li>
+</ul>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>The <code>$url</code> parameter should be a string containing a <span class="caps">URL</span> like you’d pass to
+the <code>@use</code> rule. It shouldn’t be a <span class="caps">CSS</span> <code>url()</code>!</p>
+</div>
+  <div class="code-example ui-tabs can-split" style="--split-location: 67.27272727272727%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-load-css-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-load-css-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-load-css-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-load-css-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// dark-theme/_code.scss</span>&#10;<span class="token property"><span class="token variable">$border-contrast</span></span><span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token statement keyword">!default</span><span class="token punctuation">;</span>&#10;&#10;<span class="token selector">code </span><span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #6b717f<span class="token punctuation">;</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> #d2e1dd<span class="token punctuation">;</span>&#10;  <span class="token keyword">@if</span> <span class="token selector"><span class="token variable">$border-contrast</span> </span><span class="token punctuation">{</span>&#10;    <span class="token property">border-color</span><span class="token punctuation">:</span> #dadbdf<span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token comment">// style.scss</span>&#10;<span class="token keyword">@use</span> <span class="token string">"sass:meta"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token selector">body.dark </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@include</span> meta.<span class="token function">load-css</span><span class="token punctuation">(</span><span class="token string">"dark-theme/code"</span><span class="token punctuation">,</span>&#10;      <span class="token property"><span class="token variable">$with</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">"border-contrast"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-load-css-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// dark-theme/_code.sass</span>&#10;<span class="token variable-line"><span class="token variable">$border-contrast</span><span class="token punctuation">:</span> false !default</span>&#10;&#10;<span class="token selector">code</span>&#10;<span class="token property-line">  <span class="token property">background-color</span><span class="token punctuation">:</span> #6b717f</span>&#10;<span class="token property-line">  <span class="token property">color</span><span class="token punctuation">:</span> #d2e1dd</span>&#10;<span class="token atrule-line">  <span class="token atrule">@if</span> $border-contrast</span>&#10;<span class="token property-line">    <span class="token property">border-color</span><span class="token punctuation">:</span> #dadbdf</span>&#10;&#10;&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token comment">// style.sass</span>&#10;<span class="token atrule-line"><span class="token atrule">@use</span> "sass:meta"</span>&#10;&#10;<span class="token selector">body.dark</span>&#10;<span class="token variable-line">  <span class="token variable">$configuration</span><span class="token punctuation">:</span> ("border-contrast"<span class="token punctuation">:</span> true)</span>&#10;<span class="token atrule-line">  <span class="token atrule">@include</span> meta.load-css("dark-theme/code", $with: $configuration)</span>&#10;&#10;</code></pre></div>
+<div id="example-load-css-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">body.dark code</span> <span class="token punctuation">{</span>&#10;  <span class="token property">background-color</span><span class="token punctuation">:</span> #6b717f<span class="token punctuation">;</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> #d2e1dd<span class="token punctuation">;</span>&#10;  <span class="token property">border-color</span><span class="token punctuation">:</span> #dadbdf<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+<h2 id="functions" tabindex="-1">Functions<a class="anchor" href="#functions"><span class="visuallyhidden">Functions permalink</span></a></h2>
+<div class="sl-c-callout sl-c-callout--function" id="calc-args"><pre class="signature language-scss"><a class="anchor" href="#calc-args"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.calc-args">calc-args</span><span class="token punctuation">(</span><span class="token variable">$calc</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/lists">list</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.40.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the arguments for the given <a href="/documentation/values/calculations">calculation</a>.</p>
+<p>If an argument is a number or a nested calculation, it’s returned as that
+type. Otherwise, it’s returned as an unquoted<span class="widont">&nbsp;</span>string.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-calc-args-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-calc-args-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-calc-args-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> meta.<span class="token function">calc-args</span><span class="token punctuation">(</span><span class="token function">calc</span><span class="token punctuation">(</span>100px <span class="token operator">+</span> 10%<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// unquote("100px + 10%")</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">calc-args</span><span class="token punctuation">(</span><span class="token function">clamp</span><span class="token punctuation">(</span>50px<span class="token punctuation">,</span> <span class="token function">var</span><span class="token punctuation">(</span>--width<span class="token punctuation">)</span><span class="token punctuation">,</span> 1000px<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 50px, unquote("var(--width)"), 1000px</span>&#10;</code></pre></div>
+<div id="example-calc-args-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> meta.calc-args(calc(100px <span class="token atrule">+</span> 10%))  // unquote("100px <span class="token atrule">+</span> 10%")</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.calc-args(clamp(50px, var(--width), 1000px))  // 50px, unquote("var(--width)"), 1000px</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="calc-name"><pre class="signature language-scss"><a class="anchor" href="#calc-name"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.calc-name">calc-name</span><span class="token punctuation">(</span><span class="token variable">$calc</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/strings#quoted">quoted string</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.40.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the name of the given <a href="/documentation/values/calculations">calculation</a>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-calc-name-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-calc-name-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-calc-name-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> meta.<span class="token function">calc-name</span><span class="token punctuation">(</span><span class="token function">calc</span><span class="token punctuation">(</span>100px <span class="token operator">+</span> 10%<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "calc"</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">calc-name</span><span class="token punctuation">(</span><span class="token function">clamp</span><span class="token punctuation">(</span>50px<span class="token punctuation">,</span> <span class="token function">var</span><span class="token punctuation">(</span>--width<span class="token punctuation">)</span><span class="token punctuation">,</span> 1000px<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "clamp"</span>&#10;</code></pre></div>
+<div id="example-calc-name-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> meta.calc-name(calc(100px <span class="token atrule">+</span> 10%))  // "calc"</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.calc-name(clamp(50px, var(--width), 1000px))  // "clamp"</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="call"><pre class="signature language-scss"><a class="anchor" href="#call"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.call">call</span><span class="token punctuation">(</span><span class="token variable">$function</span><span class="token punctuation">,</span> <span class="token variable">$args</span>...<span class="token punctuation">)</span>
+<span class="token function">call</span><span class="token punctuation">(</span><span class="token variable">$function</span><span class="token punctuation">,</span> <span class="token variable">$args</span>...<span class="token punctuation">)</span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility (Argument Type):
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>✓</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>since 3.5.0</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>since 3.5.0</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>In older versions of LibSass and Ruby Sass, the <a href="/documentation/modules/meta#call"><code>call()</code> function</a> took a
+string representing a function’s name. This was changed to take a function
+value instead in preparation for a new module system where functions are no
+longer global and so a given name may not always refer to the same<span class="widont">&nbsp;</span>function.</p>
+<p>Passing a string to <code>call()</code> still works in all implementations, but it’s
+deprecated and will be disallowed in future<span class="widont">&nbsp;</span>versions.</p>
+  </div>
+<p>Invokes <code>$function</code> with <code>$args</code> and returns the<span class="widont">&nbsp;</span>result.</p>
+<p>The <code>$function</code> should be a <a href="/documentation/values/functions">function</a> returned by
+<a href="#get-function"><code>meta.get-function()</code></a>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-first-class-function-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-first-class-function-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-first-class-function-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-first-class-function-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:list"</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@use</span> <span class="token string">"sass:meta"</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@use</span> <span class="token string">"sass:string"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token comment">/// Return a copy of $list with all elements for which $condition returns `true`</span>&#10;<span class="token comment">/// removed.</span>&#10;<span class="token keyword">@function</span> <span class="token function">remove-where</span><span class="token punctuation">(</span><span class="token variable">$list</span><span class="token punctuation">,</span> <span class="token variable">$condition</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$new-list</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token property"><span class="token variable">$separator</span></span><span class="token punctuation">:</span> list.<span class="token function">separator</span><span class="token punctuation">(</span><span class="token variable">$list</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token keyword">@each</span> <span class="token selector"><span class="token variable">$element</span> in <span class="token variable">$list</span> </span><span class="token punctuation">{</span>&#10;    <span class="token keyword">@if</span> <span class="token operator">not</span> meta.<span class="token function">call</span><span class="token punctuation">(</span><span class="token variable">$condition</span><span class="token punctuation">,</span> <span class="token variable">$element</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;      <span class="token property"><span class="token variable">$new-list</span></span><span class="token punctuation">:</span> list.<span class="token function">append</span><span class="token punctuation">(</span><span class="token variable">$new-list</span><span class="token punctuation">,</span> <span class="token variable">$element</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$separator</span></span><span class="token punctuation">:</span> <span class="token variable">$separator</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;    <span class="token punctuation">}</span>&#10;  <span class="token punctuation">}</span>&#10;  <span class="token keyword">@return</span> <span class="token variable">$new-list</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token property"><span class="token variable">$fonts</span></span><span class="token punctuation">:</span> Tahoma<span class="token punctuation">,</span> Geneva<span class="token punctuation">,</span> <span class="token string">"Helvetica Neue"</span><span class="token punctuation">,</span> Helvetica<span class="token punctuation">,</span> Arial<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>&#10;&#10;<span class="token selector">.content </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@function</span> <span class="token function">contains-helvetica</span><span class="token punctuation">(</span><span class="token variable">$string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;    <span class="token keyword">@return</span> string.<span class="token function">index</span><span class="token punctuation">(</span><span class="token variable">$string</span><span class="token punctuation">,</span> <span class="token string">"Helvetica"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token function">remove-where</span><span class="token punctuation">(</span><span class="token variable">$fonts</span><span class="token punctuation">,</span> meta.<span class="token function">get-function</span><span class="token punctuation">(</span><span class="token string">"contains-helvetica"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-first-class-function-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:list"</span>&#10;<span class="token atrule-line"><span class="token atrule">@use</span> "sass:meta"</span>&#10;<span class="token atrule-line"><span class="token atrule">@use</span> "sass:string"</span>&#10;&#10;<span class="token comment">/// Return a copy of $list with all elements for which $condition returns `true`</span>&#10;<span class="token comment">/// removed.</span>&#10;<span class="token atrule-line"><span class="token atrule">@function</span> remove-where($list, $condition)</span>&#10;<span class="token variable-line">  <span class="token variable">$new-list</span><span class="token punctuation">:</span> ()</span>&#10;<span class="token variable-line">  <span class="token variable">$separator</span><span class="token punctuation">:</span> list.separator(<span class="token variable">$list</span>)</span>&#10;<span class="token atrule-line">  <span class="token atrule">@each</span> $element in $list</span>&#10;<span class="token atrule-line">    <span class="token atrule">@if</span> not meta.call($condition, $element)</span>&#10;<span class="token variable-line">      <span class="token variable">$new-list</span><span class="token punctuation">:</span> list.append(<span class="token variable">$new-list</span>, <span class="token variable">$element</span>, <span class="token variable">$separator</span><span class="token punctuation">:</span> <span class="token variable">$separator</span>)</span>&#10;&#10;&#10;<span class="token atrule-line">  <span class="token atrule">@return</span> $new-list</span>&#10;&#10;&#10;<span class="token variable-line"><span class="token variable">$fonts</span><span class="token punctuation">:</span> Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif</span>&#10;&#10;<span class="token selector">.content</span>&#10;<span class="token atrule-line">  <span class="token atrule">@function</span> contains-helvetica($string)</span>&#10;<span class="token atrule-line">    <span class="token atrule">@return</span> string.index($string, "Helvetica")</span>&#10;&#10;<span class="token property-line">  <span class="token property">font-family</span><span class="token punctuation">:</span> remove-where(<span class="token variable">$fonts</span>, meta.get-function("contains-helvetica"))</span>&#10;&#10;</code></pre></div>
+<div id="example-first-class-function-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.content</span> <span class="token punctuation">{</span>&#10;  <span class="token property">font-family</span><span class="token punctuation">:</span> Tahoma<span class="token punctuation">,</span> Geneva<span class="token punctuation">,</span> Arial<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="content-exists"><pre class="signature language-scss"><a class="anchor" href="#content-exists"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.content-exists">content-exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">content-exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/booleans">boolean</a></span></code></pre>
+<p>Returns whether the current mixin was passed a <a href="/documentation/at-rules/mixin#content-blocks"><code>@content</code> block</a>.</p>
+<p>Throws an error if called outside of a<span class="widont">&nbsp;</span>mixin.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-content-exists-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-content-exists-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-content-exists-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@mixin</span> <span class="token selector">debug-content-exists </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@debug</span> meta.<span class="token function">content-exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token keyword">@content</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token keyword">@include</span> debug-content-exists<span class="token punctuation">;</span> <span class="token comment">// false</span>&#10;<span class="token keyword">@include</span> <span class="token selector">debug-content-exists </span><span class="token punctuation">{</span> <span class="token comment">// true</span>&#10;  <span class="token comment">// Content!</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-content-exists-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@mixin</span> debug-content-exists</span>&#10;<span class="token atrule-line">  <span class="token atrule">@debug</span> meta.content-exists()</span>&#10;<span class="token atrule-line">  <span class="token atrule">@content</span></span>&#10;&#10;&#10;<span class="token atrule-line"><span class="token atrule">@include</span> debug-content-exists  // false</span>&#10;<span class="token atrule-line"><span class="token atrule">@include</span> debug-content-exists   // true</span>&#10;  <span class="token comment">// Content!</span>&#10;&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="feature-exists"><pre class="signature language-scss"><a class="anchor" href="#feature-exists"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.feature-exists">feature-exists</span><span class="token punctuation">(</span><span class="token variable">$feature</span><span class="token punctuation">)</span>
+<span class="token function">feature-exists</span><span class="token punctuation">(</span><span class="token variable">$feature</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/booleans">boolean</a></span></code></pre>
+<p>Returns whether the current Sass implementation supports <code>$feature</code>.</p>
+<p>The <code>$feature</code> must be a string. The currently recognized features<span class="widont">&nbsp;</span>are:</p>
+<ul>
+<li><code>global-variable-shadowing</code>, which means that a local variable will
+<a href="/documentation/variables#shadowing">shadow</a> a global variable unless it has the <code>!global</code> flag.</li>
+<li><code>extend-selector-pseudoclass</code>, which means that the <a href="/documentation/at-rules/extend"><code>@extend</code> rule</a> will
+affect selectors nested in pseudo-classes like <code>:not()</code>.</li>
+<li><code>units-level3</code>, which means that <a href="/documentation/values/numbers#units">unit arithmetic</a> supports units defined
+in <a href="http://www.w3.org/TR/css3-values"><span class="caps">CSS</span> Values and Units Level<span class="widont">&nbsp;</span>3</a>.</li>
+<li><code>at-error</code>, which means that the <a href="/documentation/at-rules/error"><code>@error</code> rule</a> is<span class="widont">&nbsp;</span>supported.</li>
+<li><code>custom-property</code>, which means that <a href="/documentation/style-rules/declarations#custom-properties">custom property declaration</a> values
+don’t support any <a href="/documentation/syntax/structure#expressions">expressions</a> other than <a href="/documentation/interpolation">interpolation</a>.</li>
+</ul>
+<p>Returns <code>false</code> for any unrecognized <code>$feature</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-feature-exists-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-feature-exists-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-feature-exists-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> meta.<span class="token function">feature-exists</span><span class="token punctuation">(</span><span class="token string">"at-error"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">feature-exists</span><span class="token punctuation">(</span><span class="token string">"unrecognized"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>&#10;</code></pre></div>
+<div id="example-feature-exists-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> meta.feature-exists("at-error")  // true</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.feature-exists("unrecognized")  // false</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="function-exists"><pre class="signature language-scss"><a class="anchor" href="#function-exists"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.function-exists">function-exists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$module</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span>
+<span class="token function">function-exists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/booleans">boolean</a></span></code></pre>
+<p>Returns whether a function named <code>$name</code> is defined, either as a built-in
+function or a user-defined<span class="widont">&nbsp;</span>function.</p>
+<p>If <code>$module</code> is passed, this also checks the module named <code>$module</code> for the
+function definition. <code>$module</code> must be a string matching the namespace of a
+<a href="/documentation/at-rules/use"><code>@use</code> rule</a> in the current<span class="widont">&nbsp;</span>file.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-function-exists-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-function-exists-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-function-exists-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:math"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> meta.<span class="token function">function-exists</span><span class="token punctuation">(</span><span class="token string">"div"</span><span class="token punctuation">,</span> <span class="token string">"math"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">function-exists</span><span class="token punctuation">(</span><span class="token string">"scale-color"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">function-exists</span><span class="token punctuation">(</span><span class="token string">"add"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>&#10;&#10;<span class="token keyword">@function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token variable">$num1</span><span class="token punctuation">,</span> <span class="token variable">$num2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token keyword">@return</span> <span class="token variable">$num1</span> <span class="token operator">+</span> <span class="token variable">$num2</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">function-exists</span><span class="token punctuation">(</span><span class="token string">"add"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;</code></pre></div>
+<div id="example-function-exists-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:math"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.function-exists("div", "math")  // true</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.function-exists("scale-color")  // true</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.function-exists("add")  // false</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@function</span> add($num1, $num2)</span>&#10;<span class="token atrule-line">  <span class="token atrule">@return</span> $num1 <span class="token atrule">+</span> $num2</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.function-exists("add")  // true</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="get-function"><pre class="signature language-scss"><a class="anchor" href="#get-function"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.get-function">get-function</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$css</span></span><span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$module</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span>
+<span class="token function">get-function</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$css</span></span><span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$module</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/functions">function</a></span></code></pre>
+<p>Returns the <a href="/documentation/values/functions">function</a> named <code>$name</code>.</p>
+<p>If <code>$module</code> is <code>null</code>, this returns the function named <code>$name</code> without a
+namespace (including <a href="/documentation/modules#global-functions">global built-in functions</a>). Otherwise, <code>$module</code> must
+be a string matching the namespace of a <a href="/documentation/at-rules/use"><code>@use</code> rule</a> in the current file,
+in which case this returns the function in that module named <code>$name</code>.</p>
+<p>By default, this throws an error if <code>$name</code> doesn’t refer to Sass function.
+However, if <code>$css</code> is <code>true</code>, it instead returns a <a href="/documentation/at-rules/function/#plain-css-functions">plain <span class="caps">CSS</span><span class="widont">&nbsp;</span>function</a>.</p>
+<p>The returned function can be called using <a href="#call"><code>meta.call()</code></a>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-first-class-function-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-first-class-function-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-first-class-function-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-first-class-function-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:list"</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@use</span> <span class="token string">"sass:meta"</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@use</span> <span class="token string">"sass:string"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token comment">/// Return a copy of $list with all elements for which $condition returns `true`</span>&#10;<span class="token comment">/// removed.</span>&#10;<span class="token keyword">@function</span> <span class="token function">remove-where</span><span class="token punctuation">(</span><span class="token variable">$list</span><span class="token punctuation">,</span> <span class="token variable">$condition</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$new-list</span></span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token property"><span class="token variable">$separator</span></span><span class="token punctuation">:</span> list.<span class="token function">separator</span><span class="token punctuation">(</span><span class="token variable">$list</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token keyword">@each</span> <span class="token selector"><span class="token variable">$element</span> in <span class="token variable">$list</span> </span><span class="token punctuation">{</span>&#10;    <span class="token keyword">@if</span> <span class="token operator">not</span> meta.<span class="token function">call</span><span class="token punctuation">(</span><span class="token variable">$condition</span><span class="token punctuation">,</span> <span class="token variable">$element</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;      <span class="token property"><span class="token variable">$new-list</span></span><span class="token punctuation">:</span> list.<span class="token function">append</span><span class="token punctuation">(</span><span class="token variable">$new-list</span><span class="token punctuation">,</span> <span class="token variable">$element</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$separator</span></span><span class="token punctuation">:</span> <span class="token variable">$separator</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;    <span class="token punctuation">}</span>&#10;  <span class="token punctuation">}</span>&#10;  <span class="token keyword">@return</span> <span class="token variable">$new-list</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token property"><span class="token variable">$fonts</span></span><span class="token punctuation">:</span> Tahoma<span class="token punctuation">,</span> Geneva<span class="token punctuation">,</span> <span class="token string">"Helvetica Neue"</span><span class="token punctuation">,</span> Helvetica<span class="token punctuation">,</span> Arial<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>&#10;&#10;<span class="token selector">.content </span><span class="token punctuation">{</span>&#10;  <span class="token keyword">@function</span> <span class="token function">contains-helvetica</span><span class="token punctuation">(</span><span class="token variable">$string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;    <span class="token keyword">@return</span> string.<span class="token function">index</span><span class="token punctuation">(</span><span class="token variable">$string</span><span class="token punctuation">,</span> <span class="token string">"Helvetica"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token function">remove-where</span><span class="token punctuation">(</span><span class="token variable">$fonts</span><span class="token punctuation">,</span> meta.<span class="token function">get-function</span><span class="token punctuation">(</span><span class="token string">"contains-helvetica"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-first-class-function-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:list"</span>&#10;<span class="token atrule-line"><span class="token atrule">@use</span> "sass:meta"</span>&#10;<span class="token atrule-line"><span class="token atrule">@use</span> "sass:string"</span>&#10;&#10;<span class="token comment">/// Return a copy of $list with all elements for which $condition returns `true`</span>&#10;<span class="token comment">/// removed.</span>&#10;<span class="token atrule-line"><span class="token atrule">@function</span> remove-where($list, $condition)</span>&#10;<span class="token variable-line">  <span class="token variable">$new-list</span><span class="token punctuation">:</span> ()</span>&#10;<span class="token variable-line">  <span class="token variable">$separator</span><span class="token punctuation">:</span> list.separator(<span class="token variable">$list</span>)</span>&#10;<span class="token atrule-line">  <span class="token atrule">@each</span> $element in $list</span>&#10;<span class="token atrule-line">    <span class="token atrule">@if</span> not meta.call($condition, $element)</span>&#10;<span class="token variable-line">      <span class="token variable">$new-list</span><span class="token punctuation">:</span> list.append(<span class="token variable">$new-list</span>, <span class="token variable">$element</span>, <span class="token variable">$separator</span><span class="token punctuation">:</span> <span class="token variable">$separator</span>)</span>&#10;&#10;&#10;<span class="token atrule-line">  <span class="token atrule">@return</span> $new-list</span>&#10;&#10;&#10;<span class="token variable-line"><span class="token variable">$fonts</span><span class="token punctuation">:</span> Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif</span>&#10;&#10;<span class="token selector">.content</span>&#10;<span class="token atrule-line">  <span class="token atrule">@function</span> contains-helvetica($string)</span>&#10;<span class="token atrule-line">    <span class="token atrule">@return</span> string.index($string, "Helvetica")</span>&#10;&#10;<span class="token property-line">  <span class="token property">font-family</span><span class="token punctuation">:</span> remove-where(<span class="token variable">$fonts</span>, meta.get-function("contains-helvetica"))</span>&#10;&#10;</code></pre></div>
+<div id="example-first-class-function-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">.content</span> <span class="token punctuation">{</span>&#10;  <span class="token property">font-family</span><span class="token punctuation">:</span> Tahoma<span class="token punctuation">,</span> Geneva<span class="token punctuation">,</span> Arial<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="global-variable-exists"><pre class="signature language-scss"><a class="anchor" href="#global-variable-exists"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.global-variable-exists">global-variable-exists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$module</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span>
+<span class="token function">global-variable-exists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$module</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/booleans">boolean</a></span></code></pre>
+<p>Returns whether a <a href="/documentation/variables#scope">global variable</a> named <code>$name</code> (without the <code>$</code>) exists.</p>
+<p>If <code>$module</code> is <code>null</code>, this returns whether a variable named <code>$name</code> without
+a namespace exists. Otherwise, <code>$module</code> must be a string matching the
+namespace of a <a href="/documentation/at-rules/use"><code>@use</code> rule</a> in the current file, in which case this returns
+whether that module has a variable named <code>$name</code>.</p>
+<p>See also <a href="#variable-exists"><code>meta.variable-exists()</code></a>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-global-variable-exists-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-global-variable-exists-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-global-variable-exists-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> meta.<span class="token function">global-variable-exists</span><span class="token punctuation">(</span><span class="token string">"var1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>&#10;&#10;<span class="token property"><span class="token variable">$var1</span></span><span class="token punctuation">:</span> value<span class="token punctuation">;</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">global-variable-exists</span><span class="token punctuation">(</span><span class="token string">"var1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;&#10;<span class="token selector">h1 </span><span class="token punctuation">{</span>&#10;  <span class="token comment">// $var2 is local.</span>&#10;  <span class="token property"><span class="token variable">$var2</span></span><span class="token punctuation">:</span> value<span class="token punctuation">;</span>&#10;  <span class="token keyword">@debug</span> meta.<span class="token function">global-variable-exists</span><span class="token punctuation">(</span><span class="token string">"var2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-global-variable-exists-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> meta.global-variable-exists("var1")  // false</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$var1</span><span class="token punctuation">:</span> value</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.global-variable-exists("var1")  // true</span>&#10;&#10;<span class="token selector">h1</span>&#10;  <span class="token comment">// $var2 is local.</span>&#10;<span class="token variable-line">  <span class="token variable">$var2</span><span class="token punctuation">:</span> value</span>&#10;<span class="token atrule-line">  <span class="token atrule">@debug</span> meta.global-variable-exists("var2")  // false</span>&#10;&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="inspect"><pre class="signature language-scss"><a class="anchor" href="#inspect"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.inspect">inspect</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">)</span>
+<span class="token function">inspect</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/strings#unquoted">unquoted string</a></span></code></pre>
+<p>Returns a string representation of <code>$value</code>.</p>
+<p>Returns a representation of <em>any</em> Sass value, not just those that can be
+represented in <span class="caps">CSS</span>. As such, its return value is not guaranteed to be valid<span class="widont">&nbsp;</span><span class="caps">CSS</span>.</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>This function is intended for debugging; its output format is not guaranteed
+to be consistent across Sass versions or<span class="widont">&nbsp;</span>implementations.</p>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-inspect-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-inspect-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-inspect-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> meta.<span class="token function">inspect</span><span class="token punctuation">(</span>10px 20px 30px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// unquote("10px 20px 30px")</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">inspect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">"width"</span><span class="token punctuation">:</span> 200px<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// unquote('("width": 200px)')</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">inspect</span><span class="token punctuation">(</span><span class="token null keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// unquote("null")</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">inspect</span><span class="token punctuation">(</span><span class="token string">"Helvetica"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// unquote('"Helvetica"')</span>&#10;</code></pre></div>
+<div id="example-inspect-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> meta.inspect(10px 20px 30px)  // unquote("10px 20px 30px")</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.inspect(("width": 200px))  // unquote('("width": 200px)')</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.inspect(null)  // unquote("null")</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.inspect("Helvetica")  // unquote('"Helvetica"')</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="keywords"><pre class="signature language-scss"><a class="anchor" href="#keywords"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.keywords">keywords</span><span class="token punctuation">(</span><span class="token variable">$args</span><span class="token punctuation">)</span>
+<span class="token function">keywords</span><span class="token punctuation">(</span><span class="token variable">$args</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/maps">map</a></span></code></pre>
+<p>Returns the keywords passed to a mixin or function that takes <a href="/documentation/at-rules/mixin#taking-arbitrary-arguments">arbitrary
+arguments</a>. The <code>$args</code> argument must be an <a href="/documentation/values/lists#argument-lists">argument<span class="widont">&nbsp;</span>list</a>.</p>
+<p>The keywords are returned as a map from argument names as unquoted strings
+(not including <code>$</code>) to the values of those<span class="widont">&nbsp;</span>arguments.</p>
+  <div class="code-example ui-tabs can-split" style="--split-location: 71.36363636363636%">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-mixin-arbitrary-kwargs-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-mixin-arbitrary-kwargs-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+<li class="ui-tabs-tab css-tab">
+  <a href="#example-mixin-arbitrary-kwargs-css" class="ui-tabs-anchor"><span class="caps">CSS</span></a>
+</li>
+</ul><div id="example-mixin-arbitrary-kwargs-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:meta"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@mixin</span> <span class="token function">syntax-colors</span><span class="token punctuation">(</span><span class="token variable">$args</span>...<span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token keyword">@debug</span> meta.<span class="token function">keywords</span><span class="token punctuation">(</span><span class="token variable">$args</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;  <span class="token comment">// (string: #080, comment: #800, variable: #60b)</span>&#10;&#10;  <span class="token keyword">@each</span> <span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token variable">$color</span> in meta.<span class="token function">keywords</span><span class="token punctuation">(</span><span class="token variable">$args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;    <span class="token selector">pre span.stx-<span class="token variable">#{$name}</span> </span><span class="token punctuation">{</span>&#10;      <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$color</span><span class="token punctuation">;</span>&#10;    <span class="token punctuation">}</span>&#10;  <span class="token punctuation">}</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token keyword">@include</span> <span class="token function">syntax-colors</span><span class="token punctuation">(</span>&#10;  <span class="token property"><span class="token variable">$string</span></span><span class="token punctuation">:</span> #080<span class="token punctuation">,</span>&#10;  <span class="token property"><span class="token variable">$comment</span></span><span class="token punctuation">:</span> #800<span class="token punctuation">,</span>&#10;  <span class="token property"><span class="token variable">$variable</span></span><span class="token punctuation">:</span> #60b<span class="token punctuation">,</span>&#10;<span class="token punctuation">)</span>&#10;</code></pre></div>
+<div id="example-mixin-arbitrary-kwargs-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:meta"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@mixin</span> syntax-colors($args...)</span>&#10;<span class="token atrule-line">  <span class="token atrule">@debug</span> meta.keywords($args)</span>&#10;  <span class="token comment">// (string: #080, comment: #800, variable: #60b)</span>&#10;&#10;<span class="token atrule-line">  <span class="token atrule">@each</span> $name, $color in meta.keywords($args)</span>&#10;    <span class="token selector">pre span.stx-#{$name}</span>&#10;<span class="token property-line">      <span class="token property">color</span><span class="token punctuation">:</span> <span class="token variable">$color</span></span>&#10;&#10;&#10;&#10;&#10;<span class="token atrule-line"><span class="token atrule">@include</span> syntax-colors($string: #080, $comment: #800, $variable: #60b)</span>&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+<div id="example-mixin-arbitrary-kwargs-css" class="ui-tabs-panel css ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden"><span class="caps">CSS</span> Output</h3><pre class="language-css"><code class="language-css"><span class="token selector">pre span.stx-string</span> <span class="token punctuation">{</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> #080<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">pre span.stx-comment</span> <span class="token punctuation">{</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> #800<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token selector">pre span.stx-variable</span> <span class="token punctuation">{</span>&#10;  <span class="token property">color</span><span class="token punctuation">:</span> #60b<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="mixin-exists"><pre class="signature language-scss"><a class="anchor" href="#mixin-exists"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.mixin-exists">mixin-exists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$module</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span>
+<span class="token function">mixin-exists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$module</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/booleans">boolean</a></span></code></pre>
+<p>Returns whether a <a href="/documentation/at-rules/mixin">mixin</a> named <code>$name</code> exists.</p>
+<p>If <code>$module</code> is <code>null</code>, this returns whether a mixin named <code>$name</code> without a
+namespace exists. Otherwise, <code>$module</code> must be a string matching the namespace
+of a <a href="/documentation/at-rules/use"><code>@use</code> rule</a> in the current file, in which case this returns whether
+that module has a mixin named <code>$name</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-mixin-exists-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-mixin-exists-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-mixin-exists-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> meta.<span class="token function">mixin-exists</span><span class="token punctuation">(</span><span class="token string">"shadow-none"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>&#10;&#10;<span class="token keyword">@mixin</span> <span class="token selector">shadow-none </span><span class="token punctuation">{</span>&#10;  <span class="token property">box-shadow</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;&#10;<span class="token keyword">@debug</span> meta.<span class="token function">mixin-exists</span><span class="token punctuation">(</span><span class="token string">"shadow-none"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;</code></pre></div>
+<div id="example-mixin-exists-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> meta.mixin-exists("shadow-none")  // false</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@mixin</span> shadow-none</span>&#10;<span class="token property-line">  <span class="token property">box-shadow</span><span class="token punctuation">:</span> none</span>&#10;&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.mixin-exists("shadow-none")  // true</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="module-functions"><pre class="signature language-scss"><a class="anchor" href="#module-functions"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.module-functions">module-functions</span><span class="token punctuation">(</span><span class="token variable">$module</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/maps">map</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.23.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass currently supports this<span class="widont">&nbsp;</span>function.</p>
+  </div>
+<p>Returns all the functions defined in a module, as a map from function names to
+<a href="/documentation/values/functions">function<span class="widont">&nbsp;</span>values</a>.</p>
+<p>The <code>$module</code> parameter must be a string matching the namespace of a <a href="/documentation/at-rules/use"><code>@use</code>
+rule</a> in the current<span class="widont">&nbsp;</span>file.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-module-functions-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-module-functions-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-module-functions-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// _functions.scss</span>&#10;<span class="token keyword">@function</span> <span class="token function">pow</span><span class="token punctuation">(</span><span class="token variable">$base</span><span class="token punctuation">,</span> <span class="token variable">$exponent</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>&#10;  <span class="token property"><span class="token variable">$result</span></span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>&#10;  <span class="token keyword">@for</span> <span class="token variable">$_</span> <span class="token keyword">from</span> 1 <span class="token keyword">through</span> <span class="token selector"><span class="token variable">$exponent</span> </span><span class="token punctuation">{</span>&#10;    <span class="token property"><span class="token variable">$result</span></span><span class="token punctuation">:</span> <span class="token variable">$result</span> <span class="token operator">*</span> <span class="token variable">$base</span><span class="token punctuation">;</span>&#10;  <span class="token punctuation">}</span>&#10;  <span class="token keyword">@return</span> <span class="token variable">$result</span><span class="token punctuation">;</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:map"</span><span class="token punctuation">;</span>&#10;<span class="token keyword">@use</span> <span class="token string">"sass:meta"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@use</span> <span class="token string">"functions"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> meta.<span class="token function">module-functions</span><span class="token punctuation">(</span><span class="token string">"functions"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ("pow": get-function("pow"))</span>&#10;&#10;<span class="token keyword">@debug</span> meta.<span class="token function">call</span><span class="token punctuation">(</span>map.<span class="token function">get</span><span class="token punctuation">(</span>meta.<span class="token function">module-functions</span><span class="token punctuation">(</span><span class="token string">"functions"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"pow"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 3<span class="token punctuation">,</span> 4<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 81</span>&#10;</code></pre></div>
+<div id="example-module-functions-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// _functions.sass</span>&#10;<span class="token atrule-line"><span class="token atrule">@function</span> pow($base, $exponent)</span>&#10;<span class="token variable-line">  <span class="token variable">$result</span><span class="token punctuation">:</span> 1</span>&#10;<span class="token atrule-line">  <span class="token atrule">@for</span> $_ from 1 through $exponent</span>&#10;<span class="token variable-line">    <span class="token variable">$result</span><span class="token punctuation">:</span> <span class="token variable">$result</span> <span class="token operator">*</span> <span class="token variable">$base</span></span>&#10;&#10;<span class="token atrule-line">  <span class="token atrule">@return</span> $result</span>&#10;&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:map"</span>&#10;<span class="token atrule-line"><span class="token atrule">@use</span> "sass:meta"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@use</span> "functions"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.module-functions("functions") // ("pow": get-function("pow"))</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.call(map.get(meta.module-functions("functions"), "pow"), 3, 4) // 81</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="module-variables"><pre class="signature language-scss"><a class="anchor" href="#module-variables"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.module-variables">module-variables</span><span class="token punctuation">(</span><span class="token variable">$module</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/maps">map</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.23.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass currently supports this<span class="widont">&nbsp;</span>function.</p>
+  </div>
+<p>Returns all the variables defined in a module, as a map from variable names
+(without <code>$</code>) to the values of those<span class="widont">&nbsp;</span>variables.</p>
+<p>The <code>$module</code> parameter must be a string matching the namespace of a <a href="/documentation/at-rules/use"><code>@use</code>
+rule</a> in the current<span class="widont">&nbsp;</span>file.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-module-variables-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-module-variables-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-module-variables-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token comment">// _variables.scss</span>&#10;<span class="token property"><span class="token variable">$hopbush</span></span><span class="token punctuation">:</span> #c69<span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$midnight-blue</span></span><span class="token punctuation">:</span> #036<span class="token punctuation">;</span>&#10;<span class="token property"><span class="token variable">$wafer</span></span><span class="token punctuation">:</span> #e1d7d2<span class="token punctuation">;</span>&#10;</code></pre><pre class="language-scss"><code class="language-scss"><span class="token keyword">@use</span> <span class="token string">"sass:meta"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@use</span> <span class="token string">"variables"</span><span class="token punctuation">;</span>&#10;&#10;<span class="token keyword">@debug</span> meta.<span class="token function">module-variables</span><span class="token punctuation">(</span><span class="token string">"variables"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>&#10;<span class="token comment">// (</span>&#10;<span class="token comment">//   "hopbush": #c69,</span>&#10;<span class="token comment">//   "midnight-blue": #036,</span>&#10;<span class="token comment">//   "wafer": #e1d7d2</span>&#10;<span class="token comment">// )</span>&#10;</code></pre></div>
+<div id="example-module-variables-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token comment">// _variables.sass</span>&#10;<span class="token variable-line"><span class="token variable">$hopbush</span><span class="token punctuation">:</span> #c69</span>&#10;<span class="token variable-line"><span class="token variable">$midnight-blue</span><span class="token punctuation">:</span> #036</span>&#10;<span class="token variable-line"><span class="token variable">$wafer</span><span class="token punctuation">:</span> #e1d7d2</span>&#10;</code></pre><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@use</span> "sass:meta"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@use</span> "variables"</span>&#10;&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.module-variables("variables")</span>&#10;<span class="token comment">// (</span>&#10;<span class="token comment">//   "hopbush": #c69,</span>&#10;<span class="token comment">//   "midnight-blue": #036,</span>&#10;<span class="token comment">//   "wafer": #e1d7d2</span>&#10;<span class="token comment">// )</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="type-of"><pre class="signature language-scss"><a class="anchor" href="#type-of"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.type-of">type-of</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">)</span>
+<span class="token function">type-of</span><span class="token punctuation">(</span><span class="token variable">$value</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/strings#unquoted">unquoted string</a></span></code></pre>
+<p>Returns the type of <code>$value</code>.</p>
+<p>This can return the following<span class="widont">&nbsp;</span>values:</p>
+<ul>
+<li><a href="/documentation/values/numbers"><code>number</code></a></li>
+<li><a href="/documentation/values/strings"><code>string</code></a></li>
+<li><a href="/documentation/values/colors"><code>color</code></a></li>
+<li><a href="/documentation/values/lists"><code>list</code></a></li>
+<li><a href="/documentation/values/maps"><code>map</code></a></li>
+<li><a href="/documentation/values/calculations"><code>calculation</code></a></li>
+<li><a href="/documentation/values/booleans"><code>bool</code></a></li>
+<li><a href="/documentation/values/null"><code>null</code></a></li>
+<li><a href="/documentation/values/functions"><code>function</code></a></li>
+<li><a href="/documentation/values/lists#argument-lists"><code>arglist</code></a></li>
+</ul>
+<p>New possible values may be added in the future. It may return either <code>list</code> or
+<code>map</code> for <code>()</code>, depending on whether or not it was returned by a <a href="/documentation/modules/map">map<span class="widont">&nbsp;</span>function</a>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-type-of-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-type-of-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-type-of-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> meta.<span class="token function">type-of</span><span class="token punctuation">(</span>10px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// number</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">type-of</span><span class="token punctuation">(</span>10px 20px 30px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// list</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">type-of</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// list</span>&#10;</code></pre></div>
+<div id="example-type-of-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> meta.type-of(10px)  // number</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.type-of(10px 20px 30px)  // list</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.type-of(())  // list</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="variable-exists"><pre class="signature language-scss"><a class="anchor" href="#variable-exists"></a><code class="language-scss">meta.<span class="token function docSearch-function" name="meta.variable-exists">variable-exists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span>
+<span class="token function">variable-exists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/booleans">boolean</a></span></code></pre>
+<p>Returns whether a variable named <code>$name</code> (without the <code>$</code>) exists in the
+current <a href="/documentation/variables#scope">scope</a>.</p>
+<p>See also <a href="#global-variable-exists"><code>meta.global-variable-exists()</code></a>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-variable-exists-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-variable-exists-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-variable-exists-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> meta.<span class="token function">variable-exists</span><span class="token punctuation">(</span><span class="token string">"var1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>&#10;&#10;<span class="token property"><span class="token variable">$var1</span></span><span class="token punctuation">:</span> value<span class="token punctuation">;</span>&#10;<span class="token keyword">@debug</span> meta.<span class="token function">variable-exists</span><span class="token punctuation">(</span><span class="token string">"var1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;&#10;<span class="token selector">h1 </span><span class="token punctuation">{</span>&#10;  <span class="token comment">// $var2 is local.</span>&#10;  <span class="token property"><span class="token variable">$var2</span></span><span class="token punctuation">:</span> value<span class="token punctuation">;</span>&#10;  <span class="token keyword">@debug</span> meta.<span class="token function">variable-exists</span><span class="token punctuation">(</span><span class="token string">"var2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;<span class="token punctuation">}</span>&#10;</code></pre></div>
+<div id="example-variable-exists-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> meta.variable-exists("var1")  // false</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$var1</span><span class="token punctuation">:</span> value</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> meta.variable-exists("var1")  // true</span>&#10;&#10;<span class="token selector">h1</span>&#10;  <span class="token comment">// $var2 is local.</span>&#10;<span class="token variable-line">  <span class="token variable">$var2</span><span class="token punctuation">:</span> value</span>&#10;<span class="token atrule-line">  <span class="token atrule">@debug</span> meta.variable-exists("var2")  // true</span>&#10;&#10;</code></pre></div>
+</div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/modules/meta/ -->
+  </body>
+</html>

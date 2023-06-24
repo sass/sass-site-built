@@ -1,0 +1,55 @@
+/feed                 /feed.xml                                     200
+/sitemap              /sitemap.xml                                  200
+/tutorial             /guide
+/download             /install
+/try                  https://www.sassmeister.com
+/about                /
+
+/blog/posts/560719    /blog/dropping-support-for-old-ruby-versions
+/blog/posts/1305238   /blog/dart-sass-is-on-chocolatey
+/blog/posts/1404451   /blog/sass-and-browser-compatibility
+/blog/posts/1909151   /blog/dart-sass-is-in-beta
+/blog/posts/7081811   /blog/ruby-sass-is-deprecated
+
+
+/d/random-with-units            /documentation/breaking-changes/function-units
+/documentation/breaking-changes/random-with-units            /documentation/breaking-changes/function-units
+/d/color-units            /documentation/breaking-changes/function-units
+/documentation/breaking-changes/color-units            /documentation/breaking-changes/function-units
+/docs/yardoc/file.SASS_REFERENCE.html            /documentation
+/documentation/file.SASS_REFERENCE.html            /documentation
+/docs/yardoc/file.SASS_CHANGELOG.html            https://github.com/sass/dart-sass/blob/main/CHANGELOG.md
+/documentation/file.SASS_CHANGELOG.html            https://github.com/sass/dart-sass/blob/main/CHANGELOG.md
+/docs/yardoc/file.INDENTED_SYNTAX.html            /documentation/syntax
+/documentation/file.INDENTED_SYNTAX.html            /documentation/syntax
+/docs/yardoc/file.SCSS_FOR_SASS_USERS.html            /documentation/syntax
+/documentation/file.SCSS_FOR_SASS_USERS.html            /documentation/syntax
+/docs/yardoc/Sass/Script/Functions.html            /documentation/modules
+/documentation/Sass/Script/Functions.html            /documentation/modules
+/docs/yardoc/functions.html            /documentation/modules
+/documentation/functions.html            /documentation/modules
+/docs/yardoc/functions/css.html            /documentation/at-rules/function/#plain-css-functions
+/documentation/functions/css.html            /documentation/at-rules/function/#plain-css-functions
+/docs/yardoc/functions/color.html     /documentation/modules/color/
+/documentation/functions/color.html   /documentation/modules/color/
+/docs/yardoc/functions/list.html     /documentation/modules/list/
+/documentation/functions/list.html   /documentation/modules/list/
+/docs/yardoc/functions/map.html     /documentation/modules/map/
+/documentation/functions/map.html   /documentation/modules/map/
+/docs/yardoc/functions/math.html     /documentation/modules/math/
+/documentation/functions/math.html   /documentation/modules/math/
+/docs/yardoc/functions/meta.html     /documentation/modules/meta/
+/documentation/functions/meta.html   /documentation/modules/meta/
+/docs/yardoc/functions/selector.html     /documentation/modules/selector/
+/documentation/functions/selector.html   /documentation/modules/selector/
+/docs/yardoc/functions/string.html     /documentation/modules/string/
+/documentation/functions/string.html   /documentation/modules/string/
+/d/bogus-combinators.html         /documentation/breaking-changes/bogus-combinators/
+/d/css-vars.html         /documentation/breaking-changes/css-vars/
+/d/duplicate-var-flags.html         /documentation/breaking-changes/duplicate-var-flags/
+/d/extend-compound.html         /documentation/breaking-changes/extend-compound/
+/d/function-units.html         /documentation/breaking-changes/function-units/
+/d/media-logic.html         /documentation/breaking-changes/media-logic/
+/d/moz-document.html         /documentation/breaking-changes/moz-document/
+/d/slash-div.html         /documentation/breaking-changes/slash-div/
+/d/strict-unary.html         /documentation/breaking-changes/strict-unary/

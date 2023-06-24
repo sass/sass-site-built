@@ -1,0 +1,1171 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: sass:math</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="documentation modules math">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">sass:math</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="sl-l-medium-holy-grail">
+  <div class="sl-l-medium-holy-grail__body">
+    <nav class="sl-l-medium-holy-grail__navigation" role="navigation" aria-label="Content navigation">
+  <div class="sl-c-list-navigation-wrapper sl-c-list-navigation-wrapper--collapsible">
+<h2>Contents</h2>
+<ul><li>
+      <a href="/documentation/syntax/" class="section ">Syntax</a><ul><li class="overview">
+      <a href="/documentation/syntax/" >Overview</a>
+    </li><li>
+      <a href="/documentation/syntax/parsing/" class="">Parsing a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/structure/" class="">Structure of a<span class="widont">&nbsp;</span>Stylesheet</a></li><li>
+      <a href="/documentation/syntax/comments/" class="">Comments</a></li><li>
+      <a href="/documentation/syntax/special-functions/" class="">Special Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/style-rules/" class="section ">Style Rules</a><ul><li class="overview">
+      <a href="/documentation/style-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/style-rules/declarations/" class="">Property Declarations</a></li><li>
+      <a href="/documentation/style-rules/parent-selector/" class="">Parent Selector</a></li><li>
+      <a href="/documentation/style-rules/placeholder-selectors/" class="">Placeholder Selectors</a></li></ul>
+</li><li>
+      <a href="/documentation/variables/" class="">Variables</a></li><li>
+      <a href="/documentation/interpolation/" class="">Interpolation</a></li><li>
+      <a href="/documentation/at-rules/" class="section ">At-Rules</a><ul><li class="overview">
+      <a href="/documentation/at-rules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/use/" class=""><code>@use</code></a></li><li>
+      <a href="/documentation/at-rules/forward/" class=""><code>@forward</code></a></li><li>
+      <a href="/documentation/at-rules/import/" class=""><code>@import</code></a></li><li>
+      <a href="/documentation/at-rules/mixin/" class=""><code>@mixin</code> and <code>@include</code></a></li><li>
+      <a href="/documentation/at-rules/function/" class=""><code>@function</code></a></li><li>
+      <a href="/documentation/at-rules/extend/" class=""><code>@extend</code></a></li><li>
+      <a href="/documentation/at-rules/error/" class=""><code>@error</code></a></li><li>
+      <a href="/documentation/at-rules/warn/" class=""><code>@warn</code></a></li><li>
+      <a href="/documentation/at-rules/debug/" class=""><code>@debug</code></a></li><li>
+      <a href="/documentation/at-rules/at-root/" class=""><code>@at-root</code></a></li><li>
+      <a href="/documentation/at-rules/control/" class="section ">Flow Control</a><ul><li class="overview">
+      <a href="/documentation/at-rules/control/" >Overview</a>
+    </li><li>
+      <a href="/documentation/at-rules/control/if/" class=""><code>@if</code> and <code>@else</code></a></li><li>
+      <a href="/documentation/at-rules/control/each/" class=""><code>@each</code></a></li><li>
+      <a href="/documentation/at-rules/control/for/" class=""><code>@for</code></a></li><li>
+      <a href="/documentation/at-rules/control/while/" class=""><code>@while</code></a></li></ul>
+</li><li>
+      <a href="/documentation/at-rules/css/" class="">From <span class="caps">CSS</span></a></li></ul>
+</li><li>
+      <a href="/documentation/values/" class="section ">Values</a><ul><li class="overview">
+      <a href="/documentation/values/" >Overview</a>
+    </li><li>
+      <a href="/documentation/values/numbers/" class="">Numbers</a></li><li>
+      <a href="/documentation/values/strings/" class="">Strings</a></li><li>
+      <a href="/documentation/values/colors/" class="">Colors</a></li><li>
+      <a href="/documentation/values/lists/" class="">Lists</a></li><li>
+      <a href="/documentation/values/maps/" class="">Maps</a></li><li>
+      <a href="/documentation/values/booleans/" class=""><code>true</code> and <code>false</code></a></li><li>
+      <a href="/documentation/values/null/" class=""><code>null</code></a></li><li>
+      <a href="/documentation/values/calculations/" class="">Calculations</a></li><li>
+      <a href="/documentation/values/functions/" class="">Functions</a></li></ul>
+</li><li>
+      <a href="/documentation/operators/" class="section ">Operators</a><ul><li class="overview">
+      <a href="/documentation/operators/" >Overview</a>
+    </li><li>
+      <a href="/documentation/operators/equality/" class="">Equality</a></li><li>
+      <a href="/documentation/operators/relational/" class="">Relational</a></li><li>
+      <a href="/documentation/operators/numeric/" class="">Numeric</a></li><li>
+      <a href="/documentation/operators/string/" class="">String</a></li><li>
+      <a href="/documentation/operators/boolean/" class="">Boolean</a></li></ul>
+</li><li>
+      <a href="/documentation/modules/" class="section open selected">Built-In Modules</a><ul><li class="overview">
+      <a href="/documentation/modules/" >Overview</a>
+    </li><li>
+      <a href="/documentation/modules/color/" class=""><code>sass:color</code></a></li><li>
+      <a href="/documentation/modules/list/" class=""><code>sass:list</code></a></li><li>
+      <a href="/documentation/modules/map/" class=""><code>sass:map</code></a></li><li>
+      <a href="/documentation/modules/math/" class="open selected"><code>sass:math</code></a></li><li>
+      <a href="/documentation/modules/meta/" class=""><code>sass:meta</code></a></li><li>
+      <a href="/documentation/modules/selector/" class=""><code>sass:selector</code></a></li><li>
+      <a href="/documentation/modules/string/" class=""><code>sass:string</code></a></li></ul>
+</li><li>
+      <a href="/documentation/breaking-changes/" class="section ">Breaking Changes</a><ul><li class="overview">
+      <a href="/documentation/breaking-changes/" >Overview</a>
+    </li><li>
+      <a href="/documentation/breaking-changes/strict-unary/" class="">Strict Unary<span class="widont">&nbsp;</span>Operators</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Random With<span class="widont">&nbsp;</span>Units</a></li><li>
+      <a href="/documentation/breaking-changes/bogus-combinators/" class="">Invalid Combinators</a></li><li>
+      <a href="/documentation/breaking-changes/media-logic/" class="">Media Queries Level<span class="widont">&nbsp;</span>4</a></li><li>
+      <a href="/documentation/breaking-changes/slash-div/" class=""><code>/</code> as Division</a></li><li>
+      <a href="/documentation/breaking-changes/function-units/" class="">Function Units</a></li><li>
+      <a href="/documentation/breaking-changes/moz-document/" class=""><code>-moz-document</code></a></li><li>
+      <a href="/documentation/breaking-changes/extend-compound/" class="">Extending Compound<span class="widont">&nbsp;</span>Selectors</a></li><li>
+      <a href="/documentation/breaking-changes/css-vars/" class=""><span class="caps">CSS</span> Variable<span class="widont">&nbsp;</span>Syntax</a></li><li>
+      <a href="/documentation/breaking-changes/duplicate-var-flags/" class="">Duplicate Variable<span class="widont">&nbsp;</span>Flags</a></li><li>
+      <a href="/documentation/breaking-changes/default-export/" class="">Default Exports</a></li></ul>
+</li><li>
+      <a href="/documentation/cli/" class="section ">Command Line</a><ul><li class="overview">
+      <a href="/documentation/cli/" >Overview</a>
+    </li><li>
+      <a href="/documentation/cli/dart-sass/" class="">Dart Sass</a></li><li>
+      <a href="/documentation/cli/ruby-sass/" class="">Ruby Sass</a></li><li>
+      <a href="/documentation/cli/migrator/" class="">Migrator</a></li></ul>
+</li><li>
+      <a href="/documentation/js-api/" class="">JavaScript <span class="caps">API</span></a></li></ul>
+</div>
+
+</nav>
+
+
+    <div class="sl-l-medium-holy-grail__main">
+      <div class="sl-l-large-holy-grail">
+        <div class="sl-l-large-holy-grail__body">
+          
+
+          <div class="sl-l-large-holy-grail__main docSearch-content">
+            
+            <div class="sl-l-container sl-l-container--small">
+              
+
+
+
+              <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.23.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div><div><a href="javascript:;">▶</a></div></dl><div class="sl-c-callout sl-c-callout--impl-status">
+    <p>Only Dart Sass currently supports loading built-in modules with <code>@use</code>. Users
+of other implementations must call functions using their global names<span class="widont">&nbsp;</span>instead.</p>
+  </div>
+<h2 id="variables" tabindex="-1">Variables<a class="anchor" href="#variables"><span class="visuallyhidden">Variables permalink</span></a></h2>
+<div class="sl-c-callout sl-c-callout--function" id="$e"><pre class="signature language-scss"><a class="anchor" href="#$e"></a><code class="language-scss">math.<span class="token variable docSearch-function" name="math.$e">$e</span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>The closest 64-bit floating point approximation of the <a href="https://en.wikipedia.org/wiki/E_(mathematical_constant)">mathematical constant
+<em>e</em></a>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-e-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-e-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-e-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token variable">$e</span><span class="token punctuation">;</span> <span class="token comment">// 2.7182818285</span>&#10;</code></pre></div>
+<div id="example-math-e-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.$e  // 2.7182818285</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="$epsilon"><pre class="signature language-scss"><a class="anchor" href="#$epsilon"></a><code class="language-scss">math.<span class="token variable docSearch-function" name="math.$epsilon">$epsilon</span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.55.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>The difference between 1 and the smallest 64-bit floating point number greater
+than 1 according to floating-point comparisons. Because of Sass numbers’ <a href="/documentation/values/numbers">10
+digits of precision</a>, in many cases this will
+appear to be<span class="widont">&nbsp;</span>0.</p>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="$max-number"><pre class="signature language-scss"><a class="anchor" href="#$max-number"></a><code class="language-scss">math.<span class="token variable docSearch-function" name="math.$max-number">$max-number</span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.55.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>The maximum finite number that can be represented as a 64-bit floating point<span class="widont">&nbsp;</span>number.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-max-number-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-max-number-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-max-number-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token variable">$max-number</span><span class="token punctuation">;</span> <span class="token comment">// 179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</span>&#10;</code></pre></div>
+<div id="example-math-max-number-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.$max-number  // 179769313486231570000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="$max-safe-integer"><pre class="signature language-scss"><a class="anchor" href="#$max-safe-integer"></a><code class="language-scss">math.<span class="token variable docSearch-function" name="math.$max-safe-integer">$max-safe-integer</span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.55.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>The maximum integer <code>n</code> such that both <code>n</code> and <code>n + 1</code> can be precisely
+represented as a 64-bit floating-point<span class="widont">&nbsp;</span>number.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-max-safe-integer-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-max-safe-integer-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-max-safe-integer-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token variable">$max-safe-integer</span><span class="token punctuation">;</span> <span class="token comment">// 9007199254740991</span>&#10;</code></pre></div>
+<div id="example-math-max-safe-integer-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.$max-safe-integer  // 9007199254740991</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="$min-number"><pre class="signature language-scss"><a class="anchor" href="#$min-number"></a><code class="language-scss">math.<span class="token variable docSearch-function" name="math.$min-number">$min-number</span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.55.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>The smallest positive number that can be represented as a 64-bit floating
+point number. Because of Sass numbers’ <a href="/documentation/values/numbers">10 digits of
+precision</a>, in many cases this will appear to
+be<span class="widont">&nbsp;</span>0.</p>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="$min-safe-integer"><pre class="signature language-scss"><a class="anchor" href="#$min-safe-integer"></a><code class="language-scss">math.<span class="token variable docSearch-function" name="math.$min-safe-integer">$min-safe-integer</span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.55.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>The minimum integer <code>n</code> such that both <code>n</code> and <code>n - 1</code> can be precisely
+represented as a 64-bit floating-point<span class="widont">&nbsp;</span>number.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-min-safe-integer-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-min-safe-integer-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-min-safe-integer-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token variable">$min-safe-integer</span><span class="token punctuation">;</span> <span class="token comment">// -9007199254740991</span>&#10;</code></pre></div>
+<div id="example-math-min-safe-integer-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.$min-safe-integer  // -9007199254740991</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="$pi"><pre class="signature language-scss"><a class="anchor" href="#$pi"></a><code class="language-scss">math.<span class="token variable docSearch-function" name="math.$pi">$pi</span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>The closest 64-bit floating point approximation of the <a href="https://en.wikipedia.org/wiki/Pi">mathematical constant
+<em>π</em></a>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-pi-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-pi-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-pi-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token variable">$pi</span><span class="token punctuation">;</span> <span class="token comment">// 3.1415926536</span>&#10;</code></pre></div>
+<div id="example-math-pi-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.$pi  // 3.1415926536</span>&#10;</code></pre></div>
+</div>
+</div>
+<h2 id="bounding-functions" tabindex="-1">Bounding Functions<a class="anchor" href="#bounding-functions"><span class="visuallyhidden">Bounding Functions permalink</span></a></h2>
+<div class="sl-c-callout sl-c-callout--function" id="ceil"><pre class="signature language-scss"><a class="anchor" href="#ceil"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.ceil">ceil</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span>
+<span class="token function">ceil</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Rounds <code>$number</code> up to the next highest whole<span class="widont">&nbsp;</span>number.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-ceil-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-ceil-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-ceil-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">ceil</span><span class="token punctuation">(</span>4<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">ceil</span><span class="token punctuation">(</span>4.2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">ceil</span><span class="token punctuation">(</span>4.9<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>&#10;</code></pre></div>
+<div id="example-math-ceil-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.ceil(4)  // 4</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.ceil(4.2)  // 5</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.ceil(4.9)  // 5</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="clamp"><pre class="signature language-scss"><a class="anchor" href="#clamp"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.clamp">clamp</span><span class="token punctuation">(</span><span class="token variable">$min</span><span class="token punctuation">,</span> <span class="token variable">$number</span><span class="token punctuation">,</span> <span class="token variable">$max</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Restricts <code>$number</code> to the range between <code>$min</code> and <code>$max</code>. If <code>$number</code> is
+less than <code>$min</code> this returns <code>$min</code>, and if it’s greater than <code>$max</code> this
+returns <code>$max</code>.</p>
+<p><code>$min</code>, <code>$number</code>, and <code>$max</code> must have compatible units, or all be<span class="widont">&nbsp;</span>unitless.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-clamp-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-clamp-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-clamp-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">clamp</span><span class="token punctuation">(</span>-1<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">clamp</span><span class="token punctuation">(</span>1px<span class="token punctuation">,</span> -1px<span class="token punctuation">,</span> 10px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1px</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">clamp</span><span class="token punctuation">(</span>-1in<span class="token punctuation">,</span> 1cm<span class="token punctuation">,</span> 10mm<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10mm</span>&#10;</code></pre></div>
+<div id="example-math-clamp-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.clamp(-1, 0, 1) // 0</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.clamp(1px, -1px, 10px) // 1px</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.clamp(-1in, 1cm, 10mm) // 10mm</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="floor"><pre class="signature language-scss"><a class="anchor" href="#floor"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.floor">floor</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span>
+<span class="token function">floor</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Rounds <code>$number</code> down to the next lowest whole<span class="widont">&nbsp;</span>number.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-floor-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-floor-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-floor-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">floor</span><span class="token punctuation">(</span>4<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">floor</span><span class="token punctuation">(</span>4.2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">floor</span><span class="token punctuation">(</span>4.9<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>&#10;</code></pre></div>
+<div id="example-math-floor-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.floor(4)  // 4</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.floor(4.2)  // 4</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.floor(4.9)  // 4</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="max"><pre class="signature language-scss"><a class="anchor" href="#max"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.max">max</span><span class="token punctuation">(</span><span class="token variable">$number</span>...<span class="token punctuation">)</span>
+<span class="token function">max</span><span class="token punctuation">(</span><span class="token variable">$number</span>...<span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Returns the highest of one or more<span class="widont">&nbsp;</span>numbers.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-max-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-max-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-max-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">max</span><span class="token punctuation">(</span>1px<span class="token punctuation">,</span> 4px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4px</span>&#10;&#10;<span class="token property"><span class="token variable">$widths</span></span><span class="token punctuation">:</span> 50px<span class="token punctuation">,</span> 30px<span class="token punctuation">,</span> 100px<span class="token punctuation">;</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">max</span><span class="token punctuation">(</span><span class="token variable">$widths</span>...<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 100px</span>&#10;</code></pre></div>
+<div id="example-math-max-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.max(1px, 4px)  // 4px</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$widths</span><span class="token punctuation">:</span> 50px, 30px, 100px</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.max($widths...)  // 100px</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="min"><pre class="signature language-scss"><a class="anchor" href="#min"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.min">min</span><span class="token punctuation">(</span><span class="token variable">$number</span>...<span class="token punctuation">)</span>
+<span class="token function">min</span><span class="token punctuation">(</span><span class="token variable">$number</span>...<span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Returns the lowest of one or more<span class="widont">&nbsp;</span>numbers.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-min-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-min-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-min-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">min</span><span class="token punctuation">(</span>1px<span class="token punctuation">,</span> 4px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1px</span>&#10;&#10;<span class="token property"><span class="token variable">$widths</span></span><span class="token punctuation">:</span> 50px<span class="token punctuation">,</span> 30px<span class="token punctuation">,</span> 100px<span class="token punctuation">;</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">min</span><span class="token punctuation">(</span><span class="token variable">$widths</span>...<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 30px</span>&#10;</code></pre></div>
+<div id="example-math-min-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.min(1px, 4px)  // 1px</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$widths</span><span class="token punctuation">:</span> 50px, 30px, 100px</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.min($widths...)  // 30px</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="round"><pre class="signature language-scss"><a class="anchor" href="#round"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.round">round</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span>
+<span class="token function">round</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Rounds <code>$number</code> to the nearest whole<span class="widont">&nbsp;</span>number.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-round-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-round-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-round-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">round</span><span class="token punctuation">(</span>4<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">round</span><span class="token punctuation">(</span>4.2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">round</span><span class="token punctuation">(</span>4.9<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>&#10;</code></pre></div>
+<div id="example-math-round-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.round(4)  // 4</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.round(4.2)  // 4</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.round(4.9)  // 5</span>&#10;</code></pre></div>
+</div>
+</div>
+<h2 id="distance-functions" tabindex="-1">Distance Functions<a class="anchor" href="#distance-functions"><span class="visuallyhidden">Distance Functions permalink</span></a></h2>
+<div class="sl-c-callout sl-c-callout--function" id="abs"><pre class="signature language-scss"><a class="anchor" href="#abs"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.abs">abs</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span>
+<span class="token function">abs</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Returns the <a href="https://en.wikipedia.org/wiki/Absolute_value">absolute value</a> of <code>$number</code>. If <code>$number</code> is negative, this
+returns <code>-$number</code>, and if <code>$number</code> is positive, it returns <code>$number</code> as-is.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-abs-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-abs-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-abs-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">abs</span><span class="token punctuation">(</span>10px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10px</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">abs</span><span class="token punctuation">(</span>-10px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10px</span>&#10;</code></pre></div>
+<div id="example-math-abs-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.abs(10px) // 10px</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.abs(-10px) // 10px</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="hypot"><pre class="signature language-scss"><a class="anchor" href="#hypot"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.hypot">hypot</span><span class="token punctuation">(</span><span class="token variable">$number</span>...<span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the length of the <em>n</em>-dimensional <a href="https://en.wikipedia.org/wiki/Euclidean_vector">vector</a> that has components equal
+to each <code>$number</code>. For example, for three numbers <em>a</em>, <em>b</em>, and <em>c</em>, this
+returns the square root of <em>a² + b² +<span class="widont">&nbsp;</span>c²</em>.</p>
+<p>The numbers must either all have compatible units, or all be unitless. And
+since the numbers’ units may differ, the output takes the unit of the first<span class="widont">&nbsp;</span>number.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-hypot-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-hypot-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-hypot-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">hypot</span><span class="token punctuation">(</span>3<span class="token punctuation">,</span> 4<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>&#10;&#10;<span class="token property"><span class="token variable">$lengths</span></span><span class="token punctuation">:</span> 1in<span class="token punctuation">,</span> 10cm<span class="token punctuation">,</span> 50px<span class="token punctuation">;</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">hypot</span><span class="token punctuation">(</span><span class="token variable">$lengths</span>...<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4.0952775683in</span>&#10;</code></pre></div>
+<div id="example-math-hypot-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.hypot(3, 4) // 5</span>&#10;&#10;<span class="token variable-line"><span class="token variable">$lengths</span><span class="token punctuation">:</span> 1in, 10cm, 50px</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.hypot($lengths...) // 4.0952775683in</span>&#10;</code></pre></div>
+</div>
+</div>
+<h2 id="exponential-functions" tabindex="-1">Exponential Functions<a class="anchor" href="#exponential-functions"><span class="visuallyhidden">Exponential Functions permalink</span></a></h2>
+<div class="sl-c-callout sl-c-callout--function" id="log"><pre class="signature language-scss"><a class="anchor" href="#log"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.log">log</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">,</span> <span class="token property"><span class="token variable">$base</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the <a href="https://en.wikipedia.org/wiki/Logarithm">logarithm</a> of <code>$number</code> with respect to <code>$base</code>. If <code>$base</code> is
+<code>null</code>, the <a href="https://en.wikipedia.org/wiki/Natural_logarithm">natural log</a> is<span class="widont">&nbsp;</span>calculated.</p>
+<p><code>$number</code> and <code>$base</code> must be<span class="widont">&nbsp;</span>unitless.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-log-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-log-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-log-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">log</span><span class="token punctuation">(</span>10<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2.302585093</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">log</span><span class="token punctuation">(</span>10<span class="token punctuation">,</span> 10<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1</span>&#10;</code></pre></div>
+<div id="example-math-log-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.log(10) // 2.302585093</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.log(10, 10) // 1</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="pow"><pre class="signature language-scss"><a class="anchor" href="#pow"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.pow">pow</span><span class="token punctuation">(</span><span class="token variable">$base</span><span class="token punctuation">,</span> <span class="token variable">$exponent</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Raises <code>$base</code> <a href="https://en.wikipedia.org/wiki/Exponentiation">to the power of</a> <code>$exponent</code>.</p>
+<p><code>$base</code> and <code>$exponent</code> must be<span class="widont">&nbsp;</span>unitless.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-pow-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-pow-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-pow-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">pow</span><span class="token punctuation">(</span>10<span class="token punctuation">,</span> 2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 100</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">pow</span><span class="token punctuation">(</span>100<span class="token punctuation">,</span> math.<span class="token function">div</span><span class="token punctuation">(</span>1<span class="token punctuation">,</span> 3<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4.6415888336</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">pow</span><span class="token punctuation">(</span>5<span class="token punctuation">,</span> -2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.04</span>&#10;</code></pre></div>
+<div id="example-math-pow-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.pow(10, 2) // 100</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.pow(100, math.div(1, 3)) // 4.6415888336</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.pow(5, -2) // 0.04</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="sqrt"><pre class="signature language-scss"><a class="anchor" href="#sqrt"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.sqrt">sqrt</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the <a href="https://en.wikipedia.org/wiki/Square_root">square root</a> of <code>$number</code>.</p>
+<p><code>$number</code> must be<span class="widont">&nbsp;</span>unitless.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-sqrt-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-sqrt-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-sqrt-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">sqrt</span><span class="token punctuation">(</span>100<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 10</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">sqrt</span><span class="token punctuation">(</span>math.<span class="token function">div</span><span class="token punctuation">(</span>1<span class="token punctuation">,</span> 3<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.5773502692</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">sqrt</span><span class="token punctuation">(</span>-1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// NaN</span>&#10;</code></pre></div>
+<div id="example-math-sqrt-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.sqrt(100) // 10</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.sqrt(math.div(1, 3)) // 0.5773502692</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.sqrt(-1) // NaN</span>&#10;</code></pre></div>
+</div>
+</div>
+<h2 id="trigonometric-functions" tabindex="-1">Trigonometric Functions<a class="anchor" href="#trigonometric-functions"><span class="visuallyhidden">Trigonometric Functions permalink</span></a></h2>
+<div class="sl-c-callout sl-c-callout--function" id="cos"><pre class="signature language-scss"><a class="anchor" href="#cos"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.cos">cos</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions">cosine</a> of <code>$number</code>.</p>
+<p><code>$number</code> must be an angle (its units must be compatible with <code>deg</code>) or
+unitless. If <code>$number</code> has no units, it is assumed to be in <code>rad</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-cos-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-cos-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-cos-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">cos</span><span class="token punctuation">(</span>100deg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -0.1736481777</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">cos</span><span class="token punctuation">(</span>1rad<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.5403023059</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">cos</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.5403023059</span>&#10;</code></pre></div>
+<div id="example-math-cos-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.cos(100deg) // -0.1736481777</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.cos(1rad) // 0.5403023059</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.cos(1) // 0.5403023059</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="sin"><pre class="signature language-scss"><a class="anchor" href="#sin"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.sin">sin</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions">sine</a> of <code>$number</code>.</p>
+<p><code>$number</code> must be an angle (its units must be compatible with <code>deg</code>) or
+unitless. If <code>$number</code> has no units, it is assumed to be in <code>rad</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-sin-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-sin-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-sin-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">sin</span><span class="token punctuation">(</span>100deg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.984807753</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">sin</span><span class="token punctuation">(</span>1rad<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.8414709848</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">sin</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.8414709848</span>&#10;</code></pre></div>
+<div id="example-math-sin-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.sin(100deg) // 0.984807753</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.sin(1rad) // 0.8414709848</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.sin(1) // 0.8414709848</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="tan"><pre class="signature language-scss"><a class="anchor" href="#tan"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.tan">tan</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the <a href="https://en.wikipedia.org/wiki/Trigonometric_functions#Right-angled_triangle_definitions">tangent</a> of <code>$number</code>.</p>
+<p><code>$number</code> must be an angle (its units must be compatible with <code>deg</code>) or
+unitless. If <code>$number</code> has no units, it is assumed to be in <code>rad</code>.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-tan-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-tan-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-tan-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">tan</span><span class="token punctuation">(</span>100deg<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// -5.6712818196</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">tan</span><span class="token punctuation">(</span>1rad<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1.5574077247</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">tan</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1.5574077247</span>&#10;</code></pre></div>
+<div id="example-math-tan-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.tan(100deg) // -5.6712818196</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.tan(1rad) // 1.5574077247</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.tan(1) // 1.5574077247</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="acos"><pre class="signature language-scss"><a class="anchor" href="#acos"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.acos">acos</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties">arccosine</a> of <code>$number</code> in <code>deg</code>.</p>
+<p><code>$number</code> must be<span class="widont">&nbsp;</span>unitless.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-acos-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-acos-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-acos-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">acos</span><span class="token punctuation">(</span>0.5<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 60deg</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">acos</span><span class="token punctuation">(</span>2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// NaNdeg</span>&#10;</code></pre></div>
+<div id="example-math-acos-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.acos(0.5) // 60deg</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.acos(2) // NaNdeg</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="asin"><pre class="signature language-scss"><a class="anchor" href="#asin"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.asin">asin</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties">arcsine</a> of <code>$number</code> in <code>deg</code>.</p>
+<p><code>$number</code> must be<span class="widont">&nbsp;</span>unitless.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-asin-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-asin-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-asin-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">asin</span><span class="token punctuation">(</span>0.5<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 30deg</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">asin</span><span class="token punctuation">(</span>2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// NaNdeg</span>&#10;</code></pre></div>
+<div id="example-math-asin-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.asin(0.5) // 30deg</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.asin(2) // NaNdeg</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="atan"><pre class="signature language-scss"><a class="anchor" href="#atan"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.atan">atan</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the <a href="https://en.wikipedia.org/wiki/Inverse_trigonometric_functions#Basic_properties">arctangent</a> of <code>$number</code> in <code>deg</code>.</p>
+<p><code>$number</code> must be<span class="widont">&nbsp;</span>unitless.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-atan-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-atan-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-atan-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">atan</span><span class="token punctuation">(</span>10<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 84.2894068625deg</span>&#10;</code></pre></div>
+<div id="example-math-atan-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.atan(10) // 84.2894068625deg</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="atan2"><pre class="signature language-scss"><a class="anchor" href="#atan2"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.atan2">atan2</span><span class="token punctuation">(</span><span class="token variable">$y</span><span class="token punctuation">,</span> <span class="token variable">$x</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.25.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the <a href="https://en.wikipedia.org/wiki/Atan2">2-argument arctangent</a> of <code>$y</code> and <code>$x</code> in <code>deg</code>.</p>
+<p><code>$y</code> and <code>$x</code> must have compatible units or be<span class="widont">&nbsp;</span>unitless.</p>
+  <div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p><code>math.atan2($y, $x)</code> is distinct from <code>atan(math.div($y, $x))</code> because it
+preserves the quadrant of the point in question. For example, <code>math.atan2(1, -1)</code> corresponds to the point <code>(-1, 1)</code> and returns <code>135deg</code>. In contrast,
+<code>math.atan(math.div(1, -1))</code> and <code>math.atan(math.div(-1, 1))</code> resolve first
+to <code>atan(-1)</code>, so both return <code>-45deg</code>.</p>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-atan2-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-atan2-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-atan2-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">atan2</span><span class="token punctuation">(</span>-1<span class="token punctuation">,</span> 1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 135deg</span>&#10;</code></pre></div>
+<div id="example-math-atan2-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.atan2(-1, 1) // 135deg</span>&#10;</code></pre></div>
+</div>
+</div>
+<h2 id="unit-functions" tabindex="-1">Unit Functions<a class="anchor" href="#unit-functions"><span class="visuallyhidden">Unit Functions permalink</span></a></h2>
+<div id="comparable">
+<div class="sl-c-callout sl-c-callout--function" id="compatible"><pre class="signature language-scss"><a class="anchor" href="#compatible"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.compatible">compatible</span><span class="token punctuation">(</span><span class="token variable">$number1</span><span class="token punctuation">,</span> <span class="token variable">$number2</span><span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="comparable">comparable</span><span class="token punctuation">(</span><span class="token variable">$number1</span><span class="token punctuation">,</span> <span class="token variable">$number2</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/booleans">boolean</a></span></code></pre>
+<p>Returns whether <code>$number1</code> and <code>$number2</code> have compatible<span class="widont">&nbsp;</span>units.</p>
+<p>If this returns <code>true</code>, <code>$number1</code> and <code>$number2</code> can safely be <a href="/documentation/operators/numeric">added</a>,
+<a href="/documentation/operators/numeric">subtracted</a>, and <a href="/documentation/operators/relational">compared</a>. Otherwise, doing so will produce<span class="widont">&nbsp;</span>errors.</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>The global name of this function is
+<code>compa<strong>ra</strong>ble</code>, but when it was added to the
+<code>sass:math</code> module the name was changed to
+<code>compa<strong>ti</strong>ble</code> to more clearly convey what the
+function<span class="widont">&nbsp;</span>does.</p>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-compatible-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-compatible-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-compatible-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">compatible</span><span class="token punctuation">(</span>2px<span class="token punctuation">,</span> 1px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">compatible</span><span class="token punctuation">(</span>100px<span class="token punctuation">,</span> 3em<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">compatible</span><span class="token punctuation">(</span>10cm<span class="token punctuation">,</span> 3mm<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;</code></pre></div>
+<div id="example-math-compatible-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.compatible(2px, 1px)  // true</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.compatible(100px, 3em)  // false</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.compatible(10cm, 3mm)  // true</span>&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div id="unitless">
+<div class="sl-c-callout sl-c-callout--function" id="is-unitless"><pre class="signature language-scss"><a class="anchor" href="#is-unitless"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.is-unitless">is-unitless</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span>
+<span class="token function docSearch-function" name="unitless">unitless</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/booleans">boolean</a></span></code></pre>
+<p>Returns whether <code>$number</code> has no<span class="widont">&nbsp;</span>units.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-is-unitless-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-is-unitless-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-is-unitless-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">is-unitless</span><span class="token punctuation">(</span>100<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">is-unitless</span><span class="token punctuation">(</span>100px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>&#10;</code></pre></div>
+<div id="example-math-is-unitless-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.is-unitless(100)  // true</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.is-unitless(100px)  // false</span>&#10;</code></pre></div>
+</div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="unit"><pre class="signature language-scss"><a class="anchor" href="#unit"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.unit">unit</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span>
+<span class="token function">unit</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/strings#quoted">quoted string</a></span></code></pre>
+<p>Returns a string representation of <code>$number</code>’s units.</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>This function is intended for debugging; its output format is not guaranteed
+to be consistent across Sass versions or<span class="widont">&nbsp;</span>implementations.</p>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-unitless-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-unitless-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-unitless-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">unit</span><span class="token punctuation">(</span>100<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ""</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">unit</span><span class="token punctuation">(</span>100px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "px"</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">unit</span><span class="token punctuation">(</span>5px <span class="token operator">*</span> 10px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "px*px"</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">unit</span><span class="token punctuation">(</span>math.<span class="token function">div</span><span class="token punctuation">(</span>5px<span class="token punctuation">,</span> 1s<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "px/s"</span>&#10;</code></pre></div>
+<div id="example-math-unitless-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.unit(100)  // ""</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.unit(100px)  // "px"</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.unit(5px * 10px)  // "px*px"</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.unit(math.div(5px, 1s))  // "px/s"</span>&#10;</code></pre></div>
+</div>
+</div>
+<h2 id="other-functions" tabindex="-1">Other Functions<a class="anchor" href="#other-functions"><span class="visuallyhidden">Other Functions permalink</span></a></h2>
+<div class="sl-c-callout sl-c-callout--function" id="div"><pre class="signature language-scss"><a class="anchor" href="#div"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.div">div</span><span class="token punctuation">(</span><span class="token variable">$number1</span><span class="token punctuation">,</span> <span class="token variable">$number2</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+  <dl class="impl-status sl-c-description-list sl-c-description-list--horizontal">
+  <div class="compatibility">
+    Compatibility:
+  </div><div>
+      <dt>Dart Sass</dt>
+      <dd>since 1.33.0</dd>
+    </div><div>
+      <dt>LibSass</dt>
+      <dd>✗</dd>
+    </div><div>
+      <dt>Ruby Sass</dt>
+      <dd>✗</dd>
+    </div></dl>
+<p>Returns the result of dividing <code>$number1</code> by <code>$number2</code>.</p>
+<p>Any units shared by both numbers will be canceled out. Units in <code>$number1</code>
+that aren’t in <code>$number2</code> will end up in the return value’s numerator, and
+units in <code>$number2</code> that aren’t in <code>$number1</code> will end up in its<span class="widont">&nbsp;</span>denominator.</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p>For backwards-compatibility purposes, this returns the <em>exact same result</em>
+as <a href="/documentation/breaking-changes/slash-div">the deprecated <code>/</code> operator</a>, including concatenating two strings with a
+<code>/</code> character between them. However, this behavior will be removed
+eventually and shouldn’t be used in new<span class="widont">&nbsp;</span>stylesheets.</p>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-div-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-div-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-div-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">div</span><span class="token punctuation">(</span>1<span class="token punctuation">,</span> 2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.5</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">div</span><span class="token punctuation">(</span>100px<span class="token punctuation">,</span> 5px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">div</span><span class="token punctuation">(</span>100px<span class="token punctuation">,</span> 5<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20px</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">div</span><span class="token punctuation">(</span>100px<span class="token punctuation">,</span> 5s<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20px/s</span>&#10;</code></pre></div>
+<div id="example-math-div-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.div(1, 2)  // 0.5</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.div(100px, 5px)  // 20</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.div(100px, 5)  // 20px</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.div(100px, 5s)  // 20px/s</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="percentage"><pre class="signature language-scss"><a class="anchor" href="#percentage"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.percentage">percentage</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span>
+<span class="token function">percentage</span><span class="token punctuation">(</span><span class="token variable">$number</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>Converts a unitless <code>$number</code> (usually a decimal between 0 and 1) to a<span class="widont">&nbsp;</span>percentage.</p>
+  <div class="sl-c-callout sl-c-callout--fun-fact">
+  <h3>💡 Fun fact:</h3>
+  <p>This function is identical to <code>$number * 100%</code>.</p>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-percentage-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-percentage-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-percentage-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">percentage</span><span class="token punctuation">(</span>0.2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 20%</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">percentage</span><span class="token punctuation">(</span>math.<span class="token function">div</span><span class="token punctuation">(</span>100px<span class="token punctuation">,</span> 50px<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 200%</span>&#10;</code></pre></div>
+<div id="example-math-percentage-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.percentage(0.2)  // 20%</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.percentage(math.div(100px, 50px))  // 200%</span>&#10;</code></pre></div>
+</div>
+</div>
+<div class="sl-c-callout sl-c-callout--function" id="random"><pre class="signature language-scss"><a class="anchor" href="#random"></a><code class="language-scss">math.<span class="token function docSearch-function" name="math.random">random</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$limit</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span>
+<span class="token function">random</span><span class="token punctuation">(</span><span class="token property"><span class="token variable">$limit</span></span><span class="token punctuation">:</span> <span class="token null keyword">null</span><span class="token punctuation">)</span> <span class="token comment">//=&gt; <a href="/documentation/values/numbers">number</a></span></code></pre>
+<p>If <code>$limit</code> is <code>null</code>, returns a random decimal number between 0 and<span class="widont">&nbsp;</span>1.</p>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-random-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-random-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-random-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.2821251858</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0.6221325814</span>&#10;</code></pre></div>
+<div id="example-math-random-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.random()  // 0.2821251858</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.random()  // 0.6221325814</span>&#10;</code></pre></div>
+</div>
+<hr>
+<p>If <code>$limit</code> is a number greater than or equal to 1, returns a random whole
+number between 1 and <code>$limit</code>.</p>
+  <div class="sl-c-callout sl-c-callout--warning">
+  <h3>⚠️ Heads up!</h3>
+  <p><code>random()</code> ignores units in <code>$limit</code>. <a href="/documentation/breaking-changes/function-units">This behavior is deprecated</a> and
+<code>random($limit)</code> will return a random integer with the same units as the
+<code>$limit</code> argument.</p>
+<div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-random-warning-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-random-warning-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-random-warning-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">random</span><span class="token punctuation">(</span>100px<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 42</span>&#10;</code></pre></div>
+<div id="example-math-random-warning-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.random(100px)  // 42</span>&#10;</code></pre></div>
+</div>
+</div>
+  <div class="code-example ui-tabs">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix"><li class="ui-tabs-tab ui-tabs-active">
+  <a href="#example-math-random-limit-scss" class="ui-tabs-anchor"><span class="caps">SCSS</span></a>
+</li>
+<li class="ui-tabs-tab">
+  <a href="#example-math-random-limit-sass" class="ui-tabs-anchor">Sass</a>
+</li>
+</ul><div id="example-math-random-limit-scss" class="ui-tabs-panel scss">
+  <h3 class="visuallyhidden"><span class="caps">SCSS</span> Syntax</h3><pre class="language-scss"><code class="language-scss"><span class="token keyword">@debug</span> math.<span class="token function">random</span><span class="token punctuation">(</span>10<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 4</span>&#10;<span class="token keyword">@debug</span> math.<span class="token function">random</span><span class="token punctuation">(</span>10000<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5373</span>&#10;</code></pre></div>
+<div id="example-math-random-limit-sass" class="ui-tabs-panel sass ui-tabs-panel-inactive">
+  <h3 class="visuallyhidden">Sass Syntax</h3><pre class="language-sass"><code class="language-sass"><span class="token atrule-line"><span class="token atrule">@debug</span> math.random(10)  // 4</span>&#10;<span class="token atrule-line"><span class="token atrule">@debug</span> math.random(10000)  // 5373</span>&#10;</code></pre></div>
+</div>
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /documentation/modules/math/ -->
+  </body>
+</html>

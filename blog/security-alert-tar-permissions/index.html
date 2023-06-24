@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Security Alert: Tar Permissions</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 035-security-alert-tar-permissions">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Security Alert: Tar<span class="widont">&nbsp;</span>Permissions</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 10 December 2022 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>The Sass team was recently alerted by prolific external contributor <a href="https://github.com/ntkme">@ntkme</a> to
+a security issue in our release<span class="widont">&nbsp;</span>process.</p>
+<h2 id="tl-dr" tabindex="-1"><span class="caps">TL</span>;<span class="caps">DR</span><a class="anchor" href="#tl-dr"><span class="visuallyhidden"><span class="caps">TL</span>;<span class="caps">DR</span> permalink</span></a></h2>
+<p>If you’re using Linux or Mac <span class="caps">OS</span>, run <code>ls -ax path/to/sass</code>. If the last group of
+letters in the first column contains <code>w</code>, you’re vulnerable:</p>
+<pre><code>Vulnerable:
+-rwxr-xrwx 1 nweiz primarygroup 407 Dec 13 12:33 sass-1.56.2/sass
+
+Not vulnerable:
+-rwxr-xr-x 1 nweiz primarygroup 407 Dec 13 12:33 sass-1.56.2/sass
+</code></pre>
+<p>If you’re using the <code>sass-embedded</code> package, do the same thing for
+<code>node_modules/sass-embedded/dist/lib/src/vendor/dart-sass-embedded/dart-sass-embedded</code>.</p>
+<h2 id="who-s-affected" tabindex="-1">Who’s Affected?<a class="anchor" href="#who-s-affected"><span class="visuallyhidden">Who’s Affected? permalink</span></a></h2>
+<p>While we don’t expect this issue to be a problem for the vast majority of users,
+it does affect the following<span class="widont">&nbsp;</span>groups:</p>
+<ul>
+<li>
+<p>Users who downloaded the stand-alone Dart Sass, Dart Sass Embedded, or Sass
+Migrator <code>.tar.gz</code> archives from the Dart Sass website and extracted them as
+the Unix root<span class="widont">&nbsp;</span>user.</p>
+</li>
+<li>
+<p>Users who installed the <code>sass-embedded</code> npm package as the Unix root user
+prior to version<span class="widont">&nbsp;</span>1.54.5.</p>
+</li>
+<li>
+<p>Users who installed the “non-native” version of the community-maintained
+<code>sass-embedded</code> RubyGems package as the Unix root user prior to version<span class="widont">&nbsp;</span>1.56.2.</p>
+</li>
+<li>
+<p>Users on multi-user systems who downloaded the stand-alone Dart Sass, Dart
+Sass Embedded, or Sass Migrator <code>.tar.gz</code> archives from the Dart Sass website
+and explicitly passed the <code>-p</code>/<code>--preserve-permissions</code> flag when extracting<span class="widont">&nbsp;</span>them.</p>
+</li>
+</ul>
+<p>Users who installed Dart Sass via the <code>sass</code> npm package, Homebrew, or
+Chocolatey are categorically not at risk, nor are users on<span class="widont">&nbsp;</span>Windows.</p>
+<p>We strongly recommend that users in these vulnerable groups delete and
+re-install Sass. All the <code>.tar.gz</code> files on GitHub have been scrubbed to remove
+the vulnerability, so you can reinstall the same version you were previously
+using without needing to upgrade to the latest<span class="widont">&nbsp;</span>version.</p>
+<p>This is a privilege-escalation issue, which means it could allow a hypothetical
+attacker with access to a low-privilege account on your computer to escalate
+their access to your account’s privileges. However, this also means that it’s
+not a risk <em>unless</em> an attacker already has access to an account on your<span class="widont">&nbsp;</span>machine.</p>
+<h2 id="what-went-wrong" tabindex="-1">What went wrong?<a class="anchor" href="#what-went-wrong"><span class="visuallyhidden">What went wrong?<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>We were inadvertently uploading <code>.tar.gz</code> archives with permissions metadata
+indicating that executable files could be overwritten by all users, not just the<span class="widont">&nbsp;</span>owner.</p>
+<p>In most cases, this metadata is ignored when extracting the archives and the
+permissions are set to only be writable by the user doing the extraction.
+However, when extracting archives as the Unix root user or explicitly passing
+the <code>-p</code>/<code>--preserve-permissions</code> flag, the permissions for the extracted files
+are set according to the archive’s metadata. Because the metadata was incorrect,
+an attacker with access to a low-privilege account would be able to overwrite
+the executable file and escalate their privileges once it’s<span class="widont">&nbsp;</span>executed.</p>
+<h2 id="how-did-this-happen" tabindex="-1">How did this happen?<a class="anchor" href="#how-did-this-happen"><span class="visuallyhidden">How did this happen?<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>Dart Sass is automatically deployed to various different release platforms using
+a Dart package called <a href="https://pub.dev/packages/cli_pkg"><code>cli_pkg</code></a>, which is also written maintained by the Sass
+team. This package uses the Dart <a href="https://pub.dev/packages/archive"><code>archive</code></a> package to generate <code>.tar.gz</code> files
+for stand-alone release packages which are then uploaded to GitHub, and when
+initially writing the code to use this package I wrote the following<span class="widont">&nbsp;</span>function:</p>
+<pre class="language-dart"><code class="language-dart"><span class="token class-name">ArchiveFile</span> <span class="token function">fileFromBytes</span><span class="token punctuation">(</span><span class="token class-name">String</span> path<span class="token punctuation">,</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span>int<span class="token punctuation">></span></span> data<span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>bool executable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span>
+    <span class="token class-name">ArchiveFile</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> data<span class="token punctuation">.</span>length<span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span>mode <span class="token operator">=</span> executable <span class="token operator">?</span> <span class="token number">495</span> <span class="token punctuation">:</span> <span class="token number">428</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span>lastModTime <span class="token operator">=</span> <span class="token class-name">DateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>millisecondsSinceEpoch <span class="token operator">~/</span> <span class="token number">1000</span><span class="token punctuation">;</span></code></pre>
+<p>My intention was to set the executable mode to <code>755</code> (read/write/execute for the
+owner, read/execute only for the other users) and the non-executable mode to
+<code>644</code> (read/write for the owner, read-only for other users). However, Dart
+doesn’t support literal octal numbers and I must have done the decimal-to-octal
+conversion wrong. The actual permissions that got set were <code>757</code>
+(read/write/execute for the owner <strong>and other users</strong>, read/execute for the
+group) and <code>654</code> (read/write for the owner, read/execute for the group, and
+read-only for other<span class="widont">&nbsp;</span>users).</p>
+<p>This went unnoticed for several years, until @ntkme notified us of the issue
+last week and provided a fix to <code>cli_pkg</code>.</p>
+<h2 id="what-s-been-done" tabindex="-1">What’s been done?<a class="anchor" href="#what-s-been-done"><span class="visuallyhidden">What’s been done?<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>We’ve released <code>cli_pkg</code> 2.1.7 which sets the archive permissions correctly. In
+addition, we’ve updated all <code>.tar.gz</code> files in the Dart Sass, Dart Sass
+Embedded, and Sass Migrator repositories to correctly limit write permissions to
+only the owner of the files. We’re announcing the vulnerability here and on the
+<a href="https://twitter.com/SassCSS">@SassCSS Twitter<span class="widont">&nbsp;</span>account</a>.</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/security-alert-tar-permissions/ -->
+  </body>
+</html>

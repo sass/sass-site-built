@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Sass Blog</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Sass Blog</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="docSearch-content sl-l-container sl-l-container--small">
+  
+
+
+
+  
+
+
+
+
+  <p>Page 1 of<span class="widont">&nbsp;</span>8</p>
+  
+
+
+<ul class="sl-c-list">
+  
+    <li>
+      <h2>
+        <a href="/blog/rfc-embedded-protocol-2/">Request for Comments: New Embedded<span class="widont">&nbsp;</span>Protocol</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 20 May 2023 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>If you’re not an author of a host package for the Embedded Sass Protocol, you
+can skip this blog post—although if you’re a big enough nerd, you may find it
+interesting<span class="widont">&nbsp;</span>regardless!</p>
+<p>We’re planning to make a number of breaking changes to the Embedded Sass
+Protocol, and we want your feedback before we lock in the new way of doing
+things. We intend to make a number of breaking changes all at once to keep the
+total number of disruptions to a<span class="widont">&nbsp;</span>minimum.</p>
+<p>We’re planning two major breaking<span class="widont">&nbsp;</span>changes:</p>
+<ol>
+<li>
+<p>The Dart Sass embedded host will no longer be released as a separate
+executable. It will now be bundled into the main Dart Sass executable,
+accessible by running <code>sass --embedded</code>.</p>
+</li>
+<li>
+<p>Every packet in the embedded protocol now includes a compilation <span class="caps">ID</span> as part
+of the packet structure, rather than declaring it in the protocol buffer<span class="widont">&nbsp;</span>definitions.</p>
+</li>
+</ol>
+<p>We’re using this opportunity to also introduce three much smaller breaking<span class="widont">&nbsp;</span>changes:</p>
+<ol>
+<li>
+<p>The specification for the embedded protocol and the protocol buffer
+definition<span class="widont">&nbsp;</span>have&#8230;</p></li></ol>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/sass-and-native-nesting/">Sass and Native<span class="widont">&nbsp;</span>Nesting</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 29 March 2023 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>The stable release of Chrome 112, which is releasing today, is the first stable
+browser to add support for the new <a href="https://drafts.csswg.org/css-nesting/">native <span class="caps">CSS</span> nesting feature</a>. This
+feature—inspired by Sass’s nesting—adds the ability to nest style rules in plain
+<span class="caps">CSS</span>, and even uses Sass’s convention of <code>&amp;</code> to refer to the parent<span class="widont">&nbsp;</span>selector.</p>
+<p>We here at Sass <span class="caps">HQ</span> are honored every time our language design inspires
+improvements in <span class="caps">CSS</span> itself. We’re excited to see the usability and clarity
+benefits of nesting brought to even more <span class="caps">CSS</span> authors as more browsers continue
+to roll out support for this<span class="widont">&nbsp;</span>feature.</p>
+<h2 id="the-future-of-sass-nesting" tabindex="-1">The Future of Sass Nesting<a class="anchor" href="/blog/sass-and-native-nesting/#the-future-of-sass-nesting"><span class="visuallyhidden">The Future of Sass Nesting<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>This raises an important question, though: what will happen to Sass’s nesting?
+First of all, we won’t ever change existing valid Sass code so that it starts
+emitting <span class="caps">CSS</span> that’s incompatible with widely-used browsers. This means that even
+if we did decide to phase out Sass nesting and just emit plain <span class="caps">CSS</span> nesting
+instead, we wouldn’t do so until <a href="https://github.com/sass/dart-sass#browser-compatibility">98%<span class="widont">&nbsp;</span>of&#8230;</a></p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/security-alert-tar-permissions/">Security Alert: Tar<span class="widont">&nbsp;</span>Permissions</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 10 December 2022 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>The Sass team was recently alerted by prolific external contributor <a href="https://github.com/ntkme">@ntkme</a> to
+a security issue in our release<span class="widont">&nbsp;</span>process.</p>
+<h2 id="tl-dr" tabindex="-1"><span class="caps">TL</span>;<span class="caps">DR</span><a class="anchor" href="/blog/security-alert-tar-permissions/#tl-dr"><span class="visuallyhidden"><span class="caps">TL</span>;<span class="caps">DR</span> permalink</span></a></h2>
+<p>If you’re using Linux or Mac <span class="caps">OS</span>, run <code>ls -ax path/to/sass</code>. If the last group of
+letters in the first column contains <code>w</code>, you’re vulnerable:</p>
+<pre><code>Vulnerable:
+-rwxr-xrwx 1 nweiz primarygroup 407 Dec 13 12:33 sass-1.56.2/sass
+
+Not vulnerable:
+-rwxr-xr-x 1 nweiz primarygroup 407 Dec 13 12:33 sass-1.56.2/sass
+</code></pre>
+<p>If you’re using the <code>sass-embedded</code> package, do the same thing for
+<code>node_modules/sass-embedded/dist/lib/src/vendor/dart-sass-embedded/dart-sass-embedded</code>.</p>
+<h2 id="who-s-affected" tabindex="-1">Who’s Affected?<a class="anchor" href="/blog/security-alert-tar-permissions/#who-s-affected"><span class="visuallyhidden">Who’s Affected? permalink</span></a></h2>
+<p>While we don’t expect this issue to be a problem for the vast majority of users,
+it does affect the following<span class="widont">&nbsp;</span>groups:</p>
+<ul>
+<li>
+<p>Users who downloaded the stand-alone Dart Sass, Dart Sass Embedded, or Sass
+Migrator <code>.tar.gz</code> archives from the Dart Sass website and extracted them as
+the Unix root<span class="widont">&nbsp;</span>user.</p>
+</li>
+<li>
+<p>Users who installed the <code>sass-embedded</code> npm package as the Unix root user
+prior to version<span class="widont">&nbsp;</span>1.54.5.</p>
+</li>
+<li>
+<p>Users who installed the “non-native” version of the community-maintained
+<code>sass-embedded</code> RubyGems package as the Unix<span class="widont">&nbsp;</span>root&#8230;</p></li></ul>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/request-for-comments-color-spaces/">Request for Comments: Color<span class="widont">&nbsp;</span>Spaces</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 21 September 2022 by Miriam Suzanne and Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>There’s been a lot of exciting work in the <span class="caps">CSS</span> color specifications lately, and
+as it begins to land in browsers we’ve been preparing to add support for it in
+Sass as well. The first and largest part of that is adding support for <em>color
+spaces</em> to Sass, which represents a huge (but largely backwards-compatible)
+rethinking of the way colors<span class="widont">&nbsp;</span>work.</p>
+<p>Historically, all colors in <span class="caps">CSS</span> have existed in the same color space, known as
+“sRGB”. Whether you represent them as a hex code, an <code>hsl()</code> function, or a
+color name, they represented the same set of visible colors you could tell a
+screen to display. While this is conceptually simple, there are some major<span class="widont">&nbsp;</span>downsides:</p>
+<ul>
+<li>
+<p>As monitors have improved over time, they’ve become capable of displaying more
+colors than can be represented in the sRGB color<span class="widont">&nbsp;</span>space.</p>
+</li>
+<li>
+<p>sRGB, even when you’re using it via <code>hsl()</code>, doesn’t correspond very well with
+how humans perceive colors. Cyan looks noticeably lighter than purple with the
+same saturation and lightness<span class="widont">&nbsp;</span>values.</p>
+</li>
+<li>
+<p>There’s&#8230;</p></li></ul>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/request-for-comments-strict-unary-operators/">Request for Comments: Strict Unary<span class="widont">&nbsp;</span>Operators</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 15 June 2022 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>Do you know what <code>margin: $a -$b</code> does in Sass? If you said &quot;the same thing as
+<code>margin: $a (-$b)</code>, I’m sorry, but you’re wrong. It’s <em>actually</em> the same thing
+as <code>margin: $a - $b</code>. Don’t worry, you’re not the first person to get tripped up
+by this weird corner of Sass’s parser! But our new language proposal aims to fix<span class="widont">&nbsp;</span>that.</p>
+<p>In the <a href="https://github.com/sass/sass/blob/main/accepted/strict-unary.md">Strict Unary Operators</a> proposal, which is currently open for community
+feedback, we propose to first deprecate and then eventually disallow expressions
+of the form <code>$a -$b</code>. We know deprecations are never pleasant, but this should
+be fairly painless as they go: you can simply write <code>$a - $b</code> or <code>$a (-$b)</code>,
+depending which you intend. We’ll also provide a <a href="/documentation/cli/migrator">Sass migrator</a> migration to
+automatically update your<span class="widont">&nbsp;</span>stylesheets.</p>
+<p><strong>Deprecated:</strong></p>
+<ul>
+<li><code>$a -$b</code> will no longer be allowed, because it’s unclear what the author
+intended and the current behavior is likely to be<span class="widont">&nbsp;</span>incorrect.</li>
+</ul>
+<p><strong>Still allowed:</strong></p>
+<ul>
+<li>
+<p><code>$a - $b</code> will continue to work, since<span class="widont">&nbsp;</span>it’s&#8230;</p></li></ul>
+    </li>
+  
+</ul>
+
+
+  <p>
+    <a href="/blog/page/2/">Next page</a>
+  </p>
+
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/ -->
+  </body>
+</html>

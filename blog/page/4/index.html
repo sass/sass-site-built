@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Sass Blog</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Sass Blog</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="docSearch-content sl-l-container sl-l-container--small">
+  
+
+
+
+  
+
+
+
+
+  <p>Page 4 of<span class="widont">&nbsp;</span>8</p>
+  
+    <p>
+      <a href="/blog/page/3/">Previous page</a>
+    </p>
+  
+
+
+<ul class="sl-c-list">
+  
+    <li>
+      <h2>
+        <a href="/blog/request-for-commentsforward-slash-as-separator/">Request For Comments: Forward Slash as<span class="widont">&nbsp;</span>Separator</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 7 May 2019 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>Early on in Sass’s history, the decision was made to use <code>/</code> as a division
+operator, since that was (and is) by far the most common representation across
+programming languages. The <code>/</code> character was used in very few plain <span class="caps">CSS</span>
+properties, and for those it was an optional shorthand. So Sass defined <a href="/documentation/operators/numeric#slash-separated-values">a set
+of heuristics</a> that defined when <code>/</code> would be rendered as a literal slash
+versus treated as an<span class="widont">&nbsp;</span>operator.</p>
+<p>For a long time, these heuristics worked pretty well. In recent years, however,
+new additions to <span class="caps">CSS</span> such as <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row"><span class="caps">CSS</span> Grid</a> and <a href="https://drafts.csswg.org/css-color/#rgb-functions"><span class="caps">CSS</span> Color Level 4</a> have been
+using <code>/</code> as a separator increasingly often. Using the same character for both
+division and slash-separation is becoming more and more annoying to users, and
+will likely eventually become<span class="widont">&nbsp;</span>untenable.</p>
+<p>As such, we’re planning to redefine <code>/</code> to be <em>only</em> a separator. Rather than
+creating an unquoted string (as it currently does when at least one operand
+isn’t a number), it will create a list with a new slash<span class="widont">&nbsp;</span>separator&#8230;.</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/brand-new-sass-docs/">Brand New Sass<span class="widont">&nbsp;</span>Docs</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 23 April 2019 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>I’m excited to announce the launch of <a href="/documentation">a full rewrite and redesign of the Sass
+documentation</a>, going live today after eight months of work by
+<a href="https://github.com/jina">Jina Anne</a> and myself! Jina, the lead of Team Sass
+Design, is responsible for the layout and visual design of the new
+documentation. She made everything gorgeous and readable.
+<a href="https://github.com/nex3">I</a> wrote all the text, so if you see a typo I’m the
+one to<span class="widont">&nbsp;</span>blame.</p>
+<img src="/assets/img/blog/021-function-docs.png" alt="A preview of the function documentation page." width="640">
+<p>In addition to reorganizing and rewriting all the documentation, we’ve added a special example widget that makes it easy to see how Sass stylesheets translate into <span class="caps">CSS</span>. It has tabs for both <span class="caps">SCSS</span> and the indented syntax, so you can use whichever you prefer, or switch between them to see the<span class="widont">&nbsp;</span>difference.</p>
+<img src="/assets/img/blog/021-syntax-switcher.png" alt="The example widget." width="640">
+<p>The Sass function documentation is included in the rewrite. Functions are now organized into easy-to-understand sections, and Jina designed a super readable layout for<span class="widont">&nbsp;</span>them.</p>
+<img src="/assets/img/blog/021-functions-math.png" alt="The round() function." width="640">
+<p>Best of all, the new documentation has full-text search courtesy of our friends
+at <a href="https://www.algolia.com/">Algolia</a>. You can search for features,<span class="widont">&nbsp;</span>function&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/ruby-sass-is-unsupported/">Ruby Sass Has Reached<span class="widont">&nbsp;</span>End-Of-Life</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 4 April 2019 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>One year has passed since we announced <a href="/blog/ruby-sass-is-deprecated">the deprecation of Ruby
+Sass</a>, and it has now officially reached its
+end-of-life. We will release one final version of the Ruby Sass gem that will
+print a warning indicating that it’s no longer receiving updates, and then
+archive <a href="https://github.com/sass/ruby-sass">the GitHub<span class="widont">&nbsp;</span>repository</a>.</p>
+<p><img src="/assets/img/blog/020-goodbye.gif" alt="A woman saying &quot;Goodbye, my friend&quot;"></p>
+<p>We will then merge the <a href="https://github.com/sass/language">sass/language</a> repo
+into the <a href="https://github.com/sass/sass">sass/sass</a> repo. This means that
+<strong>anyone still depending on Ruby Sass from <code>github.com/sass/sass</code> will break.</strong>
+Going forward, the sass/sass repo will be the location for working on the
+language specs, and will not contain any code. The sass/language repo will just
+include links pointing to<span class="widont">&nbsp;</span>sass/sass.</p>
+<h3 id="migrating-away" tabindex="-1">Migrating Away<a class="anchor" href="/blog/ruby-sass-is-unsupported/#migrating-away"><span class="visuallyhidden">Migrating Away permalink</span></a></h3>
+<p>If you haven’t migrated away from Ruby Sass yet, now is the time. The best way
+to do that depends on how you use Ruby Sass<span class="widont">&nbsp;</span>today.</p>
+<p>If you use Ruby Sass as a command-line tool, the easiest way to migrate is to
+<a href="/install">install Dart Sass</a> as a command-line tool. It supports a similar
+interface to Ruby Sass,<span class="widont">&nbsp;</span>and&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/request-for-comments-module-system-proposal/">Request For Comments: Module<span class="widont">&nbsp;</span>System</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 27 November 2018 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>Many of the most frequently-requested features for Sass have to do with its
+imports. The import system that we’ve had since the very early releases of Sass
+is, to put it simply, not great. It does little more than textually include one
+Sass file in another, which makes it hard to keep track of where mixins,
+functions, and variables were defined and hard to be sure that any new additions
+won’t happen to conflict with something elsewhere in the project. To make
+matters worse, it overlaps with <span class="caps">CSS</span>’s built-in <code>@import</code> rule, which forces us
+to have <a href="/documentation/at-rules/import/">a bunch of heuristics</a>
+to decide which is<span class="widont">&nbsp;</span>which.</p>
+<p>Because of these problems and others, we’ve wanted to do a full overhaul of the
+way Sass files relate to one another for a long time. Over the last few years,
+I’ve been working with the Sass core team and Sass framework maintainers to
+create a proposal for a module system that’s fit to replace <code>@import</code>. That
+proposal is now in a place<span class="widont">&nbsp;</span>that&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/feature-watchcontent-arguments-and-color-functions/">Feature Watch: Content Arguments and Color<span class="widont">&nbsp;</span>Functions</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 14 November 2018 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>Dart Sass 1.15, released today and available <a href="https://npmjs.com/package/sass">on
+npm</a> and <a href="/install">all other distribution
+channels</a>, brings with it a number of highly-anticipated new Sass
+features. This is also the first release of Dart Sass with major new language
+features that <em>aren’t</em> just for <span class="caps">CSS</span> compatibility. That’s a big accomplishment,
+and we intend to continue that pattern moving<span class="widont">&nbsp;</span>forward!</p>
+<h3 id="content-arguments" tabindex="-1"><code>@content</code> Arguments<a class="anchor" href="/blog/feature-watchcontent-arguments-and-color-functions/#content-arguments"><span class="visuallyhidden">@content Arguments permalink</span></a></h3>
+<p>Mixins that take <a href="/documentation/at-rules/mixin/#content-blocks"><code>@content</code>
+blocks</a> can now pass
+arguments to those blocks. This is written <code>@content(&lt;arguments...&gt;)</code>. If a
+mixin passes arguments to its content block, users of that mixin must accept
+those arguments by writing <code>@include &lt;name&gt; using (&lt;arguments...&gt;)</code>. The
+argument list for a content block works just like a mixin’s argument list, and
+the arguments passed to it by <code>@content</code> work just like passing arguments to a<span class="widont">&nbsp;</span>mixin.</p>
+<pre class="language-scss"><code class="language-scss"><span class="token comment">// style.scss</span>
+<span class="token keyword">@mixin</span> <span class="token function">media</span><span class="token punctuation">(</span><span class="token variable">$types</span>...<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">@each</span> <span class="token selector"><span class="token variable">$type</span> in <span class="token variable">$types</span> </span><span class="token punctuation">{</span>
+    <span class="token atrule"><span class="token rule">@media</span> <span class="token variable">#{$type}</span></span> <span class="token punctuation">{</span>
+      <span class="token keyword">@content</span><span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">@include</span> <span class="token function">media</span><span class="token punctuation">(</span>screen<span class="token punctuation">,</span> print<span class="token punctuation">)</span> using <span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">)...</span></code></pre>
+    </li>
+  
+</ul>
+
+
+  <p>
+    <a href="/blog/page/5/">Next page</a>
+  </p>
+
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/page/4/ -->
+  </body>
+</html>

@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Sass Blog</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Sass Blog</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        
+<div class="docSearch-content sl-l-container sl-l-container--small">
+  
+
+
+
+  
+
+
+
+
+  <p>Page 3 of<span class="widont">&nbsp;</span>8</p>
+  
+    <p>
+      <a href="/blog/page/2/">Previous page</a>
+    </p>
+  
+
+
+<ul class="sl-c-list">
+  
+    <li>
+      <h2>
+        <a href="/blog/libsass-is-deprecated/">LibSass is<span class="widont">&nbsp;</span>Deprecated</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 26 October 2020 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>After much discussion among the Sass core team, we’ve come to the conclusion
+that it’s time to officially declare that LibSass and the packages built on top
+of it, including Node Sass, are deprecated. For several years now, it’s been
+clear that there’s simply not enough engineering bandwidth behind LibSass to
+keep it up-to-date with the latest developments in the Sass language (for
+example, the most recent new language feature was added in <a href="https://github.com/sass/libsass/releases/tag/3.5.5">November 2018</a>). As
+much as we’ve hoped to see this pattern turn around, even the excellent work of
+long-time LibSass contributors Michael Mifsud and Marcel Greter couldn’t keep up
+with the fast pace of language development in both <span class="caps">CSS</span> and<span class="widont">&nbsp;</span>Sass.</p>
+<p>I’ll go into detail about what this means below, but here are the major<span class="widont">&nbsp;</span>points:</p>
+<ul>
+<li>
+<p>We no longer recommend LibSass for new Sass projects. Use <a href="/dart-sass">Dart Sass</a><span class="widont">&nbsp;</span>instead.</p>
+</li>
+<li>
+<p>We recommend all existing LibSass users make plans to eventually move onto
+Dart Sass, and that all Sass libraries make plans to eventually drop support
+for<span class="widont">&nbsp;</span>LibSass&#8230;.</p></li></ul>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/request-for-comments-hwb-functions/">Request for Comments: <span class="caps">HWB</span><span class="widont">&nbsp;</span>Functions</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 7 October 2020 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>The <span class="caps">CSS</span> working group has been up to all sorts of exciting stuff recently in the
+<a href="https://www.w3.org/TR/css-color-4/">Color Level 4</a> spec, and the Sass team is starting to think about how to
+integrate those cool new features into Sass’s color model. We need more time to
+hammer out exactly the right designs for complex features like the Lab color
+space, but that doesn’t mean we can’t add a few new color<span class="widont">&nbsp;</span>goodies.</p>
+<p>Today we’re announcing a proposal for one such feature: built-in Sass functions
+for <a href="https://www.w3.org/TR/css-color-4/#the-hwb-notation"><span class="caps">HWB</span></a> colors! Once this proposal (drafted by Sass core team member <a href="https://www.miriamsuzanne.com/">Miriam
+Suzanne</a>) is accepted and implemented, you’ll be able to write colors in <span class="caps">HWB</span>
+syntax and adjust their whiteness and blackness the same way you can adjust a
+color’s saturation and lightness<span class="widont">&nbsp;</span>today.</p>
+<h2 id="the-functions" tabindex="-1">The Functions<a class="anchor" href="/blog/request-for-comments-hwb-functions/#the-functions"><span class="visuallyhidden">The Functions permalink</span></a></h2>
+<p>Here are the new and improved functions this proposal<span class="widont">&nbsp;</span>adds:</p>
+<h3 id="color-hwb" tabindex="-1"><code>color.hwb()</code><a class="anchor" href="/blog/request-for-comments-hwb-functions/#color-hwb"><span class="visuallyhidden">color.hwb() permalink</span></a></h3>
+<p>The <code>color.hwb()</code> function defines a color using its hue, whiteness, and
+blackness. Like the existing <code>rgb()</code> and <code>hsl()</code> functions, It can either<span class="widont">&nbsp;</span>use&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/request-for-comments-nested-map-functions/">Request for Comments: Nested Map<span class="widont">&nbsp;</span>Functions</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 16 September 2020 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>As Sass libraries and design systems get more complex and have more users with
+different needs, they tend to develop the need to share and override
+configuration and design tokens. This configuration is often hierarchical, and
+ends up being represented as maps that contain maps that contain still more
+maps. Up until now, Sass’s map functions haven’t really made it easy to work
+with this sort of nested map structure. But that’s changing with the latest
+language proposal, written by Sass core team member <a href="https://www.miriamsuzanne.com/">Miriam<span class="widont">&nbsp;</span>Suzanne</a>.</p>
+<p>This proposal expands the existing map functions and adds a few new ones to make
+working with nested maps much easier than it was before. It’s based on helper
+functions that pop up in all sorts of Sass projects around the web,
+incorporating best practices back into the language<span class="widont">&nbsp;</span>itself.</p>
+<h2 id="the-functions" tabindex="-1">The Functions<a class="anchor" href="/blog/request-for-comments-nested-map-functions/#the-functions"><span class="visuallyhidden">The Functions permalink</span></a></h2>
+<p>Here are the new and improved functions this proposal<span class="widont">&nbsp;</span>adds:</p>
+<h3 id="map-get-and-map-has-key" tabindex="-1"><code>map.get()</code> and <code>map.has-key()</code><a class="anchor" href="/blog/request-for-comments-nested-map-functions/#map-get-and-map-has-key"><span class="visuallyhidden">map.get() and map.has-key()<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>The <a href="/documentation/modules/map#get"><code>map.get()</code></a> and <a href="/documentation/modules/map#has-key"><code>map.has-key()</code></a> functions both now take any number<span class="widont">&nbsp;</span>of&#8230;</p>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/the-module-system-is-launched/">The Module System is<span class="widont">&nbsp;</span>Launched</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 2 October 2019 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>The Sass team has known for years that the <code>@import</code> rule, one of the earliest
+additions to Sass, wasn’t as good as we wanted it. It caused a litany of
+problems for our<span class="widont">&nbsp;</span>users:</p>
+<ul>
+<li>
+<p>It was next to impossible to figure out where a given variable, mixin, or
+function (collectively called “members”) was originally defined, since
+anything defined in one stylesheet was available to all stylesheets that were
+imported after<span class="widont">&nbsp;</span>it.</p>
+</li>
+<li>
+<p>Even if you chose to explicitly import every stylesheet that defined members
+you used, you’d end up with duplicate <span class="caps">CSS</span> and strange side-effects, because
+stylesheets were reloaded from scratch every time they were<span class="widont">&nbsp;</span>imported.</p>
+</li>
+<li>
+<p>It wasn’t safe to use terse and simple names because there was always a
+possibility that some other stylesheet elsewhere in your application would use
+the same name and mess up your logic. To be safe users had to manually add
+long, awkward namespaces to everything they<span class="widont">&nbsp;</span>defined.</p>
+</li>
+<li>
+<p>Library authors had no way to ensure that their private helpers wouldn’t be
+accessed by downstream<span class="widont">&nbsp;</span>users,&#8230;</p></li></ul>
+    </li>
+  
+    <li>
+      <h2>
+        <a href="/blog/module-system-preview/">Module System<span class="widont">&nbsp;</span>Preview</a>
+      </h2>
+      <p class="sl-c-attribution">Posted 4 September 2019 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+      <p>Exciting news, Sass fans! After a year of development and some iteration on the
+spec, we’re ready to launch a beta preview of the new Sass module system! We may
+still make a few last-minute tweaks based on user feedback, so don’t go using
+itin production just yet, but please do take this opportunity to play around
+with it and let us know what you<span class="widont">&nbsp;</span>think.</p>
+<h2 id="installing-the-preview" tabindex="-1">Installing the Preview<a class="anchor" href="/blog/module-system-preview/#installing-the-preview"><span class="visuallyhidden">Installing the Preview<span class="widont">&nbsp;</span>permalink</span></a></h2>
+<p>The preview release is available on all the normal distribution channels as
+version <code>1.23.0-module.beta.1</code>. You can download it from the <a href="https://github.com/sass/dart-sass/releases/tag/1.23.0-module.beta.1">GitHub release
+page</a>, or
+install it using one of the following commands (depending on your preferred
+installation<span class="widont">&nbsp;</span>channel):</p>
+<pre class="language-shellsession"><code class="language-shellsession"><span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev sass@1.23.0-module.beta.1</span></span>
+
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash"><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> sass@1.23.0-module.beta.1</span></span>
+
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">brew <span class="token function">install</span> sass/sass/sass@1.23.0-module.beta.1</span></span>
+
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">choco <span class="token function">install</span> sass <span class="token parameter variable">--version</span> <span class="token number">1.23</span>.0.modulebeta-1</span></span>
+
+<span class="token command"><span class="token shell-symbol important">$</span> <span class="token bash language-bash">pub global activate sass <span class="token number">1.23</span>.0-module.beta.1</span></span></code></pre>
+<p>Note that 1.23.0 may not <em>actually</em> be the final version number for the stable
+module system release, it’s just the next minor version number in Dart Sass’s
+release<span class="widont">&nbsp;</span>series&#8230;.</p>
+    </li>
+  
+</ul>
+
+
+  <p>
+    <a href="/blog/page/4/">Next page</a>
+  </p>
+
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/page/3/ -->
+  </body>
+</html>

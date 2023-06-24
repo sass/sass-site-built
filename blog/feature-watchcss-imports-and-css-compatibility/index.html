@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Syntactically Awesome Style Sheets" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sass: Feature Watch: CSS Imports and CSS Compatibility</title>
+
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feed.xml" />
+
+    <link rel="apple-touch-icon" sizes="152x152" type="image/png" href="/icon.png">
+    <link rel="icon" type="image/png" sizes="152x152" href="/icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Source+Code+Pro::ital,wght@0,400;0,600;1,400|Source+Sans+Pro:300,400,600|Source+Serif+Pro"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@alpha"
+      media="screen"
+      rel="stylesheet" />
+    <link
+      href="/assets/dist/css/sass.css"
+      media="screen"
+      rel="stylesheet" />
+
+    <noscript>
+      <link
+        href="/assets/dist/css/noscript.css"
+        media="screen"
+        rel="stylesheet" />
+    </noscript>
+
+    <!-- Google Analytics (https://developers.google.com/analytics/devguides/collection/gtagjs). -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-535380-14"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-535380-14');
+    </script>
+  </head><body data-layout="body" class="blog 017-feature-watchcss-imports-and-css-compatibility">
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.
+    </p>
+    <![endif]-->
+
+    <header
+  class="sl-r-banner"
+  itemtype="https://schema.org/WPHeader"
+  itemscope="itemscope"
+  role="banner">
+  
+    <div class="sl-c-alert sl-c-alert--special">
+      <div class="sl-l-container">
+        <h2 class="sl-c-alert-title">Black Lives Matter</h2>
+        <p>Sass stands with the protesters against police violence. We encourage our users to <strong>get in the streets and join them if you<span class="widont">&nbsp;</span>can</strong>.</p>
+
+      </div>
+    </div>
+  
+
+  <div class="sl-c-pop-stripe"></div>
+  <div class="sl-l-container">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <p class="sl-l-grid__column sl-r-banner__brand">
+        <a href="/"><img
+            height="48"
+            alt="Sass"
+            src="/assets/img/logos/logo.svg"></a>
+      </p>
+
+      <nav
+  class="sl-r-banner__navigation sl-l-grid__column sl-l-large-grid sl-l-large-grid__column--auto-size sl-c-list-horizontal-wrapper"
+  itemtype="https://schema.org/SiteNavigationElement"
+  itemscope="itemscope"
+  role="navigation"
+  aria-label="Site navigation">
+<ul>
+<li><a href="/install">Install</a></li>
+<li><a href="/guide">Learn Sass</a></li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/documentation">Documentation</a></li>
+<li><a href="/community">Get Involved</a></li>
+<li>
+<div id="docsearch"></div>
+</li>
+</ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+    <main class="content" id="main-content" itemprop="mainContentOfPage" role="main">
+      
+        <h1 class="sl-l-container">Feature Watch: <span class="caps">CSS</span> Imports and <span class="caps">CSS</span><span class="widont">&nbsp;</span>Compatibility</h1>
+      
+
+      <div class="sl-l-container sl-color--white-background sl-l-section">
+        <p class="sl-c-attribution">Posted 13 August 2018 by Natalie<span class="widont">&nbsp;</span>Weizenbaum</p>
+
+
+<div class="sl-l-container sl-l-container--small">
+  <p>Dart Sass 1.11 has just been released, and with it a handful of new features.
+This is an exciting moment, because it marks the first major new feature that’s
+been added to the language since Dart Sass was launched. It’s also the first
+release with features that have gone through the new process, from
+<a href="https://github.com/sass/language/blob/main/accepted/css-imports.md">proposal</a>
+to <a href="https://github.com/sass/sass-spec/pull/1277">tests</a> to
+<a href="https://github.com/sass/dart-sass/pull/436">implementation</a>.</p>
+<h3 id="css-imports" tabindex="-1"><span class="caps">CSS</span> Imports<a class="anchor" href="#css-imports"><span class="visuallyhidden"><span class="caps">CSS</span> Imports permalink</span></a></h3>
+<p>The biggest feature in Dart Sass 1.11 is support for importing plain <span class="caps">CSS</span> files.
+This is a long-awaited feature, and while we’d initially planned on waiting on
+it until we launched the upcoming module system, we ended up deciding to
+<a href="/blog/request-for-commentsimporting-css-files">implement it<span class="widont">&nbsp;</span>earlier</a>.</p>
+<p>You can now import a <span class="caps">CSS</span> file, say <code>styles.css</code>, just by writing <code>@import &quot;styles&quot;</code>. That file will be parsed as plain <span class="caps">CSS</span>, which means that any Sass
+features like variables or mixins or interpolation will be disallowed. The <span class="caps">CSS</span>
+it defines will become part of your stylesheet, and can be <code>@extend</code>ed just like
+any other<span class="widont">&nbsp;</span>styles.</p>
+<p>There are a couple caveats: because <span class="caps">SCSS</span> is a superset of plain <span class="caps">CSS</span>, it will
+still compile <code>@import &quot;styles.css&quot;</code> (with an explicit extension) to a <span class="caps">CSS</span>
+<code>@import</code> rule. If you want to import a <span class="caps">CSS</span> file into your Sass compilation, you
+must omit the<span class="widont">&nbsp;</span>extension.</p>
+<p>Also, this feature isn’t fully <a href="https://github.com/sass/libsass/issues/2699">implemented in
+LibSass</a> yet. It still has its old
+behavior, where it imports <span class="caps">CSS</span> files but parses them as <span class="caps">SCSS</span>, with all the extra
+Sass features allowed. This behavior will be deprecated soon, and eventually it
+will produce errors for anything other than plain <span class="caps">CSS</span>, just like Dart Sass does<span class="widont">&nbsp;</span>today.</p>
+<h3 id="css-min-and-max" tabindex="-1"><span class="caps">CSS</span> <code>min()</code> and <code>max()</code><a class="anchor" href="#css-min-and-max"><span class="visuallyhidden"><span class="caps">CSS</span> min() and max()<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>Dart Sass 1.11 also adds support for <span class="caps">CSS</span>’s <code>min()</code> and <code>max()</code> mathematical
+functions. For those unfamiliar, these functions work a lot like <code>calc()</code>,
+except they return the minimum or maximum of a series of values. For example,
+you can write <code>width: max(50%, 100px)</code> to make your element either 50% of the
+parent’s width or 100px wide, whichever is<span class="widont">&nbsp;</span>greater.</p>
+<p>Because Sass has its own functions named <code>min()</code> and <code>max()</code>, it was difficult
+to use these <span class="caps">CSS</span> functions… until now. Dart Sass 1.11 will intelligently
+decide whether to use the plain <span class="caps">CSS</span> functions or the built-in Sass functions
+based on whether or not you’re passing in dynamic Sass values. For<span class="widont">&nbsp;</span>example:</p>
+<ul>
+<li>The Sass function will be called if you pass a variable, like <code>max($width, 100px)</code>.</li>
+<li>The Sass function will be called if you call another Sass function, like
+<code>max(compute-width(), 100px)</code>.</li>
+<li>It will compile to a plain <span class="caps">CSS</span> function if you just use plain <span class="caps">CSS</span> numbers,
+like <code>max(50% + 10px, 100px)</code>.</li>
+<li>It will still compile to a plain <span class="caps">CSS</span> function even if you use interpolation,
+like <code>max(50% + #{$width / 2}, #{$width})</code>.</li>
+</ul>
+<p>This preserves backwards-compatibility with existing uses of the Sass functions,
+while also users to use the <span class="caps">CSS</span> functions the same way they would in plain<span class="widont">&nbsp;</span><span class="caps">CSS</span>.</p>
+<p>This feature isn’t yet implemented in
+<a href="https://github.com/sass/libsass/issues/2701">LibSass</a> or <a href="https://github.com/sass/ruby-sass/issues/77">Ruby<span class="widont">&nbsp;</span>Sass</a>.</p>
+<h3 id="range-format-media-queries" tabindex="-1">Range-Format Media Queries<a class="anchor" href="#range-format-media-queries"><span class="visuallyhidden">Range-Format Media Queries<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p><span class="caps">CSS</span> Media Queries Level 4 defines a <a href="https://www.w3.org/TR/mediaqueries-4/#mq-range-context">range
+syntax</a> for defining
+certain media<span class="widont">&nbsp;</span>queries:</p>
+<pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span>width > 500px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Dart Sass 1.11 adds support for this syntax. It works just like existing media
+query support: you can either use interpolation or plain Sass expressions to
+inject Sass logic into the query, and they can still be<span class="widont">&nbsp;</span>nested.</p>
+<pre class="language-scss"><code class="language-scss"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span>width <span class="token operator">></span> <span class="token variable">$width</span><span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span>height <span class="token operator">&lt;</span> <span class="token variable">#{$height}</span><span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token comment">/* ... */</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This feature isn’t yet implemented in
+<a href="https://github.com/sass/libsass/issues/2698">LibSass</a> or <a href="https://github.com/sass/ruby-sass/issues/75">Ruby<span class="widont">&nbsp;</span>Sass</a>.</p>
+<h3 id="normalized-identifier-escapes" tabindex="-1">Normalized Identifier Escapes<a class="anchor" href="#normalized-identifier-escapes"><span class="visuallyhidden">Normalized Identifier Escapes<span class="widont">&nbsp;</span>permalink</span></a></h3>
+<p>The last compatibility improvement is a bit of an edge case, but it’s still
+worth mentioning: the way Sass parses escapes in identifiers has been improved
+to better match the <span class="caps">CSS</span><span class="widont">&nbsp;</span>spec.</p>
+<p>Escapes are now normalized to a standard format, which means that (for example)
+<code>éclair</code> and <code>\E9clair</code> are parsed to the same value (in this case, <code>éclair</code>).
+Prior to this change, if an escape was written, it would always be preserved
+as-is, so <code>str-length(\E9clair)</code> would return <code>8</code> even though that identifier
+means exactly the same thing to <span class="caps">CSS</span> as <code>éclair</code>.</p>
+<p>We don’t anticipate this affecting many users, but we always strive to bring
+Sass as close to the semantics of <span class="caps">CSS</span> as possible. This is a small but important
+step on that<span class="widont">&nbsp;</span>path.</p>
+<p>This feature isn’t yet implemented in
+<a href="https://github.com/sass/libsass/issues/2700">LibSass</a> or <a href="https://github.com/sass/ruby-sass/issues/76">Ruby<span class="widont">&nbsp;</span>Sass</a>.</p>
+
+</div>
+
+      </div>
+
+      <div class="sl-c-alert">
+        <div class="sl-l-container sl-c-list-horizontal-wrapper" aria-labelledby="release-nav">
+          <ul class="sl-l-grid--justify-center">
+            <li id="release-nav">Current Releases:</li>
+            <li><span class="release-name"><a href="/dart-sass">Dart Sass</a> <a href="https://github.com/sass/dart-sass/releases/tag/1.63.6">1.63.6</a></span></li>
+            <li><span class="release-name"><a href="/libsass">LibSass</a> <a href="https://github.com/sass/libsass/releases/tag/3.6.5">3.6.5</a></span></li>
+            <li><span class="release-name"><a href="/ruby-sass">Ruby Sass</a> <span aria-label="coffin" role="presentation">⚰</span></span></li>
+            <li class="sl-l-grid__column sl-l-large-grid__column--auto-size"><a href="/implementation">Implementation Guide</a></li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </main>
+
+    <footer
+  class="site-footer contentinfo"
+  itemtype="https://schema.org/WPFooter"
+  itemscope="itemscope"
+  role="contentinfo">
+  <div class="sl-l-container sl-l-section">
+    <div class="sl-l-grid sl-l-grid--full sl-l-large-grid--fit sl-l-large-grid--center sl-l-large-grid--gutters">
+      <div class="sl-l-grid__column">
+        <p>Sass © 2006–2023 the Sass team, and numerous contributors.
+It is available for use and modification under the <a href="https://github.com/sass/dart-sass/blob/main/LICENSE"><span class="caps">MIT</span><span class="widont">&nbsp;</span>License</a>.</p>
+
+
+        <nav class="sl-c-list-horizontal-wrapper">
+<ul>
+<li><a href="https://github.com/sass">Sass on GitHub</a></li>
+<li><a href="https://github.com/sass/sass-site">Website Source Code</a></li>
+<li><a href="/styleguide">Style Guide</a></li>
+<li><a href="/community-guidelines">Community Guidelines</a></li>
+</ul>
+</nav>
+
+      </div>
+      <div class="sl-l-grid__column sl-l-large-grid__column--auto-size sl-l-large-grid--justify-right">
+        <a
+          class="twitter-follow-button"
+          href="https://twitter.com/SassCSS"
+          data-show-count="false"
+          data-size="large">Follow @SassCSS</a>
+        <a href="https://www.macstadium.com/"><img
+            alt="Powered by MacStadium"
+            class="mac-stadium-icon"
+            src="https://uploads-ssl.webflow.com/5ac3c046c82724970fc60918/5c019d917bba312af7553b49_MacStadium-developerlogo.png"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
+    <script>
+      docsearch({
+        container: '#docsearch',
+        appId: 'Q9MULQONSV',
+        indexName: 'sass-lang',
+        apiKey: '2ebc7881b79986f58dc2f424769bf3fc',
+        transformItems: function(hits) {
+          var domain = window.location.origin + "/";
+          hits.forEach(function(hit) {
+            if (! hit.url.startsWith(domain)) {
+              hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
+            }
+          });
+          return hits;
+        }
+      });
+    </script>
+    <script>
+      !function(d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0],
+          p = /^http:/.test(d.location)
+            ? 'http'
+            : 'https';
+        if (! d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = p + '://platform.twitter.com/widgets.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }(document, 'script', 'twitter-wjs');
+    </script>
+    <script src="/assets/dist/js/sass.js"></script>
+    <!-- Current page: /blog/feature-watchcss-imports-and-css-compatibility/ -->
+  </body>
+</html>
