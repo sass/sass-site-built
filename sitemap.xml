@@ -2,925 +2,925 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sass-lang.com/documentation/js-api/functions/renderSync/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/functions/render/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/functions/compileStringAsync/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/functions/compileString/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/functions/compileAsync/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/functions/compile/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/variables/sassTrue/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/variables/sassNull/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/variables/sassFalse/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/variables/info/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/variables/TRUE/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/variables/NULL/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/variables/FALSE/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/Syntax/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/StringOptions/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/PromiseOr/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/OutputStyle/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/ListSeparator/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/LegacyValue/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/LegacySyncImporter/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/LegacySyncFunction/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/LegacyOptions/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/LegacyImporterResult/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/LegacyImporter/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/LegacyFunction/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/LegacyAsyncImporter/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/LegacyAsyncFunctionDone/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/LegacyAsyncFunction/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/types/CustomFunction/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/StringOptionsWithoutImporter/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/StringOptionsWithImporter/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/SourceSpan/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/SourceLocation/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/Options/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/Logger-1/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyStringOptions/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacySharedOptions/</loc>
-    <lastmod>2023-06-24T00:39:28Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyResult/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyPluginThis/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyImporterThis/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyFileOptions/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:22Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/LegacyException/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/ImporterResult/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/Importer/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/FileImporter/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/interfaces/CompileResult/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/Value/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/SassString/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/SassNumber/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/SassMap/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/SassList/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/SassFunction/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/SassColor/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/SassBoolean/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/SassArgumentList/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/Exception/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/types.String/</loc>
-    <lastmod>2023-06-24T00:39:27Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/types.Number/</loc>
-    <lastmod>2023-06-24T00:39:26Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/types.Null/</loc>
-    <lastmod>2023-06-24T00:39:26Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/types.Map/</loc>
-    <lastmod>2023-06-24T00:39:26Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/types.List/</loc>
-    <lastmod>2023-06-24T00:39:26Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/types.Error/</loc>
-    <lastmod>2023-06-24T00:39:26Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/types.Color/</loc>
-    <lastmod>2023-06-24T00:39:26Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/classes/types.Boolean/</loc>
-    <lastmod>2023-06-24T00:39:26Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/modules/types/</loc>
-    <lastmod>2023-06-24T00:39:26Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/variables/Logger.silent/</loc>
-    <lastmod>2023-06-24T00:39:26Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/modules/Logger/</loc>
-    <lastmod>2023-06-24T00:39:26Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/</loc>
-    <lastmod>2023-06-24T00:39:26Z</lastmod>
+    <lastmod>2023-06-26T20:53:21Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/js-api/modules/</loc>
-    <lastmod>2023-06-24T00:39:26Z</lastmod>
+    <lastmod>2023-06-26T20:53:20Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/styleguide/typography/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/styleguide/layout/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/styleguide/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/styleguide/components/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/styleguide/color/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/styleguide/code/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/styleguide/brand/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/ruby-sass/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/libsass/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/install/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/implementation/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/guide/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/variables/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/values/strings/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/values/numbers/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/values/null/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/values/maps/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/values/lists/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/values/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/values/functions/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/values/colors/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/values/calculations/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/values/booleans/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/syntax/structure/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/syntax/special-functions/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/syntax/parsing/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/syntax/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/syntax/comments/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/style-rules/placeholder-selectors/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/style-rules/parent-selector/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/style-rules/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/style-rules/declarations/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/operators/string/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/operators/relational/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/operators/numeric/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/operators/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/operators/equality/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/operators/boolean/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/modules/string/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/modules/selector/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/modules/meta/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/modules/math/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/modules/map/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/modules/list/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/modules/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/modules/color/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/interpolation/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/cli/ruby-sass/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/cli/migrator/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/cli/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/cli/dart-sass/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/breaking-changes/strict-unary/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/breaking-changes/slash-div/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/breaking-changes/moz-document/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/breaking-changes/media-logic/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/breaking-changes/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/breaking-changes/function-units/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/breaking-changes/extend-compound/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/breaking-changes/duplicate-var-flags/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/breaking-changes/default-export/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/breaking-changes/css-vars/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/breaking-changes/bogus-combinators/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/warn/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/use/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/mixin/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/import/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/function/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/forward/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/extend/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/error/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/debug/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/css/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/control/while/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/control/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/control/if/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/control/for/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/control/each/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/documentation/at-rules/at-root/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/dart-sass/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/community/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/community-guidelines/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://sass-lang.com/blog/</loc>
-    <lastmod>2023-06-24T00:38:06Z</lastmod>
+    <lastmod>2023-06-26T20:52:25Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
